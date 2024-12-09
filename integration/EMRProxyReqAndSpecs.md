@@ -2,6 +2,6 @@
 layout: page
 ---
 
-## EMR Proxy Requirements
+# EMR Proxy Requirements
 
 To be continued...

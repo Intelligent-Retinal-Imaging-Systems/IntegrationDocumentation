@@ -2,7 +2,7 @@
 layout: page
 ---
 
-## Standard Results (ORU-R01) Outbound Specifications
+# Standard Results (ORU-R01) Outbound Specifications
 
 Interface between IRIS v2.5 and a third-party system
 
