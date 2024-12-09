@@ -1,8 +1,11 @@
 theme: just-the-docs
 
+plugins:
+  - jekyll-default-layout
+
 # Set a path/url to a logo that will be displayed instead of the title
 logo: "https://cdn.retinalscreenings.com/hosts/iris/images/app-logos/logo.svg"
-
+permalink: pretty
 color_scheme: "light-custom.scss"
 
 # Enable or disable the site search
@@ -34,3 +37,12 @@ search:
   button: false
   # Focus the search input by pressing `ctrl + focus_shortcut_key` (or `cmd + focus_shortcut_key` on macOS)
   focus_shortcut_key: 'k'
+  
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
+
+footer_content: 'Copyright &copy; Intelligent Retinal Imaging Systems. All rights reserved.'
+
+# For copy button on code
+enable_copy_code_button: true
