@@ -1,5 +1,6 @@
 ---
-layout: page
+title: Home
+layout: home
 ---
 
 # Integrating to the IRIS Platform
