@@ -40,15 +40,15 @@ While the IRIS platform is fully operable through a rich suite of <a href="https
 #### By Business Sector 
 
 
-- Primary Care (small) <a href="https://portal.retinalscreenings.com">Basic Integrations</a> page
-- Primary Care (large), IDN, FQHC [EMR Integrations](/docs/integration/EMRIntegrations.html) page
-- Home Health Care <a href="https://portal.retinalscreenings.com">Cloud Direct Integrations</a> page
-- Retail / Kiosk <a href="https://portal.retinalscreenings.com">Cloud Direct Integrations</a> page
-- Payers  <a href="https://portal.retinalscreenings.com">Cloud Direct Integrations</a> and/or <a href="https://portal.retinalscreenings.com">Basic Integrations</a> page
+- Primary Care (small) see [Basic Integrations](/docs/integration/BasicIntegrations.html) page
+- Primary Care (large), IDN, FQHC see [EMR Integrations](/docs/integration/EMRIntegrations.html) page
+- Home Health Care see [Cloud Direct Integrations](/docs/integration/CloudDirect.html) page
+- Retail / Kiosk see [Cloud Direct Integrations](/docs/integration/CloudDirect.html) page
+- Payers see [Cloud Direct Integrations](/docs/integration/CloudDirect.html) and/or [Basic Integrations](/docs/integration/BasicIntegrations.html) page
 
 #### By Technology 
 
-- For basic integrations revolving around file drops, SFTP or options that suppliment manual workflows, navigate to the <a href="https://portal.retinalscreenings.com">Basic Integrations</a> page
+- For basic integrations revolving around file drops, SFTP or options that suppliment manual workflows, navigate to the [Basic Integrations](/docs/integration/BasicIntegrations.html) page
 - If you are using a mainstream EMR/EHR (HL7 integrations) navigate to the [EMR Integrations](/docs/integration/EMRIntegrations.html) page
-- If you are using a Cloud based EMR/EHR Provider (Athena, OCHIN,etc...) navigate to the <a href="https://portal.retinalscreenings.com">Cloud EMR Integrations</a> page
-- If you are considering developing software, using batch oriented operations from your platform, using tools from a cloud based platform such as Salesforce, or any other custom type integration navigate to the <a href="https://portal.retinalscreenings.com">Cloud Direct Integrations</a> page
+- If you are using a Cloud based EMR/EHR Provider (Athena, OCHIN,etc...) navigate to the [SAAS (Cloud) EMR Integrations](/docs/integration/IRISEMRCloudProviders.html) page
+- If you are considering developing software, using batch oriented operations from your platform, using tools from a cloud based platform such as Salesforce, or any other custom type integration navigate to the [Cloud Direct Integrations](/docs/integration/CloudDirect.html) page

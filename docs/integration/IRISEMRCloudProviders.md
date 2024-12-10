@@ -1,5 +1,5 @@
 ---
-title: SAAS (Cloud based) EMR Systems
+title: SAAS (cloud) EMR Systems
 ---
 
 # SAAS (Cloud based) EMR Systems

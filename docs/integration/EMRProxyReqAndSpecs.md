@@ -1,5 +1,5 @@
 ---
-title: IRIS EMR Proxy Application Requirements and Specifications
+title: EMR Proxy Requirements
 ---
 
 # IRIS EMR Proxy Application Requirements and Specifications
