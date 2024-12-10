@@ -2,11 +2,27 @@
 title: Standard Results (ORU-R01) Outbound Specifications
 ---
 
-# Standard Results (ORU-R01) Outbound Specifications
+# HL7 ORU Message (Exam Results)
 
-Interface between IRIS v2.5 and a third-party system
+<div style="position:absolute;">
 
-TEC 007 Rev B Standard Results (ORU-R01) Outbound Specifications
+Intelligent Retinal Imaging Systems &#8482;
+
+</div>
+
+<div align="right" >
+
+[Back to EMR Integrations page](/docs/integration/EMRIntegrations.md)
+
+</div>
+
+
+
+## Standard Results (ORU-R01) Outbound Specifications
+
+Interface content encoding for results from IRIS v3.x to HL7 Integration Engines 
+
+TEC 007 Rev C Standard Results (ORU-R01) Outbound Specifications
 
 ### Acknowledgments 
 
