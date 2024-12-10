@@ -2,8 +2,24 @@
 title: EMR Integrations
 ---
 
-## EMR Integrations
-IRIS Provides integration services to  *on premise* amd most cloud based EMR/EHR platforms. 
+# EMR Integrations
+
+
+<div style="position:absolute;">
+
+Intelligent Retinal Imaging Systems &#8482;
+
+</div>
+
+<div align="right" >
+
+[Back to EMR Integrations page](/docs/integration/EMRIntegrations.html)
+
+</div>
+
+## Introduction
+IRIS Provides integration services to  *on premise* amd SAAS (cloud based) EMR/EHR platforms. 
+
 
 ## On Premise EMR/EHR systems
 There are two basic components to a on premise integration: 
@@ -29,16 +45,16 @@ Complete details can be found at [IRIS EMR Proxy Application Requirements and Sp
 ### Cloud based EMR/EHR systems
 Cloud based EMRs have unique integration requirements involving the provider but can typically be setup quickly. 
 
-Examples of Cloud EMR systems include: Athena, OCHIN and ECW.  A complete list with setup details can be found at [Cloud EMR/EHR Providers](/docs/integration/IRISEMRCloudProviders.md).
+Examples of Cloud EMR systems include: Athena, OCHIN and ECW.  A complete list with setup details can be found at [Cloud EMR/EHR Providers](/docs/integration/IRISEMRCloudProviders.html).
 
 
 ## HL7
 *Content* is provided between IRIS and your system through standard HL7 encoded messages for receiving orders and returning results.
 
-Orders are submitted from your system using the standard [HL7 ORM Message](/docs/integration/TEC_005_Rev_C_Standard_Orders.md).
+Orders are submitted from your system using the standard [HL7 ORM Message](/docs/integration/TEC_005_Rev_C_Standard_Orders.html).
 
-Results are returned as one or more [HL7 ORU Messages](/docs/intergration/TEC_007_Rev_C_Standard_Results.md).
-IRIS also supports sending [DFT](DFT_Results.html) and [MDM](MDM_Results.html) messages on completed results. 
+Results are returned as one or more [HL7 ORU Messages](/docs/intergration/TEC_007_Rev_C_Standard_Results.html).
+IRIS also supports sending [DFT](/docs/integration/DFT_Results.html) and [MDM](/docs/integration/MDM_Results.html) messages on completed results. 
 
 
 

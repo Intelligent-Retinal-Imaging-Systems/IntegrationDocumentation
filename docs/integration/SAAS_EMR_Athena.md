@@ -12,14 +12,14 @@ Intelligent Retinal Imaging Systems &#8482;
 
 <div align="right" >
 
-[Back to Cloud Providers main page](/docs/integration/IRISEMRCloudProviders.md)
+[Back to Cloud Providers main page](/docs/integration/IRISEMRCloudProviders.html)
 
 </div>
 
 
-Order Sets for a Specified Facility Intelligent Retinal
+## Order Sets for a Specified Facility Intelligent Retinal
 
-Imaging Systems
+### Imaging Systems
 
 Order sets are utilized to accelerate the ordering process for clinicians. Order sets can be created for a specific user or to be utilized by all clinicians at the practice. Follow these steps to set-up order sets.
 
@@ -104,7 +104,7 @@ An Order Set can be utilized during an encounter in the Assessment & Plan sectio
 
 9. When a diagnosis has been added, the orders are ready to be signed and sent to the appropriate facilities if need.
 
-DIAGNOSIS
+## DIAGNOSIS
 
 fundus photography with interpretation and report
 

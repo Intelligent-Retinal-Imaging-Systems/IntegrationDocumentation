@@ -12,7 +12,7 @@ Intelligent Retinal Imaging Systems &#8482;
 
 <div align="right" >
 
-[Back to EMR Integrations page](/docs/integration/EMRIntegrations.md)
+[Back to EMR Integrations page](/docs/integration/EMRIntegrations.html)
 
 </div>
 
@@ -48,6 +48,6 @@ Most SAAS EMR providers charge transaction fees of which there are typically two
 
 
 ## Currently Supported SAAS systems
-- [Athena](/docs/integration/SAAS_EMR_Athena.md)
+- [Athena](/docs/integration/SAAS_EMR_Athena.html)
 - OCHIN
 - ECW

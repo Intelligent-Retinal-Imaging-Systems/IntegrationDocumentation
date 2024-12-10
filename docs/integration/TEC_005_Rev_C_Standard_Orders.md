@@ -12,7 +12,7 @@ Intelligent Retinal Imaging Systems &#8482;
 
 <div align="right" >
 
-[Back to EMR Integrations page](/docs/integration/EMRIntegrations.md)
+[Back to EMR Integrations page](/docs/integration/EMRIntegrations.html)
 
 </div>
 
@@ -350,7 +350,6 @@ DG1|1|ICD-10-CM|E11.65^Type 2 diabetes mellitus with hyperglycemia^I10|Type 2 di
 | 7  | Sep. 14, 2023  | TEC 005 REV B - Version 2.4  | Removed version from Acknowledgement section. Updated MSH.4 description/requirements. Updated PID.19 description. Updated ORC.12 description. Altered DG1 section to exclude ICD-9 code requirements and wording on all descriptions. Updated Version  |
 
 
-[(back to Table of Contents)](#table-of-contents)
 
 
 
