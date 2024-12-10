@@ -41,7 +41,7 @@ While the IRIS platform is fully operable through a rich suite of <a href="https
 
 
 - Primary Care (small) <a href="https://portal.retinalscreenings.com">Basic Integrations</a> page
-- Primary Care (large), IDN, FQHC [EMR Integrations](/docs/integration/EMRIntegrations.md) page
+- Primary Care (large), IDN, FQHC [EMR Integrations](/docs/integration/EMRIntegrations/) page
 - Home Health Care <a href="https://portal.retinalscreenings.com">Cloud Direct Integrations</a> page
 - Retail / Kiosk <a href="https://portal.retinalscreenings.com">Cloud Direct Integrations</a> page
 - Payers  <a href="https://portal.retinalscreenings.com">Cloud Direct Integrations</a> and/or <a href="https://portal.retinalscreenings.com">Basic Integrations</a> page
