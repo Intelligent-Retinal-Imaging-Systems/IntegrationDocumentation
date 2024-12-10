@@ -2,7 +2,6 @@
 title: EMR Integrations
 ---
 
-<<<<<<< HEAD:integration/EMRIntegrations.md
 ## EMR Integrations
 IRIS Provides integration services to  *on premise* amd most cloud based EMR platforms. 
 
@@ -13,13 +12,13 @@ There are two basic components to a on premise integration:
 
 The primary piece of software that supports *Transport* is the [IRIS EMR Proxy application](#iris-emr-proxy-application).
 *Content* is encoded as [HL7](#hl7) messages.
-=======
+
 # EMR Integrations
 IRIS Provides integration services to  *on premise* amd most cloud based EMR systems.  
 
 ### On Premise EMR/EHR systems
 On Premise systems are supported by the IRIS EMR Proxy application.  
->>>>>>> ae8824d0780693e6f2607394b456c9d8a8dcff85:docs/integration/EMRIntegrations.md
+
 
 ### IRIS EMR Proxy application
 IRIS is a SAAS service hosted in the Azure cloud environment.  In order to provide seamless integration to your on premise system the EMR Proxy application must be installed on a Windows application server (or virtual) connected on the same Intranet where your EMR/EHR resides. The EMR Proxy provides a secure path between your integration engine and the IRIS cloud services.
@@ -34,13 +33,13 @@ Examples of Cloud EMR systems include: Athena, OCHIN and ECW.  A complete list w
 
 
 
-<<<<<<< HEAD:integration/EMRIntegrations.md
+
 ## HL7
 *Content* is provided between IRIS and your system through standard HL7 encoded messages for receiving orders and returning results.
-=======
+
 ### HL7
 Integration to your EMR system is accomodated by using standard HL7 messages for receiving orders and returning results.
->>>>>>> ae8824d0780693e6f2607394b456c9d8a8dcff85:docs/integration/EMRIntegrations.md
+
 
 Orders are submitted from your system using the standard [HL7 ORM Message](ORMSpecifications.html).
 
