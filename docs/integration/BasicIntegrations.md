@@ -12,7 +12,7 @@ Intelligent Retinal Imaging Systems &#8482;
 
 
 <div align="right">
-  <a href="./EMRIntegrations.md">Back to EMR Integrations page</a>
+  <a href="./EMRIntegrations">Back to EMR Integrations page</a>
 </div>
 
 &nbsp;
