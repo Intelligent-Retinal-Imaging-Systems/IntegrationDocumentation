@@ -1,5 +1,6 @@
 ---
 title: EMR Integrations
+permalink: /docs/integration/EMRIntegrations/
 ---
 
 # EMR Integrations
