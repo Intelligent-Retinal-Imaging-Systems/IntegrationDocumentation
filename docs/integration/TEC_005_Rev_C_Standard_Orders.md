@@ -1,5 +1,6 @@
 ---
-title: HL7 ORM Message
+title: ORM (ORM-001) 
+parent: HL7 Messages
 ---
 
 # HL7 ORM Message (Order Submission)
