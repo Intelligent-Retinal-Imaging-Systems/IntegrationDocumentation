@@ -1,5 +1,6 @@
 ---
 title: HL7 Messages
+parent: EMR Integrations
 ---
 
 # HL7 Messages
