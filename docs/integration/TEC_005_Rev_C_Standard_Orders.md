@@ -1,5 +1,5 @@
 ---
-title: ORM Message Specifications
+title: HL7 ORM Message
 ---
 
 # HL7 ORM Message (Order Submission)

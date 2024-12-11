@@ -1,5 +1,5 @@
 ---
-title: Standard Results (ORU-R01) Outbound Specifications
+title: HL7 ORU Message
 ---
 
 # HL7 ORU Message (Exam Results)
