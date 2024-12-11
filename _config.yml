@@ -1,5 +1,8 @@
 theme: just-the-docs
 
+url: https://intelligent-retinal-imaging-systems.github.io
+baseurl: /IntegrationDocumentation
+
 plugins:
   - jekyll-default-layout
 
