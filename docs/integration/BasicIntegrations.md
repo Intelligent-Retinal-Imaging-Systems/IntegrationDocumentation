@@ -12,7 +12,7 @@ Intelligent Retinal Imaging Systems &#8482;
 
 
 <div align="right">
-  <a href="https://intelligent-retinal-imaging-systems.github.io/IntegrationDocumentation/docs/integration/EMRIntegrations/">Back to EMR Integrations page</a>
+  <a href="/IntegrationDocumentation/docs/integration/EMRIntegrations/">Back to EMR Integrations page</a>
 </div>
 
 &nbsp;
