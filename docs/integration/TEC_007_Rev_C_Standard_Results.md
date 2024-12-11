@@ -1,5 +1,6 @@
 ---
-title: HL7 ORU Message
+title: ORU (ORU-R01)
+parent: HL7 Messages
 ---
 
 # HL7 ORU Message (Exam Results)
