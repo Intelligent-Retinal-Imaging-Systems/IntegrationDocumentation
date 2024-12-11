@@ -1,14 +1,14 @@
 {"0": {
     "doc": "Basic Integrations",
     "title": "Basic Integrations",
-    "content": "Intelligent Retinal Imaging Systems &#8482; Overview . This document details the use of simple file processing tools for limited integrations. ",
+    "content": "Intelligent Retinal Imaging Systems &#8482; Back to EMR Integrations page   . Overview . This document details the use of simple file processing tools for limited integrations. ",
     "url": "/docs/integration/BasicIntegrations/",
     
     "relUrl": "/docs/integration/BasicIntegrations/"
   },"1": {
     "doc": "Cloud Direct",
     "title": "IRIS Cloud Direct Integrations",
-    "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations.html) ",
+    "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations) ",
     "url": "/docs/integration/CloudDirect/#iris-cloud-direct-integrations",
     
     "relUrl": "/docs/integration/CloudDirect/#iris-cloud-direct-integrations"
@@ -113,14 +113,14 @@
   },"16": {
     "doc": "HL7 DFT Results Message",
     "title": "HL7 DFT Results Message",
-    "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations.html) to be continued… . ",
+    "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations) to be continued… . ",
     "url": "/docs/integration/DFT_Results/",
     
     "relUrl": "/docs/integration/DFT_Results/"
   },"17": {
     "doc": "EMR Integrations",
     "title": "EMR Integrations",
-    "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations.html) ",
+    "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations) ",
     "url": "/docs/integration/EMRIntegrations/",
     
     "relUrl": "/docs/integration/EMRIntegrations/"
@@ -225,7 +225,7 @@
   },"32": {
     "doc": "SAAS (cloud) EMR Systems",
     "title": "SAAS (Cloud based) EMR Systems",
-    "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations.html) ",
+    "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations) ",
     "url": "/docs/integration/IRISEMRCloudProviders/#saas-cloud-based-emr-systems",
     
     "relUrl": "/docs/integration/IRISEMRCloudProviders/#saas-cloud-based-emr-systems"
