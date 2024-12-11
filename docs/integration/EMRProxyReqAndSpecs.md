@@ -1,5 +1,6 @@
 ---
-title: EMR Proxy Requirements
+title: IRIS Proxy Requirements
+parent: EMR Integrations
 ---
 
 # IRIS EMR Proxy Application Requirements and Specifications
