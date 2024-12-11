@@ -11,11 +11,11 @@ Intelligent Retinal Imaging Systems &#8482;
 
 </div>
 
-<div align="right" >
+<!-- <div align="right" >
 
 [Back to EMR Integrations page](/docs/integration/EMRIntegrations)
 
-</div>
+</div> -->
 
 ## Introduction
 IRIS Provides integration services to  *on premise* amd SAAS (cloud based) EMR/EHR platforms. 
