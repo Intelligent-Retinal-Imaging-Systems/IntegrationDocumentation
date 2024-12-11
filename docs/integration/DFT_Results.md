@@ -1,5 +1,6 @@
 ---
-title: HL7 DFT Results Message
+title: DFT 
+parent: HL7 Messages
 ---
 
 ## HL7 DFT Results Message

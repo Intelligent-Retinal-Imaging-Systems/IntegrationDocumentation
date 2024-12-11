@@ -1,5 +1,5 @@
 ---
-title: SAAS (cloud) EMR Systems
+title: Cloud Systems
 parent: EMR Integrations
 ---
 

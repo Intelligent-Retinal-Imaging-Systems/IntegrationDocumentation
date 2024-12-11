@@ -1,6 +1,6 @@
 ---
-title: Athena SAAS EMR Integration
-parent: SAAS (cloud) EMR Systems
+title: Athena
+parent: Cloud Systems
 ---
 
 # SAAS Integration specification: Athena

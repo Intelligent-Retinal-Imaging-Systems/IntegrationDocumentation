@@ -1,5 +1,6 @@
 ---
-title: HL7 MDM Results Message
+title: MDM
+parent: HL7 Messages
 ---
 
 ## HL7 MDM Results Message
