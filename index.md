@@ -1,6 +1,6 @@
 ---
 title: Home
-layout: home
+nav_order: 1
 ---
 
 # Integrating to the IRIS Platform
@@ -40,11 +40,11 @@ While the IRIS platform is fully operable through a rich suite of <a href="https
 #### By Business Sector 
 
 
-- Primary Care (small) see [Basic Integrations](/docs/integration/BasicIntegrations.html) page
-- Primary Care (large), IDN, FQHC see [EMR Integrations](/docs/integration/EMRIntegrations.html) page
-- Home Health Care see [Cloud Direct Integrations](/docs/integration/CloudDirect.html) page
-- Retail / Kiosk see [Cloud Direct Integrations](/docs/integration/CloudDirect.html) page
-- Payers see [Cloud Direct Integrations](/docs/integration/CloudDirect.html) and/or [Basic Integrations](/docs/integration/BasicIntegrations.html) page
+- Primary Care (small) see [Basic Integrations](/docs/integration/BasicIntegrations) page
+- Primary Care (large), IDN, FQHC see [EMR Integrations](/docs/integration/EMRIntegrations) page
+- Home Health Care see [Cloud Direct Integrations](/docs/integration/CloudDirect) page
+- Retail / Kiosk see [Cloud Direct Integrations](/docs/integration/CloudDirect) page
+- Payers see [Cloud Direct Integrations](/docs/integration/CloudDirect) and/or [Basic Integrations](/docs/integration/BasicIntegrations) page
 
 #### By Technology 
 

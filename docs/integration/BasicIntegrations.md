@@ -1,9 +1,9 @@
 ---
 title: Basic Integrations
+nav_order: 2
 ---
 
 # Basic Integrations
-
 
 <div style="position:absolute;">
 
@@ -13,7 +13,7 @@ Intelligent Retinal Imaging Systems &#8482;
 
 <div align="right" >
 
-[Back to EMR Integrations page](/docs/integration/EMRIntegrations.html)
+
 
 </div>
 
