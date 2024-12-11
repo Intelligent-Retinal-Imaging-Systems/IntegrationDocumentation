@@ -39,7 +39,7 @@ On Premise systems are supported by the IRIS EMR Proxy application.
 ### IRIS EMR Proxy application
 IRIS is a SAAS service hosted in the Azure cloud environment.  In order to provide seamless integration to your on premise system the EMR Proxy application must be installed on a Windows application server (or virtual) connected on the same Intranet where your EMR/EHR resides. The EMR Proxy provides a secure path between your integration engine and the IRIS cloud services.
 
-Complete details can be found at [IRIS EMR Proxy Application Requirements and Specifications](./EMRProxyReqAndSpecs)
+Complete details can be found at [IRIS EMR Proxy Application Requirements and Specifications](/docs/integration/EMRProxyReqAndSpecs.md)
 
 
 ### Cloud based EMR/EHR systems
