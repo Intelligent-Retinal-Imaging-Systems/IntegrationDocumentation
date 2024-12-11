@@ -11,11 +11,13 @@ Intelligent Retinal Imaging Systems &#8482;
 
 </div>
 
+
 <div align="right" >
 
-[Back to Cloud Providers main page](/docs/integration/IRISEMRCloudProviders.html)
+[Back to Cloud Providers page](/IntegrationDocumentation/docs/integration/IrisEMRCloudProviders/)
 
 </div>
+
 
 
 ## Order Sets for a Specified Facility Intelligent Retinal
