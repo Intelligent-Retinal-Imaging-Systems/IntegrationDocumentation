@@ -124,8 +124,8 @@ The OrderRequest object model provides all the properties necessary to create an
 | <span style='color: #EE5500;'>Patient</span> | [Patient](#patient-structure) structure | Patient details
 | OrderingProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who ordered the exam
 | ReferringProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who referred the patient for the exam
-| CameraOperator | [Request Provider](#requestprovider-structure) structure | Medical provider who performed the exam 
-| CameraOperatorUserName | string | UserName of the technician who should be assigned to the order
+| CameraOperator | [Request Provider](#requestprovider-structure) structure | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
+| CameraOperatorUserName | string | UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI 
 | HealthPlan | [HealthPlan](#healthplan-structure) structure | If order is associated with a Health Plan
 
 ## OrderControlCode 
@@ -173,7 +173,7 @@ When an order is to be assigned to a camera or Image directives are included wit
 | Manufacturer | string | Name of camera manufacturer. Consult with Iris for exact values you should use. 
 | Model | string | Model name of camera. Consult with Iris for exact values you should use.
 | SoftwareVersion | string | Version of camera software. Consult with Iris for exact values you should use.
-| Images | (array of [Image](#image-structure) structure) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images. 
+| Images | Array of [Image](#image-structure) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images. 
 
 ### Images array 
 
@@ -234,7 +234,7 @@ Providing the starting DxCode (ICD-10) serves as the foundation for a fully qual
 | Name | [Name](#name-structure) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
 | Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](#gender-options) options
-| Genders | Array of [PersonGender](#persongender-structure) structures | Patient Gender assignment(s) 
+| Genders | Array of [PersonGender](#persongender-structure) | Patient Gender assignment(s) 
 | Race | options | Optional race identifier | [Race](#race-options) options
 | Ethnicity | options | Optional ethnicity identifier | [Ethnicity](#ethnicity-options) options
 | PrimaryLanguage | options | Optional language identifier | [Language](#language-options) options
@@ -391,7 +391,7 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 | Site | [Site](#site-structure) structure| Contains site information order was assigned to  
 | ResultsDocument | [ResultsDocument](#resultsdocument-structure) structure
 | ImageDetails | [ImageDetails](#imagedetails-structure) structure | Details of images submitted to the order
-| Images | Array of [Image](#result-image-structure) structure | Metadata for each image submitted 
+| Images | Array of [Result Image](#result-image-structure) | Metadata for each image submitted 
 | Order | [Order](#results-order-structure) structure | Details of order most of which is echoed from submission
 | Patient | [Patient](#results-patient-structure) structure | Details of patient echoed from submission 
 | OrderingProvider | [Provider](#requestprovider-structure) structure | Details of provider who ordered the exam which is echoed from the Submission 
@@ -465,7 +465,7 @@ Raw patient details for exam
 | Name | [Name](#name-structure) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
 | Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](#gender-options) options
-| Genders | Array of [PersonGender](#persongender-structure) structure | One or more gender specifications 
+| Genders | Array of [PersonGender](#persongender-structure) | One or more gender specifications 
 | Phone | [Address](#address-structure) structure | Raw patient address data
 
 
@@ -515,7 +515,7 @@ Contains raw details of grading
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| Notes | array of [Note](#note-structure) structure | Notes added by the Grader 
+| Notes | array of [Note](#note-structure) | Notes added by the Grader 
 | Graded | datetimeoffset | When grading was completed 
 | CarePlanName | string | Name of Care Plan determined from findings 
 | CarePlanDescription | string | Description/Instruction text related to care plan
@@ -535,7 +535,7 @@ Details of the technician who captured the images for the order.
 | -- | -- | -- 
 | UserName | string | UserName as known by IRIS system
 | Name | [Name](#name-structure) structure | Name of performing operator
-| Notes | Array of [Note](#note-structure) structure | notes added by the performing operator
+| Notes | Array of [Note](#note-structure) | notes added by the performing operator
 
 ## HealthPlan structure 
 
@@ -569,7 +569,7 @@ Structure containing grading details for one eye side
 | -- | -- | -- | --
 | Gradable | bool | If false the eye side was not able to be graded with the images provided | true/false
 | UngradableReasons | array of string | Grader specified reason that eye could not be graded 
-| Findings | Array of [Finding](#finding-structure) structure | Zero or more findings for the eye
+| Findings | Array of [Finding](#finding-structure) | Zero or more findings for the eye
 
 ## Findings array 
 Array of the Finding structure containing findings from the grader for the specified eye. If the array is not present, it indicates, there was no pathology found for the eye. 
