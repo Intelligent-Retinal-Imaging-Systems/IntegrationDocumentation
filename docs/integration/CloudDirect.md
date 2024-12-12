@@ -65,7 +65,7 @@ Iris provides access to certain integration tools and configurations though the 
 
 
 # Developers
-IRIS provides libraries for most of the popular programming languages on our Developer Resources page.
+IRIS provides libraries for most of the popular programming languages on our [Developer Resources](/IntegrationDocumentation/docs/integration/DeveloperRespources) page.
 
 # Order Submission
 
