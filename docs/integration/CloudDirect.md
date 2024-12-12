@@ -63,6 +63,10 @@ In all cases, communication is accommodated using the cloud vendors APIs, SDKs o
 
 Iris provides access to certain integration tools and configurations though the Integration Administrator role. The role is assigned to you either by Iris support or an existing Organization Administrator for your organization. The term Integration Administrator will be referred to throughout this document thus mentioned here for clarity. 
 
+
+# Developers
+IRIS provides libraries for most of the popular programming languages on our Developer Resources page.
+
 # Order Submission
 
 Orders are submitted to Iris using an Azure Service Bus Queue
