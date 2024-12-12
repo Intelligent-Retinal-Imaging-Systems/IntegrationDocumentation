@@ -19,8 +19,8 @@ This document provides details for integrations to the IRIS Platform using cloud
         - [Images array](#images-array)
         - [AzureBlobStorage structure](#azureblobstorage-structure)
         - [OrderingProvider structure](#orderingprovider-structure)
-        - [Patient structure](#patient-structure)
-        - [Order structure](#order-structure)
+        - [Patient structure](#request-patient-structure)
+        - [Order structure](#request-order-structure)
         - [HealthPlan structure](#healthplan-structure)
         - [PrimaryCareProvider structure](#primarycareprovider-structure) 
 - [Order Results](#order-results)
@@ -76,7 +76,8 @@ C# Example
 ```csharp
 async Task Test()
 {
-    string connectionString = "Endpoint=sb://iris-organization…"; // abbreviated connection string string queueName$= " o r d e r s ^ { \prime }$"; 
+    string connectionString = "Endpoint=sb://iris-organization…"; // abbreviated connection string 
+    string queueName$= "orders"; 
     string orderRequestMessage = "[JSON Encoded OrderRequest object]"
     await await var client = new ServiceBusClient(connectionString);
     ServiceBusSender sender = client.CreateSender(queueName);
@@ -112,18 +113,20 @@ For multisite workflows, you will provide IRIS with your identifiers for each si
 The OrderRequest object model provides all the properties necessary to create an order in the Iris system regardless of your workflow. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: #EE5500;'>red</span> are required. 
 
 
-| Property  | type  |  Description  |
-| -- | -- | -- | 
+| Property  | type  |  Description  | Options
+| -- | -- | -- | -- |
 | <span style='color: #EE5500;'>Version</span> | string |  Should be set to 2.3.1 unless otherwise directed.
 | UserNameSubmitting | string | Optionally specify the username of a user that should be associated with the order creation. If your organization has been provided a service account for API direct operations, this is acceptable, otherwise it is not required. 
-| <span style='color: #EE5500;'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel)
-| <span style='color: #EE5500;'>Site</span> | structure | Location order is associated with
-| Camera | structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
-| <span style='color: #EE5500;'>Order</span> | structure | Details of order
-| <span style='color: #EE5500;'>Patient</span> | structure | Patient details
-| OrderingProvider | structure | Medical provider who ordered the exam
-| CameraOperatorUserName | string | UserName (as known by IRIS) of the technician who should be assigned to the order
-| HealthPlan | structure | If order is associated with a Health Plan
+| <span style='color: #EE5500;'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel) | [OrderControlCode](#ordercontrolcode) options
+| <span style='color: #EE5500;'>Site</span> | [Site](#site-structure) structure | Location order is associated with
+| Camera | [Camera](#camera-structure) structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
+| <span style='color: #EE5500;'>Order</span> | [Order](#order-structure) structure | Details of order
+| <span style='color: #EE5500;'>Patient</span> | [Patient](#patient-structure) structure | Patient details
+| OrderingProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who ordered the exam
+| ReferringProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who referred the patient for the exam
+| CameraOperator | [Request Provider](#requestprovider-structure) structure | Medical provider who performed the exam 
+| CameraOperatorUserName | string | UserName of the technician who should be assigned to the order
+| HealthPlan | [HealthPlan](#healthplan-structure) structure | If order is associated with a Health Plan
 
 ## OrderControlCode 
 
@@ -204,13 +207,9 @@ Files in Azure Blob storage are specified by a container and filename. The Blob 
 | Container | string | Name of the container 
 | FileName | string | name of file as found in the container 
 
-### OrderingProvider structure
+### RequestProvider structure
 
-The OrderingProvider structure allows you to specify the Provider ordering the exam. Previously submitted providers can be looked up by NPI, thus not requiring the full definition. If your workflow is configured to have a default ordering provider, it is not necessary to include this information. However, if you are not configured for a default ordering provider, the order will error. 
-
-If you are providing an NPI that links to a previously used Provider, NPI is the only required field. Otherwise, Name is the only requirement. 
-
-While NPI and Taxonomy are not required, it could have downstream effects on the order results if that information is expected. 
+The RequestProvider structure allows you to specify various Providers associated with the exam. If the provider has previously been submitted and was done so with NPI, you only need to include the NPI value in the submission
 
 #### Properties
 
@@ -223,7 +222,7 @@ While NPI and Taxonomy are not required, it could have downstream effects on the
 | Degrees | string | Optionally supply degrees 
 | Associations | string | Optionally supply associations 
 
-### Patient structure
+### Request Patient structure
 
 IRIS allows submitting detailed information on a patient, however, in most workflows the only requirement is Id, Name, DOB and Gender. 
 
@@ -234,16 +233,16 @@ Providing the starting DxCode (ICD-10) serves as the foundation for a fully qual
 | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
 | Name | [Name](#name-structure) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
-| Gender | options | Patient Gender abbreviation | [Gender enum](#gender-options)
-| Race | options | Optional race identifier | [Race enum](#race-options)
-| Ethnicity | options | Optional ethnicity identifier | [Ethnicity enum](#ethnicity-options)
-| PrimaryLanguage | options | Optional language identifier | [Language enum](#language-options)
-| MaritalStatus | options | Optional marital status identifier | [Marital Status enum](#marital-status-options)
+| Gender | options | Patient Gender abbreviation | [Gender](#gender-options) options
+| Race | options | Optional race identifier | [Race](#race-options) options
+| Ethnicity | options | Optional ethnicity identifier | [Ethnicity](#ethnicity-options) options
+| PrimaryLanguage | options | Optional language identifier | [Language](#language-options) options
+| MaritalStatus | options | Optional marital status identifier | [Marital Status](#marital-status-options) options
 | Email | string | Optional email address for patient 
 | Address | [Address](#address-structure) structure | Optional patient address details 
 | DxCode | string | ICD-10 code starting diagnosis (default: E08) as defined by CMS
 
-### Order structure 
+### Request Order structure 
 
 What you provide in the Order structure is highly dependent on your workflow. While the only required field is the Evaluation Type to perform, other properties may be required in your workflow. For example, the State field is required for mobile type exams where the location of the exam (where the images are taken) is in a different state than the Site the exam is tied to. See the description of each field for more details. 
 
@@ -283,9 +282,9 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | Name | string | Name of the Health Plan 
 | MemberId | string | Id for the HealthPlan member, typically as specified by the Health Plan itself 
 | IndividualId | string | Id for the Individual person associated with the Member for the HealthPlan 
-| PrimaryCareProvider | [Provider](#provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
+| PrimaryCareProvider | [PCP](#primary-care-provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
-### Provider structure 
+### Primary Care Provider structure 
 
 #### Properties
 
@@ -387,9 +386,9 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 | ResultsDocument | [ResultsDocument](#resultsdocument-structure) structure
 | ImageDetails | [ImageDetails](#imagedetails-structure) structure | Details of images submitted to the order
 | Images | Array of [Image](#result-image-structure) structure | Metadata for each image submitted 
-| Order | [Order](#order-structure) structure | Details of order most of which is echoed from submission
-| Patient | [Patient](#patient-structure) structure | Details of patient echoed from submission 
-| OrderingProvider | [Provider](#orderingprovider-structure) structure | Details of provider who ordered the exam which is echoed from the Submission 
+| Order | [Order](#results-order-structure) structure | Details of order most of which is echoed from submission
+| Patient | [Patient](#results-patient-structure) structure | Details of patient echoed from submission 
+| OrderingProvider | [Provider](#requestprovider-structure) structure | Details of provider who ordered the exam which is echoed from the Submission 
 | Gradings | [Grading Results](#gradings-structure) structure | Details of grading operation on order 
 | CameraOperator [Capturing User](#cameraoperator-structure) structure | Details of the user that captured images 
 | HealthPlan | [HealthPlan association](#healthplan-structure) structure | Details of the Health Plan associated with the order
@@ -405,6 +404,30 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 | Type | options | Identifier of the result format | PDF, HTML, ORU 
 | Encoding | options | specifies the encoding format for the report content | Base64, ASCII or any specific encoding scheme 
 | Content | string | Content relative to the Encoding and Type. For example, if PDF, this will most likely be a Base64 encoded string 
+
+## Results Order structure 
+Contains raw order detail from submission
+
+### Properties
+
+| Property | Type | Description
+| -- | -- | -- 
+| PatientOrderId | int | Id as created by IRIS on creation
+| ServicedTime | datetimeoffset | when the exam was performed
+| Status | string | current status of order
+| EvaluationTypes | string | Evaluation performed
+| ScheduledTime | datetime | When order was scheduled
+| LocalId | string | The Id of the order as specified by the submitting organization. 
+| DepartmentId | string | Submitting department. 
+| EncounterNumber | string | Encounter specified on order
+| StudyInstanceUniqueId | DICOM unique id | DICOM submitted Id
+| OrderableIdentifier | string | Optional identifier provided on submission
+| AdditionalInfo | string |  Free form content from submission
+| State | string | US State where exam was performed.
+| SingleEyeOnly | bool | value set on submission
+| MissingEyeReason | string | value set on submission
+| Urgent | bool |  value set on submission
+
 
 ## ImageDetails structure 
 This structure contains a summary of the images collected for the exam.
@@ -422,6 +445,27 @@ This structure contains a summary of the images collected for the exam.
 | LeftEyeEnhancedCount | int | Count of enhanced left eye images attached to the order 
 | Preferred | bool | If true this image was selected as preferred for the report | true/false
 | SingleEyeOnly | bool | Returns single eye indicator based on configuration and submission values | true/false
+
+
+## Results Patient structure
+Raw patient details for exam
+
+### Properties
+
+| Property | Type | Description | Options
+| -- | -- | -- | --
+| PatientId | int | Id as set by IRIS on patient creation
+| LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
+| Name | [Name](#name-structure) structure | Patient first and last name
+| Dob | Date | Patient date of birth 
+| Gender | options | Patient Gender abbreviation | [Gender enum](#gender-options)
+| Race | options | Optional race identifier | [Race enum](#race-options)
+| Ethnicity | options | Optional ethnicity identifier | [Ethnicity enum](#ethnicity-options)
+| PrimaryLanguage | options | Optional language identifier | [Language enum](#language-options)
+| MaritalStatus | options | Optional marital status identifier | [Marital Status enum](#marital-status-options)
+| Email | string | Optional email address for patient 
+| Address | [Address](#address-structure) structure | Optional patient address details 
+| DxCode | string | ICD-10 code starting diagnosis (default: E08) as defined by CMS
 
 
 ## Result Images array 
@@ -524,7 +568,7 @@ Structure containing grading details for one eye side
 | -- | -- | -- | --
 | Gradable | bool | If false the eye side was not able to be graded with the images provided | true/false
 | UngradableReasons | array of string | Grader specified reason that eye could not be graded 
-| Findings | Array of [Finding](#finding-structure) structure : Zero or more findings for the eye
+| Findings | Array of [Finding](#finding-structure) structure | Zero or more findings for the eye
 
 ## Findings array 
 Array of the Finding structure containing findings from the grader for the specified eye. If the array is not present, it indicates, there was no pathology found for the eye. 
@@ -564,9 +608,33 @@ Common structure used for storing addresses
 | State | string (2) | State abbreviation of address
 | PostalCode | string | Zip / Postal code
 
+## PersonGender structure 
+Common structure used for storing gender designations
+
+### Properties
+
+| Property | Type | Description | Options
+| -- | -- | -- | --
+| Context | options | Gender association | [GenderContext](#gendercontext-options) options 
+| Gender | options | The gender for specified context | [Gender](#gender-options) options
+  
+
+
 # Appendix A – Option Enumerations 
 
+## GenderContext Options
+
+| Value | Description | Numeric value
+| -- | -- | --
+| Unknown |  Not set | 0
+| IdentityGender | Gender individual identifies as | 1
+| BirthGender | Gender individual was designated at birth | 2
+
 ## Race Options
+
+You may use any of the HL7 Ethnicity codes listed on <a href="https://terminology.hl7.org/6.1.0/CodeSystem-v3-Race.html">Hl7 Coding: Race</a>
+
+### Example values
 
 | Value | Description
 | -- | --
@@ -579,7 +647,9 @@ Common structure used for storing addresses
 
 ## Ethnicity Options 
 
-You may use any of the HL7 Ethnicity codes listed here: http://terminology.hl7.org/CodeSystem/v3-Ethnicity 
+### Example values
+
+You may use any of the HL7 Ethnicity codes listed on <a href="http://terminology.hl7.org/CodeSystem/v3-Ethnicity">Hl7 Coding: Ethnicity</a>
 
 Specify the Code portion only when populating the Ethnicity field. 
 
@@ -596,11 +666,9 @@ Here is an abbreviated list:
 
 ## Language Options
 
-You may use any HL7 Language code as found here: Valueset-languages - FHIR v4.0.1 (hl7.org) 
+You may use any of the HL7 Language codes listed on <a href="https://www.hl7.org/fhir/valueset-languages.html">Hl7 Coding: Languages</a>
 
-Use the code portion only when populating the Language field. 
-
-Here is an abbreviated listing: 
+### Example values
 
 | Value | Description
 | -- | --
