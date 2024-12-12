@@ -7,9 +7,7 @@ nav_order: 4
  
 This document provides details for integrations to the IRIS Platform using cloud provider resources directly accessing the IRIS 3.x platform.
 
-<details>
-
-<summary>Table of Contents</summary>
+# Table of Contents
 
 - [Introduction](#introduction)
 - [Integration Administrator](#integration-administrator)
@@ -52,8 +50,6 @@ This document provides details for integrations to the IRIS Platform using cloud
 - [Appendix A - Enumerations](#appendix-a)
 - [Appendix B – Sample OrderRequest Message](#appendix-b)
 - [Appendix C - Sample OrderResults Message](#appendix-c)
-
-</details>
 
 -----
 
