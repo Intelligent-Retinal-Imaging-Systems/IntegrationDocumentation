@@ -147,6 +147,7 @@ The OrderRequest models contains the following properties
 The Site structure is primarily used to identify the site the order is to be associated with. If your organization is configured as such, sites can be dynamically added, therefore additional properties are provided to supply the required information. If you don’t require automatic site additions, simply provide the LocalId. 
 
 #### Properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | LocalId | string | Id of site as specified by you, the submitting organization
@@ -157,7 +158,8 @@ The Site structure is primarily used to identify the site the order is to be ass
 
 When an order is to be assigned to a camera or Image directives are included with the order, populate this structure. If the camera already exists and you are not providing image directives, you only need to supply the LocalId. Other than the Images structure, the remaining properties are provided in the event your organization allows automatic Camera additions. 
 
-#### Properties 
+#### Properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | LocalId | string | Typically this is the serial number of the Camera. Because Iris supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with Iris to find the proper value to supply here. 
@@ -179,6 +181,7 @@ The Images array is an array of Image structures that provides details including
 The Image structure allows you to specify details including the storage location where an image file can be retrieved. At this time, image retrieval is only supported in Azure Blob Storage. 
 
 #### Properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | LocalId | string | Id as specified by the submitting organization
@@ -195,6 +198,7 @@ The Image structure allows you to specify details including the storage location
 Files in Azure Blob storage are specified by a container and filename. The Blob Storage Location in Azure is specific to an Azure Blob Storage resource of which connectivity access is specified in the Administrator application.  
 
 #### Properties
+
 | Property | Type | Description
 | -- | -- | --
 | Container | string | Name of the container 
@@ -204,7 +208,7 @@ Files in Azure Blob storage are specified by a container and filename. The Blob 
 
 The OrderingProvider structure allows you to specify the Provider ordering the exam. Previously submitted providers can be looked up by NPI, thus not requiring the full definition. If your workflow is configured to have a default ordering provider, it is not necessary to include this information. However, if you are not configured for a default ordering provider, the order will error. 
 
-If you are providing an NPI that links to a previously used Provider, NPI is the only required field. Otherwise, Name is the only requiement. 
+If you are providing an NPI that links to a previously used Provider, NPI is the only required field. Otherwise, Name is the only requirement. 
 
 While NPI and Taxonomy are not required, it could have downstream effects on the order results if that information is expected. 
 
@@ -272,6 +276,7 @@ If your workflow is based on a Health Plan, this structure may be included in th
 If your workflow includes PCP results delivery, you may specify that Provider here.
 
 #### Properties
+
 | Property | Type | Description
 | -- | -- | -- 
 | LocalId | string | Id of Plan as specified by the submitting organization 
@@ -283,6 +288,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 ### Provider structure 
 
 #### Properties
+
 | Property | Type | Description
 | -- | -- | -- 
 | NPI | string(10) | National Id for Provider 
@@ -352,7 +358,7 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 #### AWS Queue Settings
 - Queue Name 
 - Queue ARN 
-- Queue Url 
+- Queue URL
 - Region Name 
 - AWS Access Key Id 
 - AWS Secret Access Key 
@@ -393,6 +399,7 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 Depending on your workflow the IRIS system will provide a Report of the examination. The report is available in various formats.
 
 ### Properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | Type | options | Identifier of the result format | PDF, HTML, ORU 
@@ -401,6 +408,9 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 
 ## ImageDetails structure 
 This structure contains a summary of the images collected for the exam.
+
+### Properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | TotalCount |int | Total count of all images attached to the order 
@@ -423,6 +433,7 @@ Array of Result Image structures that provides details of each image attached to
 Contains details of an individual image attached to the order.
 
 ### Properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | LocalId | string | Id as specified by the submitting organization 
@@ -440,6 +451,7 @@ Contains details of an individual image attached to the order.
 Details of the camera that took the image. 
 
 ### Properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | LocalId | string | Typically this is the serial number of the Camera. Because Iris supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with Iris to find the proper value to supply here. 
@@ -455,6 +467,7 @@ Details of the camera that took the image.
 Contains raw details of grading
 
 ### Properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | Notes | array of [Note](#note-structure) structure | Notes added by the Grader 
@@ -472,6 +485,7 @@ Contains raw details of grading
 Details of the technician who captured the images for the order.
 
 ### Properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | UserName | string | UserName as known by IRIS system
@@ -481,6 +495,7 @@ Details of the technician who captured the images for the order.
 ## HealthPlan structure 
 
 ### Properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | LocalId | string | Id of plan as specified by submitting organization 
@@ -492,7 +507,9 @@ Array containing zero or more notes added by the related user
 
 ## Note structure 
 Structure containing metadata and content of a free form note
+
 ### Properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | Date | datetime | When the note was entered
@@ -502,6 +519,7 @@ Structure containing metadata and content of a free form note
 Structure containing grading details for one eye side
 
 ### Properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | Gradable | bool | If false the eye side was not able to be graded with the images provided | true/false
@@ -513,7 +531,9 @@ Array of the Finding structure containing findings from the grader for the speci
 
 ## Finding structure 
 Structure containing details of finding
+
 ### Properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | Finding | string | Type of pathology noted (e.g.: Diabetic Retinopathy) 
@@ -525,6 +545,7 @@ Structure containing details of finding
 Common structure used for storing names
 
 ### Properties
+
 | Property | Type | Description
 | -- | -- | --
 | First | string | Persons first (given) name
@@ -534,6 +555,7 @@ Common structure used for storing names
 Common structure used for storing addresses
 
 ### Properties
+
 | Property | Type | Description
 | -- | -- | --
 | Street1 | string | Line one of street address
