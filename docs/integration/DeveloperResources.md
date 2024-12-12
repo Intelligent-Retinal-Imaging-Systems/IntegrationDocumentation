@@ -1,6 +1,6 @@
 ---
 title: Developer Resources
-nav_order: 5
+parent: Cloud Direct 
 ---
 
 # Developer Resources
@@ -13,6 +13,8 @@ IRIS Provides examples and libraries for cloud direct integrations.
 
 
 # Microsoft DotNetCore / Visual Studio / C#
+![DotNetCore](https://th.bing.com/th?id=OIP.VlJPKdlorSicfUuvU079GwHaHD&w=256&h=244&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2) 
+
 Integration in the Microsoft environment is made available from the NuGet public repository.
 
 ## Packages
@@ -27,13 +29,18 @@ Integration in the Microsoft environment is made available from the NuGet public
 
 
 # Typescript 
+![Typescript](https://th.bing.com/th?q=TypeScript+Logo.svg&w=120&h=120&c=1&rs=1&qlt=90&cb=1&pid=InlineBlock&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1&mw=247)
+
 Typescript packages are available from NPM as well you can access the public github repo for the code directly. 
 
-https://github.com/Intelligent-Retinal-Imaging-Systems/ts-service-bus
+<a href="https://github.com/Intelligent-Retinal-Imaging-Systems/ts-service-bus">IRIS Typescript Repository</a>
 
-# Node / NPM
+# Node
+![Node](https://th.bing.com/th/id/OIP.2uFooAQy1Qm5AJve8A7cuwHaIO?w=148&h=180&c=7&r=0&o=5&pid=1.7)
+
 See typescript
 
 
-# GOLANG
-Code examples and source code can be found at https://github.com/Intelligent-Retinal-Imaging-Systems/iris-cloud-direct-go
+![GO LANG](https://go.dev/images/go-logo-white.svg) 
+
+Code examples and source code can be found at the <a href="https://github.com/Intelligent-Retinal-Imaging-Systems/iris-cloud-direct-go">IRIS GOLANG Repository</a>
