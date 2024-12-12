@@ -1,52 +1,33 @@
 ---
 title: EMR Integrations
-permalink: /docs/integration/EMRIntegrations/
+nav_order: 3
 ---
 
 # EMR Integrations
 
-
-<div style="position:absolute;">
-
-Intelligent Retinal Imaging Systems &#8482;
-
-</div>
-
-<!-- <div align="right" >
-
-[Back to EMR Integrations page](/docs/integration/EMRIntegrations)
-
-</div> -->
-
-## Introduction
-IRIS Provides integration services to  *on premise* amd SAAS (cloud based) EMR/EHR platforms. 
-
+IRIS Provides integration services to *on-premise* amd SAAS (cloud based) EMR/EHR platforms. 
 
 ## On Premise EMR/EHR systems
-There are two basic components to a on premise integration: 
+There are two basic components to an on-premise integration: 
 - **Transport** - Software / Networking components that provide the path between IRIS and the target EMR/EHR
 - **Content** - Data that is passed between the systems
 
 The primary piece of software that supports *Transport* is the [IRIS EMR Proxy application](#iris-emr-proxy-application).
 *Content* is encoded as [HL7](/IntegrationDocumentation/docs/integration/hl7messages/) messages.
 
-# EMR Integrations
-IRIS Provides integration services to  *on premise* amd most cloud based EMR systems.  
-
-### On Premise EMR/EHR systems
-On Premise systems are supported by the IRIS EMR Proxy application.  
+Integration to On-premise systems require use of the IRIS EMR Proxy application.  
 
 
-### IRIS EMR Proxy application
-IRIS is a SAAS service hosted in the Azure cloud environment.  In order to provide seamless integration to your on premise system the EMR Proxy application must be installed on a Windows application server (or virtual) connected on the same Intranet where your EMR/EHR resides. The EMR Proxy provides a secure path between your integration engine and the IRIS cloud services.
+#### IRIS EMR Proxy application
+IRIS is a SAAS service hosted in the Azure cloud environment.  In order to provide secure integration to your on-premise system the EMR Proxy application must be installed on a Windows application server (or virtual) connected on the same Intranet where your EMR/EHR resides. The EMR Proxy provides a secure path between your integration engine and IRIS cloud services.
 
-Complete details can be found at [IRIS EMR Proxy Application Requirements and Specifications](/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/)
+Details can be found at [IRIS EMR Proxy Application Requirements and Specifications](/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/)
 
 
-### Cloud based EMR/EHR systems
+## Cloud based EMR/EHR systems
 Cloud based EMRs have unique integration requirements involving the provider but can typically be setup quickly. 
 
-Examples of Cloud EMR systems include: Athena, OCHIN and ECW.  A complete list with setup details can be found at [Cloud EMR/EHR Providers](/IntegrationDocumentation/docs/integration/IRISEMRCloudProviders.md).
+Examples of Cloud EMR systems include: Athena, OCHIN and ECW.  Details can be found at [Cloud EMR/EHR Providers](/IntegrationDocumentation/docs/integration/IRISEMRCloudProviders/).
 
 
  

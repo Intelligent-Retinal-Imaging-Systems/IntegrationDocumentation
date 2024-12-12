@@ -3,69 +3,24 @@ title: ORM (ORM-001)
 parent: HL7 Messages
 ---
 
-# HL7 ORM Message (Order Submission)
-
-<div style="position:absolute;">
-
-Intelligent Retinal Imaging Systems &#8482;
-
-</div>
-
-<div align="right" >
-
-[Back to EMR Integrations page](/docs/integration/EMRIntegrations.html)
-
-</div>
-
 ## Standard Orders (ORM-001) Inbound Specifications
 
 Interface content encoding from HL7 Integration Engines submitted to IRIS v3.x  
 
+## IRIS Controlled document Identifier
 TEC 005 Rev C Standard Orders (ORM-001) Inbound Specifications
 
-### Acknowledgments 
-
-Interface specifications version prepared by Adam Diaz. Please send any feedback to support@irishelp.zendesk.com. 
-
-### Confidentiality and Proprietary Rights 
-
-This document is the confidential property of Intelligent Retinal Imaging Systems (IRIS). No part of this document may be reproduced in any form or incorporated into any information retrieval system without the written permission of IRIS. 
-
-### Limitations and Conditions of Use 
-
-IRIS uses HL7 v2.4 as a main protocol for message sharing. If the receiving EMR requires a different version, IRIS may need to provide corresponding version specifications. This document uses requirements and expectations for ORM HL7 messages with required fields and values notated. HL7 segments will be described as they might appear in an HL7 message. 
-
-### Disclaimers 
-
-Although unlikely, IRIS reserves the right to make changes in specifications and features shown herein at any time without notice. This does not constitute a representation or documentation regarding the service featured. Contact your IRIS Representative for the most current information. 
-
-Intelligent Retinal Imaging Systems™
-
-2 N Palafox Street, Suite 200 
-
-Pensacola, Florida 32502 
-
-1-888-535-2574 | info@retinalscreenings.com 
  
 ## Table of Contents
 
-A. [Basic Interface Structure and Description](#basic-interface-structure-and-description)
-
-B. [MSH Segment – Message Header](#msh-segment--message-header)
-
-C. [PID Segment – Patient Identification](#pid-segment--patient-identification)
-
-D. [PV1 Segment – Patient Visit](#pv1-segment--patient-visit)
-
-E. [ORC – Common Order](#orc--common-order)
-
-F. [OBR – Observation Request](#obr--observation-request)
-
-G. [DG1 – Diagnosis](#dg1--diagnosis-segment)
-
-H. [Example Messages](#example-messages)
-
-I. [Revision History](#revision-history)
+- [Basic Interface Structure and Description](#basic-interface-structure-and-description)
+- [MSH Segment – Message Header](#msh-segment--message-header)
+- [PID Segment – Patient Identification](#pid-segment--patient-identification)
+- [PV1 Segment – Patient Visit](#pv1-segment--patient-visit)
+- [ORC – Common Order](#orc--common-order)
+- [OBR – Observation Request](#obr--observation-request)
+- [DG1 – Diagnosis](#dg1--diagnosis-segment)
+- [Example Messages](#example-messages)
 
 
 ## Basic Interface Structure and Description
