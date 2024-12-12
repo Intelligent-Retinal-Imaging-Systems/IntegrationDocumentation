@@ -77,7 +77,7 @@ C# Example
 async Task Test()
 {
     string connectionString = "Endpoint=sb://iris-organization…"; // abbreviated connection string 
-    string queueName$= "orders"; 
+    string queueName= "orders"; 
     string orderRequestMessage = "[JSON Encoded OrderRequest object]"
     await await var client = new ServiceBusClient(connectionString);
     ServiceBusSender sender = client.CreateSender(queueName);
