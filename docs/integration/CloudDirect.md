@@ -7,7 +7,10 @@ nav_order: 4
  
 This document provides details for integrations to the IRIS Platform using cloud provider resources directly accessing the IRIS 3.x platform.
 
-## Contents
+<details>
+
+<summary>Table of Contents</summary>
+
 - [Introduction](#introduction)
 - [Integration Administrator](#integration-administrator)
 - [Order Submission](#order-submission)
@@ -50,7 +53,10 @@ This document provides details for integrations to the IRIS Platform using cloud
 - [Appendix B – Sample OrderRequest Message](#appendix-b)
 - [Appendix C - Sample OrderResults Message](#appendix-c)
 
+</details>
+
 -----
+
 # Introduction
 
 As an integration option, Iris provides the ability to submit orders and receive results directly communicating with the cloud service of your preference (Azure, AWS or Google Cloud). 
