@@ -40,7 +40,7 @@ Typescript packages are available from NPM as well you can access the public git
 
 See typescript
 
-
-![GO LANG](https://go.dev/images/go-logo-white.svg) 
+# Go 
+![GO LANG](https://th.bing.com/th/id/OIP.t3RUiobgTR3_SbYMuB5oXgHaHa?w=184&h=184&c=7&r=0&o=5&pid=1.7) 
 
 Code examples and source code can be found at the <a href="https://github.com/Intelligent-Retinal-Imaging-Systems/iris-cloud-direct-go">IRIS GOLANG Repository</a>
