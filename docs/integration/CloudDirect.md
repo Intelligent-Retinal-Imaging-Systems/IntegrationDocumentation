@@ -233,14 +233,20 @@ Providing the starting DxCode (ICD-10) serves as the foundation for a fully qual
 | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
 | Name | [Name](#name-structure) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
-| Gender | options | Patient Gender abbreviation | [Gender](#gender-options) options
+| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](#gender-options) options
+| Genders | Array of [PersonGender](#persongender-structure) structures | Patient Gender assignment(s) 
 | Race | options | Optional race identifier | [Race](#race-options) options
 | Ethnicity | options | Optional ethnicity identifier | [Ethnicity](#ethnicity-options) options
 | PrimaryLanguage | options | Optional language identifier | [Language](#language-options) options
 | MaritalStatus | options | Optional marital status identifier | [Marital Status](#marital-status-options) options
 | Email | string | Optional email address for patient 
+| Phone | string | Optional single phone number for patient
+| AdditionalInfo | string | Optional free form data association with patient
 | Address | [Address](#address-structure) structure | Optional patient address details 
 | DxCode | string | ICD-10 code starting diagnosis (default: E08) as defined by CMS
+
+*Genders replaces Gender: While the system will still accept a single unspecified gender assignment, it will eventually be phased out in favor of Genders* 
+
 
 ### Request Order structure 
 
@@ -458,14 +464,9 @@ Raw patient details for exam
 | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
 | Name | [Name](#name-structure) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
-| Gender | options | Patient Gender abbreviation | [Gender enum](#gender-options)
-| Race | options | Optional race identifier | [Race enum](#race-options)
-| Ethnicity | options | Optional ethnicity identifier | [Ethnicity enum](#ethnicity-options)
-| PrimaryLanguage | options | Optional language identifier | [Language enum](#language-options)
-| MaritalStatus | options | Optional marital status identifier | [Marital Status enum](#marital-status-options)
-| Email | string | Optional email address for patient 
-| Address | [Address](#address-structure) structure | Optional patient address details 
-| DxCode | string | ICD-10 code starting diagnosis (default: E08) as defined by CMS
+| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](#gender-options) options
+| Genders | Array of [PersonGender](#persongender-structure) structure | One or more gender specifications 
+| Phone | [Address](#address-structure) structure | Raw patient address data
 
 
 ## Result Images array 
