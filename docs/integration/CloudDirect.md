@@ -65,26 +65,24 @@ Iris provides access to certain integration tools and configurations though the 
 
 # Order Submission
 
-Orders are submitted to Iris using an Azure Service Bus Queue. See Azure Service Bus messaging - queues, topics, and subscriptions - Azure Service Bus | Microsoft Docs for an overview of that technology. 
+Orders are submitted to Iris using an Azure Service Bus Queue
 
-To submit and order, simply send the Json encoded OrderRequest message to the Orders queue. 
+The process involves hydrating and sending a JSON encoded OrderRequest object to the orders queue
 
 *If you are planning to use an IRIS Public library, the act of serializing and sending the data is reduced to a single step within the library.*
 
 C# Example
 
-```
-string connectionString = "Endpoint=sb://iris-organization…"; // abbreviated connection string string queueName$= " o r d e r s ^ { \prime }$"; 
-
-string orderRequestMessage = "{$\vert ^ { \prime \prime } V e r \sin \vert ^ { \prime \prime } : \cdots ) ^ { n }$; 11abbreviated OrderRequest message
-
-await await var client = new ServiceBusClient(connectionString);
-
-ServiceBusSender sender = client.CreateSender(queueName);
-
-ServiceBusMessage message = new ServiceBusMessage(orderRequestMessage);
-
-await sender.SendMessageAsync(message);11Fire and forget
+```csharp
+async Task Test()
+{
+    string connectionString = "Endpoint=sb://iris-organization…"; // abbreviated connection string string queueName$= " o r d e r s ^ { \prime }$"; 
+    string orderRequestMessage = "[JSON Encoded OrderRequest object]"
+    await await var client = new ServiceBusClient(connectionString);
+    ServiceBusSender sender = client.CreateSender(queueName);
+    ServiceBusMessage message = new ServiceBusMessage(orderRequestMessage);
+    await sender.SendMessageAsync(message); // Fire and forget
+}
 ```
 
 ## What you need to get started
