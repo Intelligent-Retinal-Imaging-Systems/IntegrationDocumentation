@@ -4,54 +4,105 @@ nav_order: 4
 ---
 
 # IRIS Cloud Direct Integrations
+{: .no_toc }
  
 This document provides details for integrations to the IRIS Platform using cloud provider resources directly accessing the IRIS 3.x platform.
 
-# Table of Contents
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
 
-- [Introduction](#introduction)
-- [Integration Administrator](#integration-administrator)
-- [Order Submission](#order-submission)
-    - [Orders Service Bus Connection String](#orders-service-bus-connection-string)
-    - [OrderRequest Object Model](#orderrequest-object-model)
-        - [OrderControlCode](#ordercontrolcode)
-        - [Site structure](#site-structure)
-        - [Camera structure](#camera-structure)
-        - [Images array](#images-array)
-        - [AzureBlobStorage structure](#azureblobstorage-structure)
-        - [OrderingProvider structure](#orderingprovider-structure)
-        - [Patient structure](#request-patient-structure)
-        - [Order structure](#request-order-structure)
-        - [HealthPlan structure](#healthplan-structure)
-        - [PrimaryCareProvider structure](#primarycareprovider-structure) 
-- [Order Results](#order-results)
-    - [Azure Service Bus Results](#azure-service-bus-results)
-    - [AWS and Google Queues](#aws-and-google-queues)
-    - [Queue Authentication](#queue-authentication)
-    - [OrderResults Object Model](#orderrequest-object-model)
-        - [ResultsDocument structure](#resultsdocument-structure)
-        - [ImageDetails structure](#imagedetails-structure)
-        - [Images array](#images-array)
-        - [Camera structure](#camera-structure)
-        - [Gradings structure](#gradings-structure)
-        - [CameraOperator structure](#cameraoperator-structure)
-        - [HealthPlan structure](#healthplan-structure)
-        - [Notes array](#note-array)
-        - [EyeSideGrading structure](#eyesidegrading-structure)
-        - [Findings array](#findings-array)
-- [Common Shared Structures](#common-shared-structures)
-- [Appendix A – Option Enumerations](#appendix-a--option-enumerations)
-    - [Race Options](#race-options)
-    - [Ethnicity Options](#ethnicity-options)
-    - [Language Options](#language-options)
-    - [Gender Options](#gender-options)
-    - [Marital Status Options](#marital-status-options)
-    - [Result Code Options](#result-code-options)
-- [Appendix A - Enumerations](#appendix-a)
-- [Appendix B – Sample OrderRequest Message](#appendix-b)
-- [Appendix C - Sample OrderResults Message](#appendix-c)
+[//]: # ()
+[//]: # ()
+[//]: # (- [Introduction]&#40;#introduction&#41;)
 
------
+[//]: # (- [Integration Administrator]&#40;#integration-administrator&#41;)
+
+[//]: # (- [Order Submission]&#40;#order-submission&#41;)
+
+[//]: # (    - [Orders Service Bus Connection String]&#40;#orders-service-bus-connection-string&#41;)
+
+[//]: # (    - [OrderRequest Object Model]&#40;#orderrequest-object-model&#41;)
+
+[//]: # (        - [OrderControlCode]&#40;#ordercontrolcode&#41;)
+
+[//]: # (        - [Site structure]&#40;#site-structure&#41;)
+
+[//]: # (        - [Camera structure]&#40;#camera-structure&#41;)
+
+[//]: # (        - [Images array]&#40;#images-array&#41;)
+
+[//]: # (        - [AzureBlobStorage structure]&#40;#azureblobstorage-structure&#41;)
+
+[//]: # (        - [OrderingProvider structure]&#40;#orderingprovider-structure&#41;)
+
+[//]: # (        - [Patient structure]&#40;#request-patient-structure&#41;)
+
+[//]: # (        - [Order structure]&#40;#request-order-structure&#41;)
+
+[//]: # (        - [HealthPlan structure]&#40;#healthplan-structure&#41;)
+
+[//]: # (        - [PrimaryCareProvider structure]&#40;#primarycareprovider-structure&#41; )
+
+[//]: # (- [Order Results]&#40;#order-results&#41;)
+
+[//]: # (    - [Azure Service Bus Results]&#40;#azure-service-bus-results&#41;)
+
+[//]: # (    - [AWS and Google Queues]&#40;#aws-and-google-queues&#41;)
+
+[//]: # (    - [Queue Authentication]&#40;#queue-authentication&#41;)
+
+[//]: # (    - [OrderResults Object Model]&#40;#orderrequest-object-model&#41;)
+
+[//]: # (        - [ResultsDocument structure]&#40;#resultsdocument-structure&#41;)
+
+[//]: # (        - [ImageDetails structure]&#40;#imagedetails-structure&#41;)
+
+[//]: # (        - [Images array]&#40;#images-array&#41;)
+
+[//]: # (        - [Camera structure]&#40;#camera-structure&#41;)
+
+[//]: # (        - [Gradings structure]&#40;#gradings-structure&#41;)
+
+[//]: # (        - [CameraOperator structure]&#40;#cameraoperator-structure&#41;)
+
+[//]: # (        - [HealthPlan structure]&#40;#healthplan-structure&#41;)
+
+[//]: # (        - [Notes array]&#40;#note-array&#41;)
+
+[//]: # (        - [EyeSideGrading structure]&#40;#eyesidegrading-structure&#41;)
+
+[//]: # (        - [Findings array]&#40;#findings-array&#41;)
+
+[//]: # (- [Common Shared Structures]&#40;#common-shared-structures&#41;)
+
+[//]: # (- [Appendix A – Option Enumerations]&#40;#appendix-a--option-enumerations&#41;)
+
+[//]: # (    - [Race Options]&#40;#race-options&#41;)
+
+[//]: # (    - [Ethnicity Options]&#40;#ethnicity-options&#41;)
+
+[//]: # (    - [Language Options]&#40;#language-options&#41;)
+
+[//]: # (    - [Gender Options]&#40;#gender-options&#41;)
+
+[//]: # (    - [Marital Status Options]&#40;#marital-status-options&#41;)
+
+[//]: # (    - [Result Code Options]&#40;#result-code-options&#41;)
+
+[//]: # (- [Appendix A - Enumerations]&#40;#appendix-a&#41;)
+
+[//]: # (- [Appendix B – Sample OrderRequest Message]&#40;#appendix-b&#41;)
+
+[//]: # (- [Appendix C - Sample OrderResults Message]&#40;#appendix-c&#41;)
+
+[//]: # ()
+[//]: # (-----)
 
 # Introduction
 
