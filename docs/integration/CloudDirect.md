@@ -791,7 +791,7 @@ One of the following codes will be specified on the results which identifies the
 
 ### Sample OrderRequest Message
 
-```json
+```javascript
 {
   "Version": "2.3.1", 	
   "UserNameSubmitting": "john.doe@primarycare.com", 
@@ -916,7 +916,7 @@ One of the following codes will be specified on the results which identifies the
 
 ### Sample OrderResults Message
  
-```json
+```javascript
 {
     "Version": "2.3.1",                  // Version of this structure
     "Timestamp" : "",
