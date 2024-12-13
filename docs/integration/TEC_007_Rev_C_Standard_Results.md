@@ -3,53 +3,10 @@ title: ORU (ORU-R01)
 parent: HL7 Messages
 ---
 
-# HL7 ORU Message (Exam Results)
-
-<div style="position:absolute;">
-
-Intelligent Retinal Imaging Systems &#8482;
-
-</div>
-
-<div align="right" >
-
-[Back to EMR Integrations page](./EMRIntegrations)
-
-</div>
-
-
-
 ## Standard Results (ORU-R01) Outbound Specifications
 
 Interface content encoding for results from IRIS v3.x to HL7 Integration Engines 
 
-TEC 007 Rev C Standard Results (ORU-R01) Outbound Specifications
-
-### Acknowledgments 
-
-Interface specifications prepared by Adam Diaz. Please send any feedback to support@irishelp.zendesk.com. 
-
-### Confidentiality and Proprietary Rights 
-
-This document is the confidential property of Intelligent Retinal Imaging Systems (IRIS). No part of this document may be reproduced in any form or incorporated into any information retrieval system without the written permission of IRIS. 
-
-### Limitations and Conditions of Use 
-
-Some fields noted in this document need the pre-defined values to be identified by the receiving EMR. Those values will be covered in the Standard Orders (ORM-O01) Interface document and used here. If there are any fields represented in this document that are not populated but required by a receiving EMR, IRIS will populate these value(s)as requested. IRIS uses HL7 v2.4 as a main protocol for message sharing. If the receiving EMR requires a different version, IRIS will provide messages for the corresponding version. This document will describe the standard IRIS ORU message by segments as they appear in an HL7 message. 
-
-### Disclaimers 
-
-Although unlikely, IRIS reserves the right to make changes in specifications and features shown herein at any time without notice. This does not constitute a representation or documentation regarding the service featured. Contact your IRIS Representative for the most current information. 
-
-Intelligent Retinal Imaging Systems™
-
-2 N Palafox Street, Suite 200 
-
-Pensacola, Florida 32502 
-
-1-888-535-2574 | info@retinalscreenings.com 
-
-***
 
 
 ## Table of Contents

@@ -7,10 +7,7 @@ parent: HL7 Messages
 
 Interface content encoding from HL7 Integration Engines submitted to IRIS v3.x  
 
-## IRIS Controlled document Identifier
-TEC 005 Rev C Standard Orders (ORM-001) Inbound Specifications
 
- 
 ## Table of Contents
 
 - [Basic Interface Structure and Description](#basic-interface-structure-and-description)

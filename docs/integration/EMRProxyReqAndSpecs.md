@@ -6,27 +6,6 @@ parent: EMR Integrations
 # IRIS EMR Proxy Application Requirements and Specifications
 IRIS Content Transport facilitator for Order Submission and/or Results
 
-### Acknowledgments 
-
-Specifications version prepared by Adam Diaz. Please send any feedback to support@irishelp.zendesk.com. 
-
-### Confidentiality and Proprietary Rights 
-
-This document is the confidential property of Intelligent Retinal Imaging Systems (IRIS). No part of this document may be reproduced in any form or incorporated into any information retrieval system without the written permission of IRIS. 
-
-
-### Disclaimers 
-
-Although unlikely, IRIS reserves the right to make changes in specifications and features shown herein at any time without notice. This does not constitute a representation or documentation regarding the service featured. Contact your IRIS Representative for the most current information. 
-
-Intelligent Retinal Imaging Systems™
-
-2 N Palafox Street, Suite 200 
-
-Pensacola, Florida 32502 
-
-1-888-535-2574 | info@retinalscreenings.com 
-
 # Best Practice
 
 The following requirements outline the best practice for deploying the IRIS EMR Proxy application in your environment. 
