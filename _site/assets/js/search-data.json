@@ -8,830 +8,823 @@
   },"1": {
     "doc": "Cloud Direct",
     "title": "IRIS Cloud Direct Integrations",
-    "content": "This document provides details for integrations to the IRIS Platform using cloud provider resources directly accessing the IRIS 3.x platform. ",
+    "content": "This document provides details for integrations to the IRIS Platform using cloud provider resources directly accessing the IRIS 3.x platform. | Introduction | Integration Administrator | Developers | Order Submission . | What you need to get started . | Orders Service Bus Connection String | Organization Identifier | Site Identifiers | . | . | OrderRequest Object Model . | OrderControlCode | Order Model structures . | Site structure . | Properties | . | Camera structure . | Properties | . | Images array | Image structure . | Properties | . | AzureBlobStorage structure . | Properties | . | RequestProvider structure . | Properties | . | Request Patient structure | Request Order structure . | Properties | . | HealthPlan structure . | Properties | . | Primary Care Provider structure . | Properties | . | . | . | Order Results . | Queue Based Results . | Azure Service Bus Results | AWS and Google Queues | Queue Authentication | Obtaining Iris Azure Service Bus Connection String | Configuring AWS, Azure and Google Service Bus/Queue Connection . | AWS Queue Settings | Azure Queue Settings | GCP (Google) Queue Settings | . | . | . | OrderResults Object Model . | Root Properties | ResultsDocument structure . | Properties | . | Results Order structure . | Properties | . | ImageDetails structure . | Properties | . | Results Patient structure . | Properties | . | Result Images array | Result Image structure . | Properties | . | Result Camera structure . | Properties | . | Gradings structure . | Properties | . | CameraOperator structure . | Properties | . | HealthPlan structure . | Properties | . | Notes array | Note structure . | Properties | . | EyeSideGrading structure . | Properties | . | Findings array | Finding structure . | Properties | . | . | Common Shared Structures . | Name structure . | Properties | . | Address structure . | Properties | . | PersonGender structure . | Properties | . | . | Appendix A . | Option Enumerations | GenderContext Options | Race Options . | Example values | . | Ethnicity Options . | Example values | . | Language Options . | Example values | . | Gender Options | Marital Status Options | Result Code Options | . | Appendix B . | Sample OrderRequest Message | . | Appendix C . | Sample OrderResults Message | . | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#iris-cloud-direct-integrations",
     
     "relUrl": "/docs/integration/CloudDirect/#iris-cloud-direct-integrations"
   },"2": {
-    "doc": "Cloud Direct",
-    "title": "Table of Contents",
-    "content": ". | Introduction | Integration Administrator | Order Submission . | Orders Service Bus Connection String | OrderRequest Object Model . | OrderControlCode | Site structure | Camera structure | Images array | AzureBlobStorage structure | OrderingProvider structure | Patient structure | Order structure | HealthPlan structure | PrimaryCareProvider structure | . | . | Order Results . | Azure Service Bus Results | AWS and Google Queues | Queue Authentication | OrderResults Object Model . | ResultsDocument structure | ImageDetails structure | Images array | Camera structure | Gradings structure | CameraOperator structure | HealthPlan structure | Notes array | EyeSideGrading structure | Findings array | . | . | Common Shared Structures | Appendix A – Option Enumerations . | Race Options | Ethnicity Options | Language Options | Gender Options | Marital Status Options | Result Code Options | . | Appendix A - Enumerations | Appendix B – Sample OrderRequest Message | Appendix C - Sample OrderResults Message | . ",
-    "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#table-of-contents",
-    
-    "relUrl": "/docs/integration/CloudDirect/#table-of-contents"
-  },"3": {
     "doc": "Cloud Direct",
     "title": "Introduction",
     "content": "As an integration option, Iris provides the ability to submit orders and receive results directly communicating with the cloud service of your preference (Azure, AWS or Google Cloud). If you do not wish to use your own cloud service subscription, Iris can also provide this functionality in the Iris Azure subscription, referred to in this document as Iris Azure Cloud. In all cases, communication is accommodated using the cloud vendors APIs, SDKs or libraries. For many languages, IRIS provides native libraries,referred to as the IRIS Public libraries, to abstract the Cloud operations and to provide serialization and deserialization from the data models. ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#introduction",
     
     "relUrl": "/docs/integration/CloudDirect/#introduction"
-  },"4": {
+  },"3": {
     "doc": "Cloud Direct",
     "title": "Integration Administrator",
     "content": "Iris provides access to certain integration tools and configurations though the Integration Administrator role. The role is assigned to you either by Iris support or an existing Organization Administrator for your organization. The term Integration Administrator will be referred to throughout this document thus mentioned here for clarity. ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#integration-administrator",
     
     "relUrl": "/docs/integration/CloudDirect/#integration-administrator"
-  },"5": {
+  },"4": {
     "doc": "Cloud Direct",
     "title": "Developers",
     "content": "IRIS provides libraries for most of the popular programming languages on our Developer Resources page. ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#developers",
     
     "relUrl": "/docs/integration/CloudDirect/#developers"
-  },"6": {
+  },"5": {
     "doc": "Cloud Direct",
     "title": "Order Submission",
     "content": "Orders are submitted to Iris using an Azure Service Bus Queue . The process involves hydrating and sending a JSON encoded OrderRequest object to the orders queue . If you are planning to use an IRIS Public library, the act of serializing and sending the data is reduced to a single step within the library. C# Example . async Task Test() { string connectionString = \"Endpoint=sb://iris-organization…\"; // abbreviated connection string string queueName= \"orders\"; string orderRequestMessage = \"[JSON Encoded OrderRequest object]\" await await var client = new ServiceBusClient(connectionString); ServiceBusSender sender = client.CreateSender(queueName); ServiceBusMessage message = new ServiceBusMessage(orderRequestMessage); await sender.SendMessageAsync(message); // Fire and forget } . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#order-submission",
     
     "relUrl": "/docs/integration/CloudDirect/#order-submission"
-  },"7": {
+  },"6": {
     "doc": "Cloud Direct",
     "title": "What you need to get started",
     "content": "Before you can submit an order using Cloud Direct services, the are several pieces of data you will need from IRIS: . | Service Bus Connection String | Your Organization Identifier referred to as ClientGuid | Site identifier(s) | . Orders Service Bus Connection String . Because orders are only submitted on a service bus that lives within the Iris Azure subscription, you must obtain the connection string from Iris. This connection string has write-only privileges. To obtain the connection string contact IRIS Support at support@irishelp.zendesk.com. Organization Identifier . Created by IRIS during provisioning, this is a GUID value passed into all order submissions, uniquely identifying your organization. Site Identifiers . Depending on your specific needs you will have one to many sites within the IRIS system assigned to your organization. Orders have a direct relationship to the site therefore an identifier for the site must be included in your submission. If you operate within a brick and mortar type model, you typically will want to have one site in the IRIS system per physical location your cameras reside. If you operate more in a mobile workflow, you typically have a single site. In the multisite mode, the state where the exam is performed is assumed to be the state configured on the site record within IRIS. If you operate in a single site mode, you must provide the state where the exam occurs in the order object. For single site workflows, IRIS will provide you with the identifier to supply for the Site. This because it’s not an identifier you established yourself. For multisite workflows, you will provide IRIS with your identifiers for each site as they are added. This can be done programmatically through this interface or through the Administrator application. If added from this interface you must include all the required properties for adding a new site in the Site structure. This is described in full detail in the site structure section. ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#what-you-need-to-get-started",
     
     "relUrl": "/docs/integration/CloudDirect/#what-you-need-to-get-started"
-  },"8": {
+  },"7": {
     "doc": "Cloud Direct",
     "title": "OrderRequest Object Model",
     "content": "The OrderRequest object model provides all the properties necessary to create an order in the Iris system regardless of your workflow. Most workflows require using only a small subset of the available properties. Properties colored red are required. | Property | type | Description | Options | . | Version | string | Should be set to 2.3.1 unless otherwise directed. |   | . | UserNameSubmitting | string | Optionally specify the username of a user that should be associated with the order creation. If your organization has been provided a service account for API direct operations, this is acceptable, otherwise it is not required. |   | . | OrderControlCode | options | Specifies the operation that should be performed with the order data (add/change/cancel) | OrderControlCode options | . | Site | Site structure | Location order is associated with |   | . | Camera | Camera structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera |   | . | Order | Order structure | Details of order |   | . | Patient | Patient structure | Patient details |   | . | OrderingProvider | Request Provider structure | Medical provider who ordered the exam |   | . | ReferringProvider | Request Provider structure | Medical provider who referred the patient for the exam |   | . | CameraOperator | Request Provider structure | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI |   | . | CameraOperatorUserName | string | UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI |   | . | HealthPlan | HealthPlan structure | If order is associated with a Health Plan |   | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#orderrequest-object-model",
     
     "relUrl": "/docs/integration/CloudDirect/#orderrequest-object-model"
-  },"9": {
+  },"8": {
     "doc": "Cloud Direct",
     "title": "OrderControlCode",
     "content": "The OrderControlCode specifies which action to take . | Value | Description | . | NW | Create New Order | . | XO | Change Order | . | CA | Cancel Order | . Regardless of the control code, the same OrderRequest structure is used, however when using the CA code to cancel an order, you only need to populate the ClientGuid, Site LocalId and Order LocalId. Changing or Cancelling an order will not work if the target order is closed. ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#ordercontrolcode",
     
     "relUrl": "/docs/integration/CloudDirect/#ordercontrolcode"
-  },"10": {
+  },"9": {
     "doc": "Cloud Direct",
     "title": "Order Model structures",
     "content": "The OrderRequest models contains the following properties . Site structure . The Site structure is primarily used to identify the site the order is to be associated with. If your organization is configured as such, sites can be dynamically added, therefore additional properties are provided to supply the required information. If you don’t require automatic site additions, simply provide the LocalId. Properties . | Property | Type | Description | . | LocalId | string | Id of site as specified by you, the submitting organization | . | Name | string | Name of the site (Only required for automatic site additions) | . | Address | Address structure | Address of site (Only required for automatic site additions) | . Camera structure . When an order is to be assigned to a camera or Image directives are included with the order, populate this structure. If the camera already exists and you are not providing image directives, you only need to supply the LocalId. Other than the Images structure, the remaining properties are provided in the event your organization allows automatic Camera additions. Properties . | Property | Type | Description | . | LocalId | string | Typically this is the serial number of the Camera. Because Iris supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with Iris to find the proper value to supply here. | . | Location | string | Optionally specify a location where the camera is located. This is optional even when attempting to add a camera. | . | IPAddress | string | When specified, the camera is identified by the source IP Address as images are received. This is an atypical workflow and should only be used under direct request from IRIS | . | MACAddress | string | Optional identifier for informational purposes only | . | SerialNumber | string | Serial Number of Camera | . | Manufacturer | string | Name of camera manufacturer. Consult with Iris for exact values you should use. | . | Model | string | Model name of camera. Consult with Iris for exact values you should use. | . | SoftwareVersion | string | Version of camera software. Consult with Iris for exact values you should use. | . | Images | Array of Image | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images. | . Images array . The Images array is an array of Image structures that provides details including the storage location of one or more images associated with the order. Image structure . The Image structure allows you to specify details including the storage location where an image file can be retrieved. At this time, image retrieval is only supported in Azure Blob Storage. Properties . | Property | Type | Description | Options | . | LocalId | string | Id as specified by the submitting organization |   | . | Taken | DateTimeOffset | When the image was taken |   | . | AzureBlobStorage | structure | blob storage location information |   | . | Laterality | options | Left or right eye | OD, OS | . | ImageContext | options | Unless otherwise directed, Primary should be used. Non-primary images are not prominently displayed throughout the workflow. | Primary, Secondary, Component, Aggregate, Enhancement | . | ParentLocalId | string | If the image is a child of another image in the set, this is the LocalId value for that parent image |   | . | GroupId | numeric | If this image is part of an overall group of images, specify the group id here |   | . | GroupOrdinal | numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. |   | . AzureBlobStorage structure . Files in Azure Blob storage are specified by a container and filename. The Blob Storage Location in Azure is specific to an Azure Blob Storage resource of which connectivity access is specified in the Administrator application. Properties . | Property | Type | Description | . | Container | string | Name of the container | . | FileName | string | name of file as found in the container | . RequestProvider structure . The RequestProvider structure allows you to specify various Providers associated with the exam. If the provider has previously been submitted and was done so with NPI, you only need to include the NPI value in the submission . Properties . | Property | Type | Description | . | NPI | string (10) | Providers National Identifier | . | Taxonomy | string | Optionally specify Taxonomy relevant to the action | . | Name | string | First, Last name | . | Email | string | Optionally specify an email address | . | Degrees | string | Optionally supply degrees | . | Associations | string | Optionally supply associations | . Request Patient structure . IRIS allows submitting detailed information on a patient, however, in most workflows the only requirement is Id, Name, DOB and Gender. Providing the starting DxCode (ICD-10) serves as the foundation for a fully qualified ICD-10 code when pathology is found. | Property | Type | Description | Options | . | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. |   | . | Name | Name structure | Patient first and last name |   | . | Dob | Date | Patient date of birth |   | . | Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | Gender options | . | Genders | Array of PersonGender | Patient Gender assignment(s) |   | . | Race | options | Optional race identifier | Race options | . | Ethnicity | options | Optional ethnicity identifier | Ethnicity options | . | PrimaryLanguage | options | Optional language identifier | Language options | . | MaritalStatus | options | Optional marital status identifier | Marital Status options | . | Email | string | Optional email address for patient |   | . | Phone | string | Optional single phone number for patient |   | . | AdditionalInfo | string | Optional free form data association with patient |   | . | Address | Address structure | Optional patient address details |   | . | DxCode | string | ICD-10 code starting diagnosis (default: E08) as defined by CMS |   | . Genders replaces Gender: While the system will still accept a single unspecified gender assignment, it will eventually be phased out in favor of Genders . Request Order structure . What you provide in the Order structure is highly dependent on your workflow. While the only required field is the Evaluation Type to perform, other properties may be required in your workflow. For example, the State field is required for mobile type exams where the location of the exam (where the images are taken) is in a different state than the Site the exam is tied to. See the description of each field for more details. It is highly recommended that you use Order.LocalId as this is the only value you can expect in a subsequent order event that you can cross reference to the order you submitted. The Iris system allows only one open order per patient/evaluation type combination. When using the LocalId, previous (open) orders could automatically be cancelled in favor of the newer order. For this reason, it is recommended that you supply the LocalId field so the system can more clearly identify when cancellations are the desired outcome. Properties . | Property | Type | Description | Options | . | EvaluationTypes | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the Iris system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD | . | ScheduledTime | datetime | When orders are scheduled for a specific time, this should be that time local to the exam location. This is typically used for workflows where orders are pushed to Cameras as this determines which items show in a Camera worklist |   | . | LocalId | string | The Id of the order as specified by the submitting organization. This id is required for subsequent Change and Cancel operations as well as event notifications. |   | . | DepartmentId | string | Optional identifier for the submitting department. Some EMR integrations will require this. |   | . | EncounterNumber | string | Optional identifier for the encounter that generated the order. Some EMR integrations will require this field. |   | . | StudyInstanceUniqueId | DICOM unique id | Optional Identifier, typically used with DICOM integrated cameras |   | . | OrderableIdentifier | string | Optional identifier used by some EMR platforms |   | . | CPTCode | options | Procedure code | See CMS for options | . | AdditionalInfo | string | Free form field for edge cases |   | . | State | string | US State where exam is to be performed. Required for mobile exams that will not be performed at the address specified in the Site. This takes either the State abbreviation or Full name | US State Abbreviations | . | SingleEyeOnly | bool | Specifies that you expect the order to only have images on only one eye. Used in combination with MissingEyeReason. Impacts gradeability scoring. Null=Follow configuration for gradeability with missing eyes, False=Expected but still considered in gradeability, True=Expected and ignore for gradeability | null/true/false | . | MissingEyeReason | string | Specifies the reason the eye was missing. If set, reason is provided in final results |   | . | Urgent | bool | If true the order is prioritized in the grading queue | true/false (default: false) | . HealthPlan structure . If your workflow is based on a Health Plan, this structure may be included in the submission. This information is returned in results. If your workflow includes PCP results delivery, you may specify that Provider here. Properties . | Property | Type | Description | . | LocalId | string | Id of Plan as specified by the submitting organization | . | Name | string | Name of the Health Plan | . | MemberId | string | Id for the HealthPlan member, typically as specified by the Health Plan itself | . | IndividualId | string | Id for the Individual person associated with the Member for the HealthPlan | . | PrimaryCareProvider | PCP structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. | . Primary Care Provider structure . Properties . | Property | Type | Description | . | NPI | string(10) | National Id for Provider | . | EmailAddress | string | Email Address for the provider | . | Name | Name structure | Providers name | . | FaxNumber | phone | If so configured, can be used in results delivery | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#order-model-structures",
     
     "relUrl": "/docs/integration/CloudDirect/#order-model-structures"
-  },"11": {
+  },"10": {
     "doc": "Cloud Direct",
     "title": "Order Results",
     "content": "Cloud direct results may be received in a variety of ways: . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#order-results",
     
     "relUrl": "/docs/integration/CloudDirect/#order-results"
-  },"12": {
+  },"11": {
     "doc": "Cloud Direct",
     "title": "Queue Based Results",
     "content": ". | Iris Cloud Service Bus – Receive complete results on a service bus queue maintained by IRIS | Azure Service Bus – Receive complete results on a service bus queue in your own subscription | AWS Queue – Receive complete results on an AWS Queue in your own subscription | Google Queue – Receive complete results on a Google Queue in your own subscription | Queue based notifications . | Receive a notification of ready results in which a subsequent call to the Iris results API is required | For IRIS Cloud Service Bus, this option Is required if message sizes exceed 256K bytes. Results do not typically exceed this size, except when high resolution cameras are used for images that are embedded in the report. | . | . Azure Service Bus Results . To receive an order using an Azure Service Bus Queue, you simply attach a notification handler to the Results queue. C# Example . async Task Test() { string connectionString = \"Endpoint=sb://iris-organization…\"; // abbreviated connection string string queueName = \"Results\"; await using ServiceBusProcessor processor = client.CreateProcessor(queueName, new ServiceBussProcessorOptions()); processor.ProcessMessageAsync += MessageHandler; await processor.StartProcessingAsync(); } async Task MessageHandler(ProcessMessageEventArgs args) { string resultsJson = args.Message.Body.ToString(); await args.CompleteMessageAsync(args.Message); } . AWS and Google Queues . It is assumed that the choice to use AWS or Google Queue indicates a preexisting knowledge of how those resources work, therefore no coding examples are provided here. Regardless of the transport mechanism, the payload (OrderResults Object) is the same. Queue Authentication . Regardless of the cloud platform, some form of connection credentials are required for access to the resource. When using Iris Azure Cloud resources, you must obtain the connection string from IRIS support or the Administrator application as a user with the Integration Administrator role. Otherwise you must supply the credentials in the Administrator application. Obtaining Iris Azure Service Bus Connection String . Contact IRIS support . Configuring AWS, Azure and Google Service Bus/Queue Connection . To configure results to be pushed to an AWS, Azure (In your subscription) or Google Queue, the Integration Administrator must perform the following actions: . | Login to the Iris Administrator application | Navigate to the EMR Integration page | Select the “Result Delivery” tab | Select “Cloud Queue” under primary delivery methods | Select AWS, AZURE or Google from the cloud service provider options | . AWS Queue Settings . | Queue Name | Queue ARN | Queue URL | Region Name | AWS Access Key Id | AWS Secret Access Key | . Azure Queue Settings . | Queue Name | Connection String | . GCP (Google) Queue Settings . | Queue Name | Connection JSON | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#queue-based-results",
     
     "relUrl": "/docs/integration/CloudDirect/#queue-based-results"
-  },"13": {
+  },"12": {
     "doc": "Cloud Direct",
     "title": "OrderResults Object Model",
     "content": "Root Properties . | Property | Type | Description | Options | . | Version | string | Version of the object model | 2.3.1 | . | Timestamp | datetimeoffset | Timestamp when item was posted to the Results Queue |   | . | TransactionId | Guid | unique identifier of the communication |   | . | ResultCode | options | type of result payload contains | ResultCode enum | . | Site | Site structure | Contains site information order was assigned to |   | . | ResultsDocument | ResultsDocument structure |   |   | . | ImageDetails | ImageDetails structure | Details of images submitted to the order |   | . | Images | Array of Result Image | Metadata for each image submitted |   | . | Order | Order structure | Details of order most of which is echoed from submission |   | . | Patient | Patient structure | Details of patient echoed from submission |   | . | OrderingProvider | Provider structure | Details of provider who ordered the exam which is echoed from the Submission |   | . | Gradings | Grading Results structure | Details of grading operation on order |   | . | CameraOperator Capturing User structure | Details of the user that captured images |   |   | . | HealthPlan | HealthPlan association structure | Details of the Health Plan associated with the order |   | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#orderresults-object-model",
     
     "relUrl": "/docs/integration/CloudDirect/#orderresults-object-model"
-  },"14": {
+  },"13": {
     "doc": "Cloud Direct",
     "title": "ResultsDocument structure",
     "content": "Depending on your workflow the IRIS system will provide a Report of the examination. The report is available in various formats. Properties . | Property | Type | Description | Options | . | Type | options | Identifier of the result format | PDF, HTML, ORU | . | Encoding | options | specifies the encoding format for the report content | Base64, ASCII or any specific encoding scheme | . | Content | string | Content relative to the Encoding and Type. For example, if PDF, this will most likely be a Base64 encoded string |   | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#resultsdocument-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#resultsdocument-structure"
-  },"15": {
+  },"14": {
     "doc": "Cloud Direct",
     "title": "Results Order structure",
     "content": "Contains raw order detail from submission . Properties . | Property | Type | Description | . | PatientOrderId | int | Id as created by IRIS on creation | . | ServicedTime | datetimeoffset | when the exam was performed | . | Status | string | current status of order | . | EvaluationTypes | string | Evaluation performed | . | ScheduledTime | datetime | When order was scheduled | . | LocalId | string | The Id of the order as specified by the submitting organization. | . | DepartmentId | string | Submitting department. | . | EncounterNumber | string | Encounter specified on order | . | StudyInstanceUniqueId | DICOM unique id | DICOM submitted Id | . | OrderableIdentifier | string | Optional identifier provided on submission | . | AdditionalInfo | string | Free form content from submission | . | State | string | US State where exam was performed. | . | SingleEyeOnly | bool | value set on submission | . | MissingEyeReason | string | value set on submission | . | Urgent | bool | value set on submission | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#results-order-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#results-order-structure"
-  },"16": {
+  },"15": {
     "doc": "Cloud Direct",
     "title": "ImageDetails structure",
     "content": "This structure contains a summary of the images collected for the exam. Properties . | Property | Type | Description | Options | . | TotalCount | int | Total count of all images attached to the order |   | . | RightEyeCount | int | Total count of all right eye images attached to the order |   | . | RightEyeOrginalCount | int | Count of right eye images submitted to the order (from Camera Operator) |   | . | RightEyeEnhancedCount | int | Count of enhanced right eye images attached to the order |   | . | LeftEyeCount | int | Total count of all left eye images attached to the order |   | . | LeftEyeOrginalCount | int | Count of left eye images submitted to the order (from Camera Operator) |   | . | LeftEyeEnhancedCount | int | Count of enhanced left eye images attached to the order |   | . | Preferred | bool | If true this image was selected as preferred for the report | true/false | . | SingleEyeOnly | bool | Returns single eye indicator based on configuration and submission values | true/false | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#imagedetails-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#imagedetails-structure"
-  },"17": {
+  },"16": {
     "doc": "Cloud Direct",
     "title": "Results Patient structure",
     "content": "Raw patient details for exam . Properties . | Property | Type | Description | Options | . | PatientId | int | Id as set by IRIS on patient creation |   | . | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. |   | . | Name | Name structure | Patient first and last name |   | . | Dob | Date | Patient date of birth |   | . | Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | Gender options | . | Genders | Array of PersonGender | One or more gender specifications |   | . | Phone | Address structure | Raw patient address data |   | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#results-patient-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#results-patient-structure"
-  },"18": {
+  },"17": {
     "doc": "Cloud Direct",
     "title": "Result Images array",
     "content": "Array of Result Image structures that provides details of each image attached to the order. ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#result-images-array",
     
     "relUrl": "/docs/integration/CloudDirect/#result-images-array"
-  },"19": {
+  },"18": {
     "doc": "Cloud Direct",
     "title": "Result Image structure",
     "content": "Contains details of an individual image attached to the order. Properties . | Property | Type | Description |   | . | LocalId | string | Id as specified by the submitting organization |   | . | Taken | DateTimeOffset | When the image was taken |   | . | Received | DateTimeOffset | When the image was received to the IRIS system |   | . | FileName | string | Name of file as stored |   | . | Laterality | options | which eye | OD, OS | . | ImageContext | options | Unless otherwise directed, Primary should be used. Non-primary images are not prominently displayed throughout the workflow | Primary, Secondary, Component, Aggregate, Enhancement | . | ParentLocalId | string | If the image is a child of another image in the set, this is the LocalId value for that parent image |   | . | GroupId | Numeric | If this image is part of an overall group of images, specify the group id here |   | . | GroupOrdinal | Numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. |   | . | Camera | Result Camera structure | Contains details of the Camera that took the image |   | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#result-image-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#result-image-structure"
-  },"20": {
+  },"19": {
     "doc": "Cloud Direct",
     "title": "Result Camera structure",
     "content": "Details of the camera that took the image. Properties . | Property | Type | Description | . | LocalId | string | Typically this is the serial number of the Camera. Because Iris supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with Iris to find the proper value to supply here. | . | Location | string | Optionally specify a location where the camera is located. This is optional even when attempting to add a camera. | . | IPAddress | string | When specified, the camera is identified by the source IP Address as images are received. This is an atypical workflow and should only be used under direct request from Iris. | . | MACAddress | string | Optional identifier for informational purposes only | . | SerialNumber | string | Serial Number of Camera | . | Manufacturer | string | Name of camera manufacturer. Consult with Iris for exact values you should use. | . | Model | string | Model name of camera. Consult with Iris for exact values you should use. | . | SoftwareVersion | string | Version of camera software. Consult with Iris for exact values you should use. | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#result-camera-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#result-camera-structure"
-  },"21": {
+  },"20": {
     "doc": "Cloud Direct",
     "title": "Gradings structure",
     "content": "Contains raw details of grading . Properties . | Property | Type | Description | Options | . | Notes | array of Note | Notes added by the Grader |   | . | Graded | datetimeoffset | When grading was completed |   | . | CarePlanName | string | Name of Care Plan determined from findings |   | . | CarePlanDescription | string | Description/Instruction text related to care plan |   | . | Pathology | bool | If true Pathology was found on one or more eyes | true/false | . | Urgent | bool | If true, the grader has found pathology that requires urgent action | true/false | . | OD | EyeSideGrading structure | Details of grading for right eye |   | . | OS | EyeSideGrading structure | Details of grading for left eye |   | . | DxCodes | array of string | ICD-10 Codes matched to findings |   | . | Provider | Provider (structure) – Details of the Provider who performed the grading |   |   | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#gradings-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#gradings-structure"
-  },"22": {
+  },"21": {
     "doc": "Cloud Direct",
     "title": "CameraOperator structure",
     "content": "Details of the technician who captured the images for the order. Properties . | Property | Type | Description | . | UserName | string | UserName as known by IRIS system | . | Name | Name structure | Name of performing operator | . | Notes | Array of Note | notes added by the performing operator | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#cameraoperator-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#cameraoperator-structure"
-  },"23": {
+  },"22": {
     "doc": "Cloud Direct",
     "title": "HealthPlan structure",
     "content": "Properties . | Property | Type | Description | . | LocalId | string | Id of plan as specified by submitting organization | . | Name | string | Name of HealthPlan | . | MemberId | string | Id of Member as specified by the HealthPlan | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#healthplan-structure-1",
     
     "relUrl": "/docs/integration/CloudDirect/#healthplan-structure-1"
-  },"24": {
+  },"23": {
     "doc": "Cloud Direct",
     "title": "Notes array",
     "content": "Array containing zero or more notes added by the related user . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#notes-array",
     
     "relUrl": "/docs/integration/CloudDirect/#notes-array"
-  },"25": {
+  },"24": {
     "doc": "Cloud Direct",
     "title": "Note structure",
     "content": "Structure containing metadata and content of a free form note . Properties . | Property | Type | Description | . | Date | datetime | When the note was entered | . | Text | string | Content | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#note-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#note-structure"
-  },"26": {
+  },"25": {
     "doc": "Cloud Direct",
     "title": "EyeSideGrading structure",
     "content": "Structure containing grading details for one eye side . Properties . | Property | Type | Description | Options | . | Gradable | bool | If false the eye side was not able to be graded with the images provided | true/false | . | UngradableReasons | array of string | Grader specified reason that eye could not be graded |   | . | Findings | Array of Finding | Zero or more findings for the eye |   | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#eyesidegrading-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#eyesidegrading-structure"
-  },"27": {
+  },"26": {
     "doc": "Cloud Direct",
     "title": "Findings array",
     "content": "Array of the Finding structure containing findings from the grader for the specified eye. If the array is not present, it indicates, there was no pathology found for the eye. ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#findings-array",
     
     "relUrl": "/docs/integration/CloudDirect/#findings-array"
-  },"28": {
+  },"27": {
     "doc": "Cloud Direct",
     "title": "Finding structure",
     "content": "Structure containing details of finding . Properties . | Property | Type | Description | . | Finding | string | Type of pathology noted (e.g.: Diabetic Retinopathy) | . | Result | string | Level of pathology (e.g.: Mild, Moderate, Positive, etc…) | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#finding-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#finding-structure"
-  },"29": {
+  },"28": {
     "doc": "Cloud Direct",
     "title": "Common Shared Structures",
     "content": " ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#common-shared-structures",
     
     "relUrl": "/docs/integration/CloudDirect/#common-shared-structures"
-  },"30": {
+  },"29": {
     "doc": "Cloud Direct",
     "title": "Name structure",
     "content": "Common structure used for storing names . Properties . | Property | Type | Description | . | First | string | Persons first (given) name | . | Last | string | Persons last (family) name | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#name-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#name-structure"
-  },"31": {
+  },"30": {
     "doc": "Cloud Direct",
     "title": "Address structure",
     "content": "Common structure used for storing addresses . Properties . | Property | Type | Description | . | Street1 | string | Line one of street address | . | Street2 | string | Line two of street address | . | City | string | City portion of address | . | State | string (2) | State abbreviation of address | . | PostalCode | string | Zip / Postal code | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#address-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#address-structure"
-  },"32": {
+  },"31": {
     "doc": "Cloud Direct",
     "title": "PersonGender structure",
     "content": "Common structure used for storing gender designations . Properties . | Property | Type | Description | Options | . | Context | options | Gender association | GenderContext options | . | Gender | options | The gender for specified context | Gender options | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#persongender-structure",
     
     "relUrl": "/docs/integration/CloudDirect/#persongender-structure"
-  },"33": {
+  },"32": {
     "doc": "Cloud Direct",
     "title": "Appendix A",
     "content": "Option Enumerations . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#appendix-a",
     
     "relUrl": "/docs/integration/CloudDirect/#appendix-a"
-  },"34": {
+  },"33": {
     "doc": "Cloud Direct",
     "title": "GenderContext Options",
     "content": "| Value | Description | Numeric value | . | Unknown | Not set | 0 | . | IdentityGender | Gender individual identifies as | 1 | . | BirthGender | Gender individual was designated at birth | 2 | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#gendercontext-options",
     
     "relUrl": "/docs/integration/CloudDirect/#gendercontext-options"
-  },"35": {
+  },"34": {
     "doc": "Cloud Direct",
     "title": "Race Options",
     "content": "You may use any of the HL7 Ethnicity codes listed on Hl7 Coding: Race . Example values . | Value | Description | . | 1002-5 | American Indian or Alaska Native | . | 2028-9 | Asian | . | 2054-5 | Black or African American | . | 2076-8 | Native Hawaiian or Other Pacific Islander | . | 2131-1 | Other Race | . | 2106-3 | White | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#race-options",
     
     "relUrl": "/docs/integration/CloudDirect/#race-options"
-  },"36": {
+  },"35": {
     "doc": "Cloud Direct",
     "title": "Ethnicity Options",
     "content": "Example values . You may use any of the HL7 Ethnicity codes listed on Hl7 Coding: Ethnicity . Specify the Code portion only when populating the Ethnicity field. Here is an abbreviated list: . | Value | Description | . | 2137-8 | Spaniard | . | 2148-5 | Mexican | . | 2155-0 | Central American | . | 2180-8 | Puerto Rican | . | 2182-4 | Cuban | . | 2149-3 | Mexican American | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#ethnicity-options",
     
     "relUrl": "/docs/integration/CloudDirect/#ethnicity-options"
-  },"37": {
+  },"36": {
     "doc": "Cloud Direct",
     "title": "Language Options",
     "content": "You may use any of the HL7 Language codes listed on Hl7 Coding: Languages . Example values . | Value | Description | . | en | English | . | en-US | US English | . | fr | French | . | es | Spanish | . | it | Italian | . | pt | Portuguese | . | zh | Chinese | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#language-options",
     
     "relUrl": "/docs/integration/CloudDirect/#language-options"
-  },"38": {
+  },"37": {
     "doc": "Cloud Direct",
     "title": "Gender Options",
     "content": "Use the abbreviated code only when populating the Gender field. | Value | Description | . | U | Unspecified | . | M | Male | . | F | Female | . | N | Non binary | . | O | Other | . | TM | Transgender Male | . | TF | Transgender Femail | . | ND | Non disclosed | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#gender-options",
     
     "relUrl": "/docs/integration/CloudDirect/#gender-options"
-  },"39": {
+  },"38": {
     "doc": "Cloud Direct",
     "title": "Marital Status Options",
     "content": "Items in this list are based on the HL7 standard here: http://terminology.hl7.org/CodeSystem/v3-MaritalStatus . | Value | Description | . | A | Annulled | . | D | Divorced | . | C | Common Law | . | I | Interlocutory | . | L | Legally Separated | . | M | Married | . | P | Polygamous | . | S | Never Married | . | T | Domestic partner | . | W | Widowed | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#marital-status-options",
     
     "relUrl": "/docs/integration/CloudDirect/#marital-status-options"
-  },"40": {
+  },"39": {
     "doc": "Cloud Direct",
     "title": "Result Code Options",
     "content": "One of the following codes will be specified on the results which identifies the context in which it was sent: . | Value | Description | . | A | Addendum | . | C | Correction | . | F | Final | . | P | Preliminary | . | R | Resend | . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#result-code-options",
     
     "relUrl": "/docs/integration/CloudDirect/#result-code-options"
-  },"41": {
+  },"40": {
     "doc": "Cloud Direct",
     "title": "Appendix B",
     "content": "Sample OrderRequest Message . { \"Version\": \"2.3.1\", \"UserNameSubmitting\": \"john.doe@primarycare.com\", \"OrderControlCode\": \"NW\", \"ClientGuid\": \"63E3C9EF-66AC-4154-B0C2-494515EB99A7\", \"Site\": { \"LocalId\": \"PC1234\", \"Name\": null, \"Address\": { \"Street1\": null, \"Street2\": null, \"City\":null, \"State\":null, \"PostalCode\":null } }, \"Camera\": { \"LocalId\": \"1234\", \"Location\": null, \"IPAddress\": null, \"MACAddress\": null, \"SerialNumber\": \"1234\", \"Manufacturer\": null, \"Model\": null, \"SoftwareVersion\": null, \"Images\": [ { \"LocalId\": \"1234-1-1\", \"Taken\": \"2022-01-01T17:42:18.6936779+00:00\", \"AzureBlobStorage\": { \"Container\": \"PC1234\", \"FileName\": \"04211055-DFF7-41EF-9EF3-43FE61D10D43.dcm\" }, \"Laterality\": \"OD\", \"ImageContext\": \"Primary\", \"ParentLocalId\": null, \"GroupId\": null, \"GroupOrdinal\": null } ] }, \"Order\": { \"EvaluationTypes\": [\"DR\"], \"ScheduledTime\": \"1/1/2025\", \"LocalId\": \"ORD1234\", \"DepartmentId\": null, \"EncounterNumber\": null, \"StudyInstanceUniqueId\": null, \"OrderableIdentifier\": null, \"CPTCode\": \"57554\", \"AdditionalInfo\": null, \"State\": \"FL\", \"SingleEyeOnly\": null, \"MissingEyeReason\": null, \"Urgent\": false }, \"Patient\": { \"LocalId\": \"1234\", \"Name\": { \"First\": \"John\", \"Last\": \"Doe\" }, \"Dob\": \"1/1/2000\", \"Genders\": [ { \"Context\" : \"IdentityGender\", \"Gender\" : \"M\" }, { \"Context\" : \"BirthGender\", \"Gender\" : \"M\" } ], \"Race\": \"2131-1\", \"Ethnicity\": \"2131-1\", \"PrimaryLanguage\": \"en\", \"MaritalStatus\": null, \"Email\": null, \"AdditionalInfo\": null, \"Phone\": null, \"Address\": { \"Street1\": null, \"Street2\": null, \"City\":null, \"State\":null, \"PostalCode\":null }, \"DxCode\": \"E119\" }, \"OrderingProvider\": { \"NPI\": \"1234567890\", \"Taxonomy\": null, \"Name\": { \"First\": null, \"Last\": null }, \"Email\": null, \"Degrees\": null, \"Associations\": null }, \"CameraOperatorUserName\": \"john.doe@primarycare.com\", \"HealthPlan\": { \"LocalId\": \"1234\", \"Name\": \"ProviderA\", \"MemberId\": \"1234\", \"PrimaryCareProvider\": { \"NPI\": \"1234567890\", \"EmailAddress\": null, \"Name\": { \"First\": null, \"Last\": null }, \"FaxNumber\": \"4444444444\" } } } . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#appendix-b",
     
     "relUrl": "/docs/integration/CloudDirect/#appendix-b"
-  },"42": {
+  },"41": {
     "doc": "Cloud Direct",
     "title": "Appendix C",
     "content": "Sample OrderResults Message . { \"Version\": \"2.3.1\", // Version of this structure \"Timestamp\" : \"\", \"TransactionId\": \"\", \"ResultCode\": \"F\", // P=Preliminary, A=Addendum, F=Final, C=Correction, R=Resend \"Site\": { // Site/Location the Order is assigned to \"LocalId\": \"PC1234\" // Id of site as defined by submitting organization }, \"ResultsDocument\": { \"Type\": \"PDF\", // PDF, HTML, ORU \"Encoding\": \"Base64\", // Base64, HL7 or specific encoding scheme \"Content\": \"...\" // Actual Content }, \"ImageDetails\" : { \"TotalCount\":0, \"RightEyeCount\": 0, \"RightEyeOriginalCount\": 0, \"RightEyeEnhancedCount\": 0, \"LeftEyeCount\": 0, \"LeftEyeOriginalCount\": 0, \"LeftEyeEnhancedCount\": 0, \"Preferred\": true, // True, False If True the image is marked as being preferred for reports \"SingleEyeOnly\": false // If true the order expects images from one eye side only }, \"Images\": [{ \"LocalId\": null, // Id of image as specified by submitting organization \"Taken\": \"2022-01-02T17:42:18.6936779+00:00\", // Timestamp when Image was taken \"Received\": \"2022-01-02T17:42:18.6936779+00:00\", // Timestamp when image was received by Iris \"FileName\": \"9298DA56-E516-40E3-A35D-41B5D238DC7D.jpg\", // Filename of image \"Laterality\": \"OD\", // OD, OS \"ImageContext\": \"Primary\", // Primary, Secondary, Component, Aggregate, Enhancement \"ParentLocalId\": null, // If child of other image, that image's LocalId \"GroupId\": null, // Optional Grouping context \"GroupOrdinal\": null, // Optional Ordinal of image in group context by results receiving organization \"Camera\": { \"LocalId\": \"REM-1000\", // Specifies Camera Id as defined by submitting organization \"Location\": null, // Optional Camera location details \"IPAddress\": null, // Optional IP Address assignment of camera \"MACAddress\": null, // Optional MAC Address of camera NIC \"SerialNumber\": \"REM-1000\", // Serial Number of Camera \"Manufacturer\": \"Remidio\", // Manufacturer of Camera \"Model\": \"NMFOP\", // Model Name of Camera \"SoftwareVersion\": \"2.2.23\" } }, { \"LocalId\": null, // Id of image as specified by submitting organization \"Taken\": \"2022-01-02T17:42:18.6936779+00:00\", // Timestamp when Image was taken \"Received\": \"2022-01-02T17:42:18.6936779+00:00\", // Timestamp when image was received by Iris \"FileName\": \"04211055-DFF7-41EF-9EF3-43FE61D10D43.jpg\", // Filename of image \"Laterality\": \"OS\", // OD, OS \"ImageContext\": \"Primary\", // Primary, Secondary, Component, Aggregate, Enhancement \"ParentLocalId\": null, // If child of other image, that image's LocalId \"GroupId\": null, // Optional Grouping context \"GroupOrdinal\": null, // Optional Ordinal of image in group context by results receiving organization \"Camera\": { \"LocalId\": \"REM-1000\", // Specifies Camera Id as defined by submitting organization \"Location\": null, // Optional Camera location details \"IPAddress\": null, // Optional IP Address assignment of camera \"MACAddress\": null, // Optional MAC Address of camera NIC \"SerialNumber\": \"REM-1000\", // Serial Number of Camera \"Manufacturer\": \"Remidio\", // Manufacturer of Camera \"Model\": \"NMFOP\", // Model Name of Camera \"SoftwareVersion\": \"2.2.23\" } }], \"Order\": { \"PatientOrderId\": 1094030, // Order Id as created by IRIS \"Status\": \"Complete\", // Awaiting Images, Queued Grading, Graded, Cancelled, Review, Error, Complete \"LocalId\": \"ORD1234\", // Id of Order as specified by submitting organization \"EvaluationTypes\": [\"DR\"], // DR, Glaucoma, HIV \"ScheduledTime\": null, // Scheduled Time for exam in local time \"CreatedTime\": \"2022-01-01T12:42:18.6929481+00:00\", // Timestamp when order was created \"ServiceDate\": \"2022-01-04T12:42:18.6929481+00:00\", // Timestamp when exam was performed \"DepartmentId\": null, // Optional Department Id \"EncounterNumber\": null, // Optional Encounter Number \"StudyInstanceUniqueId\": null, // Optional StudyInstanceUniqueId, typically with DICOM integrated cameras \"OrderableIdentifier\": null, // Optional OrderableIdentifier, typically \"AdditionalInfo\": null, // Optional additional information attached \"State\": \"FL\", // Optional US State of Order (Required for patient home exams) \"SingleEyeOnly\": false, // If true the order expects images from one eye side only \"Expedite\": false // If true the order needs priority routing to next available grader }, \"Patient\": { \"LocalId\": \"1234\", // Medical record number (or any Id unique to the patient for the submitting organization) \"Name\": { \"First\": \"John\", \"Last\": \"Doe\" }, \"Dob\": \"1/1/2000\", \"Gender\": \"U\" }, \"OrderingProvider\": { \"NPI\": \"1234567890\", \"Taxonomy\": \"207W00000X\", \"Name\": { \"Title\": \"Dr\", \"First\": \"John\", \"Last\": \"Doe\" }, \"Email\": \"John.Doe@providers.com\", \"Degrees\": \"MD\", \"Associations\": null }, \"Gradings\" : { \"Notes\" : [ { \"Date\":\"2022-01-03T12:42:18.6929481+00:00\", \"Text\": null } ], \"GradedTime\": \"2022-01-03T12:42:18.6929481+00:00\", // Timestamp of grading \"CarePlanName\":\"Return in 6 months\", \"CarePlanDescription\": \"Have patient return in 6 months for a followup exam.\", \"Pathology\": true, // If true, pathology was found \"Urgent\": false, // If true, grader found urgent pathology to act on immediately \"OD\" : { \"Gradable\": true, // If true the grader was able to make an assessment based on one or more of the provided images \"UngradableReasons\" : [ // If ungradable, contains a list of reasons provided by the grader. These are not specific to any image ], \"Findings\" : [{ \"Finding\": \"Diabetic Retinopathy\", \"Result\": \"Mild\" }] }, \"OS\": { \"Gradable\": true, \"Findings\" : null }, \"DxCodes\" : [ \"E083211\" ], \"Provider\": { // Provider who graded the order \"NPI\": \"1234567890\", \"Taxonomy\": \"207W00000X\", \"Name\": { \"Title\": \"Dr\", \"First\": \"John\", \"Last\": \"Doe\" }, \"Email\": \"John.Doe@providers.com\", \"Degrees\": \"MD\", \"Associations\": null } }, \"CameraOperator\" : // Technician who captured images { \"UserName\": \"john.doe@primarycare.com\", \"Name\": { \"First\": \"John\", \"Last\": \"Doe\" }, \"Notes\" : [ { \"Date\":\"2022-01-03T12:42:18.6929481+00:00\", \"Text\": null } ] }, \"HealthPlan\": { \"LocalId\": \"1234\", // Id of plan as specified by submitting organization \"Name\": \"ProviderA\", // Name of the healthplan \"MemberId\": \"1234\" // Id of Member as specified by the Healthplan } } . ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/#appendix-c",
     
     "relUrl": "/docs/integration/CloudDirect/#appendix-c"
-  },"43": {
+  },"42": {
     "doc": "Cloud Direct",
     "title": "Cloud Direct",
     "content": " ",
     "url": "/IntegrationDocumentation/docs/integration/CloudDirect/",
     
     "relUrl": "/docs/integration/CloudDirect/"
-  },"44": {
+  },"43": {
     "doc": "DFT",
     "title": "HL7 DFT Results Message",
     "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations) to be continued… . ",
     "url": "/IntegrationDocumentation/docs/integration/DFT_Results/#hl7-dft-results-message",
     
     "relUrl": "/docs/integration/DFT_Results/#hl7-dft-results-message"
-  },"45": {
+  },"44": {
     "doc": "DFT",
     "title": "DFT",
     "content": " ",
     "url": "/IntegrationDocumentation/docs/integration/DFT_Results/",
     
     "relUrl": "/docs/integration/DFT_Results/"
-  },"46": {
+  },"45": {
     "doc": "Developer Resources",
     "title": "Developer Resources",
     "content": "IRIS Provides examples and libraries for cloud direct integrations. | Coding examples can be found on github | Source code can be found on github | Libraries are made accessible through online repositories relative to the development environment | . ",
     "url": "/IntegrationDocumentation/docs/integration/DeveloperResources/",
     
     "relUrl": "/docs/integration/DeveloperResources/"
-  },"47": {
+  },"46": {
     "doc": "Developer Resources",
     "title": "Microsoft DotNetCore / Visual Studio / C#",
     "content": ". Integration in the Microsoft environment is made available from the NuGet public repository. ",
     "url": "/IntegrationDocumentation/docs/integration/DeveloperResources/#microsoft-dotnetcore--visual-studio--c",
     
     "relUrl": "/docs/integration/DeveloperResources/#microsoft-dotnetcore--visual-studio--c"
-  },"48": {
+  },"47": {
     "doc": "Developer Resources",
     "title": "Packages",
     "content": "| Name | Details | . | Iris.Public.Types | Contains models for all transactions. This can be used directly if you want to build your objects, serialize and perform cloud operations on your own. | . | Iris.Public.Order | Encapsulates cloud operations related to submitting and monitoring order status | . | Iris.Public.Result.Azure | If results are received on an IRIS Cloud resource, this library encapsulates cloud operations. Start a listener and wait for results to pop. | . | Iris.Public.Image | Encapsulates process of pushing images to IRIS when using cameras that are not directly integrated to IRIS. | . | Iris.Public.Grading | Test environment only library for grading your own orders. Allows you to do extensive debugging with your new code. | . ",
     "url": "/IntegrationDocumentation/docs/integration/DeveloperResources/#packages",
     
     "relUrl": "/docs/integration/DeveloperResources/#packages"
-  },"49": {
+  },"48": {
     "doc": "Developer Resources",
     "title": "Typescript",
     "content": ". Typescript packages are available from NPM as well you can access the public github repo for the code directly. IRIS Typescript Repository . ",
     "url": "/IntegrationDocumentation/docs/integration/DeveloperResources/#typescript",
     
     "relUrl": "/docs/integration/DeveloperResources/#typescript"
-  },"50": {
+  },"49": {
     "doc": "Developer Resources",
     "title": "Node",
     "content": ". See typescript . ",
     "url": "/IntegrationDocumentation/docs/integration/DeveloperResources/#node",
     
     "relUrl": "/docs/integration/DeveloperResources/#node"
-  },"51": {
+  },"50": {
     "doc": "Developer Resources",
     "title": "Go",
     "content": ". Code examples and source code can be found at the IRIS GOLANG Repository . ",
     "url": "/IntegrationDocumentation/docs/integration/DeveloperResources/#go",
     
     "relUrl": "/docs/integration/DeveloperResources/#go"
-  },"52": {
+  },"51": {
     "doc": "EMR Integrations",
     "title": "EMR Integrations",
     "content": "IRIS Provides integration services to on-premise amd SAAS (cloud based) EMR/EHR platforms. ",
     "url": "/IntegrationDocumentation/docs/integration/EMRIntegrations/",
     
     "relUrl": "/docs/integration/EMRIntegrations/"
-  },"53": {
+  },"52": {
     "doc": "EMR Integrations",
     "title": "On Premise EMR/EHR systems",
     "content": "There are two basic components to an on-premise integration: . | Transport - Software / Networking components that provide the path between IRIS and the target EMR/EHR | Content - Data that is passed between the systems | . The primary piece of software that supports Transport is the IRIS EMR Proxy application. Content is encoded as HL7 messages. Integration to On-premise systems require use of the IRIS EMR Proxy application. IRIS EMR Proxy application . IRIS is a SAAS service hosted in the Azure cloud environment. In order to provide secure integration to your on-premise system the EMR Proxy application must be installed on a Windows application server (or virtual) connected on the same Intranet where your EMR/EHR resides. The EMR Proxy provides a secure path between your integration engine and IRIS cloud services. Details can be found at IRIS EMR Proxy Application Requirements and Specifications . ",
     "url": "/IntegrationDocumentation/docs/integration/EMRIntegrations/#on-premise-emrehr-systems",
     
     "relUrl": "/docs/integration/EMRIntegrations/#on-premise-emrehr-systems"
-  },"54": {
+  },"53": {
     "doc": "EMR Integrations",
     "title": "Cloud based EMR/EHR systems",
     "content": "Cloud based EMRs have unique integration requirements involving the provider but can typically be setup quickly. Examples of Cloud EMR systems include: Athena, OCHIN and ECW. Details can be found at Cloud EMR/EHR Providers. ",
     "url": "/IntegrationDocumentation/docs/integration/EMRIntegrations/#cloud-based-emrehr-systems",
     
     "relUrl": "/docs/integration/EMRIntegrations/#cloud-based-emrehr-systems"
-  },"55": {
+  },"54": {
     "doc": "IRIS Proxy Requirements",
     "title": "IRIS EMR Proxy Application Requirements and Specifications",
     "content": "IRIS Content Transport facilitator for Order Submission and/or Results . Acknowledgments . Specifications version prepared by Adam Diaz. Please send any feedback to support@irishelp.zendesk.com. Confidentiality and Proprietary Rights . This document is the confidential property of Intelligent Retinal Imaging Systems (IRIS). No part of this document may be reproduced in any form or incorporated into any information retrieval system without the written permission of IRIS. Disclaimers . Although unlikely, IRIS reserves the right to make changes in specifications and features shown herein at any time without notice. This does not constitute a representation or documentation regarding the service featured. Contact your IRIS Representative for the most current information. Intelligent Retinal Imaging Systems™ . 2 N Palafox Street, Suite 200 . Pensacola, Florida 32502 . | 1-888-535-2574 | info@retinalscreenings.com | . ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/#iris-emr-proxy-application-requirements-and-specifications",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/#iris-emr-proxy-application-requirements-and-specifications"
-  },"56": {
+  },"55": {
     "doc": "IRIS Proxy Requirements",
     "title": "Best Practice",
     "content": "The following requirements outline the best practice for deploying the IRIS EMR Proxy application in your environment. ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/#best-practice",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/#best-practice"
-  },"57": {
+  },"56": {
     "doc": "IRIS Proxy Requirements",
     "title": "Hardware/Server Platform",
     "content": "ALL IRIS Proxy applications require minimal resources in terms of the hardware platform they are installed on. If your organization has virtual server resources readily available, this is generaally a good choice. In this case IRIS recommends using your prefered Windows image as the software has no special requirements. ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/#hardwareserver-platform",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/#hardwareserver-platform"
-  },"58": {
+  },"57": {
     "doc": "IRIS Proxy Requirements",
     "title": "Operating System",
     "content": "Windows Server 2012 and up or Windows 10, 11 . IRIS operates within a continuous development cycle maintaining close compatibility with Windows release cycles . ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/#operating-system",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/#operating-system"
-  },"59": {
+  },"58": {
     "doc": "IRIS Proxy Requirements",
     "title": "Virtual Specs",
     "content": "1-2 virtual processors . A minimum of 8 GB of RAM . • OS Drive with at least 10 gb of free space (can be sized per your organization’s standard for OS drives) . ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/#virtual-specs",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/#virtual-specs"
-  },"60": {
+  },"59": {
     "doc": "IRIS Proxy Requirements",
     "title": "Other Important Information",
     "content": "Even though the IRIS application is not considered life critical, IRIS will provide support for application in PROD as needed or defined by your standards for supporting internal applications. • There is no PHI cached or written to the server as part of the Transport process. • Local admin account on the server (for install and troubleshooting issues). This is typically a domain account that has access. • The server can be encrypted per your standards (hard drive encryption). The server can be patched, upgraded and monitored as needed or as defined by your standards. ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/#other-important-information",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/#other-important-information"
-  },"61": {
+  },"60": {
     "doc": "IRIS Proxy Requirements",
     "title": "IRIS Proxy Installation",
     "content": "IRIS provides a secure mechanism for installing Proxy applications. The process generally takes less than 15 minutes. Identify the individual in your organization that will be responsible for this action. IRIS refers to this individual as the Integration Administrator (You may have multiple individuals with this role). Must have access to the computer it will be installed on . o Should have general knowledge of Windows and Windows Services . Should understand the necessity to use a domain level service account should security policies dictate . o Should understand local policies that could prevent the application from being installed . Provide the email address of Integration Administrator to your IRIS onboarding liaison. o Due to the security requirements for Integration, only authorized IRIS employees can invite an Integration Administrator into the IRIS system. • The Integration Administrator will receive an invitation to the IRIS system in an email coming from Microsoft. This is the same process used for onboarding all users into the IRIS system. TEC 001 Rev F CN0059 . CONFIDENTIAL Effective . 010/06/2023 . 。Once registered, Access to the Proxy installation files are available from the IRIS Portal from the Integration Files link (see screen shots below). O Integration Installation files contained here are specific to your environment . Installation files are packaged as MSI. Download the installation file and run it. The only option you will have is whether or not to specify a service account. If not explicitlyset, the default NT Service Account (local) is used. Test system installations . For customers who wish to create a test environment (typically for EMR Proxy integration), notify your onboarding liaison of this requirement. Following the same procedures outlined above, the Integration Administrator must first register in the IRIS production system. The Integration Administrator should then email IRIS support and request setup within the Test environment . | Once the IRIS Support Team has completed the request, the Integration Administrator can then login to the IRIS test portal using https://portal-qa.retinalscreenings.com | . Follow the same procedures outlined above for Production installations. | IrIsHome | My Apps |   | MR TATHAN | . | My ProfileLicensesPermissions |   |   |   | . | NotificationsDocumentationFormsRelease Notes | Reading Center | Admin | Gre | . | Integration Files | Camera Operato | r Check-In | Order A | . | Home | Integration Files |   | . | My Profile | Name |   | . | LicensesPermissions | DICOM Proxy-Iris | DOWNLOAD | . | NotficationsDocumentation | EMR Proxy-Iris | DOWNLOAD | . | Forms |   |   | . | Release Notes |   |   | . | Integration Files |   |   | . URLs to Whitelist: . PROD . irisicdprodb.blob.core.windows.net . iris-clientresults-prodb.servicebus.windows.net . iris-organization-notification-prod.servicebus.windows.net . config-proxy-prodb.azconfig.io . login.microsoftonline.com . PROD API . order-api.retinalscreenings.com . icd-api.retinalscreenings.com . icemr-api.retinalscreenings.com . results-api.retinalscreenings.com . TEST . irisicdqa.blob.core.windows.net . iris-clientresults-qa.servicebus.windows.net . iris-organization-notification-qa.servicebus.windows.net . config-proxy-qa.azconfig.io . TEST API . order-api-test.retinalscreenings.com . icd-api-test.retinalscreenings.com . icemr-api-test.retinalscreenings.com . results-api-test.retinalscreenings.com . ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/#iris-proxy-installation",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/#iris-proxy-installation"
-  },"62": {
+  },"61": {
     "doc": "IRIS Proxy Requirements",
     "title": "REMIDIO CAMERAS ONLY",
     "content": "intapi.retinalscreenings.com . intapi2.retinalscreenings.com . ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/#remidio-cameras-only",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/#remidio-cameras-only"
-  },"63": {
+  },"62": {
     "doc": "IRIS Proxy Requirements",
     "title": "Outbound IP Ports",
     "content": "The following IP ports should not be blocked to the Internet: . 443 – Standard HTTPS traffic . 5671 – AMQP . TEC 001 Rev F CN0059 . CONFIDENTIAL Effective . 010/06/2023 . ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/#outbound-ip-ports",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/#outbound-ip-ports"
-  },"64": {
+  },"63": {
     "doc": "IRIS Proxy Requirements",
     "title": "IRIS Proxy Requirements",
     "content": " ",
     "url": "/IntegrationDocumentation/docs/integration/EMRProxyReqAndSpecs/",
     
     "relUrl": "/docs/integration/EMRProxyReqAndSpecs/"
-  },"65": {
+  },"64": {
     "doc": "Cloud Systems",
     "title": "SAAS (Cloud based) EMR Systems",
     "content": "As IRIS is also a SAAS application, Integrating to SAAS based EMR/EHR systems is a natural progression. We do not take the approach of “build it and they will come” rather we engage the vendor at which point a customer using that system enters into a relationship with IRIS. In the majority of cases, the vendor already supports an HL7 feed for such operations and the process of integrating is routine. Generally speaking, the amount of time it takes to complete an integration is dependant on that vendors availability. Vendor Fees . Most SAAS EMR providers charge transaction fees of which there are typically two per order. In all cases, regardless of the SAAS provider, these fees are passed on to the customer. ",
     "url": "/IntegrationDocumentation/docs/integration/IRISEMRCloudProviders/#saas-cloud-based-emr-systems",
     
     "relUrl": "/docs/integration/IRISEMRCloudProviders/#saas-cloud-based-emr-systems"
-  },"66": {
+  },"65": {
     "doc": "Cloud Systems",
     "title": "Currently Supported SAAS systems",
     "content": ". | Athena | OCHIN | ECW | . ",
     "url": "/IntegrationDocumentation/docs/integration/IRISEMRCloudProviders/#currently-supported-saas-systems",
     
     "relUrl": "/docs/integration/IRISEMRCloudProviders/#currently-supported-saas-systems"
-  },"67": {
+  },"66": {
     "doc": "Cloud Systems",
     "title": "Cloud Systems",
     "content": " ",
     "url": "/IntegrationDocumentation/docs/integration/IRISEMRCloudProviders/",
     
     "relUrl": "/docs/integration/IRISEMRCloudProviders/"
-  },"68": {
+  },"67": {
     "doc": "MDM",
     "title": "HL7 MDM Results Message",
     "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](/docs/integration/EMRIntegrations.html) to be continued… . ",
     "url": "/IntegrationDocumentation/docs/integration/MDM_Results/#hl7-mdm-results-message",
     
     "relUrl": "/docs/integration/MDM_Results/#hl7-mdm-results-message"
-  },"69": {
+  },"68": {
     "doc": "MDM",
     "title": "MDM",
     "content": " ",
     "url": "/IntegrationDocumentation/docs/integration/MDM_Results/",
     
     "relUrl": "/docs/integration/MDM_Results/"
-  },"70": {
+  },"69": {
     "doc": "Athena",
     "title": "SAAS Integration specification: Athena",
     "content": "Intelligent Retinal Imaging Systems &#8482; [Back to Cloud Providers page](/IntegrationDocumentation/docs/integration/IrisEMRCloudProviders/) ",
     "url": "/IntegrationDocumentation/docs/integration/SAAS_EMR_Athena/#saas-integration-specification-athena",
     
     "relUrl": "/docs/integration/SAAS_EMR_Athena/#saas-integration-specification-athena"
-  },"71": {
+  },"70": {
     "doc": "Athena",
     "title": "Order Sets for a Specified Facility Intelligent Retinal",
     "content": "Imaging Systems . Order sets are utilized to accelerate the ordering process for clinicians. Order sets can be created for a specific user or to be utilized by all clinicians at the practice. Follow these steps to set-up order sets. | Navigate to “Manage My Order Sets” via Gear→ Order Sets . | Click “Add New” to create a new order set, or search and filter to narrow down existing ones. Take special note of naming the order set.When ordering, this is what will be used to searchfor this set. This is also where an order set can be assigned to one user, a group of users, or the whole practice. Update Order Set . | . | Manage My Order SetsAsk on Order Entry (AOE) questions and answers will auto-populate in the encounter exactly as recorded in the Order Sets below | Manage My Order SetsAsk on Order Entry (AOE) questions and answers will auto-populate in the encounter exactly as recorded in the Order Sets below | . | Filter byUserSpecialty | Order set nameDiagnosis | . | Order set type Sets with compendiumchanges ①Fiter Beset | Order set type Sets with compendiumchanges ①Fiter Beset | . | My Order SetsAdd.new |   | . | Search and Add Diagnos hat the order set should be associated with, if needed. An order set can be orders without a specified diagnosis.The gnosis will be required and added during the encounter. | In the purple “Add orders” line, select “Imaging.” . | To search orders specifically from IRIS, click the “select facility”link. Selecting “IRIS (INTELLIGENT RETINAL IMAGING SYSTEMS)” will ensure the orders that are chosen are within the IRIS compendium (offered at the selected facility). | . | Diagnoses and Orders DetailNo Diagnosis |   | . | Add Orders Order SetMedication Imaging VaccineDMESurgery/Px Referral Patient Info OtheSearch within: Orders offered by (no facility selected) select facilityGlobal order listQuickpicks Patient Historicalno items found N/A | r Diagnoses and Orders DetailNo DiagnosisAdd OrdersOrder Set MedicationLabImagingVaccineDMESurgery/Px Referral Patient Info OtherSearch within:Orders offered byIRIS (INTELLIGENT RETINAL IMAGING SYSTEMS) changeGlobal order listQuickpicks Patient Historicalno items found N/A | . | Add the imaging tests that should be included in t der seet ted tests will appear below the search field and are associated with the diagnosis listed in the high Enter additional tests by searching and clicking on the order. Notice the “Send to:” field on NTELLIGENT RETINAL IMAGING SYSTEMS), as selected in #5. | When complete, select “Add” below the order set. | . | Diagnoses and Orders Detail | . | No DiagnosisAdd Orders Order SetMedicationLabImagingVaccineDMESurgery/PxReferral Patient InfoOtherFUNDUS PHOTOGRAPHY WITH INTERPRETATION AND REPORT Alarm: defaul Send to: VVIRIS (INTELLIGENT RETINAL IMAGING SYSTEMS): 2 N PALAFOX STREET SUITE 200PENSACOLA, FL 32502, Ph (888) 535-2574 | . | PHOTO,EYT,FUNDUSSend To Cinical providerN/A (Point-of-care test)Imaging Order Details There is no dataavallable because no imaging faciity is selected. | . | Priority □STAT Future SubmissionAlarm no alarmNote to Imaging FacilitySubmitter | . | Internal NoteAppointment TimeSide | . An Order Set can be utilized during an encounter in the Assessment &amp; Plan section of the Exam. Ordering these order sets outside of an encounter is done by selecting the Patient Action Menu in a patient’s chart and clicking on “Create Order Group.” . | For ordering during a patient’s visit, navigate to the Assessment &amp; Plan of the Exam. If ordering outside of the visit, navigate to the patient’s chart and click on Create Order Group in the Patient Action Menu. | . | Select the plus sign to add Diagnosis &amp; Orders. | Using the search tool, search for the name of the Order Set that was created. | Alternatively,select the Order Sets filter to find the order set necessary to order. | . | Order Group | Order Group | Order Group | Order Group | . | OrdersOrderingSupervisi |   | XIAGNOSES &amp; ORDERS |   | . | OrdersOrderingSupervisi |   |   |   | . | OrdersOrderingSupervisi | Search options | Search options |   | . | OrdersOrderingSupervisi | Order Sets (2)Broken Hand (2)IRUS fundus phato(2) | Order Sets (2)Broken Hand (2)IRUS fundus phato(2) |   | . | PrescriMisuse 8 | Order Sets (2)Broken Hand (2)IRUS fundus phato(2) | Order Sets (2)Broken Hand (2)IRUS fundus phato(2) | Stimula | . | PrescriMisuse 8 | Diagnoses (10)active or passive immunization | Diagnoses (10)active or passive immunization | Stimula | . | FollowPatient w | Diagnoses (10)active or passive immunization | Diagnoses (10)active or passive immunization |   | . | FollowPatient w | Orders (9)CMP serum or plasma | Orders (9)CMP serum or plasma |   | . | LettersDelete Ord | Orders (9)CMP serum or plasma | Orders (9)CMP serum or plasma |   | . | LettersDelete Ord | Point of Care Tests(3)HbA1c (hemoglobin A1c), blooder Group | Point of Care Tests(3)HbA1c (hemoglobin A1c), blooder Group |   | . | Ensure the selection is housed under the “Order Sets” section in the diagnosis and orders menu. | When the order set is selected, all orders and/or diagnosis will appear below the menu. | If the order set does not have a specified diagnosis, add the appropriate diagnosis by clicking the red plus sign. | Note, some diagnoses need more specificity and an ICD-10 code will have to be selected from a menu by clicking the red “ICD_10 CODE” text below the diagnosis. | When a diagnosis has been added, the orders are ready to be signed and sent to the appropriate facilities if need. | . ",
     "url": "/IntegrationDocumentation/docs/integration/SAAS_EMR_Athena/#order-sets-for-a-specified-facility-intelligent-retinal",
     
     "relUrl": "/docs/integration/SAAS_EMR_Athena/#order-sets-for-a-specified-facility-intelligent-retinal"
-  },"72": {
+  },"71": {
     "doc": "Athena",
     "title": "DIAGNOSIS",
     "content": "fundus photography with interpretation and report . Send on 08-12-2021 Iris (Intelligent Retinal Imaging Systems) Type 1 diabetes mellitus CHANGE . photo,eye,fundus ICD-10 CODE . fundus photography with interpretation and report . Send on 08-12-2021Iris (Intelligent Retinal Imaging Systems) . photo,eye,fundus . ",
     "url": "/IntegrationDocumentation/docs/integration/SAAS_EMR_Athena/#diagnosis",
     
     "relUrl": "/docs/integration/SAAS_EMR_Athena/#diagnosis"
-  },"73": {
+  },"72": {
     "doc": "Athena",
     "title": "Billing Consideration",
     "content": ". | Verify the proper procedure code is mapped to the procedure. (Clinicals Admin&gt; Order Type &amp; ProcedureTemplate Mapping). This will ensure the code populates automatically on the billing tab when the procedureis ordered. When the image has been reviewed and approved by the provider, a claim is ready to becreated per your practice’s billing workflows. | – | . ",
     "url": "/IntegrationDocumentation/docs/integration/SAAS_EMR_Athena/#billing-consideration",
     
     "relUrl": "/docs/integration/SAAS_EMR_Athena/#billing-consideration"
-  },"74": {
+  },"73": {
     "doc": "Athena",
     "title": "Athena",
     "content": " ",
     "url": "/IntegrationDocumentation/docs/integration/SAAS_EMR_Athena/",
     
     "relUrl": "/docs/integration/SAAS_EMR_Athena/"
-  },"75": {
+  },"74": {
     "doc": "ORM (ORM-001)",
     "title": "Standard Orders (ORM-001) Inbound Specifications",
     "content": "Interface content encoding from HL7 Integration Engines submitted to IRIS v3.x . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#standard-orders-orm-001-inbound-specifications",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#standard-orders-orm-001-inbound-specifications"
-  },"76": {
+  },"75": {
     "doc": "ORM (ORM-001)",
     "title": "IRIS Controlled document Identifier",
     "content": "TEC 005 Rev C Standard Orders (ORM-001) Inbound Specifications . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#iris-controlled-document-identifier",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#iris-controlled-document-identifier"
-  },"77": {
+  },"76": {
     "doc": "ORM (ORM-001)",
     "title": "Table of Contents",
     "content": ". | Basic Interface Structure and Description | MSH Segment – Message Header | PID Segment – Patient Identification | PV1 Segment – Patient Visit | ORC – Common Order | OBR – Observation Request | DG1 – Diagnosis | Example Messages | . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#table-of-contents",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#table-of-contents"
-  },"78": {
+  },"77": {
     "doc": "ORM (ORM-001)",
     "title": "Basic Interface Structure and Description",
     "content": "This document outlines the values sent in an HL7 order message (ORM-O01) from IRIS to a third-party system. This third-party system could be another application, an interface engine, or an EMR. For the purposes of this documentation, this third-party will be referred to an EMR. IRIS uses HL7 v2.4 as a main protocol for message sharing. If there are any fields represented in this document that are not populated but required by a receiving EMR, IRIS will populate these value(s) as requested. If the receiving EMR requires a different version, IRIS can provide messages for the corresponding version. If the EMR expects messages to be delivered in a format other than HL7, this will need to be discussed with an IRIS Interface Engineer as this will not be covered in the scope of this document – please contact IRIS support for more information. Following this section, the rest of the document will be divided by HL7 segment types as they would appear in a delivered HL7 message. Throughout the document will refer to the ‘client’ which will correspond with the facility, clinic, hospital, or medical center. The required fields will be notated in red and special notes will be in blue. Specific details will be provided in each section of this document. ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#basic-interface-structure-and-description",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#basic-interface-structure-and-description"
-  },"79": {
+  },"78": {
     "doc": "ORM (ORM-001)",
     "title": "MSH Segment – Message Header",
     "content": "The message header segment includes information that defines the structure of the message.Please note that required fields will be notated in red and special notes will be in blue. Sample MSH segment: . MSH|^\\~\\&amp;|EPIC|ANCL||IRIS|20170410102836|HJ123|ORM^O01|254|T|2.4|||||||| . | Field | Name and type | Sample value | Description |   | . | MSH-1 | Field Separator (ST) |   |   | Auto generate | . | MSH-2 | Encoding Characters (ST) | ^~\\&amp; | Auto generate |   | . | MSH-3 | Sending Application (HD) | Your app name, e.g. “EPIC” | Populated by EMR |   | . | MSH-4 | Sending Facility (HD) | Your facility name, e.g. “ANCL” | Populated by EMR; This field canalso be used to identify parent entities for the case of the sending body serving as a hub for multiple facilities. See Note 1.0 below |   | . | MSH-5 | Receiving Application (HD) |   | Optional |   | . | MSH-6 | Receiving Facility (HD) | IRIS | Optional |   | . | MSH-7 | Date/Time Of Message (TS) |   | Auto generate |   | . | MSH-8 | Security (ST) | Security value, e.g. initials of signer “HJ123” | Optional See ORC-10.1 |   | . | MSH-9 | Message Type (MSG) | ORM^O01 | Auto generate. If required, set as “ORM^O01^ORM_O01” |   | . | MSH-10 | Message Control ID (ST) | 252 | Auto generate |   | . | MSH-11 | Processing ID (PT) | P (Production) or T(Test) | Required |   | . | MSH-12 | Version ID (VID) | Your system’s HL7 version, e.g. “2.4” | IRIS will send the results with this version |   | . Note 1.0: If this is to be utilized, a crosswalk will need to be discussed during implementation and will therefore make this field required. (back to Table of Contents) . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#msh-segment--message-header",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#msh-segment--message-header"
-  },"80": {
+  },"79": {
     "doc": "ORM (ORM-001)",
     "title": "PID Segment – Patient Identification",
     "content": "The patient identification segment will include patient-specific demographic information. Please note that required fields will be notated in red and special notes will be in blue. Sample PID segment: . PID|1|ITCC20170410^^^^MRN|ITCC20170410||DOE^JOHN||19581012|M||W|100 FOAMY WAY^APT A^BELLEVUE^WA^98104^US^^^KING|KING|(425)4445555^^PH^^^425^4445555|||M||1234|111-22-3333||| . | Field | Name and type | Sample value | Description | . | PID-1 | Set ID - PID (SI) | 1 | Optional | . | PID-2 | Patient ID (CX) | ITCC20170410^^^^MRN | Can repeat separated by “~” like T1234^^^ ^MRN~M001^^^CHMRN^CHMRN | . |   | PID-2.1 (ID) | MRN value, e.g. “ITCC20170410” | Required | . |   | PID-2.2 |   | Not necessary | . |   | PID-2.3 |   | Not necessary | . |   | PID-2.4 |   | Not necessary | . |   | PID-2.5 (Identifier Type Code) (ID) | MRN | Required if the field repeats. Client must provide which one to use. PID.3.1 will be picked accordingly, e.g. MRN in this example. | . | PID-3 | Patient Identifier List (CX) |   | If client uses this field for MRN, please notify IRIS. See PID.2 for detail | . | PID-4 | Alternate Patient ID - PID (CX) |   | Not necessary | . | PID-5 | Patient Name (XPN) | DOE^JOHN | Required | . |   | PID-5.1 | DOE | Last name | . |   | PID-5.2 | JOHN | First name | . | PID-6 | Mother’s Maiden Name (XPN) |   | Not necessary | . | PID-7 | Date/Time of Birth (TS) | YYYYMMDD format e.g. “19581012” | Required | . | PID-8 | Administrative Sex (IS) | M or F | Required | . | PID-18 | Patient Account Number (CX) | 1234 | Optional CSN/Account value/Encounter Number | . | PID-19 | SSN Number - Patient (ST) | e.g. 111-22-3333 | Iris does not store SSN | . (back to Table of Contents) . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#pid-segment--patient-identification",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#pid-segment--patient-identification"
-  },"81": {
+  },"80": {
     "doc": "ORM (ORM-001)",
     "title": "PV1 Segment – Patient Visit",
     "content": "The patient visit segment includes patient-specific visit information. IRIS uses the PV1 segment to distinguish which clinic the patient will visit. Please note that required fields will be notated in red and special notes will be in blue. Sample PV1 segment: . PV1||O|POC01|||||||||||||||||||||||||||||||||||||||||20170410082742||||| . | Field | Name and type | Sample value | Description | . | PV1-1 | Set ID - PV1 (SI) |   | Not necessary | . | PV1-2 | Patient Class (IS) | O | Outpatient See Note 1.0 Below | . | PV1-3 | Assigned Patient Location (PL) | POC01 | Point of care information | . |   | PV1-3.1 | POC01 | Required. ID or abbreviation ofthe clinic. | . Note 1.0 Below: See https://www.hl7.org/fhir/v2/0004/index.html . (back to Table of Contents) . ORC – Common Order . The Common Order segment is used to transmit fields that are common to all orders. The ORC segment is required in the Order (ORM) message. Please note that required fields will be notated in red and special notes will be in blue. Sample ORC segment: . ORC|NW|2017041006^EPC|||||^^^20170410^^R||20170410150905|HJ123^HOPKINS^JOHN S||OP0001^DOE^JACK^^^^^^SERDOTON^^^^SERDOTON|DFM^^^20403^^^^^TEST CLINIC|(425)123-4567^^^^^425^1234567||||H48033^H48033^^20403001^TEST CLINIC|||||||||||O||| . | Field | Name and type | Sample value | Description | . | ORC-1 | Order Control (ID) | NW or CA | “Required. New Order (NW) or Cancellation (CA) Client must provide if other value (XO, XR, and CR) will be sent to IRIS for above cases” | . | ORC-2 | Placer Order Number (EI) | 2017041006^EPC |   | . |   | ORC-2.1 Entity Identifier | 2017041006 | Required. Auto generate by EMR | . |   | ORC-2.2 Namespace ID | EPC | Optional Name or abbreviation of the system (EMR) like EPC or EPIC. | . | ORC-3 | Filler Order Number (EI) |   | Not necessary | . | ORC-4 | Placer Group Number (EI) |   | Optional Auto generate by EMR | . | ORC-5 | Order Status (ID) |   | Not necessary | . | ORC-6 | Response Flag (ID) |   | Not necessary | . | ORC-7 | Quantity/Timing (TQ) |   | Not necessary | . | ORC-8 | Parent Order (EIP) |   | Not necessary | . | ORC-9 | Date/Time of Transaction (TS) | yyyyMMddHHmmss format | Required. Generated by EMR asorder scheduled time | . | ORC-10 | Entered By (XCN) |   |   | . |   | ORC-10.1 ID Number | HJ123 | Optional This can be used for MSH-8. | . |   | ORC-10.2 Family Name | HOPKINS | Optional | . |   | ORC-10.3 Given Name | JOHNS | Optional | . |   | ORC-10.4 Second and Further Given Names or Initials Thereof |   | Not necessary | . |   | ORC-10.5 Suffix |   | Not necessary | . | ORC-11 | Verified By (XCN) |   |   | . | ORC-12 | Ordering Provider (XCN) | OP0001^DOE^JACK ^^^^^^SERDOTON ^^^^SERDOTON~ 868^DOE^JACK^^^ ^^^PACS^^^^PACS | If this field repeats, client must notify IRIS which component and value to use and if the NPI will not be the value used. | . |   | ORC-12.1 ID | OP0001 | Required. Accept only if ORC-12.13 is met. In this case, “SERDOTON” will be accepted. | . |   | ORC-12.2 Family Name | DOE | Required | . |   | ORC-12.3 Given Name | JACK | Required | . |   | ….. |   | ORC-12.4 through ORC-12.11 not necessary | . |   | ORC-12.13 Identifier Type Code | Name or type of your system, e.g. SERDOTON, NPI | Required if field repeats. Client may populate identifier in ORC.12.9 instead | . | ORC-13 | Enterer’s Location (PL) | DFM^^^20403^^^^^TEST CLINIC | Optional If client uses this instead of PV1.3, please notify IRIS. | . |   | ORC-13.1 Point Of Care | DFM | Optional ID or abbreviation of the clinic. | . |   | ORC-13.2 Room |   | Not necessary | . |   | ORC-13.3 Bed |   | Not necessary | . |   | ORC-13.4 Facility | 20403 | Optional Internal facility id | . |   | ….. |   | ORC-13.5 through ORC-13.7 notnecessary | . |   | ORC-13.8 Location Description | TEST CLINIC | Optional | . | ORC-14 | Call Back Phone Number (XTN) | (425)123-4567^^^^^425^1234567 | Optional | . | ORC-15 | Order Effective Date/Time (TS) |   | Not necessary | . | ORC-16 | Order Control Code Reason (CE) |   | Not necessary | . | ORC-17 | Entering Organization (CE) |   | Not necessary | . | ORC-18 | Entering Device (CE) | H48033^H48033^ ^20403001^TEST CLINIC | Optional | . | ORC-19 | Action By (XCN) |   | Not necessary | . | ORC-20 | Advanced Beneficiary Notice Code (CE) |   | Not necessary | . | ORC-21 | Ordering Facility Name (XON) |   | Not necessary | . | ORC-22 | Ordering Facility Address (XAD) |   | Not necessary | . | ORC-23 | Ordering Facility Phone Number (XTN) |   | Not necessary | . | ORC-24 | Ordering Provider Addre(XAD) | ss | Not necessary | . | ORC-25 | Order Status Modifier (C | WE) | Not necessary | . (back to Table of Contents) . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#pv1-segment--patient-visit",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#pv1-segment--patient-visit"
-  },"82": {
+  },"81": {
     "doc": "ORM (ORM-001)",
     "title": "OBR – Observation Request",
     "content": "The observation request segment transmits information about an exam, diagnostic study, or assessment that is specific to an order or result. Please note that required fields will be notated in red and special notes will be in blue. Sample OBR segment: . OBR|1|2017041006^EPC||92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO||20170410|||||L|||||OP0001^DOE^JACK^^^^^^SERDOTON^^^^SERDOTON|(425)598-6900^^^^^425^5986900|||||||OPHTHALMOLOG|||^^^20170410^^R|||||||||20170410|||||||| . | Field | Name and type | Sample value | Description | . | OBR-1 | Set ID - OBR (SI) | 1 | Always “1” | . | OBR-1 | Set ID - OBR (SI) | 1 | Optional. Auto generate by EMR | . | OBR-2 | Placer Order Number (EI) | 2017041006^EPC | Optional. ORC.2.1 will be used for order tracking | . |   | OBR-2.1 Entity Identifier | 2017041006 | Internal order number in EMR | . |   | OBR-2.2 Namespace ID | EPC | Name or ID of EMR | . | OBR-3 | Filler Order Number (EI) |   | Not necessary | . | OBR-4 | Universal Service Identifier (CE) | 92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO | Optional. This is CPT code for IRIS services and WILL be used in DFT. Please notify IRIS if the different value is used. See ‘Sample Value’. | . |   |   | EAP777357^Ophthalmology Retinal Scan | Sample 1 | . |   |   | 57554^DIABETIC EYE EXAM IN OFFICE^IRISEAP^^DIABETIC EYE EXAM IN OFFICE | Sample 2 | . |   |   | IMG0555^DIABETIC RETINAL SCREENING (IRIS CAMERA)^MRGECP^^DIABETIC RETINAL SCREENING | Sample 3 | . |   |   | OPH112^IRIS RETINAL ASSESSMENT^LAB^^OPH94 | Sample 4 | . | OBR-5 | Priority (ID) |   | Not necessary | . | OBR-6 | Requested Date/Time (TS) | YYYYMMDD format | Optional. Auto generate by EMR | . | OBR-7 | Observation Date/Time # (TS) |   | Not necessary | . | OBR-8 | Observation End Date/Time # (TS) |   | Not necessary | . | OBR-9 | Collection Volume * (CQ) |   | Not necessary | . | OBR-10 | Collector Identifier * (XCN) |   | Not necessary | . | OBR-11 | Specimen Action Code * (ID) | L | Optional | . | OBR-12 | Danger Code (CE) |   | Not necessary | . | OBR-13 | Relevant Clinical Info. (ST) |   | Not necessary | . | OBR-14 | Specimen Received Date/Time * (TS) |   | Not necessary | . | OBR-15 | Specimen Source (SPS) |   | Not necessary | . | OBR-16 | Ordering Provider (XCN) | OP0001^DOE^JACK^^^^^^ SERDOTON^^^^SERDOTON | Optional. Same value with ORC-12. | . | OBR-17 | Order Callback Phone Number (XTN) | (425)598- 6900^^^^^425^5986900 | Optional | . | OBR-18 | Placer Field 1 (ST) |   | Not necessary | . | OBR-19 | Placer Field 2 (ST) |   | Not necessary | . | OBR-20 | Filler Field 1 + (ST) |   | Not necessary | . | OBR-21 | Filler Field 2 + (ST) |   | Not necessary | . | OBR-22 | Results Report/Status Change - Date/Time + (TS) |   | Not necessary | . | OBR-23 | Charge to Practice + (MOC) |   | Not necessary | . | OBR-24 | Diagnostic Serv Sect ID (ID) | OPHTHALMOLOGY | Optional. Can be defined by EMR | . | OBR-25 | Result Status + (ID) |   | Not necessary | . | OBR-26 | Parent Result + (PRL) |   | Not necessary | . | OBR-27 | Quantity/Timing (TQ) | ^^^20170404^^R | Optional | . | OBR-28 | Result Copies To (XCN) |   | Not necessary | . | OBR-29 | Parent Number (EIP) |   | Not necessary | . | OBR-30 | Transportation Mode (ID) |   | Not necessary | . | OBR-31 | Reason for Study (CE) |   | Not necessary | . | OBR-32 | Principal Result Interpreter + (NDL) |   | Not necessary | . | OBR-33 | Assistant Result Interpreter + (NDL) |   | Not necessary | . | OBR-34 | Technician + (NDL) |   | Not necessary | . | OBR-35 | Transcriptionist + (NDL) |   | Not necessary | . | OBR-36 | Scheduled Date/Time + (TS) | YYYYMMDD format | Optional. Auto generate by EMR | . | OBR-37 | Number of Sample Containers * (NM) |   | Not necessary | . | OBR-38 | Transport Logistics of Collected Sample * (CE) |   | Not necessary | . | OBR-39 | Collector’s Comment * (CE) |   | Not necessary | . | OBR-40 | Transport Arrangement Responsibility (CE) |   | Not necessary | . | OBR-41 | Transport Arranged (ID) |   | Not necessary | . | OBR-42 | Escort Required (ID) |   | Not necessary | . | OBR-43 | Planned Patient TranspoComment (CE) | rt | Not necessary | . | OBR-44 | Procedure Code (CE) |   | Not necessary | . | OBR-45 | Procedure Code Modifie | r (CE) | Not necessary | . | OBR-46 | Placer Supplemental SerInformation (CE) | vice | Not necessary | . | OBR-47 | Filler Supplemental ServInformation (CE) | ice | Not necessary | . (back to Table of Contents) . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#obr--observation-request",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#obr--observation-request"
-  },"83": {
+  },"82": {
     "doc": "ORM (ORM-001)",
     "title": "DG1 – Diagnosis Segment",
     "content": "The diagnosis segment contains patient diagnosis information. The DG1 segment is optional and can be repeated. IRIS supports ICD-10 codes. Please note that required fields will be notated in red and special notes will be in blue. Sample DG1 segments: . DG1|1|ICD-10|E11.41^Type 2 diabetes mellitus with diabetic mononeuropathy^I10|Type 2 diabetes mellitus with diabetic mononeuropathy . | Field | Name and type | Sample value | Description | . | DG1-1 | Set ID - DG1 (SI) | 1 | Required if sent. Increasedsequentially by 1. | . | DG1-2 | Diagnosis Coding Method (ID) | 10 or ICD10 | Required if sent. Iris only accepts ICD-10 codes. | . | DG1-3 | Diagnosis Code - DG1 (CE) | 250.1, E11.41 | Required if sent. Id of the diagnosis | . | DG1-4 | Diagnosis Description (ST) | DIABETES MELLITUS WITHOUT MENTION OF COMPLICATION, TYPE II OR UNSPECIFIED TYPE, NOT STATED AS UNCONTROLLED | Required if sent. | . (back to Table of Contents) . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#dg1--diagnosis-segment",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#dg1--diagnosis-segment"
-  },"84": {
+  },"83": {
     "doc": "ORM (ORM-001)",
     "title": "Example Messages:",
     "content": "Example A: . MSH|^\\~\\&amp;|ACME|Overlook Hotel||IRIS|20200228150014|HJ123|ORM^O01|20200228150014|T|2.4 PID|1||TestMrn1096||TestVendor^TAMMY||19541026|M||W|123 Fake WAY^APT A^Richmond^VA^23223^US^^^|KING|(425)444-5555^^PH^^^425^4445555|||M||1234|111-223333||| PV1||O|IrisTest|||||||||||||||||||||||||||||||||||||||||20200228150014||||| ORC|NW|Order578914|||||^^^02282020_150014^^R||20200228150014|HJ123^HOPKINS^JOHNS||a diaz@retinalscreenings.com^Diaz^Adam^^^^^^SERDOTON^^^^SERDOTON|DFM^^^20403^^^^^TEST CLINIC|(425)123-4567^^^^^425^1234567||||H48033^H48033^^20403001^TEST CLINIC|||||||||||O||| OBR|1|2020022815^ACME||92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO||2020022815|||||L|||||adiaz@retinalscreenings.com^Diaz^Adam^^^^^^SERDOTON^^^^SER DOTON|(425)5986900^^^^^425^5986900|||||||OPHTHALMOLOG|||^^^2020022815^^R|||||||||2020022815||||||| DG1|1|ICD-10-CM|E11.9^Type 2 diabetes mellitus without complications^ICD-10-CM|E11.9Type 2diabetes mellitus without complications||ICD-9 to Order . Example B: . MSH|^\\~\\&amp;|ACME|Test Hospital||IRIS|20200303194509|HJ123|ORM^O01|20200303194509|T|2.4|||||||| PID|1||TestMrn9958||TestVendor^TERRY||19950222|M||W|123 Fake WAY^APT A^Richmond^VA^23223^US^^^|KING|(425)444-5555^^PH^^^425^4445555|||M||1234|111-223333||| PV1||O|109|||||||||||||||||||||||||||||||||||||||||20200303194509||||| ORC|NW|Order501138|||||^^^03032020_194509^^R||20200303194509|HJ123^HOPKINS^JOHNS||a diaz@retinalscreenings.com^Diaz^Adam^^^^^^SERDOTON^^^^SERDOTON|DFM^^^20403^^^^^TEST CLINIC|(425)123-4567^^^^^425^1234567||||H48033^H48033^^20403001^TEST CLINIC|||||||||||O||| OBR|1|2020030319^ACME||92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO||2020030319|||||L|||||adiaz@retinalscreenings.com^Diaz^Adam^^^^^^SERDOTON^^^^SERDOTON|(425)5986900^^^^^425^5986900|||||||OPHTHALMOLOG|||^^^2020030319^^R|||||||||2020030319||||||| DG1|1|ICD-10-CM|E11.3299^Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, unspecified eye^I10|Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, unspecified eye||ICD-9 to Order DG1|1|ICD-10-CM|E11.65^Type 2 diabetes mellitus with hyperglycemia^I10|Type 2 diabetes mellitus with hyperglycemia||ICD-9 to Order . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#example-messages",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#example-messages"
-  },"85": {
+  },"84": {
     "doc": "ORM (ORM-001)",
     "title": "Revision History:",
     "content": "| Row No. | Revision Date | Version Update | Revision Notes | . | 1 | Sept. 26, 2018 | Version 1.0 | Initial documentation creation Updated version | . | 2 | Oct. 3, 2018 | Version 2.0 | Corrected typos in several segment section descriptions Added footnotes to some sections to add additionaldescriptions (where applicable) Added “Examples” section Added color-coding notes to each segment section Updated version | . | 3 | Jan. 8, 2019 | Version 2.1 | Added a “Revision History” section Updated version | . | 4 | Mar. 3, 2020 | Version 2.2 | Updated Diagnoses and altered formatting slightly Updated version | . | 5 | Jun. 6, 2021 | Version 2.3 | Slight formatting changes Updated version | . | 6 | Aug 31, 2021 | OBS | Moving to OBS and will re-implement under TEC documents | . | 7 | Aug 31, 2021 | TECH 005 Rev A | Re implemented as TEC document | . | 7 | Sep. 14, 2023 | TEC 005 REV B - Version 2.4 | Removed version from Acknowledgement section. Updated MSH.4 description/requirements. Updated PID.19 description. Updated ORC.12 description. Altered DG1 section to exclude ICD-9 code requirements and wording on all descriptions. Updated Version | . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/#revision-history",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/#revision-history"
-  },"86": {
+  },"85": {
     "doc": "ORM (ORM-001)",
     "title": "ORM (ORM-001)",
     "content": " ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders/",
     
     "relUrl": "/docs/integration/TEC_005_Rev_C_Standard_Orders/"
-  },"87": {
+  },"86": {
     "doc": "ORU (ORU-R01)",
     "title": "HL7 ORU Message (Exam Results)",
     "content": "Intelligent Retinal Imaging Systems &#8482; [Back to EMR Integrations page](./EMRIntegrations) ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#hl7-oru-message-exam-results",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#hl7-oru-message-exam-results"
-  },"88": {
+  },"87": {
     "doc": "ORU (ORU-R01)",
     "title": "Standard Results (ORU-R01) Outbound Specifications",
     "content": "Interface content encoding for results from IRIS v3.x to HL7 Integration Engines . TEC 007 Rev C Standard Results (ORU-R01) Outbound Specifications . Acknowledgments . Interface specifications prepared by Adam Diaz. Please send any feedback to support@irishelp.zendesk.com. Confidentiality and Proprietary Rights . This document is the confidential property of Intelligent Retinal Imaging Systems (IRIS). No part of this document may be reproduced in any form or incorporated into any information retrieval system without the written permission of IRIS. Limitations and Conditions of Use . Some fields noted in this document need the pre-defined values to be identified by the receiving EMR. Those values will be covered in the Standard Orders (ORM-O01) Interface document and used here. If there are any fields represented in this document that are not populated but required by a receiving EMR, IRIS will populate these value(s)as requested. IRIS uses HL7 v2.4 as a main protocol for message sharing. If the receiving EMR requires a different version, IRIS will provide messages for the corresponding version. This document will describe the standard IRIS ORU message by segments as they appear in an HL7 message. Disclaimers . Although unlikely, IRIS reserves the right to make changes in specifications and features shown herein at any time without notice. This does not constitute a representation or documentation regarding the service featured. Contact your IRIS Representative for the most current information. Intelligent Retinal Imaging Systems™ . 2 N Palafox Street, Suite 200 . Pensacola, Florida 32502 . | 1-888-535-2574 | info@retinalscreenings.com | . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#standard-results-oru-r01-outbound-specifications",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#standard-results-oru-r01-outbound-specifications"
-  },"89": {
+  },"88": {
     "doc": "ORU (ORU-R01)",
     "title": "Table of Contents",
     "content": ". | Basic Interface Structure and Description | MSH Segment – Message Header | PID Segment - Patient Identification | PV1 Segment – Patient Visit | ORC – Common Order | OBR – Observation Request | DG1 – Diagnosis | OBX – Observation Result | First OBX | Second OBX | Third OBX | Fourth OBX | Fifth OBX | Sixth OBX | Seventh OBX | Eighth OBX | Ninth OBX | Tenth and Above OBX | Last OBX | Example Messages | Revision History | . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#table-of-contents",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#table-of-contents"
-  },"90": {
+  },"89": {
     "doc": "ORU (ORU-R01)",
     "title": "Basic Interface Structure and Description",
     "content": "This document outlines the values sent in an HL7 results message (ORU-R01) from IRIS to a third-party system. This third-party system could be another application, an interface engine, or an EMR. For the purposes of this documentation, this third-party will be referred to an EMR. IRIS uses HL7 v2.4 as a main protocol for message sharing. If there are any fields represented in this document that are not populated but required by a receiving EMR, IRIS will populate these value(s) as requested. If the receiving EMR requires a different version, IRIS can provide messages for the corresponding version. If the EMR expects messages to be delivered in a format other than HL7, this will need to be discussed with an IRIS Interface Engineer as this will not be covered in the scope of this document – please contact IRIS support for more information. Following this section, the rest of the document will be divided by HL7 segment types as they would appear in a delivered HL7 message. IRIS has two different methods for delivering the document in an OBX segment: encoded PDF or pointer link (static URL). This will be described in detail later in that section. The last section of this document contains an example HL7 message. Customization . This document provides the default implementation of IRIS results to an HL7 ORU message. These mappings can be customized to suite your requirements. Customization can either be performed by an IRIS integration specialist or if desired you may designate an individual within your organization with the Integrator role providing them access to the IRIS Integration application. ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#basic-interface-structure-and-description",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#basic-interface-structure-and-description"
-  },"91": {
+  },"90": {
     "doc": "ORU (ORU-R01)",
     "title": "MSH Segment - Message Header",
     "content": "The message header segment includes information that defines the structure of the message. Sample MSH segment: . MSH|^\\~\\&amp;|IRIS|IRIS|VENDOR|VENDOR|20170410145907||ORU^R01|170410145907|T|2.4 . | Field | Name and type | Sample value | Description |   | . | MSH-1 | Field Separator (ST) |   |   | Auto generated | . | MSH-2 | Encoding Characters (ST) | ^~\\&amp; | Auto generated |   | . | MSH-3 | Sending Application (HD) | IRIS | “IRIS” is used as the default value |   | . | MSH-4 | Sending Facility (HD) | IRIS | “IRIS” is used as the default value |   | . | MSH-5 | Receiving Application (HD) | VENDOR | The name of the EMR. This needto be pre-defined |   | . | MSH-6 | Receiving Facility (HD) | VENDOR | The name or id of clinic. This need to be pre-defined. |   | . | MSH-7 | Date/Time of Message (TS) | yyyyMMddHHmmss format, e.g. “20190410145907” | Auto generated based off servertime (UTC if hosted by Iris) |   | . | MSH-8 | Security (ST) |   | Empty |   | . | MSH-9 | Message Type (MSG) | ORU^R01 | Unchanging |   | . | MSH-10 | Message Control ID (ST) | 190410145907 | Auto generated from server time (UTC if hosted by Iris) |   | . | MSH-11 | Processing ID (PT) | T | P (Production) or T (Test) will be used based on the system environment |   | . | MSH-12 | Version ID (VID) | 2.4 | HL7 Version |   | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#msh-segment---message-header",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#msh-segment---message-header"
-  },"92": {
+  },"91": {
     "doc": "ORU (ORU-R01)",
     "title": "PID Segment - Patient Identification",
     "content": "The patient identification segment will include patient-specific demographic information. Sample PID segment: . PID||ITCC20170410^^^^MRN|ITCC20170410||DOE^JOHN||19581012|M||||||||||1234|111-22-3333 . | Field | Name and type | Sample value | Description | . | PID-1 | Set ID - PID (SI) |   | Empty by default | . | PID-2 | Patient ID (CX) | ITCC20170410^^^^MRN |   | . |   | PID-2.1 ID | ITCC20170410 | Related Patient’s MRN value | . |   | …. |   | PID-2.2 through PID-2.4 empty by default | . |   | PID-2.5 Identifier Type Code | MRN | Related Patient’s ID type if requested | . | PID-3 | Patient Identifier List (CX) | ITCC20170410 | Reflects the same value as PID-2.1 by default | . | PID-4 | Alternate Patient ID - PID (CX) |   | Empty by default | . | PID-5 | Patient Name (XPN) | DOE^JOHN | Related Patient’s family name &amp;given name | . | PID-6 | Mother’s Maiden Name (XPN) |   | Empty by default | . | PID-7 | Date/Time of Birth (TS) | 19581012 | Related Patient’s Date of birth; YYYYMMDD format | . | PID-8 | Administrative Sex (IS) | M | Related patient’s sex (M or F) | . | PID-9 | Patient Alias (XPN) |   | Empty by default | . | PID-10 | Race (CE) |   | Empty by default | . | PID-11 | Patient Address (XAD) |   | Empty by default | . | PID-12 | County Code (IS) |   | Empty by default | . | PID-13 | Phone Number - Home (XTN) |   | Empty by default | . | PID-14 | Phone Number - Business (XTN) |   | Empty by default | . | PID-15 | Primary Language (CE) |   | Empty by default | . | PID-16 | Marital Status (CE) |   | Empty by default | . | PID-17 | Religion (CE) |   | Empty by default | . | PID-18 | Patient Account Number (CX) | 1234 | Related Patient’s CSN/Account value/Encounter number | . | PID-19 | SSN Number - Patient (ST) | 111-22-3333 | Iris does not store SSN | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#pid-segment---patient-identification",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#pid-segment---patient-identification"
-  },"93": {
+  },"92": {
     "doc": "ORU (ORU-R01)",
     "title": "PV1 Segment – Patient Visit",
     "content": "The patient visit segment includes patient-specific visit information. Sample PV1 segment: . PV1|1|O|POC01||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^M D^^^^^^NPI|||||||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|||||||||||||||||||||||||||20170410145803|20170410145803 . | Field | Name and type | Sample value | Description | . | PV1-1 | Set ID - PV1 (SI) | 1 | Always 1 | . | PV1-2 | Patient Class (IS) | O | Always “O” (for outpatient) | . | PV1-3 | Assigned Patient Location (PL) | POC01 | Point of care information; received from the ORM HL7 message | . | PV1-4 | Admission Type (IS) |   | Empty by default | . | PV1-5 | Preadmit Number (CX) |   | Empty by default | . | PV1-6 | Prior Patient Location (PL) |   | Empty by default | . | PV1-7 | Attending Doctor (XCN) | OP0001^DOE^JACK^^ ^MD^MD^^^^^^NPI | This reflects the ordering provider received in the ORM HL7 message | . |   | PV1-7.1 ID | OP0001 | Reflects the ORM HL7 messageORC-12.1 value | . |   | PV1-7.2 Family Name | DOE | Reflects the ORM HL7 messageORC-12.2 value | . |   | PV1-7.3 Given Name | JANE | Reflects the ORM HL7 messageORC-12.3 value | . |   | ….. |   | PV1-7.4 &amp; PV1-7.5 empty by default | . |   | PV1-7.5 Prefix | MD | Credentials of the ordering physician if available | . |   | PV1-7.6 Degree | MD | Credentials of the ordering physician if available | . |   | ….. |   | PV1-7.7 through PV1-7.12 Empty by default | . |   | PV1-7.13 Identifier Type Code | NPI | Provider type identifying code; typically “NPI” | . | PV1-8 | Referring Doctor (XCN) | OP0001^DOE^JACK^^ ^MD^MD^^^^^^NPI | This reflects the ordering provider received in the ORM HL7 message | . |   | PV1-8.1 ID | OP0001 | Reflects the ORM HL7 messageORC-12.1 value | . |   | PV1-8.2 Family Name | DOE | Reflects the ORM HL7 messageORC-12.2 value | . |   | PV1-8.3 Given Name | JACK | Reflects the ORM HL7 messageORC-12.3 value | . |   | ….. |   | PV1-8.4 &amp; PV1-8.5 empty by default | . |   | PV1-8.5 Prefix | MD | Credentials of the ordering physician if available | . |   | PV1-8.6 Degree | MD | Credentials of the ordering physician if available | . |   | ….. |   | PV1-8.7 through PV1-8.12 Empty by default | . |   | PV1-8.13 Identifier Type Code | NPI | Provider type identifying code; typically “NPI” | . | PV1-10 | Hospital Service (IS) |   | Empty by default | . | PV1-11 | Temporary Location (PL) |   | Empty by default | . | PV1-12 | Preadmit Test Indicator (IS) |   | Empty by default | . | PV1-13 | Re-admission Indicator (IS) |   | Empty by default | . | PV1-14 | Admit Source (IS) |   | Empty by default | . | PV1-15 | Ambulatory Status (IS) |   | Empty by default | . | PV1-16 | VIP Indicator (IS) |   | Empty by default | . | PV1-17 | Admitting Doctor (XCN) | OP0001^DOE^JACK^^ ^MD^MD^^^^^^NPI | This reflects the ordering provider received in the ORM HL7 message | . |   | PV1-17.1 ID | OP0001 | Reflects the ORM HL7 messageORC-12.1 value | . |   | PV1-17.2 Family Name | DOE | Reflects the ORM HL7 messageORC-12.2 value | . |   | PV1-17.3 Given Name | JANE | Reflects the ORM HL7 messageORC-12.3 value | . |   | ….. |   | PV1-17.4 &amp; PV1-17.5 empty bydefault | . |   | PV1-17.5 Prefix | MD | Credentials of the ordering physician if available | . |   | PV1-17.6 Degree | MD | Credentials of the ordering physician if available | . |   | ….. |   | PV1-17.7 through PV1-17.12 Empty by default | . |   | PV1-17.13 Identifier Type Code | NPI | Provider type identifying code; typically “NPI” | . | PV1-18 | Patient Type (IS) |   | Empty by default | . | PV1-19 | Visit Number (CX) |   | Related Patient’s CSN/Account value/Encounter number | . | PV1-20 | Financial Class (FC) |   | Empty by default | . | PV1-21 | Charge Price Indicator (IS) |   | Empty by default | . | PV1-22 | Courtesy Code (IS) |   | Empty by default | . | PV1-23 | Credit Rating (IS) |   | Empty by default | . | PV1-24 | Contract Code (IS) |   | Empty by default | . | PV1-25 | Contract Effective Date (DT) |   | Empty by default | . | PV1-26 | Contract Amount (NM) |   | Empty by default | . | PV1-27 | Contract Period (NM) |   | Empty by default | . | PV1-28 | Interest Code (IS) |   | Empty by default | . | PV1-29 | Transfer to Bad Debt Code (IS) |   | Empty by default | . | PV1-30 | Transfer to Bad Debt Date (DT) |   | Empty by default | . | PV1-31 | Bad Debt Agency Code (IS) |   | Empty by default | . | PV1-32 | Bad Debt Transfer Amount (NM) |   | Empty by default | . | PV1-33 | Bad Debt Recovery Amount (NM) |   | Empty by default | . | PV1-34 | Delete Account Indicator (IS) |   | Empty by default | . | PV1-35 | Delete Account Date (DT) |   | Empty by default | . | PV1-36 | Discharge Disposition (IS) |   | Empty by default | . | PV1-37 | Discharged to Location (DLD) |   | Empty by default | . | PV1-38 | Diet Type (CE) |   | Empty by default | . | PV1-39 | Servicing Facility (IS) |   | Empty by default | . | PV1-40 | Bed Status (IS) |   | Empty by default | . | PV1-41 | Account Status (IS) |   | Empty by default | . | PV1-42 | Pending Location (PL) |   | Empty by default | . | PV1-43 | Prior Temporary Location (PL) |   | Empty by default | . | PV1-44 | Admit Date/Time (TS) | yyyyMMddHHmmss format | Date of image captured | . | PV1-45 | Discharge Date/Time (TS) | yyyyMMddHHmmss format | Date of image captured | . | PV1-46 | Current Patient Balance (NM) |   | Empty by default | . | PV1-47 | Total Charges (NM) |   | Empty by default | . | PV1-48 | Total Adjustments (NM) |   | Empty by default | . | PV1-49 | Total Payments (NM) |   | Empty by default | . | PV1-50 | Alternate Visit ID (CX) |   | Empty by default | . | PV1-51 | Visit Indicator (IS) |   | Empty by default | . | PV1-52 | Other Healthcare Provider (XCN) |   | Empty by default | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#pv1-segment--patient-visit",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#pv1-segment--patient-visit"
-  },"94": {
+  },"93": {
     "doc": "ORU (ORU-R01)",
     "title": "ORC – Common Order",
     "content": "The Common Order segment is used to transmit fields that are common to all orders. The ORC segment is required in the Order (ORM) message. Sample ORC segment: . ORC|RE|2017041006|273013^IRIS||F||||20170410145907|||OP0001^DOE^JACK^^^MD^MD ^^^^^^NPI . | Field | Name and type | Sample value | Description | . | ORC-1 | Order Control (ID) | RE | Always “RE” (Observations/Performed Service to follow) | . | ORC-2 | Placer Order Number (EI) | 2017041006 |   | . |   | ORC-2.1 Entity Identifier | 2017041006 | Order number provided in ORM HL7 message | . |   | ORC-2.2 Namespace ID |   | Empty by default | . | ORC-3 | Filler Order Number (EI) | 273013^IRIS |   | . |   | ORC-3.1 Entity Identifier | 273013 | Iris’ internal order number; this number is a unique value | . |   | ORC-3.2 Namespace ID | IRIS | “IRIS” is used as the default value | . | ORC-4 | Placer Group Number (EI) |   | Empty by default | . | ORC-5 | Order Status (ID) | F | “F” (for Final) is used by default;Iris does not send preliminary orcorrected reports. | . | ORC-6 | Response Flag (ID) |   | Empty by default | . | ORC-7 | Quantity/Timing (TQ) |   | Empty by default | . | ORC-8 | Parent Order (EIP) |   | Empty by default | . | ORC-9 | Date/Time of Transaction (TS) | yyyyMMddHHmmss format | Current time based on server time (UTC if hosted by Iris) | . | ORC-10 | Entered By (XCN) |   | Empty by default | . | ORC-11 | Verified By (XCN) |   | Empty by default | . | ORC-12 | Ordering Provider (XCN) | OP0001^DOE^JACK^^ ^MD^MD^^^^^^NPI | This reflects the ordering provider received in the ORM HL7 message | . |   | ORC-12.1 ID | OP0001 | Reflects the ORM HL7 message ORC-12.1 value | . |   | ORC-12.2 Family Name | DOE | Reflects the ORM HL7 message ORC-12.2 value | . |   | ORC-12.3 Given Name | JACK | Reflects the ORM HL7 message ORC-12.3 value | . | ….. |   | ORdef | C-12.4 &amp; ORC-12.5 empty byault | . | ORC-12.5 P | refix MD | Crephy | dentials of the ordering sician if available | . | ORC-12.6 D | egree MD | Crephy | dentials of the ordering sician if available | . | ….. |   | OREm | C-12.7 through ORC-12.12 pty by default | . | ORC-12.13 Code | Identifier Type NPI | Protypi | vider type identifying code; cally “NPI” | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#orc--common-order",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#orc--common-order"
-  },"95": {
+  },"94": {
     "doc": "ORU (ORU-R01)",
     "title": "OBR – Observation Request",
     "content": "The observation request segment transmits information about an exam, diagnostic study, or assessment that is specific to an order or result. Sample OBR segment: . OBR|1|2017041006|273013^IRIS|92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO|||20170410145803|||||||20170410145803||OP0001^DOE^JACK^^^MD^MD^^^^^^NPI||||||20170410145901|||F|||||||GR0001^DOE^JANE^20170410145901^JANE DOE, MD,NPI: 1234567890, Taxonomy: 207W00000X . | Field | Name and type | Sample value | Description |   | . | OBR-1 | Set ID - OBR (SI) | 1 | Always “1”; Iris never sends multiple OBR segments |   | . | OBR-2 | Placer Order Number (EI) | 2017041006 |   |   | . |   | OBR-2.1 Entity Identifier | 2017041006 | Order number provided in ORMHL7 message |   | . |   | OBR-2.2 Namespace ID |   | Empty by default |   | . | OBR-3 | Filler Order Number (EI) | 273013^IRIS |   |   | . |   | OBR-3.1 Entity Identifier | 273013 | Iris’ internal order number. Thisnumber is unique value. |   | . |   | OBR-3.2 Namespace ID | IRIS | “IRIS” is used as the default value |   | . | OBR-4 | Universal Service Identifier (CE) | 92250^FUNDUS PHOTOGRAPHY ^EAP^^FUNDAL PHOTO | CPT code in OBR.4.1 followed bythe description in OBR.4.2. This value is populated with the values present in the creating ORM message unless otherwiserequested. See below for Sample examples |   | . |   |   | EAP777357^Ophthalmology Retinal Scan | Sample 1 |   | . |   |   | 57554^DIABETIC EYE EXAM IN OFFICE ^IRISEAP^^DIABETIC EYE EXAM IN OFFICE | Sample 2 |   | . |   |   | IMG0555^DIABETIC RETINAL SCREENING (IRIS CAMERA) ^MRGECP^^DIABETIC RETINAL SCREENING | Sample 3 |   | . |   |   | OPH112^IRIS RETINAL ASSESSMENT^LAB^^OPH94 | Sample 4 |   | . | OBR-5 | Priority (ID) |   | Empty by default |   | . | OBR-6 | Requested Date/Time (TS) |   | Empty by default |   | . | OBR-7 | Observation Date/Time # (TS) | yyyyMMddHHmmss format | Date of image capture |   | . | OBR-8 | Observation End Date/Time # (TS) |   | Empty by default |   | . | OBR-9 | Collection Volume (CQ) |   | Empty by default |   | . | OBR-10 | Collector Identifier (XCN) |   | Empty by default |   | . | OBR-11 | Specimen Action Code (ID) |   | Empty by default |   | . | OBR-12 | Danger Code (CE) |   | Empty by default |   | . | OBR-13 | Relevant Clinical Info. (ST) |   | Empty by default |   | . | OBR-14 | Specimen Received Date/Time (TS) | yyyyMMddHHmmss format | Date of image capture |   | . | OBR-15 | Specimen Source (SPS) |   | Empty by default |   | . | OBR-16 | Ordering Provider (XCN) | OP0001^DOE^JACK^^ ^MD^MD^^^^^^NPI | Same value as ORC-12 |   | . | OBR-17 | Order Callback Phone Number (XTN) |   | Empty by default |   | . | OBR-18 | Placer Field 1 (ST) |   | Empty by default |   | . | OBR-19 | Placer Field 2 (ST) |   | Empty by default |   | . | OBR-20 | Filler Field 1 (ST) |   | Empty by default |   | . | OBR-21 | Filler Field 2 (ST) |   | Empty by default |   | . | OBR-22 | Results Report/Status Change - Date/Time (TS) | yyyyMMddHHmmss format | Date of grading (signing) |   | . | OBR-23 | Charge to Practice (MOC) |   | Empty by default |   | . | OBR-24 | Diagnostic Serv Sect ID (ID) |   | Empty by default |   | . | OBR-25 | Result Status (ID) | F | F = Final, C = Corrected* |   | . | OBR-26 | Parent Result (PRL) |   | Empty by default |   | . | OBR-27 | Quantity/Timing (TQ) |   | Empty by default |   | . | OBR-28 | Result Copies To (XCN) |   | Empty by default |   | . | OBR-29 | Parent Number (EIP) |   | Empty by default |   | . | OBR-30 | Transportation Mode (ID) |   | Empty by default |   | . | OBR-31 | Reason for Study (CE) |   | Empty by default |   | . | OBR-32 | Principal Result Interpreter (NDL) | GR0001^DOE^JANE ^20170410145901^JANE DOE, MD, NPI: 1234567890, Taxonomy: 207W00000X | The default configuration is tosend the grader’s informationhere. |   | . |   | OBR-32.1 | GR0001 | Grader ID in IRIS |   | . |   | OBR-32.2 | DOE | Grader Family Name |   | . |   | OBR-32.3 | JANE | Grader Given Name |   | . |   | OBR-32.4 | yyyyMMddHHmmss format | Date of grading (signing) |   | . |   | OBR-32.5 | JANE1234207W | DOE, MD, NPI: 567890, Taxonomy: 00000X | The grader’s full name withcredentials | . Iris does not send preliminary or corrected reports but upon request can send a status of “C” when a report has been sent back to be regraded. These are not corrected reports but instead a new report for the existing order. ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#obr--observation-request",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#obr--observation-request"
-  },"96": {
+  },"95": {
     "doc": "ORU (ORU-R01)",
     "title": "DG1 Segment – Diagnosis",
     "content": "Optional This is the diagnosis segment that can be used to send multiple diagnoses. This can be generated upon request but is otherwise not part of the Iris standard ORU HL7 message. Sample DG1 segment: . DG1|1||E1141^Type 2 diabetes mellitus with diabetic mononeuropathy^ICD10 DG1|2||E113291^Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, right eye^ICD10 without macular edema, right eye^ICD10 DG1|3||E113512^Type 2 diabetes mellitus with proliferative diabetic retinopathy with macular edema, left eye^ICD10 . | Field | Name and type | Sample value | Description | . | DG1-1 | Set ID - DG1 (SI) | 1 | The Set ID that corresponds with the number of diagnoses | . | DG1-2 | Diagnosis Coding Method (ID) |   | Empty by default | . | DG1-3 | Diagnosis Code (CE) | E1141^Type 2 diabetes mellitus with diabetic mononeuropathy^ICD10 | This reflects the diagnoses added after the image has been graded | . |   | DG1-3.1 Identifier | E1141 | ICD10 code for diagnosis | . |   | DG1-3.2 Text | Type 2 diabetes mellitus with diabetic mononeuropathy | Description of diagnosis code | . |   | DG1-3.3 Name of Coding System | ICD10 | The coding system: Iris currentlyutilizes ICD10 | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#dg1-segment--diagnosis",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#dg1-segment--diagnosis"
-  },"97": {
+  },"96": {
     "doc": "ORU (ORU-R01)",
     "title": "OBX – Observation Result Segment",
     "content": "The observation result segment is used to transmit a single observation or observation fragment. OBX segments can repeat and each one contains following information. IRIS’ default OBX HL7 configuration contains the discrete results in the first 9 OBX segments, followed by the textual portion of the result findings, and then the document modality. The breakdown follows this configuration (the numbers refer to the Set ID): OBX 1 contains the overall severity for discrete findings of both eyes, OBX 2-5 contain details of the right eye, OBX 6-9 contain details of the left eye, OBX 10-30 grading results, and the last OBX is where either an encoded PDF or pointer link (static URL) is sent. Sample Discrete Results (Default): . OBX|1|ST|SEVERITY^^IRIS|1|NORMAL||||||F OBX|2|ST|RIGHTDIABRETIN^^IRIS|2|None||||||F OBX|3|ST|RIGHTMACEDEMA^^IRIS|3|None||||||F OBX|4|ST|RIGHTOTHERRETIN^^IRIS|4|None||||||F OBX|5|ST|RIGHTQUALAPP^^IRIS|5|Gradable Image||||||F OBX|6|ST|LEFTDIABRETIN^^IRIS|6|None||||||F OBX|7|ST|LEFTMACEDEMA^^IRIS|7|None||||||F OBX|8|ST|LEFTOTHERRETIN^^IRIS|8|None||||||F OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradable Image||||||F . Sample Discrete Results with Alternating OBX/NTE segments (Secondary Option): . OBX|1|ST|^^IRIS|1|NORMAL||| NTE|1|ST|SEVERITY OBX|2|ST|^^IRIS|2|None||||||F NTE|1|ST|RIGHTDIABRETIN OBX|3|ST|^^IRIS|3|None||||||F NTE|1|ST|RIGHTMACEDEMA OBX|4|ST|^^IRIS|4|None||||||F NTE|1|ST|RIGHTOTHERRETIN OBX|5|ST|RIGHTQUALAPP^^IRIS|5|Gradable Image||||||F OBX|6|ST|^^IRIS|6|None||||||F NTE|1|ST|LEFTDIABRETIN OBX|7|ST|^^IRIS|7|None||||||F NTE|1|ST|LEFTMACEDEMA OBX|8|ST|^^IRIS|8|None||||||F NTE|1|ST|LEFTOTHERRETIN OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradable Image||||||F . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#obx--observation-result-segment",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#obx--observation-result-segment"
-  },"98": {
+  },"97": {
     "doc": "ORU (ORU-R01)",
     "title": "First OBX",
     "content": "Severity section . Sample OBX segment: First OBX . OBX|1|ST|SEVERITY^^IRIS|1|NORMAL||||||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 1 | Increases sequentially by 1 | . | OBX-2 | Value Type (ID) | ST | The literal value “ST” (i.e. String for OBX-5) | . | OBX-3 | Observation Identifier (CE) | SEVERITY^^IRIS |   | . |   | OBX-3.1 Identifier | SEVERITY | The literal value “SEVERITY” | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | IRIS | The literal value “IRIS” | . | OBX-4 | Observation Sub-Id (ST) | 1 | Sequential counter that matches the Set ID | . | OBX-5 | Observation Value (Varies) | CRITICAL | One of three values based on the result findings: NORMAL, ALERT, or CRITICAL | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) | AA | One of three values based on the result findings: empty (Normal), A (ALERT), or AA (CRITICAL) | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F | F = Final, C = Corrected* | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#first-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#first-obx"
-  },"99": {
+  },"98": {
     "doc": "ORU (ORU-R01)",
     "title": "Second OBX",
     "content": "Sample OBX segment: . OBX|2|ST|RIGHTDIABRETIN^^IRIS|2|None||||||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 2 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | ST | Always “ST” (i.e. String for OBX- 5) | . | OBX-3 | Observation Identifier (CE) | RIGHTDIABRETIN^^IRIS |   | . |   | OBX-3.1 Identifier | RIGHTDIABRETIN | Always “RIGHTDIABRETIN”; stands for RIGHT eye diabetic retinopathy | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | IRIS | Always “IRIS” | . | OBX-4 | Observation Sub-Id (ST) | 2 | Sequential counter that matches the Set ID | . | OBX-5 | Observation Value (Varies) | None | One of three values based on the result findings: None, Mild, Moderate, Severe, or Proliferative | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) |   | One of three values based on the result findings: empty (Normal), A (ALERT), or AA (CRITICAL) | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F | F = Final, C = Corrected* | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#second-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#second-obx"
-  },"100": {
+  },"99": {
     "doc": "ORU (ORU-R01)",
     "title": "Third OBX",
     "content": "Sample OBX segment: Third . OBX|3|ST|RIGHTMACEDEMA^^IRIS|3|Severe|||AA|||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 3 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | ST | Always “ST” (i.e. String for OBX- 5) | . | OBX-3 | Observation Identifier (CE) | RIGHTMACEDEMA^^IRIS |   | . |   | OBX-3.1 Identifier | RIGHTMACEDEMA | Always “RIGHTMACEDEMA”; stands for RIGHT eye macular edema | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | IRIS | Always “IRIS” | . | OBX-4 | Observation Sub-Id (ST) | 3 | Sequential counter that matches the Set ID | . | OBX-5 | Observation Value (Varies) | Severe | One of three values based on the result findings: None, Mild, Moderate, or Severe | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) | AA | One of three values based on the result findings: empty (Normal), A (ALERT), or AA (CRITICAL) | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F | F = Final, C = Corrected* | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#third-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#third-obx"
-  },"101": {
+  },"100": {
     "doc": "ORU (ORU-R01)",
     "title": "Fourth OBX",
     "content": "Sample OBX segment: . OBX|4|ST|RIGHTOTHERRETIN^^IRIS|4|None||||||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 4 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | ST | Always “ST” (i.e. String for OBX- 5) | . | OBX-3 | Observation Identifier (CE) | RIGHTOTHERRETIN^^IRIS |   | . |   | OBX-3.1 Identifier | RIGHTOTHERRETIN | Always “RIGHTOTHERRETIN”; stands for RIGHT eye OTHER retinopathy | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | IRIS | Always “IRIS” | . | OBX-4 | Observation Sub-Id (ST) | 4 | Sequential counter that matches the Set ID | . | OBX-5 | Observation Value (Varies) | None, Suspected Glaucoma, Suspected Dry AMD, Suspected Wet AMD, Suspected Vein Occlusion, Suspected HTN Retinopathy, Suspected Epiretinal Membrane, Suspected Macular Hole, Suspected Cataracts, Suspected Geographic Atrophy, Other based on result. | Providers can choose to apply a predefined description (see Sample Value) or populate with a free-text note | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) |   | One of three values based on the result findings: empty (Normal), or A (ALERT) | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F |   | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#fourth-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#fourth-obx"
-  },"102": {
+  },"101": {
     "doc": "ORU (ORU-R01)",
     "title": "Fifth OBX",
     "content": "Sample OBX segment: . OBX|5|ST|RIGHTQUALAPP^^IRIS|5|Gradeable Image||||||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 5 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | ST | Always “ST” (i.e. String for OBX- 5) | . | OBX-3 | Observation Identifier (CE) | RIGHTQUALAPP^^IRIS |   | . |   | OBX-3.1 Identifier | RIGHTQUALAPP | Always “RIGHTQUALAPP”; stands for RIGHT eye image quality. | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | IRIS | Always “IRIS” | . | OBX-4 | Observation Sub-Id (ST) | 5 | Sequential counter that matches the Set ID | . | OBX-5 | Observation Value (Varies) | Gradable Image | Either “Gradable Image” or “Not Gradable Image” based on the image quality | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) |   | Empty by default | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F |   | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#fifth-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#fifth-obx"
-  },"103": {
+  },"102": {
     "doc": "ORU (ORU-R01)",
     "title": "Sixth OBX",
     "content": "Sample OBX segment: . OBX|6|ST|LEFTDIABRETIN^^IRIS|6|Proliferative|||AA|||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 6 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | ST | Always “ST” (i.e. String for OBX- 5) | . | OBX-3 | Observation Identifier (CE) | LEFTDIABRETIN^^IRIS |   | . |   | OBX-3.1 Identifier | LEFTDIABRETIN | Always “LEFTDIABRETIN”; stands for LEFT eye diabetic retinopathy | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | IRIS | Always “IRIS” | . | OBX-4 | Observation Sub-Id (ST) | 6 | Sequential counter that matches the Set ID | . | OBX-5 | Observation Value (Varies) | Proliferative | One of three values based on the result findings: None, Mild, Moderate, Severe, or Proliferative | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) | AA | One of three values based on the result findings: empty (Normal), A (ALERT), or AA (CRITICAL) | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F | F = Final, C = Corrected* | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#sixth-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#sixth-obx"
-  },"104": {
+  },"103": {
     "doc": "ORU (ORU-R01)",
     "title": "Seventh OBX",
     "content": "Sample OBX segment: Seventh OBX . OBX|7|ST|LEFTMACEDEMA^^IRIS|7|None||||||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 7 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | ST | Always “ST” (i.e. String for OBX- 5) | . | OBX-3 | Observation Identifier (CE) | LEFTMACEDEMA^^IRIS |   | . |   | OBX-3.1 Identifier | LEFTMACEDEMA | Always “LEFTMACEDEMA”; stands for LEFT eye macular edema | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | IRIS | Always “IRIS” | . | OBX-4 | Observation Sub-Id (ST) | 7 | Sequential counter that matches the Set ID | . | OBX-5 | Observation Value (Varies) | None | One of three values based on the result findings: None, Mild, Moderate, or Severe | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) |   | One of three values based on the result findings: empty (Normal), A (ALERT), or AA (CRITICAL) | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F | F = Final, C = Corrected* | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#seventh-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#seventh-obx"
-  },"105": {
+  },"104": {
     "doc": "ORU (ORU-R01)",
     "title": "Eighth OBX",
     "content": "Sample OBX segment: . OBX|8|ST|LEFTOTHERRETIN^^IRIS|8|None||||||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 8 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | ST | Always “ST” (i.e. String for OBX-5) | . | OBX-3 | Observation Identifier (CE) | LEFTOTHERRETIN^^IRIS | Empty by default | . |   | OBX-3.1 Identifier | LEFTOTHERRETIN | Always “LEFTOTHERRETIN”. Identify this OBX as a Left eye other retinopathy. | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | IRIS | Always “IRIS” | . | OBX-4 | Observation Sub-Id (ST) | 8 | Sequential counter that matches the Set ID | . | OBX-5 | Observation Value (Varies) | None, Suspected Glaucoma, Suspected Dry AMD, Suspected Wet AMD, Suspected Vein Occlusion, Suspected HTN Retinopathy, Suspected Epiretinal Membrane, Suspected Macular Hole, Suspected Cataracts, Suspected Geographic Atrophy, Other based on result. | Providers can choose to apply a predefined description (see Sample Value) or populate with a free-text note | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) |   | One of three values based on the result findings: empty (Normal), or A (ALERT) | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F |   | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#eighth-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#eighth-obx"
-  },"106": {
+  },"105": {
     "doc": "ORU (ORU-R01)",
     "title": "Ninth OBX",
     "content": "Sample OBX segment: . OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradeable Image||||||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 9 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | ST | Always “ST” (i.e. String for OBX- 5) | . | OBX-3 | Observation Identifier (CE) | LEFTQUALAPP^^IRIS |   | . |   | OBX-3.1 Identifier | LEFTQUALAPP | Always “LEFTQUALAPP”; stands for LEFT eye image quality | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | IRIS | Always “IRIS” | . | OBX-4 | Observation Sub-Id (ST) | 9 | Sequential counter that matches the Set ID | . | OBX-5 | Observation Value (Varies) | Gradable Image | Either “Gradable Image” or “Not Gradable Image” based on the image quality | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) |   | Empty by default | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F |   | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#ninth-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#ninth-obx"
-  },"107": {
+  },"106": {
     "doc": "ORU (ORU-R01)",
     "title": "Tenth Through Second-to-Last OBX",
     "content": "Sample OBX segment (default): . OBX|10|FT|Result^^IRIS|001|Retinal Study Result for DOE, JOHN||||||F OBX|11|FT|Result^^IRIS|002|||||||F OBX|12|FT|Result^^IRIS|003|DOE, JOHN, a 58 y/o, M (DOB: 10-12-1958, MRN:ITCC20170410)||||||F OBX|28|FT|Result^^IRIS|019|This result was electronically signed by DOE, JANE, MD on 04-102017 09:59:02 UTC time.||||||F OBX|29|FT|Result^^IRIS|020|||||||F OBX|30|FT|Result^^IRIS|021|NOTE: Any pathology noted on this diabetic retinal evaluation should be confirmed by an appropriate ophthalmic examination.||||||F . Secondary Option (Single OBX): Iris can send the text results can be sent in a single OBX segment . Tertiary Option (NTE Segments): Iris can send the text results as NTE segments instead of OBX segments . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 10 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | FT | Formatted Text, but can be defined differently like “ST” if necessary | . | OBX-3 | Observation Identifier (CE) | Result^^IRIS |   | . |   | OBX-3.1 Identifier | Result | “Result” but can be defined withother value if necessary | . |   | OBX-3.2 Text |   | Usually be empty but can be defined with any value if necessary | . |   | OBX-3.3 Name of Coding System | IRIS | “IRIS” is used as the default value | . | OBX-4 | Observation Sub-Id (ST) | 001 | Grading specific identifier; this number increases sequentially by 1 for each additional OBX segment | . | OBX-5 | Observation Value (Varies) |   | All the text from the Iris report will be displayed here on its own OBX line. Carriage returns will also receive their own OBX segment. | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) |   | Empty by default | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F |   | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#tenth-through-second-to-last-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#tenth-through-second-to-last-obx"
-  },"108": {
+  },"107": {
     "doc": "ORU (ORU-R01)",
     "title": "Last OBX",
     "content": "Reference Pointer Option . Sample OBX segment: . OBX|31|RP|LINK^^PDFLINK|31|https://api.retinalscreenings.com/api/PatientOrders/GetSingle ResultForDisplayInEmr?patientOrderId=273013&amp;asPdf=True&amp;isPreliminary=False&amp;auth=257805B4B262A18271B60A62026671703D0F3F335DC9E0643662358952E7DCBA19C1C2CCC6C781A3444D651C0AC6695750DA87C9A5CE0F5976E8A206D9FB1915||||||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 31 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | RP | Reference Pointer (RP): used when a pointer URL is configured | . | OBX-3 | Observation Identifier (CE) |   |   | . |   | Reference Pointer (RP) Configuration | LINK^^PDFLINK | This is the default delivery method | . |   | OBX-3.1 Identifier | LINK | “LINK” is the default value | . |   | OBX-3.2 Text |   | Empty by default | . |   | OBX-3.3 Name of Coding System | PDFLINK | “PDFLINK” is used as the default value | . | OBX-4 | Observation Sub-Id (ST) | 31 | Sequential counter that corresponds with the Set ID | . | OBX-5 | Observation Value (Varies) |   | This is a link to the PDF stored in Iris | . |   | OBX-5.1 Reference Pointer | See Note 1.0 Below | See Note 1.1 Below | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) |   | Empty by default | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F |   | . Note 1.0: . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#last-obx",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#last-obx"
-  },"109": {
+  },"108": {
     "doc": "ORU (ORU-R01)",
     "title": "Example URL:",
     "content": "https://api.retinalscreenings.com/api/PatientOrders/GetSingleResultForDisplayIn Emr?patientOrderId=12345&amp;asPdf=True&amp;isPreliminary=False&amp;auth=xxxxx . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#example-url",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#example-url"
-  },"110": {
+  },"109": {
     "doc": "ORU (ORU-R01)",
     "title": "Note 1.1:",
     "content": "IRIS will populate “&amp;” as a value instead of HL7 standard value “\\T\" for client. Upon request, IRIS can populate “\\T\\” instead of”8”. Example: . o “…?patientOrderId=273013\\T\\asPdf…” to “…?patientOrderId=273013&amp;asPdf…” . Patient MRN is displayed here: . o patientOrderId=12345 . Document type: . o aspdf=True . Document status (will always be set to False) . o isPreliminary=False . Document pointer . o auth=xxxxx . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#note-11",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#note-11"
-  },"111": {
+  },"110": {
     "doc": "ORU (ORU-R01)",
     "title": "Sample OBX segment (Encapsulated Data):",
     "content": "OBX|27|ED|||PDF^TEXT^^Base64^[ Base64 Encoded PDF]||||||F . | Field | Name and type | Sample value | Description | . | OBX-1 | Set ID - OBX (SI) | 27 | Increase sequentially by 1 | . | OBX-2 | Value Type (ID) | ED | Encapsulated Data (ED): used when an encoded PDF is configured; this configuration can be used in addition to or in lieu of the RP configuration | . | OBX-3 | Observation Identifier (CE) |   | Empty by default | . | OBX-4 | Observation Sub-Id (ST) |   | Empty by default | . | OBX-5 | Observation Value (Varies) |   |   | . |   | Encapsulated Data (ED) | PDF^TEXT^^Base64^[Base64 Encoded PDF] |   | . |   | OBX-5.1 Source application | PDF | This is the document type | . |   | OBX-5.2 Type of data | TEXT | “TEXT” is the default value | . |   | OBX-5.3 Data subtype |   | Empty by default | . |   | OBX-5.4 Encoding | Base64 | Always “Base64” which matchesthe encoding | . |   | OBX-5.4 Data (ST) | See Note 2.0 Below | Actual PDF data using base64 encoding mechanism | . | OBX-6 | Units (CE) |   | Empty by default | . | OBX-7 | References Range (ST) |   | Empty by default | . | OBX-8 | Abnormal Flags (IS) |   | Empty by default | . | OBX-9 | Probability (NM) |   | Empty by default | . | OBX-10 | Nature of Abnormal Test (ID) |   | Empty by default | . | OBX-11 | Observation Result Status (ID) | F | F = Final, C = Corrected* | . Note 2.0: This will contain a Base64 encoded pdf document. An example can be provided upon request. back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#sample-obx-segment-encapsulated-data",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#sample-obx-segment-encapsulated-data"
-  },"112": {
+  },"111": {
     "doc": "ORU (ORU-R01)",
     "title": "Example Messages",
     "content": "Example A . MSH|^\\~\\&amp;|IRIS|IRIS|Vendor|Vendor|20191220174508||ORU^R01|191220174508|T|2.3 PID||Test2106462|Test2106462||TestLN^TestFN||19630130|M||||||||||293907374| PV1|1|O|WRSIM||||FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI|FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI|||||||||FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI||293907374|||||||||||||||||||||||||20191220054252|20191220054252 ORC|RE|111997409|799248^IRIS||F||||20191220174508|||FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI OBR|1|111997409|799248^IRIS|^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO|||20191220054252|||||||20191220054252||FakeNPInum^DocLastName^ROBERT^^^MD^M D^^^^^^NPI||||||20191220054412|||F|||||||adiaz@retinalscreenings.com^Diaz^Adam^^Adam Diaz, MD, NPI: NPI0987654, Taxonomy: 207W00000X OBX|1|ST|SEVERITY^^IRIS|1|NORMAL||||||F OBX|2|ST|RIGHTDIABRETIN^^IRIS|2|None||||||F OBX|3|ST|RIGHTMACEDEMA^^IRIS|3|None||||||F OBX|4|ST|RIGHTOTHERRETIN^^IRIS|4|None||||||F OBX|5|ST|RIGHTQUALAPP^^IRIS|5|Gradable Image||||||F OBX|6|ST|LEFTDIABRETIN^^IRIS|6|None||||||F OBX|7|ST|LEFTMACEDEMA^^IRIS|7|None||||||F OBX|8|ST|LEFTOTHERRETIN^^IRIS|8|None||||||F OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradable Image||||||F OBX|10|FT|Result^^IRIS|001|Retinal Study Result for TestFN TestLN||||||F OBX|11|FT|Result^^IRIS|002|||||||F OBX|12|FT|Result^^IRIS|003|TestFN TestLN, a 56 y/o, M (DOB: 01-30-1963, MRN: Test2106462)||||||F OBX|13|FT|Result^^IRIS|004|presented to Iris Test Client on 12-20-2019 for a retinal imaging study of the left and right eyes.||||||F OBX|14|FT|Result^^IRIS|005|||||||F OBX|15|FT|Result^^IRIS|006|Based on the findings of the study, the following is recommended for TestFN TestLN||||||F TestFN TestLN||||||F OBX|16|FT|Result^^IRIS|007|Normal Scan: Please advise the patient to return for a scan in 12 months.||||||F OBX|17|FT|Result^^IRIS|008|||||||F OBX|18|FT|Result^^IRIS|009|Interpreting Provider's Comments: No comments provided||||||F OBX|19|FT|Result^^IRIS|010|||||||F OBX|20|FT|Result^^IRIS|011|Right eye findings: Normal Result. Negative for Diabetic Retinopathy.||||||F OBX|21|FT|Result^^IRIS|012|||||||F OBX|22|FT|Result^^IRIS|013|Left eye findings: Normal Result. Negative for Diabetic Retinopathy.||||||F OBX|23|FT|Result^^IRIS|014|||||||F OBX|24|FT|Result^^IRIS|015|||||||F OBX|25|FT|Result^^IRIS|016|This result was electronically signed by Diaz, Adam, on 12-20-2019 05:44:12 UTC time.||||||F OBX|26|FT|Result^^IRIS|017|||||||F OBX|27|FT|Result^^IRIS|018|NOTE: Any pathology noted on this diabetic retinal evaluation should be confirmed by an appropriate ophthalmic examination.||||||F OBX|27|ED|||PDF^TEXT^^Base64^&amp;#36;{ENCODED DOCUMENT REMOVED}||||||F . Example B . MSH|^\\~\\&amp;|IRIS|IRIS|Vendor|Vendor|20191223193115||ORU^R01|191223193115|P|2.3 PID||MRNtest123|MRNtest123||TESTB^IRIS||19391126|F||||||||||123456789| PV1|1|O|WRSIM||||NPI5556666^DocLastName^MAZHAR^^^MD^MD^^^^^^NPI|NPI5556666^DocLastName^MAZHAR^^^MD^MD^^^^^^NPI|||||||||NPI5556666^DocLastName^MAZHAR^^^MD^MD^^^^^^NPI||123456789|||||||||||||||||||||||||20191223012424|20191223012424 ORC|RE|12378912|799932^IRIS||F||||20191223193115|||NPI5556666^DocLastName^MAZHAR^^^MD^MD^^^^^^NPI OBR|1|12378912|799932^IRIS|^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO|||20191223012424|||||||20191223012424||NPI5556666^DocLastName^MAZHAR^^^MD^M D^^^^^^NPI||||||20191223012555|||F|||||||1234567890^Diaz^Adam^^^MD^MD^^^^^^NPI OBX|1|ST|SEVERITY^^IRIS|1|CRITICAL|||AA|||F OBX|2|ST|LEFTDIABRETIN^^IRIS|2|Severe|||AA|||F OBX|3|ST|LEFTMACEDEMA^^IRIS|3|Severe|||AA|||F OBX|4|ST|LEFTOTHERRETIN^^IRIS|4|Suspected Vein Occlusion|||A|||F OBX|5|ST|LEFTQUALAPP^^IRIS|5|Gradable Image||||||F OBX|6|ST|RIGHTDIABRETIN^^IRIS|6|Moderate|||A|||F OBX|7|ST|RIGHTMACEDEMA^^IRIS|7|Moderate|||A|||F OBX|8|ST|RIGHTOTHERRETIN^^IRIS|8|Suspected Dry AMD|||A|||F OBX|9|ST|RIGHTQUALAPP^^IRIS|9|Gradable Image||||||F OBX|10|FT|Result^^IRIS|001|Retinal Study Result for IRIS TESTB||||||F OBX|11|FT|Result^^IRIS|002|||||||F OBX|12|FT|Result^^IRIS|003|IRIS TESTB, a 80 y/o, F (DOB: 11-26-1939, MRN: MRNtest123)||||||F OBX|13|FT|Result^^IRIS|004|presented to Southcoast Health - WRS Internal Medicine on 12-23-2019 for a retinal imaging study of the left and right eyes.||||||F OBX|14|FT|Result^^IRIS|005|||||||F OBX|15|FT|Result^^IRIS|006|Based on the findings of the study, the following is recommended for IRIS TESTB||||||F OBX|16|FT|Result^^IRIS|007|Next Available Appointment: Refer patient to a retina specialist, next available appointment.||||||F available appointment.||||||F OBX|17|FT|Result^^IRIS|008|||||||F OBX|18|FT|Result^^IRIS|009|Interpreting Provider's Comments: No comments provided||||||F OBX|19|FT|Result^^IRIS|010|Diagnoses Present: E11.3311 - Type 2 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema, right eye||||||F OBX|20|FT|Result^^IRIS|011|E11.3412 - Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema, left eye||||||F OBX|21|FT|Result^^IRIS|012|||||||F OBX|22|FT|Result^^IRIS|013|Right eye findings: Diabetic Retinopathy: Moderate||||||F OBX|23|FT|Result^^IRIS|014|Macular Edema: Moderate||||||F OBX|24|FT|Result^^IRIS|015|Other: Suspected Dry AMD||||||F OBX|25|FT|Result^^IRIS|016|||||||F OBX|26|FT|Result^^IRIS|017|Left eye findings: Diabetic Retinopathy: Severe||||||F OBX|27|FT|Result^^IRIS|018|Macular Edema: Severe||||||F OBX|28|FT|Result^^IRIS|019|Other: Suspected Vein Occlusion||||||F OBX|29|FT|Result^^IRIS|020|||||||F OBX|30|FT|Result^^IRIS|021|||||||F OBX|31|FT|Result^^IRIS|022|This result was electronically signed by Diaz, Adam, on 12-23-2019 07:25:55 UTC time.||||||F 07:25:55 UTC time.||||||F OBX|32|FT|Result^^IRIS|023|||||||F OBX|33|FT|Result^^IRIS|024|NOTE: Any pathology noted on this diabetic retinal evaluation should be confirmed by an appropriate ophthalmic examination.||||||F OBX|34|RP|LINK^^PDFLINK|34|https://api.retinalscreenings.com/api/PatientOrders/GetSingleResultFo rDisplayInEmr?patientOrderId=799932\\T\\asPdf=True\\T\\isPreliminary=False\\T\\auth=6DCAFF6AC2A555F 00F9E470D221B6A077C3497A668B1EEBBB4983C8D98672F8FBA00707190026B817325C2A088725B5A0E5D7AB659AC0790C1C1D22B2C50F897\\T\\asAddendum=False||||||F . Example C . MSH|^\\~\\&amp;|IRIS|IRIS|Vendor|Vendor|20200103185623||ORU^R01|200103185623|T|2.3 PID||15852|15852||Tester^Patient1||19990312|M||||||||||| PV1|1|O|Iris Test Client||||aalderman@retinalscreenings.com^Alderman^Allan^^^PhD^PhD^^^^^^NPI|aalderman@reti nalscreenings.com^Alderman^Allan^^^PhD^PhD^^^^^^NPI|||||||||aalderman@retinalscreenings.co m^Alderman^Allan^^^PhD^PhD^^^^^^NPI||Encounter|||||||||||||||||||||||||20191218044543|20191218044543 ORC|RE|7e39fa9b-27d6-4792-87692f9f422f187a|797619^IRIS||F||||20200103185623|||aalderman@retinalscreenings.com^Alderman^A llan^^^PhD^PhD^^^^^^NPI OBR|1|7e39fa9b-27d6-4792-8769-2f9f422f187a|797619^IRIS|92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO|||20191218044543|||||||20191218044543||aalderman@retinalscreenings.com^Alderman^A llan^^^PhD^PhD^^^^^^NPI||||||20191220023008|||F|||||||NPIorCredentials^LastName^Ryan^20191220023008^LastName Carter, MD, NPI: 1902127947, Taxonomy: 207W00000X OBX|1|ST|SEVERITY^^IRIS|1|NORMAL||||||F OBX|2|ST|LEFTDIABRETIN^^IRIS|2|None||||||F OBX|3|ST|LEFTMACEDEMA^^IRIS|3|None||||||F OBX|4|ST|LEFTOTHERRETIN^^IRIS|4|None||||||F OBX|5|ST|LEFTQUALAPP^^IRIS|5|Gradable Image||||||F OBX|6|ST|RIGHTDIABRETIN^^IRIS|6|None||||||F OBX|7|ST|RIGHTMACEDEMA^^IRIS|7|None||||||F OBX|8|ST|RIGHTOTHERRETIN^^IRIS|8|None||||||F OBX|9|ST|RIGHTQUALAPP^^IRIS|9|Gradable Image||||||F NTE|1|ST|Retinal Study Result for Patient1 Tester||||||||F NTE|2|ST|||||||||F NTE|3|ST|Patient1 Tester, a 20 y/o, M (DOB: 03-12-1999, MRN: 15852)||||||||F NTE|4|ST|presented to Iris Test Client on 12-18-2019 for a retinal imaging study of the left and right eyes.||||||||F NTE|5|ST|||||||||F NTE|6|ST|Based on the findings of the study, the following is recommended for Patient1 Tester||||||||F NTE|7|ST|Normal Scan: Please advise the patient to return for a scan in 12 months.||||||||F NTE|8|ST|||||||||F NTE|9|ST|Interpreting Provider's Comments: No comments provided||||||||F NTE|10|ST|||||||||F NTE|11|ST|Right eye findings: Normal Result. Negative for Diabetic Retinopathy.||||||||F NTE|12|ST|||||||||F NTE|13|ST|Left eye findings: Normal Result. Negative for Diabetic Retinopathy.||||||||F NTE|14|ST|||||||||F NTE|15|ST|||||||||F NTE|16|ST|This result was electronically signed by LastName, Ryan, MD, NPI: NPIorCredentials, Taxonomy: 207W00000X on 12-20-2019 02:30:08 UTC time.||||||||F NTE|17|ST|||||||||F NTE|18|ST|NOTE: Any pathology noted on this diabetic retinal evaluation should be confirmed by an appropriate ophthalmic examination.||||||||F . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#example-messages",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#example-messages"
-  },"113": {
+  },"112": {
     "doc": "ORU (ORU-R01)",
     "title": "Revision History",
     "content": "| Row No. | Revision Date | Version Update | Revision Notes | . | 1 | Sept. 26, 2018 | Version 1.0 | Initial documentation creation Updated version | . | 2 | Oct. 3, 2018 | Version 2.0 | Corrected typos in several segment section descriptions Added footnotes to some sections to add additional descriptions (where applicable) Added “Examples” section Updated version | . | 3 | Jan. 8, 2019 | Version 2.1 | Added a “Revision History” section Updated version | . | 4 | Jan. 3, 2020 | Version 2.2 | Updated examples and improved readability Corrected grammatical typos | . | 5 | Jan. 21, 2020 | Version 2.3 | Added criteria for an optional DG1 segment Updated version | . | 6 | Jun. 6, 2021 | Version 2.4 | Updated version | . | 7 | Aug. 31, 2021 | OBS | Moving to OBS – will re-implement as TEC document | . | 8 | Aug 31, 2021 | TEC 005, Rev A | Re-implemented as TEC document | . | 9 | Sep. 22, 2023 | Version 2.5 | Removed version from Acknowledgement section. Updated PID.19 description. Updated PV1.7.13, PV1.8.13, and PV1.17.13 descriptions. Updated ORC.12.13 description. Updated OBR.4 description. Updated OBX Summary description. Updated all OBX.11 descriptions. Updated Other descriptions (OBX.5). Corrected typos in Text Report description (OBX.5). Updated Version. | . back to Table of Contents . ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/#revision-history",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/#revision-history"
-  },"114": {
+  },"113": {
     "doc": "ORU (ORU-R01)",
     "title": "ORU (ORU-R01)",
     "content": " ",
     "url": "/IntegrationDocumentation/docs/integration/TEC_007_Rev_C_Standard_Results/",
     
     "relUrl": "/docs/integration/TEC_007_Rev_C_Standard_Results/"
-  },"115": {
+  },"114": {
     "doc": "HL7 Messages",
     "title": "HL7 Messages",
     "content": "Content is passwed between IRIS and your system through standard HL7 encoded messages for receiving orders and returning results. Orders are submitted from your system using the standard HL7 ORM Message. Results are returned as one or more HL7 ORU Messages. IRIS also supports sending DFT and MDM messages on completed results. ",
     "url": "/IntegrationDocumentation/docs/integration/hl7messages/",
     
     "relUrl": "/docs/integration/hl7messages/"
-  },"116": {
+  },"115": {
     "doc": "Home",
     "title": "Integrating to the IRIS Platform",
     "content": "The IRIS platform is built with a rich set of integration tools that allows you to operate from your unique platform using the devices you choose. We are committed to following already adopted standards whenever possible while providing custom solutions where those standards fall short. These tools are segmented into two categories: Device and Order Processing. ",
     "url": "/IntegrationDocumentation/#integrating-to-the-iris-platform",
     
     "relUrl": "/#integrating-to-the-iris-platform"
-  },"117": {
+  },"116": {
     "doc": "Home",
     "title": "Devices",
     "content": "Fundus Cameras . IRIS provides varying levels of integration to most Fundus Cameras. The notable exception is Welch Allyn, whose devices are designed to restrict use outside their network. There are two main points of integration with Cameras: Worklists and Images. The best and most reliable workflow is one in which the patients are available for selection from the camera user interface, without the operator being required to manually enter them. | Orders are submitted to IRIS via Order Processing Integration | Cameras, linked to Site/Departments or Operators, present the patient list | Images are submitted with embedded order details | . The primary and preferred form of camera integration is through DICOM. Generally speaking, you will find DICOM support on most desktop cameras. When DICOM is not available, desktop cameras typically provide some form of file system sharing. Handheld cameras are integrated in a variety of ways. For specific details on all cameras go to our Supported Fundus Cameras page. OCT Cameras . IRIS provides integration with OCT Cameras via DICOM. For information on specific OCT devices contact IRIS sales support. ",
     "url": "/IntegrationDocumentation/#devices",
     
     "relUrl": "/#devices"
-  },"118": {
+  },"117": {
     "doc": "Home",
     "title": "Order Processing",
     "content": "While the IRIS platform is fully operable through a rich suite of web based tools, a more seamless workflow can be achieved through integration to your own platform. There are two main points of integration: Submission and Delivery. Order Submission is the process of submitting patients/orders to IRIS from your system. This can be as simple as the uploading of a spreadsheet, or as detailed as the implementation of an HL7 interface. Results Delivery is the process of returning the result of an exam to your system (and/or related endpoints). As with Submissions, there are a wide breadth of options available to meet your specific needs. Which integration option is best for me? . By Business Sector . | Primary Care (small) see Basic Integrations page | Primary Care (large), IDN, FQHC see EMR Integrations page | Home Health Care see Cloud Direct Integrations page | Retail / Kiosk see Cloud Direct Integrations page | Payers see Cloud Direct Integrations and/or Basic Integrations page | . By Technology . | For basic integrations revolving around file drops, SFTP or options that suppliment manual workflows, navigate to the Basic Integrations page | If you are using a mainstream EMR/EHR (HL7 integrations) navigate to the EMR Integrations page | If you are using a Cloud based EMR/EHR Provider (Athena, OCHIN,etc…) navigate to the SAAS (Cloud) EMR Integrations page | If you are considering developing software, using batch oriented operations from your platform, using tools from a cloud based platform such as Salesforce, or any other custom type integration navigate to the Cloud Direct Integrations page | . ",
     "url": "/IntegrationDocumentation/#order-processing",
     
     "relUrl": "/#order-processing"
-  },"119": {
+  },"118": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
