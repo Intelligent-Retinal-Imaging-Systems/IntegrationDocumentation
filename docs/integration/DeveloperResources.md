@@ -6,8 +6,8 @@ parent: Cloud Direct
 # Developer Resources
 IRIS Provides examples and libraries for cloud direct integrations.  
 
-- Coding examples can be found on github
-- Source code can be found on github
+- Coding examples can be found on GitHub
+- Source code can be found on GitHub
 - Libraries are made accessible through online repositories relative to the development environment
 
 
