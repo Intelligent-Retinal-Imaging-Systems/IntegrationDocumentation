@@ -1,6 +1,6 @@
 ---
 title: EMR Integrations
-nav_order: 3
+parent: Order Processing Integration
 ---
 
 # EMR Integrations
