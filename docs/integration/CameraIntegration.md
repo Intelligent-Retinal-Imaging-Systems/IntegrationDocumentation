@@ -4,7 +4,8 @@ nav_order: 2
 ---
 
 
-#Camera Integration with IRIS
+# Camera Integration with IRIS
+
 IRIS supports a variety of intake workflows in order to submit images and have them applied to orders. 
 
 There are two main points of integration with Cameras: Worklists and Images.  
