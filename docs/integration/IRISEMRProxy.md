@@ -1,5 +1,6 @@
 ---
 title: IRIS EMR Proxy
+parent: Order Processing Integration
 ---
 # IRIS EMR Proxy
 

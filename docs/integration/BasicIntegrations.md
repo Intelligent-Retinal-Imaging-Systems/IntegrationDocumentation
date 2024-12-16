@@ -1,6 +1,6 @@
 ---
 title: Basic Integrations
-nav_order: 2
+parent: Order Processing Integration
 ---
 
 # Basic Integrations
