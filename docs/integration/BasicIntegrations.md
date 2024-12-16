@@ -4,7 +4,7 @@ nav_order: 2
 ---
 
 # Basic Integrations
-IRIS provides a variety of tools to allow basic integration services that may supplement or cover specific requirements.
+IRIS provides a variety of tools to allow basic integration services that may supplement or cover specific requirements.  
 
 ## Use case examples
 - Receiving PDF reports as orders are completed
@@ -30,3 +30,11 @@ Results can be delivered to an SFTP site you provide access to.
 - You may specify a single directory level that is used for all results
 - File names are template based and can include tokens dynamically swapped from details of the order.  
 - You must register an individual to be a contact point for delivery failures
+
+To use SFTP Delivery, Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a>
+
+
+## Fax
+IRIS Can send your results to one or more fax numbers.
+
+To setup fax delivery, contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a>

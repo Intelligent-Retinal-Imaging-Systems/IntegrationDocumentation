@@ -152,7 +152,7 @@ Before you can submit an order using Cloud Direct services, the are several piec
 
 ### Orders Service Bus Connection String 
 
-Because orders are only submitted on a service bus that lives within the Iris Azure subscription, you must obtain the connection string from Iris. This connection string has write-only privileges. To obtain the connection string contact IRIS Support at support@irishelp.zendesk.com. 
+Because orders are only submitted on a service bus that lives within the Iris Azure subscription, you must obtain the connection string from Iris. This connection string has write-only privileges. To obtain the connection string contact Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a>. 
 
 ### Organization Identifier
 Created by IRIS during provisioning, this is a GUID value passed into all order submissions, uniquely identifying your organization.
