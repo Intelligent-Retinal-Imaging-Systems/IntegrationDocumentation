@@ -10,8 +10,8 @@ The following is a JSON encoded event confirming creation of an order resulting 
 
 ```javascript
 {
-    "TransactionId": null,
-    "Timestamp": null,
+    "TransactionId": "CCB9F08D-29AA-446F-96F0-3018B20803E8",
+    "Timestamp": "2022-01-02T17:42:18.6936779+00:00",
     "IrisOrderId": 1224035,
     "OrderLocalId": "a52b6bed-5b77-4e42-ad7c-203bc6d2ea16",
     "PatientLocalId": "35165564",
@@ -26,8 +26,8 @@ This example shows the receipt and application of an image to an order
 
 ```javascript 
 {
-    "TransactionId": null,
-    "Timestamp": null,
+    "TransactionId": "DB816B37-07EC-43D0-9848-70BEC36F4024",
+    "Timestamp": "2022-01-02T17:42:18.6936779+00:00",
     "ImageLocalId": "52737144-4ed2-42f8-8801-af9da52fcb28",
     "IrisImageId": 3677459,
     "IrisOrderId": 1225564,
