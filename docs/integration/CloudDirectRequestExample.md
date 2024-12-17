@@ -5,6 +5,8 @@ nav_order: 1
 ---
 
 # Sample OrderRequest Message
+The following is an example of a JSON encoded representation of an Order Request.
+It is not necessary to hydrate properties with *null*.  It is done so below for display reasons only. 
 
 ```javascript
 {
