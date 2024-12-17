@@ -1,6 +1,7 @@
 ---
 title: Developer Resources
 parent: Cloud Direct 
+nav_order: 2
 ---
 
 # Developer Resources
