@@ -207,7 +207,6 @@ The OrderRequest models contains the following properties
 
 The Site structure is primarily used to identify the site the order is to be associated with. If your organization is configured as such, sites can be dynamically added, therefore additional properties are provided to supply the required information. If you don’t require automatic site additions, simply provide the LocalId. 
 
-#### Properties
 
 | Property | Type | Description 
 | -- | -- | -- 
@@ -219,7 +218,6 @@ The Site structure is primarily used to identify the site the order is to be ass
 
 When an order is to be assigned to a camera or Image directives are included with the order, populate this structure. If the camera already exists and you are not providing image directives, you only need to supply the LocalId. Other than the Images structure, the remaining properties are provided in the event your organization allows automatic Camera additions. 
 
-#### Properties
 
 | Property | Type | Description 
 | -- | -- | -- 
@@ -241,8 +239,6 @@ The Images array is an array of Image structures that provides details including
 
 The Image structure allows you to specify details including the storage location where an image file can be retrieved. At this time, image retrieval is only supported in Azure Blob Storage. 
 
-#### Properties
-
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | LocalId | string | Id as specified by the submitting organization
@@ -258,7 +254,6 @@ The Image structure allows you to specify details including the storage location
 
 Files in Azure Blob storage are specified by a container and filename. The Blob Storage Location in Azure is specific to an Azure Blob Storage resource of which connectivity access is specified in the Administrator application.  
 
-#### Properties
 
 | Property | Type | Description
 | -- | -- | --
@@ -269,7 +264,6 @@ Files in Azure Blob storage are specified by a container and filename. The Blob 
 
 The RequestProvider structure allows you to specify various Providers associated with the exam. If the provider has previously been submitted and was done so with NPI, you only need to include the NPI value in the submission
 
-#### Properties
 
 | Property | Type | Description
 | -- | -- | --
@@ -314,8 +308,6 @@ What you provide in the Order structure is highly dependent on your workflow. Wh
 
 The Iris system allows only one open order per patient/evaluation type combination. When using the LocalId, previous (open) orders could automatically be cancelled in favor of the newer order. For this reason, it is recommended that you supply the LocalId field so the system can more clearly identify when cancellations are the desired outcome. 
 
-#### Properties
-
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | EvaluationTypes | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the Iris system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD
@@ -338,8 +330,6 @@ If your workflow is based on a Health Plan, this structure may be included in th
 
 If your workflow includes PCP results delivery, you may specify that Provider here.
 
-#### Properties
-
 | Property | Type | Description
 | -- | -- | -- 
 | LocalId | string | Id of Plan as specified by the submitting organization 
@@ -349,8 +339,6 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | PrimaryCareProvider | [PCP](#primary-care-provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
 ### Primary Care Provider structure 
-
-#### Properties
 
 | Property | Type | Description
 | -- | -- | -- 
@@ -438,7 +426,7 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 
 # OrderResults Object Model
 
-### Root Properties 
+## Root Properties 
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -461,8 +449,6 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 
 Depending on your workflow the IRIS system will provide a Report of the examination. The report is available in various formats.
 
-### Properties
-
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | Type | options | Identifier of the result format | PDF, HTML, ORU 
@@ -471,8 +457,6 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 
 ## Results Order structure 
 Contains raw order detail from submission
-
-### Properties
 
 | Property | Type | Description
 | -- | -- | -- 
@@ -496,8 +480,6 @@ Contains raw order detail from submission
 ## ImageDetails structure 
 This structure contains a summary of the images collected for the exam.
 
-### Properties
-
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | TotalCount |int | Total count of all images attached to the order 
@@ -513,8 +495,6 @@ This structure contains a summary of the images collected for the exam.
 
 ## Results Patient structure
 Raw patient details for exam
-
-### Properties
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -535,8 +515,6 @@ Array of Result Image structures that provides details of each image attached to
 
 Contains details of an individual image attached to the order.
 
-### Properties
-
 | Property | Type | Description 
 | -- | -- | -- 
 | LocalId | string | Id as specified by the submitting organization 
@@ -553,8 +531,6 @@ Contains details of an individual image attached to the order.
 ## Result Camera structure 
 Details of the camera that took the image. 
 
-### Properties
-
 | Property | Type | Description 
 | -- | -- | -- 
 | LocalId | string | Typically this is the serial number of the Camera. Because Iris supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with Iris to find the proper value to supply here. 
@@ -568,8 +544,6 @@ Details of the camera that took the image.
 
 ## Gradings structure 
 Contains raw details of grading
-
-### Properties
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -587,8 +561,6 @@ Contains raw details of grading
 ## CameraOperator structure
 Details of the technician who captured the images for the order.
 
-### Properties
-
 | Property | Type | Description 
 | -- | -- | -- 
 | UserName | string | UserName as known by IRIS system
@@ -596,8 +568,6 @@ Details of the technician who captured the images for the order.
 | Notes | Array of [Note](#note-structure) | notes added by the performing operator
 
 ## HealthPlan structure 
-
-### Properties
 
 | Property | Type | Description 
 | -- | -- | -- 
@@ -611,8 +581,6 @@ Array containing zero or more notes added by the related user
 ## Note structure 
 Structure containing metadata and content of a free form note
 
-### Properties
-
 | Property | Type | Description 
 | -- | -- | -- 
 | Date | datetime | When the note was entered
@@ -620,8 +588,6 @@ Structure containing metadata and content of a free form note
 
 ## EyeSideGrading structure 
 Structure containing grading details for one eye side
-
-### Properties
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -635,8 +601,6 @@ Array of the Finding structure containing findings from the grader for the speci
 ## Finding structure 
 Structure containing details of finding
 
-### Properties
-
 | Property | Type | Description 
 | -- | -- | -- 
 | Finding | string | Type of pathology noted (e.g.: Diabetic Retinopathy) 
@@ -647,8 +611,6 @@ Structure containing details of finding
 ## Name structure
 Common structure used for storing names
 
-### Properties
-
 | Property | Type | Description
 | -- | -- | --
 | First | string | Persons first (given) name
@@ -656,8 +618,6 @@ Common structure used for storing names
 
 ## Address structure 
 Common structure used for storing addresses
-
-### Properties
 
 | Property | Type | Description
 | -- | -- | --
@@ -670,121 +630,12 @@ Common structure used for storing addresses
 ## PersonGender structure 
 Common structure used for storing gender designations
 
-### Properties
-
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | Context | options | Gender association | [GenderContext](#gendercontext-options) options 
 | Gender | options | The gender for specified context | [Gender](#gender-options) options
   
----
-
-# Appendix A 
-
-### Option Enumerations 
-
-## GenderContext Options
-
-| Value | Description | Numeric value
-| -- | -- | --
-| Unknown |  Not set | 0
-| IdentityGender | Gender individual identifies as | 1
-| BirthGender | Gender individual was designated at birth | 2
-
-## Race Options
-
-You may use any of the HL7 Ethnicity codes listed on <a href="https://terminology.hl7.org/6.1.0/CodeSystem-v3-Race.html">Hl7 Coding: Race</a>
-
-### Example values
-
-| Value | Description
-| -- | --
-| 1002-5 | American Indian or Alaska Native 
-| 2028-9 | Asian 
-| 2054-5 | Black or African American 
-| 2076-8 | Native Hawaiian or Other Pacific Islander 
-| 2131-1 | Other Race 
-| 2106-3 | White 
-
-## Ethnicity Options 
-
-### Example values
-
-You may use any of the HL7 Ethnicity codes listed on <a href="http://terminology.hl7.org/CodeSystem/v3-Ethnicity">Hl7 Coding: Ethnicity</a>
-
-Specify the Code portion only when populating the Ethnicity field. 
-
-Here is an abbreviated list: 
-
-| Value | Description
-| -- | --
-| 2137-8 | Spaniard 
-| 2148-5 | Mexican
-| 2155-0 | Central American 
-| 2180-8 | Puerto Rican 
-| 2182-4 | Cuban 
-| 2149-3 | Mexican American 
-
-## Language Options
-
-You may use any of the HL7 Language codes listed on <a href="https://www.hl7.org/fhir/valueset-languages.html">Hl7 Coding: Languages</a>
-
-### Example values
-
-| Value | Description
-| -- | --
-| en | English 
-| en-US | US English 
-| fr | French 
-| es | Spanish
-| it | Italian 
-| pt | Portuguese 
-| zh | Chinese 
-
-## Gender Options 
-
-Use the abbreviated code only when populating the Gender field. 
-
-| Value | Description
-| -- | --
-| U | Unspecified 
-| M | Male 
-| F | Female 
-| N | Non binary 
-| O | Other 
-| TM | Transgender Male 
-| TF | Transgender Femail 
-| ND | Non disclosed 
-
-## Marital Status Options 
-
-Items in this list are based on the HL7 standard here: http://terminology.hl7.org/CodeSystem/v3-MaritalStatus 
-
-| Value | Description
-| -- | --
-| A | Annulled 
-| D | Divorced 
-| C | Common Law 
-| I | Interlocutory 
-| L | Legally Separated 
-| M | Married 
-| P | Polygamous 
-| S | Never Married 
-| T | Domestic partner 
-| W | Widowed 
-
-## Result Code Options
-
-One of the following codes will be specified on the results which identifies the context in which it was sent: 
-
-| Value | Description
-| -- | --
-| A | Addendum 
-| C | Correction 
-| F | Final 
-| P | Preliminary 
-| R | Resend 
-
+ 
 ---
 
 # Appendix B
