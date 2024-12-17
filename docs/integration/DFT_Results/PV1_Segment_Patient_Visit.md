@@ -87,4 +87,4 @@ PV1|1|O|POC01||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^MD^^^^^^N
 | PV1-51 | Visit Indicator (IS) |  | Empty by default
 | PV1-52 | Other Healthcare Provider (XCN) |  | Empty by default
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/index.md)
+[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)

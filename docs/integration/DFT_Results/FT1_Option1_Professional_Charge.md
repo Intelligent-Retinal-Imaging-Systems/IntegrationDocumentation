@@ -65,4 +65,4 @@ FT1|1||273013|20170410145901|20170410151351|CG|92250^Fundus photography with int
 |  | FT1-25.3 Name of Coding System | CPT | Always "CPT"
 | FT1-26 | Procedure Code Modifier (CE) | Null, NC | Empty unless not charging for “Ungradable” exams. In such cases, the modifier “NC” can be sent.
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/index.md)
+[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)

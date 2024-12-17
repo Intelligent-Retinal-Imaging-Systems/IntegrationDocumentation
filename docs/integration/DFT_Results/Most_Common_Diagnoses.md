@@ -34,4 +34,4 @@
 
 
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/index.md)
+[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)
