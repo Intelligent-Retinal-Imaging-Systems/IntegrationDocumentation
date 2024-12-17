@@ -1,3 +1,7 @@
+---
+title: DFT 
+parent: HL7 Messages
+---
 ## Example Messages
 
 **Example A:** 
