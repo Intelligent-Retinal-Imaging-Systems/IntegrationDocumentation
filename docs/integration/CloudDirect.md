@@ -372,6 +372,7 @@ Events with the ResultObjectType of OrderCreationReceipt contain details of an  
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
 
 #### OrderCreationReceipt Additional Properties
+
 | Property | Data type | Description
 | -- | -- | --
 | IrisOrderId | int | Id of order as created and known by IRIS
@@ -385,6 +386,7 @@ Events with the ResultObjectType of ImageReceipt contain details of an image sub
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
 
 #### ImageReceipt Additional Properties
+
 | Property | Data type | Description
 | -- | -- | --
 | IrisOrderId | int | Id of order as created and known by IRIS
@@ -399,6 +401,7 @@ Events with the ResultObjectType of GradingReceipt contain details of a grading 
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
 
 #### GradingReceipt Additional Properties
+
 | Property | Data type | Description
 | -- | -- | --
 | IrisOrderId | int | Id of order as created and known by IRIS
