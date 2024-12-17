@@ -347,6 +347,65 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | Name | [Name](#name-structure) structure | Providers name
 | FaxNumber | phone | If so configured, can be used in results delivery
 
+# Order and Image Events
+Because Service Bus based integrations are asynchronous, IRIS provides events on a different queue as different operations are processed.  
+
+See [Sample Events](/IntegrationDocumentation/docs/integration/CloudDirectEventSample/) for example event messages.
+
+All messages contain a common set of base properties 
+
+| Property | Data type | Description
+| -- | -- | --
+| TransactionId | GUID | Uniquely identifies the message
+| Timestamp | datetimeoffset | Datetime message was posted to the queue
+| Success | bool | If true the operation succeeded
+| ErrorMessage | string | If Success is false, this could contain details of the error
+| ResultObjectType | string | Identifies the type of event object this is to establish additional properties 
+| Version | string | Message version
+
+## ResultObjectType Types 
+Messages sent on the events queue can be of varying types all based on the common properties detailed above. 
+
+### OrderCreationReceipt
+Events with the ResultObjectType of OrderCreationReceipt contain details of an  order you recently posted to the service bus queue. 
+
+*As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
+
+#### OrderCreationReceipt Additional Properties
+| Property | Data type | Description
+| -- | -- | --
+| IrisOrderId | int | Id of order as created and known by IRIS
+| OrderLocalId | string | Id of order as specified by you on submission
+| PatientLocalId | string | Id of the patient as specified by you on submission
+
+
+### ImageReceipt
+Events with the ResultObjectType of ImageReceipt contain details of an image submission operation.  
+
+*As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
+
+#### ImageReceipt Additional Properties
+| Property | Data type | Description
+| -- | -- | --
+| IrisOrderId | int | Id of order as created and known by IRIS
+| OrderLocalId | string | Id of order as specified by you on submission
+| PatientLocalId | string | Id of the patient as specified by you on submission
+| ImageLocalId | string | Id of the image as specified by you on submission
+| IrisImageId | int | Id of image as created and known by IRIS 
+
+### GradingReceipt
+Events with the ResultObjectType of GradingReceipt contain details of a grading operation.
+
+*As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
+
+#### GradingReceipt Additional Properties
+| Property | Data type | Description
+| -- | -- | --
+| IrisOrderId | int | Id of order as created and known by IRIS
+| OrderLocalId | string | Id of order as specified by you on submission
+| PatientLocalId | string | Id of the patient as specified by you on submission
+
+
 # Order Results
 
 Cloud direct results may be received in a variety of ways: 
