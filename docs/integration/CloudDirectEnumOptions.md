@@ -1,7 +1,7 @@
 ---
 title: Option Enumerations
 parent: Cloud Direct
-nav_order: 1
+nav_order: 3
 ---
 
 # Option Enumerations 
@@ -75,6 +75,9 @@ You may use any of the HL7 Language codes listed on <a href="https://www.hl7.org
 | TM | Transgender Male 
 | TF | Transgender Female 
 | ND | Non disclosed 
+| EQ | Exploring or Questioning
+| NL | Not listed
+| X | Not exclusively Male or Female
 
 ## Marital Status  
 
