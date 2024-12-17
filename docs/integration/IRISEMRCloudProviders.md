@@ -12,7 +12,6 @@ Most SAAS EMR providers charge transaction fees of which there are typically two
 
 
 ## Currently Supported SAAS systems
-- [Athena](https://external.ink?to=intelligent-retinal-imaging-systems.github.io/IntegrationDocumentation/docs/assets/athena.pdf)
-- [Athena](/IntegrationDocumentation/docs/integration/SAAS_EMR_Athena)
+- [Athena](https://intelligent-retinal-imaging-systems.github.io/IntegrationDocumentation/docs/athena.pdf)
 - OCHIN
 - ECW
