@@ -1,4 +1,7 @@
-
+---
+title: DFT 
+parent: HL7 Messages
+---
 ## Basic Interface Structure and Description
 
 This document outlines the values sent in an HL7 charge message (DFT-P03) from IRIS to a third-party system. This third-party system could be another application, an interface engine, or an EMR. For the purposes of this documentation, this third-party will be referred to an EMR.
