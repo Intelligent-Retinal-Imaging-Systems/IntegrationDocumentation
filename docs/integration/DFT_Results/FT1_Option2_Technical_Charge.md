@@ -65,4 +65,4 @@ FT1|2||273013|20170410145803|20170410151630|CG|92000035^OPHTHALMOSCOPY W/ FUNDUS
 
 *Basic NC and 52: NC will be used if ALL uploaded images are not gradable. 52 will be used if ONE of uploaded images is not gradable
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/index.md)
+[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)
