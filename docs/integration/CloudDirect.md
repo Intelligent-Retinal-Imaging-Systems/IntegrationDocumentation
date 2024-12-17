@@ -252,7 +252,7 @@ The Image structure allows you to specify details including the storage location
 
 ### AzureBlobStorage structure 
 
-Files in Azure Blob storage are specified by a container and filename. The Blob Storage Location in Azure is specific to an Azure Blob Storage resource of which connectivity access is specified in the Administrator application.  
+Files in Azure Blob storage are specified by a container and filename. The Blob Storage Location in Azure is specific to an Azure Blob Storage account.  The account can either be a resource in your own Azure subscription or may be provided to you by IRIS within the IRIS Azure subscription.  Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a> for more details on connection access. 
 
 
 | Property | Type | Description
