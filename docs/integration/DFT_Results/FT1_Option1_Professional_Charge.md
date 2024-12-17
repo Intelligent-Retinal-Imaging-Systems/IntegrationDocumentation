@@ -1,3 +1,8 @@
+---
+title: FT1 (Option 1) – Professional Charge
+parent: HL7 Messages
+---
+
 ## FT1 (Option 1) – Professional Charge
 
 [Back to FT1 (Option 1) – Financial Transaction](/docs/integration/DFT_Results/FT1_Option1_Financial_Transaction.md)

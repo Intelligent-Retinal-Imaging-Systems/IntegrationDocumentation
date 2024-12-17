@@ -1,5 +1,5 @@
 ---
-title: DFT 
+title: FT1 (Option 1) – CPT II Optional Extra FT1 segment 
 parent: HL7 Messages
 ---
 

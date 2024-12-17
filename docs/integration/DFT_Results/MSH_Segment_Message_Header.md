@@ -1,3 +1,8 @@
+---
+title: MSH Segment – Message Header
+parent: HL7 Messages
+---
+
 ## MSH Segment – Message Header
 
 The message header segment includes information that defines the structure of the message.

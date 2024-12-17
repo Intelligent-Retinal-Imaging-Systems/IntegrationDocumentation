@@ -1,3 +1,8 @@
+---
+title: Most Common Diagnoses
+parent: HL7 Messages
+---
+
 ## Most Common Diagnoses
 
 | ICD-10   | Description | ICD-10  | Description  |

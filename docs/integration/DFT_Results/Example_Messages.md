@@ -1,5 +1,5 @@
 ---
-title: DFT 
+title: Example Messages 
 parent: HL7 Messages
 ---
 ## Example Messages

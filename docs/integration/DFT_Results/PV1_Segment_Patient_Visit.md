@@ -1,3 +1,8 @@
+---
+title: PV1 Segment – Patient Visit
+parent: HL7 Messages
+---
+
 ## PV1 Segment – Patient Visit
 
 The patient visit segment includes patient-specific visit information.

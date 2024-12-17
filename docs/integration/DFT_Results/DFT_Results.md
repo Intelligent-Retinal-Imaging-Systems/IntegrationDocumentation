@@ -1,5 +1,5 @@
 ---
-title: DFT 
+title: Standard Charge (DFT-P03) Outbound Specifications 
 parent: HL7 Messages
 ---
 

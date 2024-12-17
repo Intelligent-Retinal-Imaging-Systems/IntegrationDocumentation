@@ -1,3 +1,7 @@
+---
+title: FT1 (Option 2) – Technical Charge
+parent: HL7 Messages
+---
 
 ## FT1 (Option 2) – Technical Charge
 

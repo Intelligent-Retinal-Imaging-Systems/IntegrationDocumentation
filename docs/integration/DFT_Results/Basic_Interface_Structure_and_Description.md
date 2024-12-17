@@ -1,5 +1,5 @@
 ---
-title: DFT 
+title: Basic Interface Structure and Description 
 parent: HL7 Messages
 ---
 ## Basic Interface Structure and Description

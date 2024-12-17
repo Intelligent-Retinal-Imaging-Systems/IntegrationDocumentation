@@ -1,3 +1,8 @@
+---
+title: PID Segment – Patient Identification
+parent: HL7 Messages
+---
+
 ## PID Segment – Patient Identification
 
 The patient identification segment will include patient-specific demographic information.

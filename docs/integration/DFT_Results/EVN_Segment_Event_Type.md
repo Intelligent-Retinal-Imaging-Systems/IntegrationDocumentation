@@ -1,5 +1,5 @@
 ---
-title: DFT 
+title: EVN Segment – Event Type 
 parent: HL7 Messages
 ---
 ## EVN Segment – Event Type
