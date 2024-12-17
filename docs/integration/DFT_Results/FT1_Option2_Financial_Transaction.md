@@ -4,4 +4,4 @@ The financial transaction segment contains the detailed data necessary to post c
 
 [**Professional Charge**](/docs/integration/DFT_Results/FT1_Option2_Professional_Charge.md)
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)
+[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/index.md)

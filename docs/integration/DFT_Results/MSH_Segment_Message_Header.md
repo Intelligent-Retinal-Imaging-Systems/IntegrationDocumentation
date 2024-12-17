@@ -24,4 +24,4 @@ MSH|^~\&|IRIS|IRIS|VENDOR|VENDOR|20170410145907||ORU^R01|170410145907|T|2.4
 
 
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)
+[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/index.md)

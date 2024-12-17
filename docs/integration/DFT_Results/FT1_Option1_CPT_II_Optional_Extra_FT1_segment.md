@@ -81,4 +81,4 @@ Low risk for retinopathy (no evidence of retinopathy in the prior year)
 
 Note –this code has been used to close the care gap when results are “Negative for Retinopathy” for two years
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)
+[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/index.md)
