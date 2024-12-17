@@ -7,7 +7,7 @@ parent: HL7 Messages
 
 ### Table of Contents
 
-- A. [Basic Interface Structure and Description](Basic_Interface_Structure_and_Description.md)
+- A. [Basic Interface Structure and Description](DFT_Results/Basic_Interface_Structure_and_Description.md)
 - B. [MSH Segment – Message Header](MSH_Segment_Message_Header.md)
 - C. [EVN Segment – Event Type](EVN_Segment_Event_Type.md)
 - D. [PID Segment – Patient Identification](PID_Segment_Patient_Identification.md)
