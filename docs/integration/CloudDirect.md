@@ -348,9 +348,9 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | FaxNumber | phone | If so configured, can be used in results delivery
 
 # Order and Image Events
-Because Service Bus based integrations are asynchronous, IRIS provides events on a different queue as different operations are processed.  
+Because Service Bus based integrations are asynchronous, IRIS posts events on an events queue to keep you apprised of important operations as they occur.  
 
-See [Sample Events](/IntegrationDocumentation/docs/integration/CloudDirectEventSample/) for example event messages.
+See [Sample Events](/IntegrationDocumentation/docs/integration/CloudDirectEventSample/) for examples of event messages.
 
 All messages contain a common set of base properties 
 
