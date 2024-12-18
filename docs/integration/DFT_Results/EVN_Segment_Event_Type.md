@@ -1,6 +1,6 @@
 ---
 title: EVN Segment – Event Type 
-parent: HL7 Messages
+parent: Standard Charge (DFT-P03) Outbound Specifications
 ---
 ## EVN Segment – Event Type
 

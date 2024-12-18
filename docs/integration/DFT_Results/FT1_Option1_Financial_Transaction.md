@@ -1,6 +1,6 @@
 ---
 title: FT1 (Option 1) – Financial Transaction
-parent: HL7 Messages
+parent: Standard Charge (DFT-P03) Outbound Specifications
 ---
 
 ## FT1 (Option 1) – Financial Transaction

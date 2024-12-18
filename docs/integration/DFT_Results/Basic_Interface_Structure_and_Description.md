@@ -1,6 +1,6 @@
 ---
 title: Basic Interface Structure and Description 
-parent: HL7 Messages
+parent: Standard Charge (DFT-P03) Outbound Specifications
 ---
 ## Basic Interface Structure and Description
 

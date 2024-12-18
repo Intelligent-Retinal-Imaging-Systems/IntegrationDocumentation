@@ -1,6 +1,6 @@
 ---
 title: PV1 Segment – Patient Visit
-parent: HL7 Messages
+parent: Standard Charge (DFT-P03) Outbound Specifications
 ---
 
 ## PV1 Segment – Patient Visit

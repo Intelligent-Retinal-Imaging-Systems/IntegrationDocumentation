@@ -1,6 +1,6 @@
 ---
 title: Most Common Diagnoses
-parent: HL7 Messages
+parent: Standard Charge (DFT-P03) Outbound Specifications
 ---
 
 ## Most Common Diagnoses

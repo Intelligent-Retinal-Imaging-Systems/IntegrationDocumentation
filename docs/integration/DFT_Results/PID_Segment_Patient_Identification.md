@@ -1,6 +1,6 @@
 ---
 title: PID Segment – Patient Identification
-parent: HL7 Messages
+parent: Standard Charge (DFT-P03) Outbound Specifications
 ---
 
 ## PID Segment – Patient Identification
