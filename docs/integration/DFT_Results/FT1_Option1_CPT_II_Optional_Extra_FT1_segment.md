@@ -74,5 +74,5 @@ FT1|2||273013|20170410145803|20170410173627|CG|3072F^No evidence of retinopathy 
 | FT1-26 | Procedure Code Modifier (CE) | Null, NC | Empty unless not charging for “Ungradable” exams. In such cases, the modifier “NC” can be sent.
 
 
-<< [FT1 (Option 1)](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Financial_Transaction) |
-[FT1 (Option 1) Professional Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Professional_Charge) >>
+← [FT1 (Option 1)](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Financial_Transaction) |
+[FT1 (Option 1) Professional Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Professional_Charge) →

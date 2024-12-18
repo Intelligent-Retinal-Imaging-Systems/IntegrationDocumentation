@@ -25,5 +25,5 @@ EVN|P03|20181005090316
 | EVN-6 | Event Occurred (TS) |  | Empty by default
 | EVN-7 | Event Facility (HD) |  | Empty by default
 
-<< [MSH Segment](/IntegrationDocumentation/docs/integration/DFT_Results/MSH_Segment_Message_Header) |
-[PID Segment - Patient Identification](/IntegrationDocumentation/docs/integration/DFT_Results/PID_Segment_Patient_Identification) >>
+← [MSH Segment](/IntegrationDocumentation/docs/integration/DFT_Results/MSH_Segment_Message_Header) |
+[PID Segment - Patient Identification](/IntegrationDocumentation/docs/integration/DFT_Results/PID_Segment_Patient_Identification) →

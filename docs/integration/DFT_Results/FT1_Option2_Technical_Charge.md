@@ -71,5 +71,5 @@ FT1|2||273013|20170410145803|20170410151630|CG|92000035^OPHTHALMOSCOPY W/ FUNDUS
 *Basic NC and 52: NC will be used if ALL uploaded images are not gradable. 52 will be used if ONE of uploaded images is not gradable
 
 
-<< [FT1 (Option 2) Financial Transaction](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Financial_Transaction) |
-[FT1 (Option 2) Professional Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Professional_Charge) >>
+← [FT1 (Option 2) Financial Transaction](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Financial_Transaction) |
+[FT1 (Option 2) Professional Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Professional_Charge) →

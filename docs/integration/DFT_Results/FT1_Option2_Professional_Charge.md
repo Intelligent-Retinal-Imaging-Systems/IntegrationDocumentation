@@ -69,5 +69,5 @@ FT1|1||273013|20170410145901|20170410151630|CG|92250^Fundus photography with int
 
 *Basic NC and 52: NC will be used if ALL uploaded images are not gradable. 52 will be used if ONE of uploaded images is not gradable
 
-<< [FT1 (Option 2) Technical Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Technical_Charge) |
-[Most Common Diagnosis](/IntegrationDocumentation/docs/integration/DFT_Results/Most_Common_Diagnoses) >>
+← [FT1 (Option 2) Technical Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Technical_Charge) |
+[Most Common Diagnosis](/IntegrationDocumentation/docs/integration/DFT_Results/Most_Common_Diagnoses) →
