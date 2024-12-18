@@ -10,7 +10,9 @@ The message header segment includes information that defines the structure of th
 
 **Sample MSH segment:**
 
+```
 MSH|^~\&|IRIS|IRIS|VENDOR|VENDOR|20170410145907||ORU^R01|170410145907|T|2.4
+```
 
 | Field   | Name and type | Sample value  | Description  |
 |:---------------|:---------------|:---------------|:---------------
@@ -27,7 +29,4 @@ MSH|^~\&|IRIS|IRIS|VENDOR|VENDOR|20170410145907||ORU^R01|170410145907|T|2.4
 | MSH-11 | Processing ID (PT) | T | P (Production) or T (Test) will be used based on the system environment
 | MSH-12 | Version ID (VID) | 2.4 | HL7 Version
 
-
-
-
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)
+[Next - EVN Segment - Event Type](/IntegrationDocumentation/docs/integration/DFT_Results/EVN_Segment_Event_Type)

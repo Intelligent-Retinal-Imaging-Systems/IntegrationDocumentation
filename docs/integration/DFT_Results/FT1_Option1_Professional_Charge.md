@@ -5,8 +5,6 @@ parent: FT1 (Option 1) – Financial Transaction
 
 ## FT1 (Option 1) – Professional Charge
 
-[Back to FT1 (Option 1) – Financial Transaction](/docs/integration/DFT_Results/FT1_Option1_Financial_Transaction.md)
-
 **Sample FT1 segment (Professional Charge):**
 
 FT1|1||273013|20170410145901|20170410151351|CG|92250^Fundus photography with interpretation and report^CPT||ITCC20170410|1|||POC01||IRIS|POC01|||E11.41^Type 2 diabetes mellitus with diabetic mononeuropathy^ICD-10-CM~E11.3592^Type 2 diabetes mellitus with proliferative diabetic retinopathy without macular edema, left eye^ICD-10-CM~H35.81^Retinal edema^ICD-10-CM|GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^MD^^^^^^NPI||2017041006^EPIC||92250^Fundus photography with interpretation and report^CPT
@@ -70,4 +68,3 @@ FT1|1||273013|20170410145901|20170410151351|CG|92250^Fundus photography with int
 |  | FT1-25.3 Name of Coding System | CPT | Always "CPT"
 | FT1-26 | Procedure Code Modifier (CE) | Null, NC | Empty unless not charging for “Ungradable” exams. In such cases, the modifier “NC” can be sent.
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)

@@ -23,4 +23,3 @@ EVN|P03|20181005090316
 | EVN-6 | Event Occurred (TS) |  | Empty by default
 | EVN-7 | Event Facility (HD) |  | Empty by default
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/index.md)

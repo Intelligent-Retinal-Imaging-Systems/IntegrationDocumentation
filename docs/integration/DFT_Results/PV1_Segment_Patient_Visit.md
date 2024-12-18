@@ -10,7 +10,9 @@ The patient visit segment includes patient-specific visit information.
 
 **Sample PV1 segment:**
 
+```
 PV1|1|O|POC01||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^MD^^^^^^NPI|||||||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|||||||||||||||||||||||||||20170410145803|20170410145803
+```
 
 | Field   | Name and type | Sample value  | Description  |
 |:---------------|:---------------|:---------------|:---------------
@@ -93,4 +95,3 @@ PV1|1|O|POC01||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^MD^^^^^^N
 | PV1-51 | Visit Indicator (IS) |  | Empty by default
 | PV1-52 | Other Healthcare Provider (XCN) |  | Empty by default
 
-[Back to HL7 DFT Results Page](/docs/integration/DFT_Results/DFT_Results.md)
