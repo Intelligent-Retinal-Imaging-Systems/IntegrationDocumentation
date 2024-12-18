@@ -1,6 +1,7 @@
 ---
 title: Cloud Direct 
 parent: Order Processing Integration
+has_toc: false
 ---
 
 # IRIS Cloud Direct Integrations
