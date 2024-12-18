@@ -1,6 +1,7 @@
 ---
-title: PID Segment – Patient Identification
-parent: Standard Charge (DFT-P03) Outbound Specifications
+title: PID – Patient Identification
+parent: DFT (DFT-P03)
+nav_order: 4
 ---
 
 ## PID Segment – Patient Identification

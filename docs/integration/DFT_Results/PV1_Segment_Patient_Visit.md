@@ -1,6 +1,7 @@
 ---
-title: PV1 Segment – Patient Visit
-parent: Standard Charge (DFT-P03) Outbound Specifications
+title: PV1 – Patient Visit
+parent: DFT (DFT-P03)
+nav_order: 5
 ---
 
 ## PV1 Segment – Patient Visit

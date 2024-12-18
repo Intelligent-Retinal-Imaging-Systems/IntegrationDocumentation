@@ -1,6 +1,7 @@
 ---
 title: EVN Segment – Event Type 
-parent: Standard Charge (DFT-P03) Outbound Specifications
+parent: DFT (DFT-P03)
+nav_order: 3
 ---
 ## EVN Segment – Event Type
 

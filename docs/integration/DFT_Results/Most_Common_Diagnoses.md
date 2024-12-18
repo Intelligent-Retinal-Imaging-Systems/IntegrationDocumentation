@@ -1,6 +1,7 @@
 ---
 title: Most Common Diagnoses
-parent: Standard Charge (DFT-P03) Outbound Specifications
+parent: DFT (DFT-P03)
+nav_order: 8
 ---
 
 ## Most Common Diagnoses

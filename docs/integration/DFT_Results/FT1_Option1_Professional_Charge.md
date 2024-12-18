@@ -1,6 +1,6 @@
 ---
 title: FT1 (Option 1) – Professional Charge
-parent: Standard Charge (DFT-P03) Outbound Specifications
+parent: FT1 (Option 1) – Financial Transaction
 ---
 
 ## FT1 (Option 1) – Professional Charge

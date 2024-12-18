@@ -1,6 +1,7 @@
 ---
 title: Basic Interface Structure and Description 
-parent: Standard Charge (DFT-P03) Outbound Specifications
+parent: DFT (DFT-P03)
+nav_order: 1
 ---
 ## Basic Interface Structure and Description
 

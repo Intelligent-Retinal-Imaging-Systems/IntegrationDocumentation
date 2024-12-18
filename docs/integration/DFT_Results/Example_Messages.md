@@ -1,6 +1,6 @@
 ---
 title: Example Messages 
-parent: Standard Charge (DFT-P03) Outbound Specifications
+parent: DFT (DFT-P03)
 ---
 ## Example Messages
 

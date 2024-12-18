@@ -1,6 +1,6 @@
 ---
-title: FT1 (Option 1) – CPT II Optional Extra FT1 segment 
-parent: Standard Charge (DFT-P03) Outbound Specifications
+title: FT1 (Option 1) – CPT II  
+parent: FT1 (Option 1) – Financial Transaction
 ---
 
 ## FT1 (Option 1) – CPT II Optional Extra FT1 segment

@@ -1,6 +1,7 @@
 ---
-title: MSH Segment – Message Header
-parent: Standard Charge (DFT-P03) Outbound Specifications
+title: MSH – Message Header
+parent: DFT (DFT-P03)
+nav_order: 2
 ---
 
 ## MSH Segment – Message Header

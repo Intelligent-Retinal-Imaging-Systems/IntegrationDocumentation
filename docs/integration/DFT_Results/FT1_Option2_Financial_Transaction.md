@@ -1,6 +1,7 @@
 ---
 title: FT1 (Option 2) – Financial Transaction
-parent: Standard Charge (DFT-P03) Outbound Specifications
+parent: DFT (DFT-P03)
+nav_order: 7
 ---
 
 ## FT1 (Option 2) – Financial Transaction
