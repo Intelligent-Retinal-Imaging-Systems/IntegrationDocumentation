@@ -611,7 +611,7 @@ Contains raw details of grading
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | Notes | array of [Note](#note-structure) | Notes added by the Grader 
-| Graded | datetimeoffset | When grading was completed 
+| GradedTime | datetimeoffset | When grading was completed 
 | CarePlanName | string | Name of Care Plan determined from findings 
 | CarePlanDescription | string | Description/Instruction text related to care plan
 | Pathology | bool | If true Pathology was found on one or more eyes | true/false
