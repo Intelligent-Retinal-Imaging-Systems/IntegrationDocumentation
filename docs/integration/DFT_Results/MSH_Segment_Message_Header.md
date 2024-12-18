@@ -29,4 +29,5 @@ MSH|^~\&|IRIS|IRIS|VENDOR|VENDOR|20170410145907||ORU^R01|170410145907|T|2.4
 | MSH-11 | Processing ID (PT) | T | P (Production) or T (Test) will be used based on the system environment
 | MSH-12 | Version ID (VID) | 2.4 | HL7 Version
 
+[Back - Basic Interface Structure and Description ](/IntegrationDocumentation/docs/integration/DFT_Results/Basic_Interface_Structure_and_Description) <->
 [Next - EVN Segment - Event Type](/IntegrationDocumentation/docs/integration/DFT_Results/EVN_Segment_Event_Type)

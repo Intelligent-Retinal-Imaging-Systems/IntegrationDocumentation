@@ -7,7 +7,9 @@ parent: FT1 (Option 2) – Financial Transaction
 
 **Sample FT1 segment (Professional Charge):**
 
+```
 FT1|1||273013|20170410145901|20170410151630|CG|92250^Fundus photography with interpretation and report^CPT||ITCC20170410|1|||POC01||IRIS|POC01|||E11.41^Type 2 diabetes mellitus with diabetic mononeuropathy^ICD-10-CM~E11.3592^Type 2 diabetes mellitus with proliferative diabetic retinopathy without macular edema, left eye^ICD-10-CM~H35.81^Retinal edema^ICD-10-CM|GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^MD^^^^^^NPI||2017041006||92250^Fundus photography with interpretation and report^CPT|26
+```
 
 | Field   | Name and type | Sample value  | Description  |
 |:---------------|:---------------|:---------------|:---------------
@@ -66,3 +68,6 @@ FT1|1||273013|20170410145901|20170410151630|CG|92250^Fundus photography with int
 |  |  | 52 | *Sample 6: Chargeable. Identified by FT1.25 if 26 is not used
 
 *Basic NC and 52: NC will be used if ALL uploaded images are not gradable. 52 will be used if ONE of uploaded images is not gradable
+
+[Back - FT1 (Option 2) Technical Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Technical_Charge)
+[Next - Most Common Diagnosis](/IntegrationDocumentation/docs/integration/DFT_Results/Most_Common_Diagnoses)

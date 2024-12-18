@@ -6,9 +6,7 @@ parent: FT1 (Option 1) – Financial Transaction
 ## FT1 (Option 1) – CPT II Optional Extra FT1 segment
 
 This extra FT1 segment is CPT II data for the patient over 18 at the time of result and has normal result (Diabetic Retinopathy is None). This extra FT1 segment will only be sent upon demand.
-
-[Back to FT1 (Option 1) – Financial Transaction](/docs/integration/DFT_Results/FT1_Option1_Financial_Transaction.md)
-
+ 
 **Example FT1 segment (CPT II):**
 
 ```
@@ -88,3 +86,5 @@ Low risk for retinopathy (no evidence of retinopathy in the prior year)
 
 Note –this code has been used to close the care gap when results are “Negative for Retinopathy” for two years
 
+[Back - FT1 (Option 1)](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Financial_Transaction) <->
+[Next - FT1 (Option 1) Professional Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Professional_Charge)

@@ -95,3 +95,6 @@ PV1|1|O|POC01||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^MD^^^^^^N
 | PV1-51 | Visit Indicator (IS) |  | Empty by default
 | PV1-52 | Other Healthcare Provider (XCN) |  | Empty by default
 
+
+[Back - PID Segment](/IntegrationDocumentation/docs/integration/DFT_Results/PID_Segment_Patient_Identification) <->
+[Next - FT1 (Option 1)](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Financial_Transaction)

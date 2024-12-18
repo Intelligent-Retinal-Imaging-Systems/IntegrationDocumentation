@@ -11,7 +11,9 @@ The event type segment will include information that defines the type of action 
 
 **Sample EVN segment:**
 
+```
 EVN|P03|20181005090316
+```
 
 | Field   | Name and type | Sample value  | Description  |
 |:---------------|:---------------|:---------------|:---------------
@@ -23,3 +25,5 @@ EVN|P03|20181005090316
 | EVN-6 | Event Occurred (TS) |  | Empty by default
 | EVN-7 | Event Facility (HD) |  | Empty by default
 
+[Back - MSH Segment](/IntegrationDocumentation/docs/integration/DFT_Results/MSH_Segment_Message_Header) <->
+[Next - PID Segment - Patient Identification](/IntegrationDocumentation/docs/integration/DFT_Results/PID_Segment_Patient_Identification)
