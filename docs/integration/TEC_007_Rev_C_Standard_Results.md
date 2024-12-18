@@ -69,9 +69,7 @@ MSH|^\~\&|IRIS|IRIS|VENDOR|VENDOR|20170410145907||ORU^R01|170410145907|T|2.4
 | MSH-10  | Message Control ID (ST)  | 190410145907  | Auto generated from server time (UTC if hosted by Iris)  |
 | MSH-11  | Processing ID (PT)  | T  | P (Production) or T (Test) will be used based on the system environment  |
 | MSH-12  | Version ID (VID)  | 2.4  | HL7 Version  |
-
-
-[back to Table of Contents](#table-of-contents)
+ 
 
 
 ## PID Segment - Patient Identification 
@@ -260,9 +258,9 @@ OBR|1|2017041006|273013^IRIS|92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO|||201704
 |   | OBR-2.1 Entity Identifier  | 2017041006  | Order number provided in ORMHL7 message  |
 |   | OBR-2.2 Namespace ID  |   | Empty by default  |
 | OBR-3  | Filler Order Number (EI)  | 273013^IRIS  |   |
-|   | OBR-3.1 Entity Identifier  | 273013  | Iris’ internal order number. Thisnumber is unique value.  |
+|   | OBR-3.1 Entity Identifier  | 273013  | Iris’ internal order number. This is a unique value.  |
 |   | OBR-3.2 Namespace ID  | IRIS  | “IRIS” is used as the default value  |
-| OBR-4  | Universal Service Identifier (CE)  | 92250^FUNDUS PHOTOGRAPHY ^EAP^^FUNDAL PHOTO  | CPT code in OBR.4.1 followed bythe description in OBR.4.2. This value is populated with the values present in the creating ORM message unless otherwiserequested.  See below for Sample examples  |
+| OBR-4  | Universal Service Identifier (CE)  | 92250^FUNDUS PHOTOGRAPHY ^EAP^^FUNDAL PHOTO  | CPT code in OBR.4.1 followed by the description in OBR.4.2. This value is populated with the values present in the creating ORM message unless otherwise requested.  See below for Sample examples  |
 |   |   | EAP777357^Ophthalmology Retinal Scan  | Sample 1  |
 |   |   | 57554^DIABETIC EYE EXAM IN OFFICE ^IRISEAP^^DIABETIC EYE EXAM IN OFFICE  | Sample 2  |
 |   |   | IMG0555^DIABETIC RETINAL SCREENING (IRIS CAMERA) ^MRGECP^^DIABETIC RETINAL SCREENING  | Sample 3  |
@@ -295,12 +293,12 @@ OBR|1|2017041006|273013^IRIS|92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO|||201704
 | OBR-29  | Parent Number (EIP)  |   | Empty by default  |
 | OBR-30  | Transportation Mode (ID)  |   | Empty by default  |
 | OBR-31  | Reason for Study (CE)  |   | Empty by default  |
-| OBR-32  | Principal Result Interpreter (NDL)  | GR0001^DOE^JANE ^20170410145901^JANE DOE, MD, NPI: 1234567890, Taxonomy: 207W00000X  | The default configuration is tosend the grader’s informationhere.  |
+| OBR-32  | Principal Result Interpreter (NDL)  | GR0001^DOE^JANE ^20170410145901^JANE DOE, MD, NPI: 1234567890, Taxonomy: 207W00000X  | The default configuration is to send grader details here.  |
 |   | OBR-32.1  | GR0001  | Grader ID in IRIS  |
 |   | OBR-32.2  | DOE  | Grader Family Name  |
 |   | OBR-32.3  | JANE  | Grader Given Name  |
 |   | OBR-32.4  | yyyyMMddHHmmss format  | Date of grading (signing)  |
-|   | OBR-32.5  | JANE1234207W |  DOE, MD, NPI: 567890, Taxonomy: 00000X  | The grader’s full name withcredentials  |
+|   | OBR-32.5  | JANE1234207W |  DOE, MD, NPI: 567890, Taxonomy: 00000X  | Grader full name with credentials  |
 | -- | -- | -- | -- |
 
 

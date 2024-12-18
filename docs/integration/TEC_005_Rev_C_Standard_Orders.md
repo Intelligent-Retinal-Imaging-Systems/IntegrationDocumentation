@@ -56,8 +56,6 @@ MSH|^\~\&|EPIC|ANCL||IRIS|20170410102836|HJ123|ORM^O01|254|T|2.4||||||||
 
 Note 1.0: If this is to be utilized, a crosswalk will need to be discussed during implementation and will therefore make this field required. 
 
-[(back to Table of Contents)](#table-of-contents)
- 
 
 ## PID Segment – Patient Identification 
 
