@@ -1,20 +1,10 @@
 ---
-title: MDM
+title: MDM (MDM-T02)
 parent: HL7 Messages
 ---
 
-## HL7 MDM Results Message
+##  Medical Document Management (MDM-T02) Outbound Specifications
 
-<div style="position:absolute;">
+IRIS can send results to your EMR as an MDM message.  By far, most EMR/EHR systems prefer an ORU result but in cases where your workflow is better suited to an MDM this can be used. 
 
-Intelligent Retinal Imaging Systems &#8482;
-
-</div>
-
-<div align="right" >
-
-[Back to EMR Integrations page](/docs/integration/EMRIntegrations.html)
-
-</div>
-
-to be continued...
+To be continued...
