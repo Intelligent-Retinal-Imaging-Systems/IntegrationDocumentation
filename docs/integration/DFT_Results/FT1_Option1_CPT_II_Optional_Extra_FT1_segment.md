@@ -11,7 +11,10 @@ This extra FT1 segment is CPT II data for the patient over 18 at the time of res
 
 **Example FT1 segment (CPT II):**
 
+```
 FT1|2||273013|20170410145803|20170410173627|CG|3072F^No evidence of retinopathy in the prior year||ITCC20170410|1|||POC01||IRIS|POC01|||E11.41^Type 2 diabetes mellitus with diabetic mononeuropathy^ICD-10-CM~E11.3592^Type 2 diabetes mellitus with proliferative diabetic retinopathy without macular edema, left eye^ICD-10-CM~H35.81^Retinal edema^ICD-10-CM|GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^MD^^^^^^NPI||2017041006^EPIC||3072F^No evidence of retinopathy in the prior year
+```
+
 
 | Field   | Name and type | Sample value  | Description  |
 |:---------------|:---------------|:---------------|:---------------
