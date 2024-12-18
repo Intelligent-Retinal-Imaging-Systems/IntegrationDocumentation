@@ -4,11 +4,14 @@ parent: HL7 Messages
 ---
 
 ## Standard Charge (DFT-P03) Outbound Specifications
+IRIS can push a single DFT message per order as a mechanism for dropping charges.
+
+*We recommend dropping charges through your EMR/EHR Ambulatory workflow as a more reliable option to using a DFT Message. You have more information regarding the patient encounter in which to make this determination.*
 
 ### Table of Contents
 
-- A. [Basic Interface Structure and Description](/IntegrationDocumentation/docs/integration/IRISEMRProxy/Basic_Interface_Structure_and_Description)
-- B. [MSH Segment – Message Header](/IntegrationDocumentation/docs/integration/IRISEMRProxy/MSH_Segment_Message_Header)
+- A. [Basic Interface Structure and Description](/IntegrationDocumentation/docs/integration/DFT_Results/Basic_Interface_Structure_and_Description)
+- B. [MSH Segment – Message Header](/IntegrationDocumentation/docs/integration/DFT_Results/MSH_Segment_Message_Header)
 - C. [EVN Segment – Event Type](/IntegrationDocumentation/docs/integration/IRISEMRProxy/EVN_Segment_Event_Type)
 - D. [PID Segment – Patient Identification](/IntegrationDocumentation/docs/integration/IRISEMRProxy/PID_Segment_Patient_Identification)
 - E. [PV1 Segment – Patient Visit](/IntegrationDocumentation/docs/integration/IRISEMRProxy/PV1_Segment_Patient_Visit)
