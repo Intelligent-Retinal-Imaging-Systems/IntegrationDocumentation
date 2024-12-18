@@ -69,5 +69,5 @@ FT1|1||273013|20170410145901|20170410151351|CG|92250^Fundus photography with int
 |  | FT1-25.3 Name of Coding System | CPT | Always "CPT"
 | FT1-26 | Procedure Code Modifier (CE) | Null, NC | Empty unless not charging for “Ungradable” exams. In such cases, the modifier “NC” can be sent.
 
-[Back - FT1 (Option 1) CPT II](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_CPT_II_Optional_Extra_FT1_segement) <->
-[Next - FT1 (Option 2) Financial Transaction](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Financial_Transaction)
+<< [FT1 (Option 1) CPT II](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_CPT_II_Optional_Extra_FT1_segement) |
+[FT1 (Option 2) Financial Transaction](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Financial_Transaction) >>

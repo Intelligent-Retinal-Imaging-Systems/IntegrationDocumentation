@@ -73,18 +73,6 @@ FT1|2||273013|20170410145803|20170410173627|CG|3072F^No evidence of retinopathy 
 |  | FT1-25.3 Name of Coding System |  | Empty by default
 | FT1-26 | Procedure Code Modifier (CE) | Null, NC | Empty unless not charging for “Ungradable” exams. In such cases, the modifier “NC” can be sent.
 
-*Effective 10/2019, 2022F has been modified and there is a new code also added on:
-```
-2022F: Dilated retinal eye exam with interpretation by an ophthalmologist or optometrist documented and reviewed; with evidence of retinopathy.
-2023F: Dilated retinal eye exam with interpretation by an ophthalmologist or optometrist documented and reviewed; without evidence of retinopathy. 
-```
 
-Additionally, 3072F has been used when the patient had a normal exam the year prior: 3072F:
-```
-Low risk for retinopathy (no evidence of retinopathy in the prior year)
-```
-
-Note –this code has been used to close the care gap when results are “Negative for Retinopathy” for two years
-
-[Back - FT1 (Option 1)](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Financial_Transaction) <->
-[Next - FT1 (Option 1) Professional Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Professional_Charge)
+<< [FT1 (Option 1)](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Financial_Transaction) |
+[FT1 (Option 1) Professional Charge](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option1_Professional_Charge) >>

@@ -38,5 +38,5 @@ nav_order: 8
 | E13.622 | Other specified diabetes mellitus with other skin ulcer | E13.8 | Other specified diabetes mellitus with unspecified complications
 | E13.628 | Other specified diabetes mellitus with other skin complications | E13.9 | Other specified diabetes mellitus without complications
 
-[Back - FT1 (Option 2)](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Financial_Transaction) <->
-[Next - Example Messages](/IntegrationDocumentation/docs/integration/DFT_Results/Example_Messages)
+← [Example Messages](/IntegrationDocumentation/docs/integration/DFT_Results/Example_Messages) →
+[FT1 (Option 2)](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Financial_Transaction) |

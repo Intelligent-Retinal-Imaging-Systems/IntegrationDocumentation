@@ -39,5 +39,5 @@ PID||ITCC20170410^^^^MRN|ITCC20170410||DOE^JOHN||19581012|M||||||||||1234|111-22
 | PID-18 | Patient Account Number (CX) | 1234 | Related Patient's CSN/Account value/Encounter number
 | PID-19 | SSN Number - Patient (ST) | 111-22-3333 | IRIS does store this value and will not send this value
 
-[Back - EVN Segment - Event Type](/IntegrationDocumentation/docs/integration/DFT_Results/EVN_Segment_Event_Type) <->
-[Next - PV1 Segment - Patient Visit](/IntegrationDocumentation/docs/integration/DFT_Results/PV1_Segment_Patient_Visit)
+← [EVN Segment - Event Type](/IntegrationDocumentation/docs/integration/DFT_Results/EVN_Segment_Event_Type) |
+[PV1 Segment - Patient Visit](/IntegrationDocumentation/docs/integration/DFT_Results/PV1_Segment_Patient_Visit) → 
