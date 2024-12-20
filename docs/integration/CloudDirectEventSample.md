@@ -1,5 +1,5 @@
 ---
-title: Order Event JSON Examples 
+title: Order Event Examples 
 parent: Cloud Direct
 nav_order: 3
 ---

@@ -1,5 +1,5 @@
 ---
-title: Order Result JSON Example
+title: Order Result Example
 parent: Cloud Direct
 nav_order: 2
 ---

@@ -1,5 +1,5 @@
 ---
-title: Order Request JSON Example
+title: Order Request Example
 parent: Cloud Direct
 nav_order: 1
 ---
