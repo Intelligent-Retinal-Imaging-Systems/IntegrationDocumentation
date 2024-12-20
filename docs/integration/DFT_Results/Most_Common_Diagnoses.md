@@ -1,7 +1,7 @@
 ---
 title: Most Common Diagnosis
 parent: DFT (DFT-P03)
-nav_order: 8
+nav_order: 1
 ---
 
 ## Most Common Diagnoses
