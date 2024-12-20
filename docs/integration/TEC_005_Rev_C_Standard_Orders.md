@@ -1,24 +1,21 @@
 ---
 title: ORM (ORM-001) 
 parent: HL7 Messages
+nav_order: 1
 ---
 
 ## Standard Orders (ORM-001) Inbound Specifications
 
 Interface content encoding from HL7 Integration Engines submitted to IRIS v3.x  
 
-
-## Table of Contents
-
-- [Basic Interface Structure and Description](#basic-interface-structure-and-description)
-- [MSH Segment – Message Header](#msh-segment--message-header)
-- [PID Segment – Patient Identification](#pid-segment--patient-identification)
-- [PV1 Segment – Patient Visit](#pv1-segment--patient-visit)
-- [ORC – Common Order](#orc--common-order)
-- [OBR – Observation Request](#obr--observation-request)
-- [DG1 – Diagnosis](#dg1--diagnosis-segment)
-- [Example Messages](#example-messages)
-
+<details markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
 
 ## Basic Interface Structure and Description
 

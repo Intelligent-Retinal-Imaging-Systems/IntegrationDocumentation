@@ -3,6 +3,15 @@ title: MDM (MDM-T02)
 parent: HL7 Messages
 ---
 
+<details markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+
 ##  Original Document Notification with Content (MDM-T02) Outbound Specifications
 
 IRIS can send results to your EMR as an MDM message.  By far, most EMR/EHR systems prefer an ORU result but in cases where your workflow is better suited to an MDM this can be used. 

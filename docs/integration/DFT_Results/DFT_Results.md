@@ -1,6 +1,7 @@
 ---
 title: DFT (DFT-P03)
 parent: HL7 Messages
+nav_order: 3
 ---
 
 ## Standard Charge (DFT-P03) Outbound Specifications

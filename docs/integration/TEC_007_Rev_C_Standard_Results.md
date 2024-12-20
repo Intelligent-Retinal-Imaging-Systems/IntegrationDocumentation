@@ -1,37 +1,21 @@
 ---
 title: ORU (ORU-R01)
 parent: HL7 Messages
+nav_order: 2
 ---
 
 ## Standard Results (ORU-R01) Outbound Specifications
 
 Interface content encoding for results from IRIS v3.x to HL7 Integration Engines 
 
-
-
-## Table of Contents
-
-1. [Basic Interface Structure and Description](#basic-interface-structure-and-description) 
-2. [MSH Segment – Message Header](#msh-segment---message-header)
-3. [PID Segment - Patient Identification](#pid-segment---patient-identification)
-4. [PV1 Segment – Patient Visit](#pv1-segment-–-patient-visit)
-5. [ORC – Common Order](#orc-–-common-order)
-6. [OBR – Observation Request](#obr-–-observation-request) 
-7. [DG1 – Diagnosis](#dg1-segment-–-diagnosis) 
-8. [OBX – Observation Result](#obx-–-observation-result-segment)
-9. [First OBX](#first-obx) 
-10. [Second OBX](#second-obx) 
-11. [Third OBX](#third-obx)
-12. [Fourth OBX](#fourth-obx)
-13. [Fifth OBX](#fifth-obx)
-14. [Sixth OBX](#sixth-obx)
-15. [Seventh OBX](#seventh-obx)
-16. [Eighth OBX](#eighth-obx) 
-17. [Ninth OBX](#ninth-obx)
-18. [Tenth and Above OBX](#tenth-and-above-obx) 
-19. [Last OBX](#last-obx)
-20. [Example Messages](#example-messages) 
-21. [Revision History](#revision-history) 
+<details markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
 
 ***
 
