@@ -11,7 +11,7 @@ IRIS Content Transport facilitator for Order Submission and/or Results
 The following requirements outline the best practice for deploying the IRIS EMR Proxy application in your environment. 
 
 ## Hardware/Server Platform
-ALL IRIS Proxy applications require minimal resources in terms of the hardware platform they are installed on.  If your organization has virtual server resources readily available, this is generaally a good choice.  In this case IRIS recommends using your prefered Windows image as the software has no special requirements.
+ALL IRIS Proxy applications require minimal resources in terms of the hardware platform they are installed on.  If your organization has virtual server resources readily available, this is generally a good choice.  In this case IRIS recommends using your preferred Windows image as the software has no special requirements.
 
 ## Operating System
 
@@ -90,7 +90,7 @@ Following the same procedures outlined above, the Integration Administrator must
 | -- | -- | -- | -- |
 | My ProfileLicensesPermissions |  |  |  |
 | NotificationsDocumentationFormsRelease Notes | Reading Center | Admin | Gre |
-| Integration Files | Camera Operato | r Check-In | Order A |
+| Integration Files | Camera Operator | r Check-In | Order A |
 
 
 
@@ -98,7 +98,7 @@ Following the same procedures outlined above, the Integration Administrator must
 | -- | -- | -- |
 | My Profile | Name |  |
 | LicensesPermissions | DICOM Proxy-Iris | DOWNLOAD |
-| NotficationsDocumentation | EMR Proxy-Iris | DOWNLOAD |
+| Notifications Documentation | EMR Proxy-Iris | DOWNLOAD |
 | Forms |  |  |
 | Release Notes |  |  |
 | Integration Files |  |  |

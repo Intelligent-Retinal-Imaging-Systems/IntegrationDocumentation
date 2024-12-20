@@ -3,7 +3,7 @@ title: Example Messages
 parent: DFT (DFT-P03)
 ---
 
-## Example Messages
+## Example DFT Messages
 
 **Example A:** 
 ```

@@ -3,9 +3,9 @@ title: Example Messages
 parent: ORM (ORM-001)
 ---
 
-# Example ORM Messages
+## Example ORM Messages
 
-## Example A: 
+### Example A: 
 ```
 MSH|^\~\&|ACME|Overlook Hotel||IRIS|20200228150014|HJ123|ORM^O01|20200228150014|T|2.4 
 PID|1||TestMrn1096||TestVendor^TAMMY||19541026|M||W|123 Fake WAY^APT A^Richmond^VA^23223^US^^^|KING|(425)444-5555^^PH^^^425^4445555|||M||1234|111-223333||| 
@@ -15,7 +15,7 @@ OBR|1|2020022815^ACME||92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO||2020022815|||
 DG1|1|ICD-10-CM|E11.9^Type 2 diabetes mellitus without complications^ICD-10-CM|E11.9Type 2diabetes mellitus without complications||ICD-9 to Order 
 ```
 
-## Example B: 
+### Example B: 
 ```
 MSH|^\~\&|ACME|Test Hospital||IRIS|20200303194509|HJ123|ORM^O01|20200303194509|T|2.4||||||||
 PID|1||TestMrn9958||TestVendor^TERRY||19950222|M||W|123 Fake WAY^APT A^Richmond^VA^23223^US^^^|KING|(425)444-5555^^PH^^^425^4445555|||M||1234|111-223333||| 

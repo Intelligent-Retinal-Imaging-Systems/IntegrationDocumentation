@@ -2,6 +2,7 @@
 title: ORM (ORM-001) 
 parent: HL7 Messages
 nav_order: 1
+has_toc: false
 ---
 
 ## Standard Orders (ORM-001) Inbound Specifications
