@@ -9,7 +9,7 @@ has_toc: false
  
 This document provides details for integrations to the IRIS Platform using cloud provider resources directly accessing the IRIS 3.x platform.
 
-<details open markdown="block">
+<details markdown="block">
   <summary>
     Table of contents
   </summary>
@@ -18,6 +18,7 @@ This document provides details for integrations to the IRIS Platform using cloud
 {:toc}
 </details>
 
+----
 
 # Introduction
 
