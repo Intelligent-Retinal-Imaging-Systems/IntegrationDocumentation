@@ -3,7 +3,7 @@ title: Example Messages
 parent: ORU (ORU-R01)
 ---
 
-## Example Messages
+## Example ORU Messages
 
 ### Example A
 ```
