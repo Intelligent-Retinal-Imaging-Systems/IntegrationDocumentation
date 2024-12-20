@@ -23,7 +23,7 @@ nav_order: 1
 | E13.311 | Other specified diabetes mellitus with unspecified diabetic retinopathy with macular edema | E13.42 | Other specified diabetes mellitus with diabetic polyneuropathy
 | E13.319 | Other specified diabetes mellitus with unspecified diabetic retinopathy without macular edema | E13.43 | Other specified diabetes mellitus with diabetic autonomic (poly)neuropathy
 | E13.32 | Other specified diabetes mellitus with mild non-proliferative diabetic retinopathy | E13.44 | Other specified diabetes mellitus with diabetic amyotrophy
-| E13.321 | Other specified diabetes mellitus with mild nop-roliferative diabetic retinopathy with macular edema | E13.49 | Other specified diabetes mellitus with other diabetic neurological complication
+| E13.321 | Other specified diabetes mellitus with mild non-proliferative diabetic retinopathy with macular edema | E13.49 | Other specified diabetes mellitus with other diabetic neurological complication
 | E13.329 | Other specified diabetes mellitus with mild non-proliferative diabetic retinopathy without macular edema | E13.5 | Other specified diabetes mellitus with circulatory complications
 | E13.33 | Other specified diabetes mellitus with moderate non-proliferative diabetic retinopathy | E13.51 | Other specified diabetes mellitus with diabetic peripheral angiopathy without gangrene
 | E13.331 | Other specified diabetes mellitus with moderate non-proliferative diabetic retinopathy with macular edema | E13.52 | Other specified diabetes mellitus with diabetic peripheral angiopathy with gangrene
@@ -36,7 +36,4 @@ nav_order: 1
 | E13.620 | Other specified diabetes mellitus with diabetic dermatitis | E13.65 | Other specified diabetes mellitus with hyperglycemia
 | E13.621 | Other specified diabetes mellitus with foot ulcer | E13.69 | Other specified diabetes mellitus with other specified complication
 | E13.622 | Other specified diabetes mellitus with other skin ulcer | E13.8 | Other specified diabetes mellitus with unspecified complications
-| E13.628 | Other specified diabetes mellitus with other skin complications | E13.9 | Other specified diabetes mellitus without complications
-
-← [Example Messages](/IntegrationDocumentation/docs/integration/DFT_Results/Example_Messages) →
-[FT1 (Option 2)](/IntegrationDocumentation/docs/integration/DFT_Results/FT1_Option2_Financial_Transaction) |
+| E13.628 | Other specified diabetes mellitus with other skin complications | E13.9 | Other specified diabetes mellitus without complications 
