@@ -1,11 +1,12 @@
 ---
 title: HL7 Messages
 parent: EMR Integrations
+has_toc: false
 ---
 
 # HL7 Messages
 
-*Content* is passwed between IRIS and your system through standard HL7 encoded messages for receiving orders and returning results.
+*Content* is passed between IRIS and your system through standard HL7 encoded messages for receiving orders and returning results.
 
 Orders are submitted from your system using the standard [HL7 ORM Message](/IntegrationDocumentation/docs/integration/TEC_005_Rev_C_Standard_Orders).
 

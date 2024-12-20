@@ -1,6 +1,7 @@
 ---
 title: EMR Integrations
 parent: Order Processing Integration
+has_toc: false
 ---
 
 # EMR Integrations
