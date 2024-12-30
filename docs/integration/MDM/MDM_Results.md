@@ -20,11 +20,8 @@ IRIS can send results to your EMR as an MDM message.  By far, most EMR/EHR syste
 ## Basic Interface Structure and Description
 
 This document outlines the values sent in an HL7 results message (MDM-T02) from IRIS to a third-party system. This third-party system could be another application, an interface engine, or an EMR. For the purposes of this documentation, this third-party will be referred to an EMR. 
-
-IRIS uses HL7 v2.4 as a main protocol for message sharing. If there are any fields represented in this document that are not populated but required by a receiving EMR, IRIS will populate these value(s) as requested. If the receiving EMR requires a different version, IRIS can provide messages for the corresponding version. If the EMR expects messages to be delivered in a format other than HL7, this will need to be discussed with an IRIS Interface Engineer as this will not be covered in the scope of this document – please contact IRIS support for more information. 
-
-### Customization
-This document provides the default implementation of IRIS results to an HL7 MDM message.  These mappings can be customized to suite your requirements. Customization can either be performed by an IRIS integration specialist or if desired you may designate an individual within your organization with the Integrator role providing them access to the IRIS Integration application.
+ 
+The following sections contain details of the MDM message content by HL7 Segment.  
 
 ## MSH Segment - Message Header
 The message header segment includes information that defines the structure of the message.
@@ -470,6 +467,7 @@ OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradeable Image||||||F
 
 Sample OBX segment (default): 
 ```
+
 OBX|10|FT|Result^^IRIS|001|Retinal Study Result for DOE, JOHN||||||F 
 OBX|11|FT|Result^^IRIS|002|||||||F 
 OBX|12|FT|Result^^IRIS|003|DOE, JOHN, a 58 y/o, M (DOB: 10-12-1958, MRN:ITCC20170410)||||||F 
@@ -487,7 +485,7 @@ Tertiary Option (NTE Segments): Iris can send the text results as NTE segments i
 | OBX-1  | Set ID - OBX (SI)  | 10  | Increase sequentially by 1  |
 | OBX-2  | Value Type (ID)  | FT  | Formatted Text, but can be defined differently like "ST" if  necessary  |
 |  OBX-3  | Observation Identifier (CE)  | Result^^IRIS  |  |
-|   | OBX-3.1 Identifier  | Result   | "Result" but can be defined withother value if necessary  |
+|   | OBX-3.1 Identifier  | Result   | "Result" but can be defined with other value if necessary  |
 |   | OBX-3.2 Text  |  | Usually be empty but can be defined with any value if necessary  |
 |  | OBX-3.3 Name of Coding System  | IRIS  | “IRIS” is used as the default value  |
 | OBX-4  | Observation Sub-Id (ST)  | 001  | Grading specific identifier; this number increases sequentially by 1 for each additional OBX segment  |
@@ -506,7 +504,7 @@ Tertiary Option (NTE Segments): Iris can send the text results as NTE segments i
 
 ### Sample OBX segment: 
 ```
-OBX|31|RP|LINK^^PDFLINK|31|https://api.retinalscreenings.com/api/PatientOrders/GetSingle ResultForDisplayInEmr?patientOrderId=273013&asPdf=True&isPreliminary=False&auth=257805B4B262A18271B60A62026671703D0F3F335DC9E0643662358952E7DCBA19C1C2CCC6C781A3444D651C0AC6695750DA87C9A5CE0F5976E8A206D9FB1915||||||F 
+OBX|31|RP|LINK^^PDFLINK|31|https://api.retinalscreenings.com/api/PatientOrders/GetSingleResultForDisplayInEmr?patientOrderId=273013&asPdf=True&isPreliminary=False&auth=257805B4B262A18271B60A62026671703D0F3F335DC9E0643662358952E7DCBA19C1C2CCC6C781A3444D651C0AC6695750DA87C9A5CE0F5976E8A206D9FB1915||||||F 
 ```
 
 | Field  | Name and type  | Sample value  | Description  |
@@ -533,7 +531,7 @@ Note 1.0:
 
 ## Example URL: 
 
-https://api.retinalscreenings.com/api/PatientOrders/GetSingleResultForDisplayIn Emr?patientOrderId=12345&asPdf=True&isPreliminary=False&auth=xxxxx
+https://api.retinalscreenings.com/api/PatientOrders/GetSingleResultForDisplayInEmr?patientOrderId=12345&asPdf=True&isPreliminary=False&auth=xxxxx
 
 ## Note 1.1: 
 
@@ -573,7 +571,7 @@ OBX|27|ED|||PDF^TEXT^^Base64^[ Base64 Encoded PDF]||||||F
 |   | OBX-5.1 Source application  | PDF  | This is the document type  |
 |   | OBX-5.2 Type of data  | TEXT  | “TEXT” is the default value  |
 |   | OBX-5.3 Data subtype  |   | Empty by default  |
-|   | OBX-5.4 Encoding  | Base64  | Always "Base64" which matchesthe encoding  |
+|   | OBX-5.4 Encoding  | Base64  | Always "Base64" which matches the encoding  |
 |   | OBX-5.4 Data (ST)  | See Note 2.0 Below  | Actual PDF data using base64 encoding mechanism  |
 | OBX-6  | Units (CE)  |   | Empty by default  |
 | OBX-7  | References Range (ST)  |   | Empty by default  |
