@@ -87,9 +87,6 @@ PID||ITCC20170410^^^^MRN|ITCC20170410||DOE^JOHN||19581012|M||||||||||1234|111-22
 | PID-19  | SSN Number - Patient (ST)  | 111-22-3333  | Iris does not store SSN  |
 
 
-[back to Table of Contents](#table-of-contents)
-
-
 ## PV1 Segment – Patient Visit 
 
 The patient visit segment includes patient-specific visit information.
@@ -179,10 +176,6 @@ PV1|1|O|POC01||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^M D^^^^^^
 | PV1-51  | Visit Indicator (IS)  |   | Empty by default  |
 | PV1-52  | Other Healthcare Provider (XCN)  |   | Empty by default  |
 
-
-[back to Table of Contents](#table-of-contents)
- 
-
 ## ORC – Common Order
 
 The Common Order segment is used to transmit fields that are common to all orders. The ORC segment is required in the Order (ORM) message. 
@@ -219,8 +212,6 @@ ORC|RE|2017041006|273013^IRIS||F||||20170410145907|||OP0001^DOE^JACK^^^MD^MD ^^^
 | ORC-12.6 D  | Degree MD   | | Credentials of the ordering physician if available  |
 | …..   |  | OR | C-12.7 through ORC-12.12 Empty by default  |
 | ORC-12.13 Code  | Identifier Type NPI  |  | Provider type identifying code; typically “NPI”  |
-
-[back to Table of Contents](#table-of-contents)
 
 ## OBR – Observation Request 
 
@@ -305,10 +296,6 @@ DG1|3||E113512^Type 2 diabetes mellitus with proliferative diabetic retinopathy 
 |   | DG1-3.2 Text  | Type 2 diabetes mellitus with diabetic mononeuropathy  | Description of diagnosis code  |
 |   | DG1-3.3 Name of Coding System  | ICD10  | The coding system: Iris currently utilizes ICD10  |
 
-
-[back to Table of Contents](#table-of-contents)
- 
-
 ## OBX – Observation Result Segment 
 
 The observation result segment is used to transmit a single observation or observation fragment. OBX segments can repeat and each one contains following information. 
@@ -373,9 +360,7 @@ OBX|1|ST|SEVERITY^^IRIS|1|NORMAL||||||F
 | OBX-10  | Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  | Observation Result Status (ID)  | F  | F = Final, C = Corrected*  |
 
-
-[back to Table of Contents](#table-of-contents)
-
+ 
 ## Second OBX
 
 ### Sample OBX segment: 
@@ -400,10 +385,7 @@ OBX|2|ST|RIGHTDIABRETIN^^IRIS|2|None||||||F
 | OBX-10  | Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  | Observation Result Status (ID)  | F  | F = Final, C = Corrected*  |
 
-
-[back to Table of Contents](#table-of-contents)
-
-
+ 
 ## Third OBX 
 
 ### Sample OBX segment: Third 
@@ -428,9 +410,7 @@ OBX|3|ST|RIGHTMACEDEMA^^IRIS|3|Severe|||AA|||F
 | OBX-10  | Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  | Observation Result Status (ID)  | F  | F = Final, C = Corrected*  |
 
-
-[back to Table of Contents](#table-of-contents)
-
+ 
 ## Fourth OBX 
 
 ### Sample OBX segment: 
@@ -455,9 +435,7 @@ OBX|4|ST|RIGHTOTHERRETIN^^IRIS|4|None||||||F
 | OBX-10  | Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  | Observation Result Status (ID)  | F  |  |
 
-
-[back to Table of Contents](#table-of-contents)
-
+ 
 ## Fifth OBX 
 
 ### Sample OBX segment: 
@@ -482,9 +460,7 @@ OBX|5|ST|RIGHTQUALAPP^^IRIS|5|Gradeable Image||||||F
 | OBX-10  | Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  | Observation Result Status (ID)  | F  |  |
 
-
-[back to Table of Contents](#table-of-contents)
-
+ 
 ## Sixth OBX 
 
 ### Sample OBX segment: 
@@ -509,9 +485,7 @@ OBX|6|ST|LEFTDIABRETIN^^IRIS|6|Proliferative|||AA|||F
 | OBX-10  | Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  | Observation Result Status (ID)  | F  | F = Final, C = Corrected*  |
 
-
-[back to Table of Contents](#table-of-contents)
-
+ 
 ## Seventh OBX 
 
 ### Sample OBX segment: Seventh OBX 
@@ -536,9 +510,7 @@ OBX|7|ST|LEFTMACEDEMA^^IRIS|7|None||||||F
 | OBX-10  |  Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  |  Observation Result Status (ID)  | F  | F = Final, C = Corrected*  |
 
-
-[back to Table of Contents](#table-of-contents)
-
+ 
 ## Eighth OBX 
 
 ### Sample OBX segment: 
@@ -563,9 +535,7 @@ OBX|8|ST|LEFTOTHERRETIN^^IRIS|8|None||||||F
 | OBX-10  | Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  | Observation Result Status (ID)  | F  |  |
 
-
-[back to Table of Contents](#table-of-contents)
-
+ 
 ## Ninth OBX 
 
 ### Sample OBX segment: 
@@ -590,9 +560,7 @@ OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradeable Image||||||F
 | OBX-10  | Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  | Observation Result Status (ID)  | F  |  |
 
-
-[back to Table of Contents](#table-of-contents)
-
+ 
 ## Tenth Through Second-to-Last OBX 
 
 Sample OBX segment (default): 
@@ -614,7 +582,7 @@ Tertiary Option (NTE Segments): Iris can send the text results as NTE segments i
 | OBX-1  | Set ID - OBX (SI)  | 10  | Increase sequentially by 1  |
 | OBX-2  | Value Type (ID)  | FT  | Formatted Text, but can be defined differently like "ST" if  necessary  |
 |  OBX-3  | Observation Identifier (CE)  | Result^^IRIS  |  |
-|   | OBX-3.1 Identifier  | Result   | "Result" but can be defined withother value if necessary  |
+|   | OBX-3.1 Identifier  | Result   | "Result" but can be defined with other value if necessary  |
 |   | OBX-3.2 Text  |  | Usually be empty but can be defined with any value if necessary  |
 |  | OBX-3.3 Name of Coding System  | IRIS  | “IRIS” is used as the default value  |
 | OBX-4  | Observation Sub-Id (ST)  | 001  | Grading specific identifier; this number increases sequentially by 1 for each additional OBX segment  |
@@ -627,9 +595,7 @@ Tertiary Option (NTE Segments): Iris can send the text results as NTE segments i
 | OBX-10  | Nature of Abnormal Test (ID)  |  | Empty by default  |
 | OBX-11  | Observation Result Status (ID)  | F  |  |
 
-
-[back to Table of Contents](#table-of-contents) 
-
+ 
 ## Last OBX 
 *Reference Pointer Option*
 
@@ -662,7 +628,7 @@ Note 1.0:
 
 ## Example URL: 
 
-https://api.retinalscreenings.com/api/PatientOrders/GetSingleResultForDisplayIn Emr?patientOrderId=12345&asPdf=True&isPreliminary=False&auth=xxxxx
+https://api.retinalscreenings.com/api/PatientOrders/GetSingleResultForDisplayInEmr?patientOrderId=12345&asPdf=True&isPreliminary=False&auth=xxxxx
 
 ## Note 1.1: 
 
@@ -714,22 +680,4 @@ OBX|27|ED|||PDF^TEXT^^Base64^[ Base64 Encoded PDF]||||||F
 
 Note 2.0: This will contain a Base64 encoded pdf document. An example can be provided upon request.
  
-
-***
-
-## Revision History
-
-
-| Row No.  | Revision Date  | Version Update  | Revision Notes  |
-| -- | -- | -- | -- |
-| 1  | Sept. 26, 2018  | Version 1.0  | Initial documentation creation Updated version  |
-| 2  | Oct. 3, 2018  | Version 2.0  | Corrected typos in several segment section descriptions Added footnotes to some sections to add additional descriptions (where applicable) Added “Examples” section Updated version  |
-| 3  | Jan. 8, 2019  | Version 2.1  | Added a “Revision History” section Updated version  |
-| 4  | Jan. 3, 2020  | Version 2.2  | Updated examples and improved readability Corrected grammatical typos  |
-| 5  | Jan. 21, 2020  | Version 2.3  | Added criteria for an optional DG1 segment Updated version  |
-| 6  | Jun. 6, 2021  | Version 2.4  | Updated version  |
-| 7  | Aug. 31, 2021  | OBS  | Moving to OBS – will re-implement as TEC document |
-| 8  | Aug 31, 2021  | TEC 005, Rev A  | Re-implemented as TEC document  |
-| 9  | Sep. 22, 2023  | Version 2.5  | Removed version from Acknowledgement section. Updated PID.19 description. Updated PV1.7.13, PV1.8.13, and PV1.17.13 descriptions. Updated ORC.12.13 description. Updated OBR.4 description. Updated OBX Summary description. Updated all OBX.11 descriptions. Updated Other descriptions (OBX.5). Corrected typos in Text Report description (OBX.5). Updated Version.  |
-
  

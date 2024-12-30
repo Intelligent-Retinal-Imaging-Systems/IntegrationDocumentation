@@ -31,14 +31,14 @@ Integration in the Microsoft environment is made available from the NuGet public
 # Typescript 
 ![Typescript](https://th.bing.com/th?q=TypeScript+Logo.svg&w=120&h=120&c=1&rs=1&qlt=90&cb=1&pid=InlineBlock&mkt=en-US&cc=US&setlang=en&adlt=moderate&t=1&mw=247)
 
-Typescript packages are available from NPM as well you can access the public github repo for the code directly. 
+Typescript packages are available from NPM as well you can access the public GitHub repo for the code directly. 
 
 <a href="https://github.com/Intelligent-Retinal-Imaging-Systems/ts-service-bus">IRIS Typescript Repository</a>
 
 # Node
 ![Node](https://th.bing.com/th/id/OIP.2uFooAQy1Qm5AJve8A7cuwHaIO?w=148&h=180&c=7&r=0&o=5&pid=1.7)
 
-See typescript
+See Typescript
 
 # Go 
 ![GO LANG](https://th.bing.com/th/id/OIP.t3RUiobgTR3_SbYMuB5oXgHaHa?w=184&h=184&c=7&r=0&o=5&pid=1.7) 
