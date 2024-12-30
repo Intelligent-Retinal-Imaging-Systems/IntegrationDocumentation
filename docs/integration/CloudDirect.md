@@ -34,8 +34,8 @@ In all cases, communication is accommodated using the cloud vendors APIs, SDKs o
 Iris provides access to certain integration tools and configurations though the Integration Administrator role. The role is assigned to you either by Iris support or an existing Organization Administrator for your organization. The term Integration Administrator will be referred to throughout this document thus mentioned here for clarity. 
 
 
-# Developers
-IRIS provides libraries for most of the popular programming languages on our [Developer Resources](/IntegrationDocumentation/docs/integration/DeveloperResources) page.
+# Developers                                                                                       
+IRIS provides libraries for most of the popular programming languages on our [Developer Resources](https://docs.retinalscreenings.com/docs/integration/DeveloperResources/) page.
 
 # Order Submission
 
@@ -201,12 +201,12 @@ Providing the starting DxCode (ICD-10) serves as the foundation for a fully qual
 | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
 | Name | [Name](#name-structure) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
-| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions) options
+| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
 | Genders | Array of [PersonGender](#persongender-structure) | Patient Gender assignment(s) 
-| Race | options | Optional race identifier | [Race](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions) options
-| Ethnicity | options | Optional ethnicity identifier | [Ethnicity](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions) options
-| PrimaryLanguage | options | Optional language identifier | [Language](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions) options
-| MaritalStatus | options | Optional marital status identifier | [Marital Status](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions) options
+| Race | options | Optional race identifier | [Race](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
+| Ethnicity | options | Optional ethnicity identifier | [Ethnicity](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
+| PrimaryLanguage | options | Optional language identifier | [Language](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
+| MaritalStatus | options | Optional marital status identifier | [Marital Status](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
 | Email | string | Optional email address for patient 
 | Phone | string | Optional single phone number for patient
 | AdditionalInfo | string | Optional free form data association with patient
@@ -266,7 +266,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 # Order and Image Events
 Because Service Bus based integrations are asynchronous, IRIS posts events on an events queue to keep you apprised of important operations as they occur.  
 
-See [Sample Events](/IntegrationDocumentation/docs/integration/CloudDirectEventSample/) for examples of event messages.
+See [Sample Events](https://docs.retinalscreenings.com/docs/integration/CloudDirectEventSample/) for examples of event messages.
 
 All messages contain a common set of base properties 
 
@@ -480,8 +480,8 @@ Raw patient details for exam
 | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
 | Name | [Name](#name-structure) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
-| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions) options
-| Genders | Array of [PersonGender](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions) | One or more gender specifications 
+| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
+| Genders | Array of [PersonGender](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) | One or more gender specifications 
 | Phone | [Address](#address-structure) structure | Raw patient address data
 
 
@@ -610,8 +610,8 @@ Common structure used for storing gender designations
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| Context | options | Gender association | [GenderContext](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions) options 
-| Gender | options | The gender for specified context | [Gender](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions) options
+| Context | options | Gender association | [GenderContext](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options 
+| Gender | options | The gender for specified context | [Gender](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
   
 
 
