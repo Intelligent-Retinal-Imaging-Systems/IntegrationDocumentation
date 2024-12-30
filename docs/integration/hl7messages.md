@@ -26,7 +26,7 @@ Typical for HL7 transmissions, all messages sent to your EMR are encapsulated in
 ### ACK Message
 In the event an ACK message is malformed or contains a negative control code, the IRIS system could resend the original message.  The most notable exception to this is the DFT message. Because of the potential for duplicating charges, IRIS will send the DFT message a maximum of one time per order regardless of the response.
 
-### Customization
+## Customization
 Variations of messages typically involve the use of the same common message segments with alternate positioning.  IRIS builds all HL7 content from mapping instructions therefore making adaptations to these variations possible through configuration.  
 
 Contact IRIS Support if such changes are needed. 
