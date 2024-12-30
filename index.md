@@ -9,7 +9,7 @@ The IRIS platform is built with a rich set of integration tools that allows you 
 
 ## Devices
 ### Imaging Equipment
-For details on supported devices and how they integrate to the IRIS platform go to the [Imaging Equipment](/IntegrationDocumentation/docs/integration/CameraIntegration) page. 
+For details on supported devices and how they integrate to the IRIS platform go to the [Imaging Equipment](/docs/integration/CameraIntegration/) page. 
 
 ## Order Processing
-For details on order processing go to the [Order Processing](/IntegrationDocumentation/docs/integration/OrderProcessingIntegrations) page. 
+For details on order processing go to the [Order Processing](/docs/integration/OrderProcessingIntegrations/) page. 

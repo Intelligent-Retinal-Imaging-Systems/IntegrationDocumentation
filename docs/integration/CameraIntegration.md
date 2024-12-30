@@ -16,7 +16,7 @@ Depending on the camera's capabilities, pushing images from an exam to the platf
 - The most basic form of integration is directly assigning images from a file system to an order using the IRIS Camera Operator application.  
 - In cases where the image has embedded meta data that can be used to link the image to an order, image submission can be performed in a more automated fashion.  
 - In the case of fully integrated solutions such as DICOM, images are pushed seamlessly from the device to the IRIS platform. 
-    - With traditional DICOM (assuming a local PACS) integration is provided through the [IRIS DICOM Proxy](/IntegrationDocumentation/docs/integration/IRISDICOMProxy).
+    - With traditional DICOM (assuming a local PACS) integration is provided through the [IRIS DICOM Proxy](/docs/integration/IRISDICOMProxy/).
 - Other devices such as the Remidio Camera, are tightly integrated to IRIS out of the box.
 
 ## The Worklist function
@@ -31,7 +31,7 @@ The primary and preferred form of camera integration is through **DICOM**.  Gene
 
 Handheld cameras are integrated in a variety of ways.
 
-For specific details on all cameras go to our [IRIS Supported Devices](/IntegrationDocumentation/docs/integration/IRISSupportedDevices) page.
+For specific details on all cameras go to our [IRIS Supported Devices](/docs/integration/IRISSupportedDevices/) page.
 
 ### OCT Cameras
 IRIS provides integration with OCT Cameras via **DICOM**. For information on specific OCT devices contact IRIS sales support.

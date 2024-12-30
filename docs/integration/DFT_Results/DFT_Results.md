@@ -243,7 +243,7 @@ FT1|2||273013|20170410145803|20170410173627|CG|3072F^No evidence of retinopathy 
 | FT1-17 | Fee Schedule (IS) |  | Empty by default
 | FT1-18 | Patient Type (IS) |  | Empty by default
 | FT1-19 | Diagnosis Code - FT1 (CE) | E11.41^Type 2 diabetes mellitus with diabetic mononeuropathy^ICD-10-CM~E11.3592^Type 2 diabetes mellitus with proliferative diabetic retinopathy without macular edema, left eye^ICD-10-CM~H35.81^Retinal edema^ICD-10-CM | This is populated based on the diagnoses found upon grading; configured as a repeatable field separated by “~”. Note: Iris only sends diagnoses related to the current patient visit.
-|  | FT1-19.1 Identifier | E11.41 | [Diagnosis code in ICD 10 representation](/docs/integration/DFT_Results/Most_Common_Diagnoses.md)| 
+|  | FT1-19.1 Identifier | E11.41 | [Diagnosis code in ICD 10 representation](/docs/integration/DFT_Results/Most_Common_Diagnoses/)| 
 |  | FT1-19.2 Text | Type 2 diabetes mellitus with diabetic mononeuropathy | Description of diagnosis code
 |  | FT1-19.3 Name of Coding System | ICD-10-CM | The coding system; Iris is currently using ICD10
 | FT1-20 | Performed by Code (XCN) | GR0001^DOE^JANE^^

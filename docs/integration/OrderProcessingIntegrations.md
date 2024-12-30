@@ -17,15 +17,15 @@ While the IRIS platform is fully operable through a rich suite of <a href="https
 #### By Business Sector 
 
 
-- Primary Care (small) see [Basic Integrations](/IntegrationDocumentation/docs/integration/BasicIntegrations) page
-- Primary Care (large), IDN, FQHC see [EMR Integrations](/IntegrationDocumentation/docs/integration/EMRIntegrations) page
-- Home Health Care see [Cloud Direct Integrations](/IntegrationDocumentation/docs/integration/CloudDirect) page
-- Retail / Kiosk see [Cloud Direct Integrations](/IntegrationDocumentation/docs/integration/CloudDirect) page
-- Payers see [Cloud Direct Integrations](/IntegrationDocumentation/docs/integration/CloudDirect) and/or [Basic Integrations](/IntegrationDocumentation/docs/integration/BasicIntegrations) page
+- Primary Care (small) see [Basic Integrations](/docs/integration/BasicIntegrations) page
+- Primary Care (large), IDN, FQHC see [EMR Integrations](/docs/integration/EMRIntegrations) page
+- Home Health Care see [Cloud Direct Integrations](/docs/integration/CloudDirect) page
+- Retail / Kiosk see [Cloud Direct Integrations](/docs/integration/CloudDirect) page
+- Payers see [Cloud Direct Integrations](/docs/integration/CloudDirect) and/or [Basic Integrations](/docs/integration/BasicIntegrations) page
 
 #### By Technology 
 
-- For basic integrations revolving around file drops, SFTP or options that suppliment manual workflows, navigate to the [Basic Integrations](/IntegrationDocumentation/docs/integration/BasicIntegrations) page
-- If you are using a mainstream EMR/EHR (HL7 integrations) navigate to the [EMR Integrations](/IntegrationDocumentation/docs/integration/EMRIntegrations) page
-- If you are using a Cloud based EMR/EHR Provider (Athena, OCHIN,etc...) navigate to the [SAAS (Cloud) EMR Integrations](/IntegrationDocumentation/docs/integration/IRISEMRCloudProviders) page
-- If you are considering developing software, using batch oriented operations from your platform, using tools from a cloud based platform such as Salesforce, or any other custom type integration navigate to the [Cloud Direct Integrations](/IntegrationDocumentation/docs/integration/CloudDirect) page
+- For basic integrations revolving around file drops, SFTP or options that supplement manual workflows, navigate to the [Basic Integrations](/docs/integration/BasicIntegrations) page
+- If you are using a mainstream EMR/EHR (HL7 integrations) navigate to the [EMR Integrations](/docs/integration/EMRIntegrations) page
+- If you are using a Cloud based EMR/EHR Provider (Athena, OCHIN,etc...) navigate to the [SAAS (Cloud) EMR Integrations](/docs/integration/IRISEMRCloudProviders) page
+- If you are considering developing software, using batch oriented operations from your platform, using tools from a cloud based platform such as Salesforce, or any other custom type integration navigate to the [Cloud Direct Integrations](/docs/integration/CloudDirect) page

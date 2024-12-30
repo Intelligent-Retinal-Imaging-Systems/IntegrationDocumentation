@@ -35,7 +35,7 @@ Iris provides access to certain integration tools and configurations though the 
 
 
 # Developers                                                                                       
-IRIS provides libraries for most of the popular programming languages on our [Developer Resources](https://docs.retinalscreenings.com/docs/integration/DeveloperResources/) page.
+IRIS provides libraries for most of the popular programming languages on our [Developer Resources](/docs/integration/DeveloperResources/) page.
 
 # Order Submission
 
@@ -201,12 +201,12 @@ Providing the starting DxCode (ICD-10) serves as the foundation for a fully qual
 | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
 | Name | [Name](#name-structure) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
-| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
+| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/docs/integration/CloudDirectEnumOptions) options
 | Genders | Array of [PersonGender](#persongender-structure) | Patient Gender assignment(s) 
-| Race | options | Optional race identifier | [Race](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
-| Ethnicity | options | Optional ethnicity identifier | [Ethnicity](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
-| PrimaryLanguage | options | Optional language identifier | [Language](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
-| MaritalStatus | options | Optional marital status identifier | [Marital Status](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
+| Race | options | Optional race identifier | [Race](/docs/integration/CloudDirectEnumOptions) options
+| Ethnicity | options | Optional ethnicity identifier | [Ethnicity](/docs/integration/CloudDirectEnumOptions) options
+| PrimaryLanguage | options | Optional language identifier | [Language](/docs/integration/CloudDirectEnumOptions) options
+| MaritalStatus | options | Optional marital status identifier | [Marital Status](/docs/integration/CloudDirectEnumOptions) options
 | Email | string | Optional email address for patient 
 | Phone | string | Optional single phone number for patient
 | AdditionalInfo | string | Optional free form data association with patient
@@ -266,7 +266,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 # Order and Image Events
 Because Service Bus based integrations are asynchronous, IRIS posts events on an events queue to keep you apprised of important operations as they occur.  
 
-See [Sample Events](https://docs.retinalscreenings.com/docs/integration/CloudDirectEventSample/) for examples of event messages.
+See [Sample Events](/docs/integration/CloudDirectEventSample/) for examples of event messages.
 
 All messages contain a common set of base properties 
 
@@ -411,7 +411,7 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 | Version | string | Version of the object model | 2.3.1
 | Timestamp | datetimeoffset | Timestamp when item was posted to the Results Queue 
 | TransactionId | Guid | unique identifier of the communication 
-| ResultCode | options | type of result payload contains | [ResultCode](/IntegrationDocumentation/docs/integration/CloudDirectEnumOptions)
+| ResultCode | options | type of result payload contains | [ResultCode](/docs/integration/CloudDirectEnumOptions)
 | Site | [Site](#site-structure) structure| Contains site information order was assigned to  
 | ResultsDocument | [ResultsDocument](#resultsdocument-structure) structure
 | ImageDetails | [ImageDetails](#imagedetails-structure) structure | Details of images submitted to the order
@@ -480,8 +480,8 @@ Raw patient details for exam
 | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
 | Name | [Name](#name-structure) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
-| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
-| Genders | Array of [PersonGender](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) | One or more gender specifications 
+| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/docs/integration/CloudDirectEnumOptions/) options
+| Genders | Array of [PersonGender](/docs/integration/CloudDirectEnumOptions) | One or more gender specifications 
 | Phone | [Address](#address-structure) structure | Raw patient address data
 
 
@@ -610,8 +610,8 @@ Common structure used for storing gender designations
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| Context | options | Gender association | [GenderContext](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options 
-| Gender | options | The gender for specified context | [Gender](https://docs.retinalscreenings.com/docs/integration/CloudDirectEnumOptions) options
+| Context | options | Gender association | [GenderContext](/docs/integration/CloudDirectEnumOptions/) options 
+| Gender | options | The gender for specified context | [Gender](/docs/integration/CloudDirectEnumOptions/) options
   
 
 

@@ -15,7 +15,7 @@ IRIS provides a variety of tools to allow basic integration services that may su
 
 
 ## Local File System Integration
-IRIS can deliver results directly to a local file system within your network using the [IRIS EMR Proxy](/IntegrationDocumentation/docs/integration/IRISEMRProxy/). 
+IRIS can deliver results directly to a local file system within your network using the [IRIS EMR Proxy](/docs/integration/IRISEMRProxy/). 
 
 The typical payload for file system delivery is a PDF report with attached metadata.  Path names are template based and can include tokens dynamically swapped from details of the order. For example, you can configure the system to save the PDF as a file with the name including the MRN and date of service.  
 
