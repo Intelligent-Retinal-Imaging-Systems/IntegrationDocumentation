@@ -6,14 +6,14 @@ has_toc: false
 
 # EMR Integrations
 
-IRIS Provides integration services to *on-premise* amd SAAS (cloud based) EMR/EHR platforms. 
+IRIS Provides integration services to *on-premise* and SAAS (cloud based) EMR/EHR platforms. 
 
 ## On Premise EMR/EHR systems
 There are two basic components to an on-premise integration: 
 - **Transport** - Software / Networking components that provide the path between IRIS and the target EMR/EHR
 - **Content** - Data that is passed between the systems
 
-The primary piece of software that supports *Transport* is the [IRIS EMR Proxy application](#iris-emr-proxy-application).
+The primary piece of software that supports *Transport* is the [IRIS EMR Proxy application](/docs/integration/IRISEMRProxy/).
 *Content* is encoded as [HL7](/docs/integration/hl7messages/) messages.
 
 Integration to On-premise systems require use of the IRIS EMR Proxy application.  
