@@ -59,7 +59,7 @@ A placeholder is a token encapsulated within curly brackets positioned in the te
 When building a template keep in mind that certain values found in fields could be incompatible with file naming restrictions of the target system.
 
 ## Report identification on programmatic processing
-As you decide on your file naming approach, consider that PDF files sent from IRIS include metadata that can be processed using standard PDF programming resources. 
+As you decide on your file naming approach, consider that PDF files sent from IRIS include metadata that can be processed using standard PDF programming tools. 
 
 Identifiers for the order and patient can be easily parsed from the document making it easy to process files programmatically.
 
@@ -90,6 +90,6 @@ The following example assumes a local file system delivery with the following co
 | -- | --
 | {MMddyyyy} | Separate folder for each days results
 | {clientLocalId} | Separate folder for each site/facility
-| {orderLocalId} | Name the file from the Id specified by the organization on creation
+| {orderLocalId} | Name the file from the order Id specified by the organization on creation
 
 
