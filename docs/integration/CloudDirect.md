@@ -84,18 +84,18 @@ For multisite workflows, you will provide IRIS with your identifiers for each si
 
 # OrderRequest Object Model 
 
-The OrderRequest object model provides all the properties necessary to create an order in the Iris system regardless of your workflow. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: #EE5500;'>red</span> are required. 
+The OrderRequest object model provides all the properties necessary to create an order in the Iris system regardless of your workflow. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: rgb(188, 13, 16);'>red</span> are required. 
 
 
 | Property  | type  |  Description  | Options
 | -- | -- | -- | -- |
-| <span style='color:rgb(238, 56, 0);'>Version</span> | string |  Should be set to 2.3.1 unless otherwise directed.
+| <span style='color:rgb(188, 13, 16);'>Version</span> | string |  Should be set to 2.3.1 unless otherwise directed.
 | UserNameSubmitting | string | Optionally specify the username of a user that should be associated with the order creation. If your organization has been provided a service account for API direct operations, this is acceptable, otherwise it is not required. 
-| <span style='color: #EE5500;'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel) | [OrderControlCode](#ordercontrolcode) options
-| <span style='color: #EE5500;'>Site</span> | [Site](#site-structure) structure | Location order is associated with
+| <span style='color: rgb(188, 13, 16);'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel) | [OrderControlCode](#ordercontrolcode) options
+| <span style='color: rgb(188, 13, 16);'>Site</span> | [Site](#site-structure) structure | Location order is associated with
 | Camera | [Camera](#camera-structure) structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
-| <span style='color: #EE5500;'>Order</span> | [Order](#order-structure) structure | Details of order
-| <span style='color: #EE5500;'>Patient</span> | [Patient](#patient-structure) structure | Patient details
+| <span style='color: rgb(188, 13, 16);'>Order</span> | [Order](#order-structure) structure | Details of order
+| <span style='color: rgb(188, 13, 16);'>Patient</span> | [Patient](#patient-structure) structure | Patient details
 | OrderingProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who ordered the exam
 | ReferringProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who referred the patient for the exam
 | CameraOperator | [Request Provider](#requestprovider-structure) structure | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
@@ -198,11 +198,11 @@ Providing the starting DxCode (ICD-10) serves as the foundation for a fully qual
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
-| Name | [Name](#name-structure) structure | Patient first and last name
-| Dob | Date | Patient date of birth 
+| <span style='color:rgb(188, 13, 16);'>LocalId</span> | string | Id of patient as specified by the submitting organization. (e.g.: Patient MRN). 
+| <span style='color:rgb(188, 13, 16);'>Name</span> | [Name](#name-structure) structure | Patient first and last name
+| <span style='color:rgb(188, 13, 16);'>Dob</span> | Date | Patient date of birth 
 | Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/docs/integration/CloudDirectEnumOptions) options
-| Genders | Array of [PersonGender](#persongender-structure) | Patient Gender assignment(s) 
+| <span style='color:rgb(188, 13, 16);'>Genders</span> | Array of [PersonGender](#persongender-structure) | Patient Gender assignment(s) 
 | Race | options | Optional race identifier | [Race](/docs/integration/CloudDirectEnumOptions) options
 | Ethnicity | options | Optional ethnicity identifier | [Ethnicity](/docs/integration/CloudDirectEnumOptions) options
 | PrimaryLanguage | options | Optional language identifier | [Language](/docs/integration/CloudDirectEnumOptions) options
@@ -226,9 +226,9 @@ The Iris system allows only one open order per patient/evaluation type combinati
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| EvaluationTypes | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the Iris system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD
+| <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the Iris system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD
 | ScheduledTime | datetime | When orders are scheduled for a specific time, this should be that time local to the exam location. This is typically used for workflows where orders are pushed to Cameras as this determines which items show in a Camera worklist
-| LocalId | string | The Id of the order as specified by the submitting organization. This id is required for subsequent Change and Cancel operations as well as event notifications. 
+| <span style='color:rgb(188, 13, 16);'>LocalId</span> | string | The Id of the order as specified by the submitting organization. This id is required for subsequent Change and Cancel operations as well as event notifications. 
 | DepartmentId | string | Optional identifier for the submitting department. Some EMR integrations will require this. 
 | EncounterNumber | string | Optional identifier for the encounter that generated the order. Some EMR integrations will require this field. 
 | StudyInstanceUniqueId | DICOM unique id | Optional Identifier, typically used with DICOM integrated cameras 
