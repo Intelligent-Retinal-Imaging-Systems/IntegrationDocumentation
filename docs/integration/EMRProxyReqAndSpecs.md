@@ -62,14 +62,17 @@ For customers who wish to create a test environment (typically for EMR Proxy int
 
 Follow the same procedures outlined above for Production installations.
 
-## Install Screen shots
+### Install Screen shots
 
-### Login to Portal
+#### Login to Portal
 ![LoginToPortal](/docs/assets/integrationappsinstallss1.png)
 
-### Navigate to apps
+#### Navigate to apps
 ![LoginToPortal](/docs/assets/integrationappsinstallss.png)
 
+
+### Installation Files
+Proxy applications are written using Microsoft's .NET Core framework. For simplicity of installation they are published as single file executables, however the nature of .NET Core is to package all dependencies with the application.  This is accomplished by combining all of the dependencies into this single file which is unpacked at runtime.  By default the 
 
 ## Internet Access /  Firewall rules
 IRIS Proxies must communication to specific resources in the IRIS cloud without Firewall and/or Web Proxy restrictions. 

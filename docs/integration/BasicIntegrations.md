@@ -17,11 +17,13 @@ IRIS provides a variety of tools to allow basic integration services that may su
 ## Local File System Integration
 IRIS can deliver results directly to a local file system within your network using the [IRIS EMR Proxy](/docs/integration/IRISEMRProxy/). 
 
-The typical payload for file system delivery is a PDF report with attached metadata.  Path names are template based and can include tokens dynamically swapped from details of the order. For example, you can configure the system to save the PDF as a file with the name including the MRN and date of service.  
+The typical payload for file system delivery is a PDF report with attached metadata.  Path names are [template based](/docs/integration/FileNameTemplates/) and can include tokens dynamically swapped from details of the order. For example, you can configure the system to save the PDF as a file with the name including the MRN and date of service.  
 
 Other payload options are available including files written with JSON encoded raw content.  
 
 This option can be deployed standalone as the primary source of results or as a supplement to any other delivery mechanism. 
+
+To implement local file systems integration, Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a>.  You may elect to perform the Integration administrator role yourself or IRIS can do this for you. 
 
 ## SFTP 
 Results can be delivered to an SFTP site you provide access to.  
@@ -38,3 +40,9 @@ To use SFTP Delivery, Contact <a href="mailto:support@irishelp.zendesk.com">IRIS
 IRIS Can send your results to one or more fax numbers.
 
 To setup fax delivery, contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a>
+
+## Order Manager Application
+You may use the IRIS Order Manager application to receive all of your results.  When configured for this type of results delivery, orders stay in a pending delivery state until you pick them up through the application.  Pending results are packaged into a single (.zip) file which you may download as often as you wish.  
+
+#### Example Order Manager Screenshot
+![OrderManagerResults](/docs/assets//ordermanagerresults.png)
