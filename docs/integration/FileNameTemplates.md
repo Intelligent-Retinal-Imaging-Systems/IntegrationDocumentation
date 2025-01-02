@@ -45,9 +45,9 @@ Placeholders are any of the following list of reserved words contained with curl
 | yyyyMMdd_HHmmss | Julian Date (zero padded components) + _ + Zero padded Hour, minute and seconds from date/time when result is delivered | 20240901_090421
 | yyyyMMdd | Julian Date (zero padded components) when result is delivered | 20240901
 | MMddyyyy | Date (zero padded components) when result is delivered | 09012024
-| YEST_yyyy | Four digit year from date when result is delivered minus 1 day | 2024
-| MM | Zero padded, two digit month from date when result is delivered minus 1 day | 08
-| dd | Zero padded, two digit day of the month from date when result is delivered minus one day | 31
-| yyyyMMdd_HHmmss | Julian Date (zero padded components) + _ + Zero padded Hour, minute and seconds from date/time when result is delivered minus one day | 20240831_090421
-| yyyyMMdd | Julian Date (zero padded components) when result is delivered minus one day | 20240831
-| MMddyyyy | Date (zero padded components) when result is delivered minus one day | 08312024
+| YEST_yyyy | Four digit year from date when result is delivered minus one day | 2024
+| YEST_MM | Zero padded, two digit month from date when result is delivered minus one day | 08
+| YEST_dd | Zero padded, two digit day of the month from date when result is delivered minus one day | 31
+| YEST_yyyyMMdd_HHmmss | Julian Date (zero padded components) + _ + Zero padded Hour, minute and seconds from date/time when result is delivered minus one day | 20240831_090421
+| YEST_yyyyMMdd | Julian Date (zero padded components) when result is delivered minus one day | 20240831
+| YEST_MMddyyyy | Date (zero padded components) when result is delivered minus one day | 08312024
