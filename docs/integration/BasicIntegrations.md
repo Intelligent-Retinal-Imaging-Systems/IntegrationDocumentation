@@ -30,7 +30,7 @@ Results can be delivered to an SFTP site you provide access to.
 
 - You can choose a payload type of PDF report or JSON encoded raw data that can include the PDF Report
 - You may specify a single directory level that is used for all results
-- File names are template based and can include tokens dynamically swapped from details of the order.  
+- File names are [template based](/docs/integration/FileNameTemplates/) and can include tokens dynamically swapped from details of the order.  
 - You must register an individual to be a contact point for delivery failures
 
 To use SFTP Delivery, Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a>
