@@ -65,10 +65,10 @@ Follow the same procedures outlined above for Production installations.
 ### Install Screen shots
 
 #### Login to Portal
-![LoginToPortal](/docs/assets/integrationappsinstallss1.png)
+![LoginToPortal](/assets/integration-apps-installs-1.png)
 
 #### Navigate to apps
-![LoginToPortal](/docs/assets/integrationappsinstallss.png)
+![LoginToPortal](/assets/integration-apps-installs-2.png)
 
 
 ### Installation Files

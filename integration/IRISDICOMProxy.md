@@ -43,4 +43,4 @@ You, as the owner of the equipment, are responsible for the upkeep of the Window
 If there are issues with the application, you may reach out to IRIS support for troubleshooting assistance.  There is no initial or ongoing requirement for remote access however you may choose to provide it during a support call.  Most issues can be diagnosed without this access.
 
 ## System Requirements
-Details for hardware and network requirements can be found at [IRIS Proxy Application Requirements and Specifications](/docs/integration/EMRProxyReqAndSpecs/)
+Details for hardware and network requirements can be found at [IRIS Proxy Application Requirements and Specifications](/integration/EMRProxyReqAndSpecs/)

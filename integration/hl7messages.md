@@ -15,10 +15,10 @@ While IRIS is capable of any HL7 communication, the following list contains the 
 
 | Message type | Default | Usage
 | -- | -- | -- |
-| [ORM](/docs/integration/ORM/TEC_005_Rev_C_Standard_Orders/) | ORM-O01 | Orders sent from EMR to IRIS
-| [ORU](/docs/integration/ORU/TEC_007_Rev_C_Standard_Results/) | ORU-R01 | Results sent from IRIS to EMR
-| [DFT](/docs/integration/DFT_Results/DFT_Results/) | DFT-P03 | Drop charges to EMR from IRIS
-| [MDM](/docs/integration/MDM/MDM_Results/) | MDM-T02 | From IRIS to EMR: Results, Update documents
+| [ORM](/integration/ORM/TEC_005_Rev_C_Standard_Orders/) | ORM-O01 | Orders sent from EMR to IRIS
+| [ORU](/integration/ORU/TEC_007_Rev_C_Standard_Results/) | ORU-R01 | Results sent from IRIS to EMR
+| [DFT](/integration/DFT_Results/DFT_Results/) | DFT-P03 | Drop charges to EMR from IRIS
+| [MDM](/integration/MDM/MDM_Results/) | MDM-T02 | From IRIS to EMR: Results, Update documents
 
 ## Messages Sent To Your EMR
 Typical for HL7 transmissions, all messages sent to your EMR are encapsulated in Minimal Lower Layer Protocol (MLLP) and expect a corresponding HL7 ACK message signaling the receipt of the message.  
