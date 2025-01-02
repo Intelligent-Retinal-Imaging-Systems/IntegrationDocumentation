@@ -77,6 +77,7 @@ The following example assumes a local file system delivery with the following co
 
 
 #### The static portion of this example includes:
+
 | Text | Comments
 | -- | -- 
 | C:\results\  | All results go to the C:\results folder
@@ -84,6 +85,7 @@ The following example assumes a local file system delivery with the following co
 | .pdf | You must specify the proper filename extension based on the data type of the content dropped
 
 #### The dynamic portion of this example includes:
+
 | Placeholder | Comments
 | -- | --
 | {MMddyyyy} | Separate folder for each days results
