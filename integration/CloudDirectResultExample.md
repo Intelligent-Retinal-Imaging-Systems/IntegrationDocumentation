@@ -1,7 +1,7 @@
 ---
 title: Order Result Example
 parent: Cloud Direct
-nav_order: 2
+nav_order: 3
 ---
 
 # Sample OrderResults Message

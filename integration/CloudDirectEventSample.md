@@ -1,7 +1,7 @@
 ---
 title: Order Event Examples 
 parent: Cloud Direct
-nav_order: 3
+nav_order: 4
 ---
 
 # Service Bus Event Examples
