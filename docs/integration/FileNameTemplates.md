@@ -4,21 +4,25 @@ parent: Basic Integrations
 ---
 
 # Template Driven Filepath Naming
-File names for delivery can be customized from the content from an order.  This is accomplished by providing a template containing placeholders that are dynamically set at delivery.
+File names for delivery can be customized from the content of an order.  This is accomplished by providing a template containing placeholders that are dynamically set at delivery.
 
 ### Example
 The following example assumes a local file system delivery with the following configuration:
 
-- Template: C:\results\\{MMddyyyy}\\{clientLocalId}\\{orderLocalId}.pdf
-- Client Local Id: HarborviewClinic
-- Order Local Id: P0112X00123
-- Date of delivery: 9/1/2024
+- **Template**: C:\results\\{MMddyyyy}\\{clientLocalId}\\{orderLocalId}.pdf
+- **Client Local Id**: HarborviewClinic
+- **Order Local Id**: P0112X00123
+- **Date of delivery**: 9/1/2024
 
-Resulting Filename: C:\results\09012024\HarborviewClinic\P0112X00123.pdf
+#### Resulting Filename
+ C:\results\09012024\HarborviewClinic\P0112X00123.pdf
 
 
 ## Placeholders
-Placeholders are any of the following list of reserved words contained with curly brackets: { }
+A placeholder is a token encapsulated within curly brackets positioned in the template to be dynamically swapped at delivery. Tokens are predefined descriptive words or character combinations established by IRIS and listed below.
+
+### Example
+patientId is a token that becomes a placeholder *{patientId}* when encapsulated in brackets.
 
 *Note that not all values are guaranteed to be available as certain fields are only available if you supply them on the submission of the order (e.g.: orderLocalId).*
 

@@ -1,6 +1,7 @@
 ---
 title: Basic Integrations
 parent: Order Processing Integration
+has_toc: false
 ---
 
 # Basic Integrations
