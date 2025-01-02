@@ -46,4 +46,4 @@ To setup fax delivery, contact <a href="mailto:support@irishelp.zendesk.com">IRI
 You may use the IRIS Order Manager application to receive all of your results.  When configured for this type of results delivery, orders stay in a pending delivery state until you pick them up through the application.  Pending results are packaged into a single (.zip) file which you may download as often as you wish.  
 
 #### Example Order Manager Screenshot
-![OrderManagerResults](/assets//ordermanagerresults.png)
+![OrderManagerResults](/assets/ordermanagerresults.png)
