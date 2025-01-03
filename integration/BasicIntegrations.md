@@ -1,6 +1,7 @@
 ---
 title: Basic Integrations
 parent: Order Processing Integration
+nav_order: 1
 has_toc: false
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Cloud Direct 
 parent: Order Processing Integration
+nav_order: 2
 has_toc: false
 ---
 
