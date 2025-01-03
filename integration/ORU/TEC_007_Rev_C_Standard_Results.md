@@ -30,7 +30,7 @@ Following this section, the rest of the document will be divided by HL7 segment 
 
 The message header segment includes information that defines the structure of the message.
 
-### Sample MSH segment: 
+#### Sample MSH segment
 ```
 MSH|^\~\&|IRIS|IRIS|VENDOR|VENDOR|20170410145907||ORU^R01|170410145907|T|2.4 
 ```
@@ -56,7 +56,7 @@ MSH|^\~\&|IRIS|IRIS|VENDOR|VENDOR|20170410145907||ORU^R01|170410145907|T|2.4
 
 The patient identification segment will include patient-specific demographic information. 
 
-### Sample PID segment: 
+#### Sample PID segment
 ```
 PID||ITCC20170410^^^^MRN|ITCC20170410||DOE^JOHN||19581012|M||||||||||1234|111-22-3333 
 ```
@@ -91,7 +91,7 @@ PID||ITCC20170410^^^^MRN|ITCC20170410||DOE^JOHN||19581012|M||||||||||1234|111-22
 
 The patient visit segment includes patient-specific visit information.
 
-### Sample PV1 segment: 
+#### Sample PV1 segment
 ```
 PV1|1|O|POC01||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^M D^^^^^^NPI|||||||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|||||||||||||||||||||||||||20170410145803|20170410145803 
 ```
@@ -180,7 +180,7 @@ PV1|1|O|POC01||||GR0001^DOE^JANE^^^MD^MD^^^^^^NPI|OP0001^DOE^JACK^^^MD^M D^^^^^^
 
 The Common Order segment is used to transmit fields that are common to all orders. The ORC segment is required in the Order (ORM) message. 
 
-### Sample ORC segment: 
+#### Sample ORC segment
 ```
 ORC|RE|2017041006|273013^IRIS||F||||20170410145907|||OP0001^DOE^JACK^^^MD^MD ^^^^^^NPI 
 ```
@@ -217,7 +217,7 @@ ORC|RE|2017041006|273013^IRIS||F||||20170410145907|||OP0001^DOE^JACK^^^MD^MD ^^^
 
 The observation request segment transmits information about an exam, diagnostic study, or assessment that is specific to an order or result. 
 
-### Sample OBR segment: 
+#### Sample OBR segment
 ```
 OBR|1|2017041006|273013^IRIS|92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO|||20170410145803|||||||20170410145803||OP0001^DOE^JACK^^^MD^MD^^^^^^NPI||||||20170410145901|||F|||||||GR0001^DOE^JANE^20170410145901^JANE DOE, MD,NPI: 1234567890, Taxonomy: 207W00000X 
 ```
@@ -280,7 +280,7 @@ OBR|1|2017041006|273013^IRIS|92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO|||201704
 *Optional*
 This is the diagnosis segment that can be used to send multiple diagnoses. This can be generated upon request but is otherwise not part of the Iris standard ORU HL7 message.
 
-### Sample DG1 segment: 
+#### Sample DG1 segment
 ```
 DG1|1||E1141^Type 2 diabetes mellitus with diabetic mononeuropathy^ICD10 
 DG1|2||E113291^Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy without macular edema, right eye^ICD10 without macular edema, right eye^ICD10 
@@ -302,7 +302,7 @@ The observation result segment is used to transmit a single observation or obser
 
 IRIS’ default OBX HL7 configuration contains the discrete results in the first 9 OBX segments, followed by the textual portion of the result findings, and then the document modality. The breakdown follows this configuration (the numbers refer to the Set ID): OBX 1 contains the overall severity for discrete findings of both eyes, OBX 2-5 contain details of the right eye, OBX 6-9 contain details of the left eye, OBX 10-30 grading results, and the last OBX is where either an encoded PDF or pointer link (static URL) is sent. 
 
-### Sample Discrete Results (Default): 
+#### Sample Discrete Results (Default)
 ```
 OBX|1|ST|SEVERITY^^IRIS|1|NORMAL||||||F 
 OBX|2|ST|RIGHTDIABRETIN^^IRIS|2|None||||||F 
@@ -315,7 +315,7 @@ OBX|8|ST|LEFTOTHERRETIN^^IRIS|8|None||||||F
 OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradable Image||||||F 
 ```
 
-### Sample Discrete Results with Alternating OBX/NTE segments (Secondary Option): 
+#### Sample Discrete Results with Alternating OBX/NTE segments (Secondary Option)
 ```
 OBX|1|ST|^^IRIS|1|NORMAL|||
 NTE|1|ST|SEVERITY 
@@ -338,7 +338,7 @@ OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradable Image||||||F
 ## First OBX
 Severity section
 
-### Sample OBX segment: First OBX 
+#### Sample OBX segment (1)
 ```
 OBX|1|ST|SEVERITY^^IRIS|1|NORMAL||||||F
 ```
@@ -363,7 +363,7 @@ OBX|1|ST|SEVERITY^^IRIS|1|NORMAL||||||F
  
 ## Second OBX
 
-### Sample OBX segment: 
+#### Sample OBX segment (2)
 ```
 OBX|2|ST|RIGHTDIABRETIN^^IRIS|2|None||||||F
 ```
@@ -388,7 +388,7 @@ OBX|2|ST|RIGHTDIABRETIN^^IRIS|2|None||||||F
  
 ## Third OBX 
 
-### Sample OBX segment: Third 
+#### Sample OBX segment (3)
 ```
 OBX|3|ST|RIGHTMACEDEMA^^IRIS|3|Severe|||AA|||F 
 ```
@@ -413,7 +413,7 @@ OBX|3|ST|RIGHTMACEDEMA^^IRIS|3|Severe|||AA|||F
  
 ## Fourth OBX 
 
-### Sample OBX segment: 
+#### Sample OBX segment (4)
 ```
 OBX|4|ST|RIGHTOTHERRETIN^^IRIS|4|None||||||F
 ```
@@ -438,7 +438,7 @@ OBX|4|ST|RIGHTOTHERRETIN^^IRIS|4|None||||||F
  
 ## Fifth OBX 
 
-### Sample OBX segment: 
+#### Sample OBX segment (5) 
 ```
 OBX|5|ST|RIGHTQUALAPP^^IRIS|5|Gradeable Image||||||F 
 ```
@@ -463,7 +463,7 @@ OBX|5|ST|RIGHTQUALAPP^^IRIS|5|Gradeable Image||||||F
  
 ## Sixth OBX 
 
-### Sample OBX segment: 
+#### Sample OBX segment (6)
 ```
 OBX|6|ST|LEFTDIABRETIN^^IRIS|6|Proliferative|||AA|||F 
 ```
@@ -488,7 +488,7 @@ OBX|6|ST|LEFTDIABRETIN^^IRIS|6|Proliferative|||AA|||F
  
 ## Seventh OBX 
 
-### Sample OBX segment: Seventh OBX 
+#### Sample OBX segment (7)
 ```
 OBX|7|ST|LEFTMACEDEMA^^IRIS|7|None||||||F 
 ```
@@ -513,7 +513,7 @@ OBX|7|ST|LEFTMACEDEMA^^IRIS|7|None||||||F
  
 ## Eighth OBX 
 
-### Sample OBX segment: 
+#### Sample OBX segment (8)
 ```
 OBX|8|ST|LEFTOTHERRETIN^^IRIS|8|None||||||F 
 ```
@@ -538,7 +538,7 @@ OBX|8|ST|LEFTOTHERRETIN^^IRIS|8|None||||||F
  
 ## Ninth OBX 
 
-### Sample OBX segment: 
+#### Sample OBX segment (9)
 ```
 OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradeable Image||||||F 
 ```
@@ -563,7 +563,7 @@ OBX|9|ST|LEFTQUALAPP^^IRIS|9|Gradeable Image||||||F
  
 ## Tenth Through Second-to-Last OBX 
 
-Sample OBX segment (default): 
+#### Sample OBX segments (10-30)
 ```
 OBX|10|FT|Result^^IRIS|001|Retinal Study Result for DOE, JOHN||||||F 
 OBX|11|FT|Result^^IRIS|002|||||||F 
@@ -599,7 +599,7 @@ Tertiary Option (NTE Segments): Iris can send the text results as NTE segments i
 ## Last OBX 
 *Reference Pointer Option*
 
-### Sample OBX segment: 
+#### Sample OBX segment (31)
 ```
 OBX|31|RP|LINK^^PDFLINK|31|https://api.retinalscreenings.com/api/PatientOrders/GetSingle ResultForDisplayInEmr?patientOrderId=273013&asPdf=True&isPreliminary=False&auth=257805B4B262A18271B60A62026671703D0F3F335DC9E0643662358952E7DCBA19C1C2CCC6C781A3444D651C0AC6695750DA87C9A5CE0F5976E8A206D9FB1915||||||F 
 ```
@@ -624,35 +624,34 @@ OBX|31|RP|LINK^^PDFLINK|31|https://api.retinalscreenings.com/api/PatientOrders/G
 | OBX-11  | Observation Result Status (ID)  | F  |   |
 
 
-Note 1.0: 
 
-## Example URL: 
+#### Example URL: 
 
 https://api.retinalscreenings.com/api/PatientOrders/GetSingleResultForDisplayInEmr?patientOrderId=12345&asPdf=True&isPreliminary=False&auth=xxxxx
 
-## Note 1.1: 
+#### Note 1.1: 
 
 IRIS will populate "&" as a value instead of HL7 standard value "\T\" for client. Upon request, IRIS can populate “\T\” instead of"8". Example: 
 
-o "…?patientOrderId=273013\T\asPdf..." to "…?patientOrderId=273013&asPdf..." 
+- "…?patientOrderId=273013\T\asPdf..." to "…?patientOrderId=273013&asPdf..." 
 
 Patient MRN is displayed here: 
 
-o patientOrderId=12345
+- patientOrderId=12345
 
 Document type: 
 
-o  aspdf=True
+-  aspdf=True
 
 Document status (will always be set to False) 
 
-o isPreliminary=False
+- isPreliminary=False
 
 Document pointer 
 
-o  auth=xxxxx
+-  auth=xxxxx
 
-## Sample OBX segment (Encapsulated Data):
+#### Sample OBX segment (Encapsulated Data)
 ```
 OBX|27|ED|||PDF^TEXT^^Base64^[ Base64 Encoded PDF]||||||F 
 ```

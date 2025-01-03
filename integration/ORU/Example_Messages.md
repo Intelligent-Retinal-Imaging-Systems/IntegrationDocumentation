@@ -6,7 +6,7 @@ parent: ORU (ORU-R01)
 ## Example ORU Messages
 
 ### Example A
-```
+```csv
 MSH|^\~\&|IRIS|IRIS|Vendor|Vendor|20191220174508||ORU^R01|191220174508|T|2.3 
 PID||Test2106462|Test2106462||TestLN^TestFN||19630130|M||||||||||293907374|
 PV1|1|O|WRSIM||||FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI|FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI|||||||||FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI||293907374|||||||||||||||||||||||||20191220054252|20191220054252 
