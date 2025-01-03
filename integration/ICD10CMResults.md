@@ -1,6 +1,6 @@
 ---
 title: ICD-10 Results
-parent: EMR Integrations
+parent: Order Processing Integration
 has_toc: false
 ---
 
