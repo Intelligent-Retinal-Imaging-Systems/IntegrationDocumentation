@@ -280,6 +280,8 @@ OBR|1|2017041006|273013^IRIS|92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO|||201704
 *Optional*
 This is the diagnosis segment that can be used to send multiple diagnoses. This can be generated upon request but is otherwise not part of the Iris standard ORU HL7 message.
 
+See [ICD-10 Results](/integration/ICD10CMResults) for details on how IRIS works with ICD-10 codes. 
+
 #### Sample DG1 segment
 ```
 DG1|1||E1141^Type 2 diabetes mellitus with diabetic mononeuropathy^ICD10 

@@ -232,7 +232,11 @@ OBR|1|2017041006^EPC||92250^FUNDUS PHOTOGRAPHY^EAP^^FUNDAL PHOTO||20170410|||||L
 
 ## DG1 – Diagnosis Segment
 
-The diagnosis segment contains patient diagnosis information. The DG1 segment is optional and can be repeated. IRIS supports ICD-10 codes. Please note that required fields will be notated in red and special notes will be in blue. 
+The diagnosis segment contains patient diagnosis information. The DG1 segment is optional and can be repeated. 
+
+Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for returned codes when pathology is found. See [ICD-10 Results](/integration/ICD10CMResults) for details.
+
+ Please note that required fields will be notated in red and special notes will be in blue. 
 
 ### Sample DG1 segments: 
 

@@ -192,9 +192,9 @@ The RequestProvider structure allows you to specify various Providers associated
 
 ### Request Patient structure
 
-IRIS allows submitting detailed information on a patient, however, in most workflows the only requirement is Id, Name, DOB and Gender. 
+IRIS allows submitting detailed information on a patient, however, in most workflows the only requirement is LocalId, Name, DOB and Gender. 
 
-Providing the starting DxCode (ICD-10) serves as the foundation for a fully qualified ICD-10 code when pathology is found. 
+Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for returned codes when pathology is found. See [ICD-10 Results](/integration/ICD10CMResults) for details.
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
