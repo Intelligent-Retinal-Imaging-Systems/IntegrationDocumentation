@@ -23,16 +23,16 @@ This document provides details for integrations to the IRIS Platform using cloud
 
 # Introduction
 
-As an integration option, Iris provides the ability to submit orders and receive results directly communicating with the cloud service of your preference (Azure, AWS or Google Cloud). 
+As an integration option, IRIS provides the ability to submit orders and receive results directly communicating with the cloud service of your preference (Azure, AWS or Google Cloud). 
 
-*If you do not wish to use your own cloud service subscription, Iris can also provide this functionality in the Iris Azure subscription, referred to in this document as **Iris Azure Cloud**.* 
+*If you do not wish to use your own cloud service subscription, IRIS can also provide this functionality in the IRIS Azure subscription, referred to in this document as **IRIS Azure Cloud**.* 
 
 In all cases, communication is accommodated using the cloud vendors APIs, SDKs or libraries. For many languages, IRIS provides native libraries,referred to as the IRIS Public libraries, to abstract the Cloud operations and to provide serialization and deserialization from the data models. 
 
 
 # Integration Administrator
 
-Iris provides access to certain integration tools and configurations though the Integration Administrator role. The role is assigned to you either by Iris support or an existing Organization Administrator for your organization. The term Integration Administrator will be referred to throughout this document thus mentioned here for clarity. 
+IRIS provides access to certain integration tools and configurations though the Integration Administrator role. The role is assigned to you either by IRIS support or an existing Organization Administrator for your organization. The term Integration Administrator will be referred to throughout this document thus mentioned here for clarity. 
 
 
 # Developers                                                                                       
@@ -40,7 +40,7 @@ IRIS provides libraries for most of the popular programming languages on our [De
 
 # Order Submission
 
-Orders are submitted to Iris using an Azure Service Bus Queue
+Orders are submitted to IRIS using an Azure Service Bus Queue
 
 The process involves hydrating and sending a JSON encoded OrderRequest object to the orders queue
 
@@ -69,7 +69,7 @@ Before you can submit an order using Cloud Direct services, the are several piec
 
 ### Orders Service Bus Connection String 
 
-Because orders are only submitted on a service bus that lives within the Iris Azure subscription, you must obtain the connection string from Iris. This connection string has write-only privileges. To obtain the connection string contact Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a>. 
+Because orders are only submitted on a service bus that lives within the IRIS Azure subscription, you must obtain the connection string from IRIS. This connection string has write-only privileges. To obtain the connection string contact Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a>. 
 
 ### Organization Identifier
 Created by IRIS during provisioning, this is a GUID value passed into all order submissions, uniquely identifying your organization.
@@ -85,7 +85,7 @@ For multisite workflows, you will provide IRIS with your identifiers for each si
 
 # OrderRequest Object Model 
 
-The OrderRequest object model provides all the properties necessary to create an order in the Iris system regardless of your workflow. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: rgb(188, 13, 16);'>red</span> are required. 
+The OrderRequest object model provides all the properties necessary to create an order in the IRIS system regardless of your workflow. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: rgb(188, 13, 16);'>red</span> are required. 
 
 
 | Property  | type  |  Description  | Options
@@ -138,14 +138,14 @@ When an order is to be assigned to a camera or Image directives are included wit
 
 | Property | Type | Description 
 | -- | -- | -- 
-| LocalId | string | Typically this is the serial number of the Camera. Because Iris supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with Iris to find the proper value to supply here. 
+| LocalId | string | Typically this is the serial number of the Camera. Because IRIS supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with IRIS to find the proper value to supply here. 
 | Location | string | Optionally specify a location where the camera is located. This is optional even when attempting to add a camera. 
 | IPAddress | string | When specified, the camera is identified by the source IP Address as images are received. This is an atypical workflow and should only be used under direct request from IRIS 
 | MACAddress | string | Optional identifier for informational purposes only 
 | SerialNumber | string | Serial Number of Camera 
-| Manufacturer | string | Name of camera manufacturer. Consult with Iris for exact values you should use. 
-| Model | string | Model name of camera. Consult with Iris for exact values you should use.
-| SoftwareVersion | string | Version of camera software. Consult with Iris for exact values you should use.
+| Manufacturer | string | Name of camera manufacturer. Consult with IRIS for exact values you should use. 
+| Model | string | Model name of camera. Consult with IRIS for exact values you should use.
+| SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
 | Images | Array of [Image](#image-structure) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images. 
 
 ### Images array 
@@ -223,11 +223,11 @@ What you provide in the Order structure is highly dependent on your workflow. Wh
 
 **It is highly recommended that you use Order.LocalId as this is the only value you can expect in a subsequent order event that you can cross reference to the order you submitted.**
 
-The Iris system allows only one open order per patient/evaluation type combination. When using the LocalId, previous (open) orders could automatically be cancelled in favor of the newer order. For this reason, it is recommended that you supply the LocalId field so the system can more clearly identify when cancellations are the desired outcome. 
+The IRIS system allows only one open order per patient/evaluation type combination. When using the LocalId, previous (open) orders could automatically be cancelled in favor of the newer order. For this reason, it is recommended that you supply the LocalId field so the system can more clearly identify when cancellations are the desired outcome. 
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the Iris system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD
+| <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the IRIS system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD
 | ScheduledTime | datetime | When orders are scheduled for a specific time, this should be that time local to the exam location. This is typically used for workflows where orders are pushed to Cameras as this determines which items show in a Camera worklist
 | <span style='color:rgb(188, 13, 16);'>LocalId</span> | string | The Id of the order as specified by the submitting organization. This id is required for subsequent Change and Cancel operations as well as event notifications. 
 | DepartmentId | string | Optional identifier for the submitting department. Some EMR integrations will require this. 
@@ -332,12 +332,12 @@ Cloud direct results may be received in a variety of ways:
 
 ## Queue Based Results 
 
-- Iris Cloud Service Bus – Receive complete results on a service bus queue maintained by IRIS
+- IRIS Cloud Service Bus – Receive complete results on a service bus queue maintained by IRIS
 - Azure Service Bus – Receive complete results on a service bus queue in your own subscription 
 - AWS Queue – Receive complete results on an AWS Queue in your own subscription
 - Google Queue – Receive complete results on a Google Queue in your own subscription 
 - Queue based notifications 
-    - Receive a notification of ready results in which a subsequent call to the Iris results API is required 
+    - Receive a notification of ready results in which a subsequent call to the IRIS results API is required 
     - For IRIS Cloud Service Bus, this option Is required if message sizes exceed 256K bytes. Results do not typically exceed this size, except when high resolution cameras are used for images that are embedded in the report. 
 
 ### Azure Service Bus Results 
@@ -371,15 +371,15 @@ It is assumed that the choice to use AWS or Google Queue indicates a preexisting
 
 ### Queue Authentication
 
-Regardless of the cloud platform, some form of connection credentials are required for access to the resource. When using Iris Azure Cloud resources, you must obtain the connection string from IRIS support or the Administrator application as a user with the Integration Administrator role. Otherwise you must supply the credentials in the Administrator application. 
+Regardless of the cloud platform, some form of connection credentials are required for access to the resource. When using IRIS Azure Cloud resources, you must obtain the connection string from IRIS support or the Administrator application as a user with the Integration Administrator role. Otherwise you must supply the credentials in the Administrator application. 
 
-### Obtaining Iris Azure Service Bus Connection String 
+### Obtaining IRIS Azure Service Bus Connection String 
 Contact IRIS support
 
 ### Configuring AWS, Azure and Google Service Bus/Queue Connection
 To configure results to be pushed to an AWS, Azure (In your subscription) or Google Queue, the Integration Administrator must perform the following actions: 
 
-- Login to the Iris Administrator application 
+- Login to the IRIS Administrator application 
 - Navigate to the EMR Integration page 
 - Select the “Result Delivery” tab 
 - Select “Cloud Queue” under primary delivery methods 
@@ -463,10 +463,10 @@ This structure contains a summary of the images collected for the exam.
 | -- | -- | -- | --
 | TotalCount |int | Total count of all images attached to the order 
 | RightEyeCount | int | Total count of all right eye images attached to the order 
-| RightEyeOrginalCount | int | Count of right eye images submitted to the order (from Camera Operator) 
+| RightEyeOriginalCount | int | Count of right eye images submitted to the order (from Camera Operator) 
 | RightEyeEnhancedCount | int | Count of enhanced right eye images attached to the order 
 | LeftEyeCount | int | Total count of all left eye images attached to the order 
-| LeftEyeOrginalCount | int | Count of left eye images submitted to the order (from Camera Operator) 
+| LeftEyeOriginalCount | int | Count of left eye images submitted to the order (from Camera Operator) 
 | LeftEyeEnhancedCount | int | Count of enhanced left eye images attached to the order 
 | Preferred | bool | If true this image was selected as preferred for the report | true/false
 | SingleEyeOnly | bool | Returns single eye indicator based on configuration and submission values | true/false
@@ -512,14 +512,14 @@ Details of the camera that took the image.
 
 | Property | Type | Description 
 | -- | -- | -- 
-| LocalId | string | Typically this is the serial number of the Camera. Because Iris supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with Iris to find the proper value to supply here. 
+| LocalId | string | Typically this is the serial number of the Camera. Because IRIS supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with IRIS to find the proper value to supply here. 
 | Location | string | Optionally specify a location where the camera is located. This is optional even when attempting to add a camera. 
-| IPAddress | string | When specified, the camera is identified by the source IP Address as images are received. This is an atypical workflow and should only be used under direct request from Iris. 
+| IPAddress | string | When specified, the camera is identified by the source IP Address as images are received. This is an atypical workflow and should only be used under direct request from IRIS. 
 | MACAddress | string | Optional identifier for informational purposes only 
 | SerialNumber | string | Serial Number of Camera 
-| Manufacturer | string | Name of camera manufacturer. Consult with Iris for exact values you should use. 
-| Model | string | Model name of camera. Consult with Iris for exact values you should use.
-| SoftwareVersion | string | Version of camera software. Consult with Iris for exact values you should use.
+| Manufacturer | string | Name of camera manufacturer. Consult with IRIS for exact values you should use. 
+| Model | string | Model name of camera. Consult with IRIS for exact values you should use.
+| SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
 
 ## Gradings structure 
 Contains raw details of grading
@@ -583,7 +583,7 @@ Structure containing details of finding
 | Property | Type | Description 
 | -- | -- | -- 
 | Finding | string | Type of pathology noted (e.g.: Diabetic Retinopathy) 
-| Result | string | Level of pathology (e.g.: Mild, Moderate, Positive, etc…)
+| Result | string | Level of pathology (e.g.: Mild, Moderate, Positive, etc.)
 
 # Common Shared Structures
 
