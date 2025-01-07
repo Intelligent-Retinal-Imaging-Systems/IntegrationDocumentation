@@ -18,18 +18,18 @@ While the IRIS platform is fully operable through a rich suite of <a href="https
 
 
 - Primary Care (small) 
-    - See [Cloud EMR Providers](/integration/IRISEMRCloudProviders.md) if you are using a Cloud EMR/EHR service.
+    - See [Cloud EMR Providers](/integration/IRISEMRCloudProviders) if you are using a Cloud EMR/EHR service.
     - See [Basic Integrations](/integration/BasicIntegrations) page
     
 - Primary Care (large), IDN, FQHC see [EMR Integrations](/integration/EMRIntegrations) page
 - Home Health Care see [Cloud Direct Integrations](/integration/CloudDirect) page
 - Retail / Kiosk 
     - See [Cloud Direct Integrations](/integration/CloudDirect) for transactional submissions and results
-    - See [Direct Messaging](/integration/DirectMessaging.md) for PCP notifications
+    - See [Direct Messaging](/integration/DirectMessaging) for PCP notifications
 - Payers 
     - See [Cloud Direct Integrations](/integration/CloudDirect) for options submitting patients/orders
     - See [Basic Integrations](/integration/BasicIntegrations) for batch results
-    - See [Direct Messaging](/integration/DirectMessaging.md) for PCP notifications
+    - See [Direct Messaging](/integration/DirectMessaging) for PCP notifications
 
 #### By Technology 
 
