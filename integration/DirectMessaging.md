@@ -8,9 +8,14 @@ has_toc: false
 Direct Messaging, also known as Direct Secure Messaging, is a secure method to exchange health information from within certified EMR/EHRs or other technology. It allows for simple, HIPAA-compliant, encrypted transmission of Protected Health Information to or from any Direct address.
 
 ## Results
-IRIS has the ability to send exam results to one or more recipients through Direct Messaging assuming:
-- The target direct address is supplied on order submission.
-- The target NPI is supplied on order submission and a direct address can be found in the Direct Messaging directory. 
+IRIS has the ability to send exam results to one or more recipients through Direct Messaging assuming one of the following criteria is met:
+- Delivery instructions are specified with each order 
+    - A target direct address is supplied on order submission.
+    - A target NPI is supplied on order submission and that NPI is found in the Direct Messaging directory. 
+- Delivery instructions are set for org/site
+    - A target direct address is configured on the organization level (all sites)
+    - A target direct address is configured per site for all related results 
+
 
 Results are delivered as a PDF report encapsulated in an Unstructured (CDA) Document.  At minimum the document is hydrated with patient name, birthdate and gender as those are required fields for any IRIS order.  If supplied on order submission, the document can contain the following additional items related to the patient:
 
