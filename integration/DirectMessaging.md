@@ -33,7 +33,7 @@ Parsing and assignment of the results to a patient chart is a function of the ta
 ## When would I want to use Direct Messaging?
 This is highly dependent on the function of your organization.  
 
-If you are a Payer or operating on behalf of Payers, you could use this option for delivering the results to the patients Primary Care Physician. 
+If you are a Payer or operating on behalf of Payers, you could use this option for delivering the results to the patients Primary Care Provider. 
 
 This may also be used as an interim solution to a full HL7 integration when resources are not available for a quick implementation.  Direct Messaging only requires a Direct Address that is being monitored by the target EMR/EHR system. 
 
