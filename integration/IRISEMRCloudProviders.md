@@ -1,6 +1,7 @@
 ---
 title: Cloud Systems
 parent: EMR Integrations
+nav_order: 2
 ---
 
 # SAAS (Cloud based) EMR Systems

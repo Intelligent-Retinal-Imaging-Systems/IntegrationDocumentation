@@ -1,6 +1,7 @@
 ---
 title: HL7 Messages
 parent: EMR Integrations
+nav_order: 1
 has_toc: false
 ---
 

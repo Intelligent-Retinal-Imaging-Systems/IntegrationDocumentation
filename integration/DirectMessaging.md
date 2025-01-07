@@ -1,7 +1,6 @@
 ---
 title: Direct Messaging
-parent: Order Processing Integration
-nav_order: 5
+parent: EMR Integrations
 has_toc: false
 ---
 

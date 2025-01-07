@@ -10,7 +10,7 @@ has_toc: false
 IRIS Provides integration services to *on-premise* and SAAS (cloud based) EMR/EHR platforms. 
 
 ## On Premise EMR/EHR systems
-*See [EMR Network Diagram](/assets/TEC%20014%20Rev%20A%20-%20EMR%20Integration%20Technical%20Diagram.pdf) for an illustration of how the IRIS system links with your on-premise system.*
+*See [Technical Architecture Diagram](/assets/TEC%20014%20Rev%20A%20-%20EMR%20Integration%20Technical%20Diagram.pdf) for an illustration of how the IRIS system fits within your network.*
 
 There are two basic components to an on-premise integration: 
 - **Transport** - Software / Networking components that provide the path between IRIS and the target EMR/EHR
