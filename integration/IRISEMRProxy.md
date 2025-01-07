@@ -26,3 +26,6 @@ If there are issues with the application, you may reach out to IRIS support for 
 
 ## System Requirements
 Details for hardware and network requirements can be found at [IRIS EMR Proxy Application Requirements and Specifications](/integration/EMRProxyReqAndSpecs/)
+
+
+

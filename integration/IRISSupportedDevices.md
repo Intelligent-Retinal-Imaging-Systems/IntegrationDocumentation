@@ -31,8 +31,8 @@ If your device is not listed contact IRIS support to see what steps are necessar
 | | UWFPRIMARY | DICOM
 | Phelcom | | |
 | | Eyer | WebDICOM
-| Remidio | | |
-| | NMFOP | IRISAPP IOS
+| Remidio | | [Remidio Network Diagram](/assets/TEC%20012%20Rev%20A%20-%20EMR%20Technical%20Diagram%20-%20Remidio.pdf)  |
+| | NMFOP | IRISAPP IOS  
 | TopCon | | |
 | | TRC-NW400 | ImageNet
 | | TRC-NW8 | ImageNet

@@ -124,7 +124,7 @@ If you are using Remidio cameras within your network, the following endpoints mu
 - intapi2.retinalscreenings.com 
 
 
- 
+ *See [Remidio Network Diagram](/assets/TEC%20012%20Rev%20A%20-%20EMR%20Technical%20Diagram%20-%20Remidio.pdf) for an illustration of the Remidio Camera operating within your network.*
 
 
 
