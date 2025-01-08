@@ -21,11 +21,11 @@ Before moving on to the different integration options, it is helpful to understa
   - Users can be members of one and only one *Organization*
   - An *Organization* is uniquely identified by ClientGuid which is assigned by IRIS and provided to you when required for certain integration types.
 - **Clients/Sites**: *Organizations* have one to many *Clients* assigned to them.  
-  - *Client* is the internal designation for this entity, whereas Site is more commonly referred to.
+  - *Client* is the internal designation for this entity, whereas Site, being the most typical use, is more commonly referred to.
   - Utilization is dependent on your workflow.  
     - It could be a site, clinic, office or other type of facility
     - It could be a department that is or isn't physically located in the same facility as other departments.
-    - It could be an event or other form of temporal scope
+    - It could represent an event or other form of temporal scope
     - It could exist purely as a logical separation of patients
   - *Clients* have a single address to establish physical location
   - A *Client* may be assigned a LocalId based on your internal identifier (e.g.: The LocalId of Riverside Clinic is Riverside123)
@@ -67,4 +67,4 @@ Before moving on to the different integration options, it is helpful to understa
 
 ### Is there a public API for IRIS?
 
-In short, the answer is No.  IRIS does however provide other publicly accessible integration methods found on the [Cloud Direct Integrations](/integration/CloudDirect) page that are more reliable than conventional Rest APIs. The problem with APIs is that they combine the functions of transport, authentication, authorization and execution into a single call.  While this is convenient in a world where everything works perfectly, it also exposes the caller to any changes that may occur in any of those areas.  By isolating the delivery of requests (transport, authentication and authorization) to the Cloud Provider, the experience from the callers perspective is consistent and highly reliable.
+In short, No.  IRIS does however, provide other publicly accessible integration options found on the [Cloud Direct Integrations](/integration/CloudDirect) page that provide a more robust experience to conventional Rest APIs. Rest APIs combine the functions of transport, authentication, authorization and execution into a single step.  While this is convenient in a world where everything works perfectly, it exposes the caller to vulnerabilities across that entire spectrum.  By isolating the delivery of requests (transport, authentication and authorization) to the Cloud Provider, the experience from the callers perspective is consistent and reliable.
