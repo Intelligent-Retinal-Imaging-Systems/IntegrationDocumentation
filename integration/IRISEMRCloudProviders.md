@@ -11,7 +11,7 @@ As IRIS is also a SAAS application, Integrating to SAAS based EMR/EHR systems is
 ## How do these integrations work
 As with conventional EMR Integrations there are two components: **Transport** and **Content**.
 
-Transport is facilitated with a dedicated VPN connection between IRIS and the vendor.
+Transport is facilitated with a dedicated VPN connection between IRIS and the provider.
 
 Content is encoded as HL7 messages.
 
