@@ -21,7 +21,7 @@ If your device is not listed contact IRIS support to see what steps are necessar
 | I-Optics  | | |
 | | EasyScan | FILESYSTEM
 | Optomed  | | |
-| | Aurora | IRISAPP Windows/IOS *(In Development)*
+| | Aurora | DICOM/IRISAPP Windows/IOS *(In Development)*
 | | Retina Station | DICOM
 | | Smart Scope M5 | FILESYSTEM
 | Optos  | | |
@@ -42,6 +42,7 @@ If your device is not listed contact IRIS support to see what steps are necessar
 | Volk | | |
 | | Viva | DICOM
 | | Pictor Plus | FILESYSTEM
+| | Pictor Prestige | FILESYSTEM
 | Zeiss | | |
 | | Clarus 500 | DICOM
 | | Forum | DICOM

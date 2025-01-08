@@ -20,16 +20,18 @@ Before moving on to the different integration options, it is helpful to understa
 - **Organizations**: You as a customer are considered an *Organization* within the IRIS platform (e.g.: My Organization is Standard Healthcare with clinics across three states)
   - Users can be members of one and only one *Organization*
   - An *Organization* is uniquely identified by ClientGuid which is assigned by IRIS and provided to you when required for certain integration types.
-- **Clients**: *Organizations* have one to many *Clients* assigned to them.  
-  - The term *Client* has different meanings depending on your workflow.  
-    - It can be a site or facility
-    - It can be a department
-    - It can exist purely as a logical separation of patients
+- **Clients/Sites**: *Organizations* have one to many *Clients* assigned to them.  
+  - *Client* is the internal designation for this entity, whereas Site is more commonly referred to.
+  - Utilization is dependent on your workflow.  
+    - It could be a site, clinic, office or other type of facility
+    - It could be a department that is or isn't physically located in the same facility as other departments.
+    - It could be an event or other form of temporal scope
+    - It could exist purely as a logical separation of patients
   - *Clients* have a single address to establish physical location
-  - A *Client* may be assigned a LocalId based on your internal identifier (e.g.: LocalId of Client 1234 is Riverside23)
+  - A *Client* may be assigned a LocalId based on your internal identifier (e.g.: The LocalId of Riverside Clinic is Riverside123)
   - Devices are assigned to *Clients*
-- **Patients**: *Clients* contain *Patients* (e.g.: Patient with MRN 1234 was added to Client 1234 which is a clinic named Riverside)
-  - Patient Identifiers are unique within a *Client* (e.g.: You can have one and only one patient with the MRN of 1234 assigned to a Client)
+- **Patients**: *Clients* contain *Patients* (e.g.: Patient with MRN 1234 was added to Riverside123)
+  - Patient Identifiers are unique within a *Client* (e.g.: You can have one and only one patient with the MRN of 1234 assigned to Riverside123)
   - By configuration, *Patients* can be treated as unique across an *Organization* allowing them to float across *Clients*.
 - **Orders**: *Orders* are created for *Patients*.  
   - An *Order* is an exam of a specific evaluation type (Diabetic Retinopathy, Glaucoma, etc.)
