@@ -255,16 +255,19 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | IndividualId | string | Id for the Individual person associated with the Member for the HealthPlan 
 | PrimaryCareProvider | [PCP](#primary-care-provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
-### Primary Care Provider structure 
+### Primary Care Provider structure
+
+You may associate a patient with their primary care provider in cases when you want to deliver a copy of the report to them.  PCP Results is a delivery option that must be configured by IRIS before this data is utilized.  Contact your IRIS sales representative to have this feature activated.
 
 | Property | Type | Description
 | -- | -- | --
 | NPI | string(10) | National Id for Provider
-| EmailAddress | string | Email (Or Direct Messaging) Address  for the provider
+| EmailAddress | string | Email (or [Direct Messaging](/integration/DirectMessaging.md)) address for the provider
 | Name | [Name](#name-structure) structure | Providers name
-| FaxNumber | phone | If so configured, can be used in results delivery
+| FaxNumber | phone | Fax number that may be used in results delivery
 
 # Order and Image Events
+
 Because Service Bus based integrations are asynchronous, IRIS posts events on an events queue to keep you apprised of important operations as they occur.  
 
 See [Sample Events](/integration/CloudDirectEventSample/) for examples of event messages.
