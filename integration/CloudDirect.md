@@ -258,9 +258,9 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 ### Primary Care Provider structure 
 
 | Property | Type | Description
-| -- | -- | -- 
-| NPI | string(10) | National Id for Provider 
-| EmailAddress | string | Email Address for the provider 
+| -- | -- | --
+| NPI | string(10) | National Id for Provider
+| EmailAddress | string | Email (Or Direct Messaging) Address  for the provider
 | Name | [Name](#name-structure) structure | Providers name
 | FaxNumber | phone | If so configured, can be used in results delivery
 
