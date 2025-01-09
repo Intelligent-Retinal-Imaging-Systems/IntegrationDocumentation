@@ -26,7 +26,7 @@ Results are delivered as a PDF report encapsulated in an Unstructured (CDA) Docu
 - Ethnicity
 - Language 
 
-*IRIS does accept nor provide SSN numbers thus no patientRole.Id node is supplied with the Unstructured document.*
+*IRIS does not accept nor provide SSN numbers thus no patientRole.Id node is supplied with the Unstructured document.*
 
 Parsing and assignment of the results to a patient chart is a function of the target EMR system.
 
