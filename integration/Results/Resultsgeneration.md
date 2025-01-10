@@ -24,7 +24,7 @@ Before we move on to the topic of results content, there are a few components of
 - FAX - PDF report converted to a Fax
 - [CSV](#csv) - Similar to RAW except using a smaller subset of data in a flat structure
 
-#### PDF Report
+### PDF Report
 
 The PDF report is the most commonly used results.  This is a compiled report containing the important details of the order in a easy to read report layout.
 
@@ -34,7 +34,7 @@ The PDF Report is generated using a template containing static content with embe
 
 ![PDF Report Example](/assets/pdfreport.png)
 
-#### RAW
+### RAW
 
 RAW results refers to results that include all of the details of the order.  In simplest form, this content is delivered with JSON encoding.  When using public library options, the JSON content is deserialized into the Results object.
 
@@ -42,7 +42,7 @@ Raw results can, and usually do, include one of the other result types, typicall
 
 Click [here](/integration/CloudDirectResultExample.md) for an example RAW result message in JSON format.
 
-#### Fax Results
+### Fax Results
 
 Results can be delivered to one or more fax numbers as well as for multiple purposes.  
 
@@ -52,15 +52,16 @@ PCP delivery requires that details of the PCP are provided in the original order
 
 When using Fax as the delivery method for non-PCP purposes, you can establish a single number for all results for all sites or it can also be configured at the site level. If a number is configured for both, the system prefers Site over Organization. 
 
-#### CSV
+### CSV
 
-Within the Order Manager application, you can save the results of a search as CSV.  
+Within the Order Manager application, you can save the results of a search to a CSV file.  
 
-*If you are configured to receive your results from Order Manager, one of the search options is for new results which are any results that have not been marked as retrieved.*
+*If you are configured to receive your results from Order Manager, one of the search options is for **New results** which includes only those results not marked as retrieved.*
 
 ![Order Manager Example](/assets/OrderManagercsv.png)
 
 The CSV file contains the following fields:
+
 | Header | Description
 | -- | --
 | Order Id | Id of order as establish by IRIS 
