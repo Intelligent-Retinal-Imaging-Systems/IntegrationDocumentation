@@ -40,7 +40,7 @@ RAW results refers to results that include all of the details of the order.  In 
 
 Raw results can, and usually do, include one of the other result types, typically the PDF.
 
-Click [here](/integration/CloudDirectResultExample.md) for an example RAW result message in JSON format.
+Click [here](/integration/CloudDirectResultExample/) for an example RAW result message in JSON format.
 
 ### Fax Results
 
