@@ -1,14 +1,16 @@
 ---
 title: ICD-10 Results
-parent: Order Processing Integration
+parent: Results Generation
+nav_order: 3
 has_toc: false
 ---
 
-# ICD-10-CM Results
+## ICD-10-CM Results
+
 When pathology is diagnosed, ICD-10 codes are generated and included with your results.  
 
- 
 ### Code Category Foundation
+
 The majority of possible return codes are based on the category code of diagnosis provided by you on order submission. The ICD-10 category code is the first three characters of any ICD-10-CM code.  
 
 Assume you sent any of the following codes when creating the order:

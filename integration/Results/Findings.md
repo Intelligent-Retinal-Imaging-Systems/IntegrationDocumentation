@@ -1,14 +1,16 @@
 ---
 title: Findings
-parent: Order Processing Integration
-nav_order: 5
+parent: Results Generation
+nav_order: 2
 has_toc: false
 ---
 
-# Findings
+## Findings
+
 When an order is graded, the results are returned, including all findings. The findings that may return on an order are based on the starting evaluation type(s) being performed.  The most common evaluation type for the IRIS platform is DR (Diabetic Retinopathy).
 
 ### Diagnosed vs Suspected
+
 There are two classifications for findings: Diagnosed and Suspected.  
 
 Diagnosed conditions return with explicit results.  For example a DR Evaluation, assuming it was gradable, will always return a finding for each eye evaluated, with one of the following:

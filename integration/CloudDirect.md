@@ -118,6 +118,7 @@ Regardless of the control code, the same OrderRequest structure is used, however
 Changing or Cancelling an order will not work if the target order is closed. 
 
 ## Order Model structures
+
 The OrderRequest models contains the following properties
 
 ### Site structure
@@ -131,28 +132,28 @@ The Site structure is primarily used to identify the site the order is to be ass
 | Name | string | Name of the site (Only required for automatic site additions)
 | Address | [Address](#address-structure) structure | Address of site (Only required for automatic site additions)
 
-### Camera structure 
+### Camera structure
 
-When an order is to be assigned to a camera or Image directives are included with the order, populate this structure. If the camera already exists and you are not providing image directives, you only need to supply the LocalId. Other than the Images structure, the remaining properties are provided in the event your organization allows automatic Camera additions. 
+When an order is to be assigned to a camera or Image directives are included with the order, populate this structure. If the camera already exists and you are not providing image directives, you only need to supply the LocalId. Other than the Images structure, the remaining properties are provided in the event your organization allows automatic Camera additions.
 
 
-| Property | Type | Description 
-| -- | -- | -- 
-| LocalId | string | Typically this is the serial number of the Camera. Because IRIS supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with IRIS to find the proper value to supply here. 
-| Location | string | Optionally specify a location where the camera is located. This is optional even when attempting to add a camera. 
-| IPAddress | string | When specified, the camera is identified by the source IP Address as images are received. This is an atypical workflow and should only be used under direct request from IRIS 
-| MACAddress | string | Optional identifier for informational purposes only 
-| SerialNumber | string | Serial Number of Camera 
-| Manufacturer | string | Name of camera manufacturer. Consult with IRIS for exact values you should use. 
+| Property | Type | Description
+| -- | -- | --
+| LocalId | string | Typically this is the serial number of the Camera. Because IRIS supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with IRIS to find the proper value to supply here.
+| Location | string | Optionally specify a location where the camera is located. This is optional even when attempting to add a camera.
+| IPAddress | string | When specified, the camera is identified by the source IP Address as images are received. This is an atypical workflow and should only be used under direct request from IRIS
+| MACAddress | string | Optional identifier for informational purposes only
+| SerialNumber | string | Serial Number of Camera
+| Manufacturer | string | Name of camera manufacturer. Consult with IRIS for exact values you should use.
 | Model | string | Model name of camera. Consult with IRIS for exact values you should use.
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
-| Images | Array of [Image](#image-structure) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images. 
+| Images | Array of [Image](#image-structure) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images.
 
-### Images array 
+### Images array
 
 The Images array is an array of Image structures that provides details including the storage location of one or more images associated with the order. 
 
-### Image structure 
+### Image structure
 
 The Image structure allows you to specify details including the storage location where an image file can be retrieved. At this time, image retrieval is only supported in Azure Blob Storage. 
 
@@ -195,7 +196,7 @@ The RequestProvider structure allows you to specify various Providers associated
 
 IRIS allows submitting detailed information on a patient, however, in most workflows the only requirement is LocalId, Name, DOB and Gender. 
 
-Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for returned codes when pathology is found. See [ICD-10 Results](/integration/ICD10CMResults) for details.
+Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for returned codes when pathology is found. See [ICD-10 Results](/integration/Results/ICD10CMResults) for details.
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
