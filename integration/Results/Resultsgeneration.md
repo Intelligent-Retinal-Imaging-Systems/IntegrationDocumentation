@@ -20,15 +20,19 @@ Before we move on to the topic of results content, there are a few components of
 - [RAW (JSON)](#raw) - Think of this as a data dump.  This is everything IRIS knows about the order provided in an hierarchical structure.
 - [PDF Report](#pdf-report) - This is a report that would be presentable to the patient
 - [HL7 Message](/integration/hl7messages/) - Encoded results for EMR integrations
-- HTML - Same as PDF just delivered as a single HTML encoded document.
+- [HTML](#html-report) - Same as PDF just delivered as a single HTML encoded document.
 - [FAX](#fax-results) - PDF report converted to a Fax
 - [CSV Export](#csv-export) - Similar to RAW except using a smaller subset of data in a flat structure
+
+### HTML Report
+
+With the exception of line reports, all reports begin in HTML form and are converted to the target format.  See the [Report templates](/integration/Results//ReportTemplate) page for details.
 
 ### PDF Report
 
 The PDF report is the most commonly used results.  This is a compiled report containing the important details of the order in a easy to read report layout.
 
-The PDF Report is generated using a template containing static content with embedded placeholders that are swapped at generation time.  You may customize and test your report template from the Administrator application to suit your needs.
+The PDF Report is generated using a [template](/integration/Results/ReportTemplate) containing static content with embedded placeholders that are swapped at generation time.  You may customize and test your report template from the Administrator application to suit your needs.
 
 ##### Example PDF Report
 
