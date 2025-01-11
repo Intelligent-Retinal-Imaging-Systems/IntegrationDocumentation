@@ -7,7 +7,7 @@ has_toc: false
 
 ## Findings
 
-When an order is graded, the results are returned, including all findings. The findings that may return on an order are based on the starting evaluation type(s) being performed.  The most common evaluation type for the IRIS platform is DR (Diabetic Retinopathy).
+When an order is graded, the results are returned, including all findings. The findings that may return on an order are based on the evaluation type being performed.  The most common evaluation type for the IRIS platform is DR (Diabetic Retinopathy).
 
 ### Diagnosed vs Suspected
 

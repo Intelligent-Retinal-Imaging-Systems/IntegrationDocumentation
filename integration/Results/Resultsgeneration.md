@@ -18,11 +18,11 @@ Before we move on to the topic of results content, there are a few components of
 ### Results can be generated in one or more of several formats
 
 - [RAW (JSON)](#raw) - Think of this as a data dump.  This is everything IRIS knows about the order provided in an hierarchical structure.
-- [PDF](#pdf-report) - This is a report that would be presentable to the patient
-- [HL7](/integration/hl7messages/) - Encoded results for EMR integrations
+- [PDF Report](#pdf-report) - This is a report that would be presentable to the patient
+- [HL7 Message](/integration/hl7messages/) - Encoded results for EMR integrations
 - HTML - Same as PDF just delivered as a single HTML encoded document.
-- FAX - PDF report converted to a Fax
-- [CSV](#csv) - Similar to RAW except using a smaller subset of data in a flat structure
+- [FAX](#fax-results) - PDF report converted to a Fax
+- [CSV Export](#csv-export) - Similar to RAW except using a smaller subset of data in a flat structure
 
 ### PDF Report
 
@@ -52,7 +52,7 @@ PCP delivery requires that details of the PCP are provided in the original order
 
 When using Fax as the delivery method for non-PCP purposes, you can establish a single number for all results for all sites or it can also be configured at the site level. If a number is configured for both, the system prefers Site over Organization. 
 
-### CSV
+### CSV Export
 
 Within the Order Manager application, you can save the results of a search to a CSV file.  
 
