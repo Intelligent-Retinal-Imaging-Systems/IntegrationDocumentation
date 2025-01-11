@@ -20,6 +20,7 @@ When more than one image is submitted per eye, there are new complexities to con
 - Findings 
   - There is no longer a one to one relationship between [finding](/integration/Results/Findings) and image.
   - A single finding could be determined from multiple images
+  - A single trace of pathology found on any image could prevent an otherwise ungradable eye.
 - Ungradable images
   - The context of gradeability moves from *the image* to *the eye*.
   - Providers mark the eye as ungradable and provide a single reason for that.  In other words, there is no direct comments on a per image level to say exactly why that image was deemed ungradable.
@@ -32,6 +33,8 @@ When more than one image is submitted per eye, there are new complexities to con
     - Marked on order submission 
     - AI selection
    
+   *By default, AI selection is not enabled as there are costs associated with it.  Contact your IRIS sales representative if you wish to activate the AI Best Image for report option.*
+
 ### Image Access
 
 In many cases images are acquired directly into the IRIS platform.  
