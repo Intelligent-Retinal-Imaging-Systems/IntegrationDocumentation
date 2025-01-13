@@ -5,7 +5,7 @@ nav_order: 4
 has_toc: false
 ---
 
-## Results Generation
+# Results Generation
 
 Once grading has been completed, the order moves into the results generation pipeline where details of the exam are compiled for subsequent delivery.  The content you receive is typically tied to the integration type but IRIS provides a variety of options to allow customization to fit your needs.
 
@@ -16,7 +16,7 @@ Before we move on to the topic of results content, you should familiarize yourse
 - [ICD-10 Codes](/integration//Results/ICD10CMResults)
 - [Care Plans](/integration/Results/Careplans)
 
-### Results can be generated in one or more of several formats
+## Results can be generated in one or more of several formats
 
 - [RAW (JSON)](#raw) - Think of this as a data dump.  This is everything IRIS knows about the order provided in an hierarchical structure.
 - [PDF Report](#pdf-report) - This is a report that would be presentable to the patient
@@ -25,21 +25,21 @@ Before we move on to the topic of results content, you should familiarize yourse
 - [FAX](#fax-results) - PDF report converted to a Fax
 - [CSV Export](#csv-export) - Similar to RAW except using a smaller subset of data in a flat structure
 
-### HTML Report
+## HTML Report
 
 With the exception of line reports, all reports begin in HTML form and are converted to the target format.  See the [Report templates](/integration/Results//ReportTemplate) page for details.
 
-### PDF Report
+## PDF Report
 
 The PDF report is the most commonly used results.  This is a compiled report containing the important details of the order in a easy to read report layout.
 
 The PDF Report is generated using a [template](/integration/Results/ReportTemplate) containing static content with embedded placeholders that are swapped at generation time.  You may customize and test your report template from the Administrator application to suit your needs.
 
-##### Example PDF Report
+#### Example PDF Report
 
 ![PDF Report Example](/assets/pdfreport.png)
 
-### RAW
+## RAW
 
 RAW results refers to results that include all of the details of the order.  In simplest form, this content is delivered with JSON encoding.  When using public library options, the JSON content is deserialized into the Results object.
 
@@ -47,7 +47,7 @@ Raw results can, and usually do, include one of the other result types, typicall
 
 Click [here](/integration/CloudDirectResultExample/) for an example RAW result message in JSON format.
 
-### Fax Results
+## Fax Results
 
 Results can be delivered to one or more fax numbers as well as for multiple purposes.  
 
@@ -57,7 +57,7 @@ PCP delivery requires that details of the PCP are provided in the original order
 
 When using Fax as the delivery method for non-PCP purposes, you can establish a single number for all results for all sites or it can also be configured at the site level. If a number is configured for both, the system prefers Site over Organization. 
 
-### CSV Export
+## CSV Export
 
 Within the Order Manager application, you can save the results of a search to a CSV file.  
 
