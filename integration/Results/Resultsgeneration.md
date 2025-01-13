@@ -9,11 +9,12 @@ has_toc: false
 
 Once grading has been completed, the order moves into the results generation pipeline where details of the exam are compiled for subsequent delivery.  The content you receive is typically tied to the integration type but IRIS provides a variety of options to allow customization to fit your needs.
 
-Before we move on to the topic of results content, there are a few components of any result that you should familiarize yourself with:
+Before we move on to the topic of results content, you should familiarize yourself with the components that make up any result:
 
 - [Images](/integration/Results/Images/)
 - [Findings](/integration/Results/Findings/)
 - [ICD-10 Codes](/integration//Results/ICD10CMResults)
+- [Care Plans](/integration/Results/Careplans)
 
 ### Results can be generated in one or more of several formats
 
