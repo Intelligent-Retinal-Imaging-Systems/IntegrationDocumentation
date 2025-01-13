@@ -5,7 +5,7 @@ nav_order: 1
 has_toc: false
 ---
 
-## Images
+# Images
 
 During the exam, Images are collected for one or more eyes.  For tabletop cameras, the result is generally the same: One image is captured per eye.
 
@@ -13,7 +13,7 @@ For handheld cameras things are different.  It is more difficult to capture imag
 
 IRIS typically receives multiple images per eye for exams using handheld cameras.
 
-### Multi image considerations
+## Multi image considerations
 
 When more than one image is submitted per eye, there are new complexities to consider for results:
 
@@ -35,7 +35,7 @@ When more than one image is submitted per eye, there are new complexities to con
    
    *By default, AI selection is not enabled as there are costs associated with it.  Contact your IRIS sales representative if you wish to activate the AI Best Image for report option.*
 
-### Image Access
+## Image Access
 
 In many cases images are acquired directly into the IRIS platform.  
 

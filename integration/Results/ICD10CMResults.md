@@ -5,11 +5,11 @@ nav_order: 3
 has_toc: false
 ---
 
-## ICD-10-CM Results
+# ICD-10-CM Results
 
 When pathology is diagnosed, ICD-10 codes are generated and included with your results.  
 
-### Code Category Foundation
+## Code Category Foundation
 
 The majority of possible return codes are based on the category code of diagnosis provided by you on order submission. The ICD-10 category code is the first three characters of any ICD-10-CM code.  
 
@@ -27,13 +27,16 @@ The category code of **E10** is used when generating codes that follow pathology
 
 A returned diagnosis of **E10**3592 (Type 1 diabetes mellitus with proliferative diabetic retinopathy without macular edema Left Eye) is therefore possible. 
 
-### What if I do not provide Diagnosis codes with the order?
+## What if I do not provide Diagnosis codes with the order?
+
 For Diabetic Retinopathy, IRIS will generate all codes with the class of E08.  Other pathology types may not require  the starting classification.
 
-### What about suspected conditions?
+## What about suspected conditions?
+
 ICD-10 codes are not generated for suspected conditions because they are not diagnosed, just suspected. 
 
 ## Common Result Codes
+
 The following table contains common ICD-10-CM Codes with descriptions that could be returned with your results.  
 
 *ICD-10 Codes are controlled by CMS and IRIS does not guarantee results to be exclusive to the list below.*
