@@ -79,7 +79,7 @@ Most customers use default templates.  Of those who do customize, the majority a
 - A list of available templates is displayed including the encoding type.
 - Click the line you wish to view or edit.
 
-##### Administrator application - Select Template for Edit
+##### Administrator application - Template listing screen shot
 
 ![Org Admin Screenshot](/assets/adminresultssection.png)
 
@@ -87,7 +87,7 @@ Most customers use default templates.  Of those who do customize, the majority a
 - Placeholders are easily identified by the double square brackets \[[REPORT_PLACEHOLDER]]. 
 - Your template will not be used until the **Save Changes** button is pressed.
 
-##### Administrator application - Template Editor
+##### Administrator application - Template Editor screen shot
 
 ![Org Admin Screenshot 2](/assets/admintemplateedit1.png)
 
