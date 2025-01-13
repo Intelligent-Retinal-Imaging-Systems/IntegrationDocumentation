@@ -4,7 +4,7 @@ parent: Results Generation
 has_toc: false
 ---
 
-## Report Template
+# Report Templates
 
 Reports are generated from templates that can be customized and tested in the Administrator application. 
 
@@ -15,6 +15,7 @@ Report templates exist for all Evaluation types. For example, the report templat
 The standard report template is encoded as HTML.  For EMR Integrations that support narratives, there are Line report templates for each evaluation type.  See the [Administration Application](#administrator-application) for more details.
 
 ## Placeholders
+
 A placeholder is a token encapsulated within double square brackets [[]] positioned in the template to be dynamically swapped at delivery. Tokens are predefined entities established by IRIS with the following rules:
 
 - All characters are upper case
@@ -24,6 +25,7 @@ A placeholder is a token encapsulated within double square brackets [[]] positio
 *The use of double square brackets to identify placeholders, as apposed to the single curly bracket, is to avoid conflicts in the content.  Curley brackets are preferred for ease of use and readability when the content would not otherwise contain them.*
 
 ### Example
+
 **PATIENT_NAME** is a token that becomes a placeholder **\[[PATIENT_NAME]]** when encapsulated in double brackets.
 
 *Not all values are guaranteed to be available as certain fields are only available if you supply them on the submission of the order (e.g.: HEALTHPLAN_MEMBERID). Using unset values could result in corrupted reports that may not render and may not convert properly to PDF.*
@@ -65,6 +67,7 @@ A placeholder is a token encapsulated within double square brackets [[]] positio
 *To maintain backward compatibility, there are a handful of placeholders you might find in your templates that are not listed above.  These Placeholders should only be altered by or under the supervision of IRIS support personnel.*
 
 ### Administrator Application
+
 To see and/or customize any result template for your organization login to the IRIS [Admin](https://admin.retinalscreenings.com) application.  You can view/edit templates specified at the Organization level or the Client/Site level.
 
 *If a template does not exist at the site level, the system checks for a template configured at the Organization level.  If a template does not exist there, the default template of that type is used.*
