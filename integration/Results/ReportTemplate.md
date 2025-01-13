@@ -15,7 +15,11 @@ Report templates exist for all Evaluation types. For example, the report templat
 The standard report template is encoded as HTML.  For EMR Integrations that support narratives, there are Line report templates for each evaluation type.  See the [Administration Application](#administrator-application) for more details.
 
 ## Placeholders
-A placeholder is a token encapsulated within double square brackets [[]] positioned in the template to be dynamically swapped at delivery. Tokens are predefined descriptive words or character combinations established by IRIS and listed below.
+A placeholder is a token encapsulated within double square brackets [[]] positioned in the template to be dynamically swapped at delivery. Tokens are predefined entities established by IRIS with the following rules:
+
+- All characters are upper case
+- Words are separated with the _ character
+- Left most word can be repeated for categories (e.g.: PATIENT) 
 
 *The use of double square brackets to identify placeholders, as apposed to the single curly bracket, is to avoid conflicts in the content.  Curley brackets are preferred for ease of use and readability when the content would not otherwise contain them.*
 
@@ -58,6 +62,7 @@ A placeholder is a token encapsulated within double square brackets [[]] positio
 | DEPARTMENT_LOCAL_ID | Id, as specified by submitting organization, of the department where the exam was performed
 | DISCLAIMER | Disclaimer line which can be configured by site
 
+*To maintain backward compatibility, there are a handful of placeholders you might find in your templates that are not listed above.  These Placeholders should only be altered by or under the supervision of IRIS support personnel.*
 
 ### Administrator Application
 To see and/or customize any result template for your organization login to the IRIS [Admin](https://admin.retinalscreenings.com) application.  You can view/edit templates specified at the Organization level or the Client/Site level.
@@ -70,16 +75,24 @@ Most customers use default templates.  Of those who do customize, the majority a
 
 #### Organization level templates
 
+- Navigate to the Results section of the [Administrator](https://admin.retinalscreenings.com) application.
+- A list of available templates is displayed including the encoding type.
+- Click the line you wish to view or edit.
+
+##### Administrator application - Select Template for Edit
+
 ![Org Admin Screenshot](/assets/adminresultssection.png)
 
-- Navigate to the Results section
-- A list of available templates is displayed including the encoding type
-- Click the line you wish to view or edit
+- Once in the editor, make whatever changes you desire and hit preview to generate aa sample report with your changes. 
+- Placeholders are easily identified by the double square brackets \[[REPORT_PLACEHOLDER]]. 
+- Your template will not be used until the **Save Changes** button is pressed.
+
+##### Administrator application - Template Editor
 
 ![Org Admin Screenshot 2](/assets/admintemplateedit1.png)
 
-Make whatever changes you desire within the editor and hit preview to generate an example using your changes. Your template will not be used until the Save Changes button is pressed.
 
-Results are generated immediately after grading therefore changes you make in the template will not be visible for orders graded before your change.  It is possible to regenerate results but this can only be done by IRIS support personnel.  
+- Results are generated immediately after grading therefore changes you make in the template will not be visible for orders graded before your change.  
+- It is possible to regenerate results but this can only be done by IRIS support personnel.  
 
- *The process of converting an HTML document to PDF does not always match the HTML rendering exactly so make sure and view a PDF with your changes once you are satisfied.*
+ *The process of converting an HTML document to PDF does not always match the HTML rendering exactly so make sure to review a newly generated PDF once your changes have been saved.*
