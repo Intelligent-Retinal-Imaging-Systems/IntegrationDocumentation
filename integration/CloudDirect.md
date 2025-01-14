@@ -21,7 +21,7 @@ This document provides details for integrations to the IRIS Platform using cloud
 
 ----
 
-# Introduction
+## Introduction
 
 As an integration option, IRIS provides the ability to submit orders and receive results directly communicating with the cloud service of your preference (Azure, AWS or Google Cloud). 
 
@@ -30,15 +30,16 @@ As an integration option, IRIS provides the ability to submit orders and receive
 In all cases, communication is accommodated using the cloud vendors APIs, SDKs or libraries. For many languages, IRIS provides native libraries,referred to as the IRIS Public libraries, to abstract the Cloud operations and to provide serialization and deserialization from the data models. 
 
 
-# Integration Administrator
+## Integration Administrator
 
 IRIS provides access to certain integration tools and configurations though the Integration Administrator role. The role is assigned to you either by IRIS support or an existing Organization Administrator for your organization. The term Integration Administrator will be referred to throughout this document thus mentioned here for clarity. 
 
 
-# Developers                                                                                       
+## Developers
+
 IRIS provides libraries for most of the popular programming languages on our [Developer Resources](/integration/DeveloperResources/) page.
 
-# Order Submission
+## Order Submission
 
 Orders are submitted to IRIS using an Azure Service Bus Queue
 
@@ -61,7 +62,8 @@ async Task Test()
 }
 ```
 
-## What you need to get started
+### What you need to get started
+
 Before you can submit an order using Cloud Direct services, the are several pieces of data you will need from IRIS:
 1. Service Bus Connection String
 2. Your Organization Identifier referred to as **ClientGuid**
@@ -72,9 +74,11 @@ Before you can submit an order using Cloud Direct services, the are several piec
 Because orders are only submitted on a service bus that lives within the IRIS Azure subscription, you must obtain the connection string from IRIS. This connection string has write-only privileges. To obtain the connection string contact Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a>. 
 
 ### Organization Identifier
+
 Created by IRIS during provisioning, this is a GUID value passed into all order submissions, uniquely identifying your organization.
 
 ### Site Identifiers
+
 Depending on your specific needs you will have one to many sites within the IRIS system assigned to your organization.  Orders have a direct relationship to the site therefore an identifier for the site must be included in your submission.
 
 If you operate within a brick and mortar type model, you typically will want to have one site in the IRIS system per physical location your cameras reside.  If you operate more in a mobile workflow, you typically have a single site.  In the multisite mode, the state where the exam is performed is assumed to be the state configured on the site record within IRIS.   If you operate in a single site mode, you must provide the state where the exam occurs in the order object.  
@@ -83,7 +87,7 @@ For single site workflows, IRIS will provide you with the identifier to supply f
 
 For multisite workflows, you will provide IRIS with your identifiers for each site as they are added.  This can be done programmatically through this interface or through the Administrator application. If added from this interface you must include all the required properties for adding a new site in the Site structure.  This is described in full detail [in the site structure section](#site-structure).
 
-# OrderRequest Object Model 
+## OrderRequest Object Model 
 
 The OrderRequest object model provides all the properties necessary to create an order in the IRIS system regardless of your workflow. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: rgb(188, 13, 16);'>red</span> are required. 
 
@@ -103,7 +107,7 @@ The OrderRequest object model provides all the properties necessary to create an
 | CameraOperatorUserName | string | UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI 
 | HealthPlan | [HealthPlan](#healthplan-structure) structure | If order is associated with a Health Plan
 
-## OrderControlCode 
+### OrderControlCode 
 
 The OrderControlCode specifies which action to take
 
@@ -117,7 +121,7 @@ Regardless of the control code, the same OrderRequest structure is used, however
 
 Changing or Cancelling an order will not work if the target order is closed. 
 
-## Order Model structures
+### Order Model structures
 
 The OrderRequest models contains the following properties
 
@@ -267,7 +271,7 @@ You may associate a patient with their primary care provider in cases when you w
 | Name | [Name](#name-structure) structure | Providers name
 | FaxNumber | phone | Fax number that may be used in results delivery
 
-# Order and Image Events
+## Order and Image Events
 
 Because Service Bus based integrations are asynchronous, IRIS posts events on an events queue to keep you apprised of important operations as they occur.  
 
@@ -284,10 +288,12 @@ All messages contain a common set of base properties
 | ResultObjectType | string | Identifies the type of event object this is to establish additional properties 
 | Version | string | Message version
 
-## ResultObjectType Types 
+## ResultObjectType Types
+
 Messages sent on the events queue can be of varying types all based on the common properties detailed above. 
 
 ### OrderCreationReceipt
+
 Events with the ResultObjectType of OrderCreationReceipt contain details of an  order you recently posted to the service bus queue. 
 
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
@@ -302,6 +308,7 @@ Events with the ResultObjectType of OrderCreationReceipt contain details of an  
 
 
 ### ImageReceipt
+
 Events with the ResultObjectType of ImageReceipt contain details of an image submission operation.  
 
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
@@ -317,6 +324,7 @@ Events with the ResultObjectType of ImageReceipt contain details of an image sub
 | IrisImageId | int | Id of image as created and known by IRIS 
 
 ### GradingReceipt
+
 Events with the ResultObjectType of GradingReceipt contain details of a grading operation.
 
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
@@ -330,11 +338,11 @@ Events with the ResultObjectType of GradingReceipt contain details of a grading 
 | PatientLocalId | string | Id of the patient as specified by you on submission
 
 
-# Order Results
+## Order Results
 
 Cloud direct results may be received in a variety of ways: 
 
-## Queue Based Results 
+### Queue Based Results 
 
 - IRIS Cloud Service Bus – Receive complete results on a service bus queue maintained by IRIS
 - Azure Service Bus – Receive complete results on a service bus queue in your own subscription 
@@ -345,6 +353,7 @@ Cloud direct results may be received in a variety of ways:
     - For IRIS Cloud Service Bus, this option Is required if message sizes exceed 256K bytes. Results do not typically exceed this size, except when high resolution cameras are used for images that are embedded in the report. 
 
 ### Azure Service Bus Results 
+
 To receive an order using an Azure Service Bus Queue, you simply attach a notification handler to the Results queue. 
 
 
@@ -377,10 +386,12 @@ It is assumed that the choice to use AWS or Google Queue indicates a preexisting
 
 Regardless of the cloud platform, some form of connection credentials are required for access to the resource. When using IRIS Azure Cloud resources, you must obtain the connection string from IRIS support or the Administrator application as a user with the Integration Administrator role. Otherwise you must supply the credentials in the Administrator application. 
 
-### Obtaining IRIS Azure Service Bus Connection String 
+### Obtaining IRIS Azure Service Bus Connection String
+
 Contact IRIS support
 
 ### Configuring AWS, Azure and Google Service Bus/Queue Connection
+
 To configure results to be pushed to an AWS, Azure (In your subscription) or Google Queue, the Integration Administrator must perform the following actions: 
 
 - Login to the IRIS Administrator application 
@@ -390,6 +401,7 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 - Select AWS, AZURE or Google from the cloud service provider options
 
 #### AWS Queue Settings
+
 - Queue Name 
 - Queue ARN 
 - Queue URL
@@ -398,18 +410,20 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 - AWS Secret Access Key 
 
 #### Azure Queue Settings
+
 - Queue Name 
 - Connection String 
 
 #### GCP (Google) Queue Settings
+
 - Queue Name 
 - Connection JSON 
 
 ---
 
-# OrderResults Object Model
+## OrderResults Object Model
 
-## Root Properties 
+### Root Properties 
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -428,7 +442,7 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 | CameraOperator [Capturing User](#cameraoperator-structure) structure | Details of the user that captured images 
 | HealthPlan | [HealthPlan association](#healthplan-structure) structure | Details of the Health Plan associated with the order
 
-## ResultsDocument structure 
+### ResultsDocument structure 
 
 Depending on your workflow the IRIS system will provide a Report of the examination. The report is available in various formats.
 
@@ -438,7 +452,8 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 | Encoding | options | specifies the encoding format for the report content | Base64, ASCII or any specific encoding scheme 
 | Content | string | Content relative to the Encoding and Type. For example, if PDF, this will most likely be a Base64 encoded string 
 
-## Results Order structure 
+### Results Order structure 
+
 Contains raw order detail from submission
 
 | Property | Type | Description
@@ -460,7 +475,8 @@ Contains raw order detail from submission
 | Urgent | bool |  value set on submission
 
 
-## ImageDetails structure 
+### ImageDetails structure 
+
 This structure contains a summary of the images collected for the exam.
 
 | Property | Type | Description | Options
@@ -476,7 +492,8 @@ This structure contains a summary of the images collected for the exam.
 | SingleEyeOnly | bool | Returns single eye indicator based on configuration and submission values | true/false
 
 
-## Results Patient structure
+### Results Patient structure
+
 Raw patient details for exam
 
 | Property | Type | Description | Options
@@ -490,11 +507,11 @@ Raw patient details for exam
 | Phone | [Address](#address-structure) structure | Raw patient address data
 
 
-## Result Images array 
+### Result Images array 
 
 Array of Result Image structures that provides details of each image attached to the order. 
 
-## Result Image structure 
+#### Result Image structure 
 
 Contains details of an individual image attached to the order.
 
@@ -511,7 +528,8 @@ Contains details of an individual image attached to the order.
 | GroupOrdinal | Numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. 
 | Camera | [Result Camera](#result-camera-structure) structure | Contains details of the Camera that took the image 
 
-## Result Camera structure 
+### Result Camera structure
+
 Details of the camera that took the image. 
 
 | Property | Type | Description 
@@ -525,7 +543,8 @@ Details of the camera that took the image.
 | Model | string | Model name of camera. Consult with IRIS for exact values you should use.
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
 
-## Gradings structure 
+### Gradings structure
+
 Contains raw details of grading
 
 | Property | Type | Description | Options
@@ -541,7 +560,8 @@ Contains raw details of grading
 | DxCodes | array of string | ICD-10 Codes matched to findings 
 | Provider | [Provider](#provider-structure) (structure) – Details of the Provider who performed the grading 
 
-## CameraOperator structure
+### CameraOperator structure
+
 Details of the technician who captured the images for the order.
 
 | Property | Type | Description 
@@ -550,7 +570,7 @@ Details of the technician who captured the images for the order.
 | Name | [Name](#name-structure) structure | Name of performing operator
 | Notes | Array of [Note](#note-structure) | notes added by the performing operator
 
-## HealthPlan structure 
+### HealthPlan structure 
 
 | Property | Type | Description 
 | -- | -- | -- 
@@ -558,10 +578,12 @@ Details of the technician who captured the images for the order.
 | Name | string | Name of HealthPlan 
 | MemberId | string | Id of Member as specified by the HealthPlan
 
-## Notes array 
+### Notes array 
+
 Array containing zero or more notes added by the related user 
 
-## Note structure 
+#### Note structure 
+
 Structure containing metadata and content of a free form note
 
 | Property | Type | Description 
@@ -569,7 +591,8 @@ Structure containing metadata and content of a free form note
 | Date | datetime | When the note was entered
 | Text | string | Content 
 
-## EyeSideGrading structure 
+### EyeSideGrading structure 
+
 Structure containing grading details for one eye side
 
 | Property | Type | Description | Options
@@ -578,10 +601,12 @@ Structure containing grading details for one eye side
 | UngradableReasons | array of string | Grader specified reason that eye could not be graded 
 | Findings | Array of [Finding](#finding-structure) | Zero or more findings for the eye
 
-## Findings array 
+### Findings array 
+
 Array of the Finding structure containing findings from the grader for the specified eye. If the array is not present, it indicates, there was no pathology found for the eye. 
 
-## Finding structure 
+#### Finding structure 
+
 Structure containing details of finding
 
 | Property | Type | Description 
@@ -589,9 +614,10 @@ Structure containing details of finding
 | Finding | string | Type of pathology noted (e.g.: Diabetic Retinopathy) 
 | Result | string | Level of pathology (e.g.: Mild, Moderate, Positive, etc.)
 
-# Common Shared Structures
+## Common Shared Structures
 
-## Name structure
+### Name structure
+
 Common structure used for storing names
 
 | Property | Type | Description
@@ -599,7 +625,8 @@ Common structure used for storing names
 | First | string | Persons first (given) name
 | Last | string | Persons last (family) name
 
-## Address structure 
+### Address structure 
+
 Common structure used for storing addresses
 
 | Property | Type | Description
@@ -610,7 +637,8 @@ Common structure used for storing addresses
 | State | string (2) | State abbreviation of address
 | PostalCode | string | Zip / Postal code
 
-## PersonGender structure 
+### PersonGender structure 
+
 Common structure used for storing gender designations
 
 | Property | Type | Description | Options

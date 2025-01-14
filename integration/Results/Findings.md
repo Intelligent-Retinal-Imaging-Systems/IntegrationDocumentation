@@ -28,6 +28,7 @@ Unless otherwise stated, suspected conditions are assumed not to exist.  In othe
 
 
 ## Ungradable Eyes
+
 In some cases, images taken for an eye are not sufficient for grading.  An individual eye may be marked as ungradable as well as the entire order.  For each eye not gradable, you will receive neither diagnosed, nor suspected conditions.  You will be provided with a general classification of why the images could not be graded.
 
 There is another case that involves partially gradable images.  When it is not possible for the grader to make the diagnosis required on a specific evaluation type, but other pathology is found, the diagnosis is returned as Indeterminable.  You can only have an Indeterminable finding in combination with a suspected condition on the same eye.

@@ -5,7 +5,7 @@ nav_order: 1
 has_toc: false
 ---
 
-# Images
+# Images in Results
 
 During the exam, Images are collected for one or more eyes.  For tabletop cameras, the result is generally the same: One image is captured per eye.
 
@@ -23,7 +23,7 @@ When more than one image is submitted per eye, there are new complexities to con
   - A single trace of pathology found on any image could prevent an otherwise ungradable eye.
 - Ungradable images
   - The context of gradeability moves from *the image* to *the eye*.
-  - Providers mark the eye as ungradable and provide a single reason for that.  In other words, there is no direct comments on a per image level to say exactly why that image was deemed ungradable.
+  - When providers mark an eye as ungradable, only a single reason is provided regardless of how many images were in the collection.  
 - Results Report 
   - The standard report template provides one image per eye
   - IRIS employs several techniques to use the best available image from each eye
@@ -33,11 +33,11 @@ When more than one image is submitted per eye, there are new complexities to con
     - Marked on order submission 
     - AI selection
    
-   *By default, AI selection is not enabled as there are costs associated with it.  Contact your IRIS sales representative if you wish to activate the AI Best Image for report option.*
+   *By default, AI selection is not enabled as there are costs associated with it.  Contact your IRIS sales representative if you wish to activate the AI Quality Image for report option.*
 
 ## Image Access
 
-In many cases images are acquired directly into the IRIS platform.  
+Depending on your camera selection and workflow, images may be acquired directly into the IRIS platform.  
 
 While access is always available from the Order Manager application, you may have a requirement to store them yourself.  IRIS can support this through two image sharing options. 
 
