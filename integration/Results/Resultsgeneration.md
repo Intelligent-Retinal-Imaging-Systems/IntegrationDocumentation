@@ -65,9 +65,9 @@ Within the Order Manager application, you can save the results of a search to a 
 
 ![Order Manager Example](/assets/OrderManagercsv.png)
 
-The CSV file contains the following fields:
+#### CSV Field Descriptions
 
-| Header | Description
+| Header (field name) | Description
 | -- | --
 | Order Id | Id of order as establish by IRIS 
 | Scheduled Date | Date time exam was scheduled for
