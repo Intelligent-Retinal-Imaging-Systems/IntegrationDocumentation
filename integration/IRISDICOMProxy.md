@@ -28,7 +28,7 @@ As with all IRIS proxy applications, the DICOM Proxy is stateless providing vers
 - Context Switching / Load Balancing
     - You may install and run as many instances across as many application servers as you wish.
     - While this is a viable option in terms of redundancy, it would be superfluous in the context of availability as the application is very light on system resources.
-- Remote facilities
+- Edge Routing
     - For remote locations where you prefer to avoid backhauling traffic, you may install a proxy at the edge assuming the networking requirements are met.  
     - DICOM devices can be individually configured to match Proxy instances. 
 
