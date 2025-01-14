@@ -27,10 +27,11 @@ When more than one image is submitted per eye, there are new complexities to con
 - Results Report 
   - The standard report template provides one image per eye
   - IRIS employs several techniques to use the best available image from each eye
-    - Image viewed at point of finding selection (works best when pathology is found)
-    - Last image uploaded (Assumption being the camera operator stopped taking images when a good one was taken)
-    - Best image selected from Camops or Order Manager
-    - Marked on order submission 
+    - Image displayed at point of finding selection by Grader (works best when pathology is found)
+    - Last image uploaded 
+      - Assumption being the camera operator stopped taking images when a good one was taken
+      - Only works when Metadata exists for the image indicating when the image was taken
+    - A *Best Image* selection was made from [Camera Operator](https://camops.retinalscreenings.com) or [Order Manager](https://ordermanager.retinalscreenings.com)
     - AI selection
    
    *By default, AI selection is not enabled as there are costs associated with it.  Contact your IRIS sales representative if you wish to activate the AI Quality Image for report option.*
@@ -41,8 +42,16 @@ Depending on your camera selection and workflow, images may be acquired directly
 
 While access is always available from the Order Manager application, you may have a requirement to store them yourself.  IRIS can support this through two image sharing options. 
 
-- PACS Forwarding - For scenarios with DICOM cameras operating within an organization with an existing PACS, IRIS can forward all incoming images to one or more PACS.
-- Cloud sharing - IRIS can also share images at the point of results delivery in an Azure blob storage account.  If this is provided within the IRIS Azure subscription, there may be costs associate with it. 
+- PACS Forwarding 
+  - For scenarios with DICOM cameras operating within an organization with one or more PACS
+  - Routing is configurable to either
+    - Common PACS.  A single PACS endpoint for all images
+    - AETitle mapped.  The source cameras AETitle maps to a PACS endpoint
+- Cloud sharing 
+  - Images are pushed to an Azure blob storage account during the Results Delivery process.  
+  - Metadata is attached to each image using Azure Metadata key/value pairs to allow programmatic processing.
+  - The target storage account can be within your own Azure subscription or within the IRIS Azure subscription 
+    - Depending on volume, image size and duration of storage, there may be additional costs associated with sharing in the IRIS Azure subscription
 
 In either scenario, contact your IRIS sales representative to have image sharing activated on your account.
 
