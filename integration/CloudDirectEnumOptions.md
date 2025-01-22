@@ -67,36 +67,35 @@ You may use any of the HL7 Language codes listed on <a href="https://www.hl7.org
 
 ## Gender  
 
-| Value | Description
+| Value | Description | Numeric value
 | -- | --
-| U | Unspecified 
-| M | Male 
-| F | Female 
-| N | Non binary 
-| O | Other 
-| TM | Transgender Male 
-| TF | Transgender Female 
-| ND | Non disclosed 
-| EQ | Exploring or Questioning
-| NL | Not listed
-| X | Not exclusively Male or Female
+| U | Unspecified | 0
+| M | Male | 1
+| F | Female | 2
+| N | Non binary | 3
+| O | Other | 4
+| TM | Transgender Male | 5
+| TF | Transgender Female | 6
+| ND | Non disclosed | 7
+| EQ | Exploring or Questioning | 8
+| NL | Not listed | 9
+| X | Not exclusively Male or Female | 10
 
 ## Marital Status  
 
 Items in this list are based on the HL7 standard here: http://terminology.hl7.org/CodeSystem/v3-MaritalStatus 
 
-| Value | Description
+| Value | Description | Numeric value
 | -- | --
-| A | Annulled 
-| D | Divorced 
-| C | Common Law 
-| I | Interlocutory 
-| L | Legally Separated 
-| M | Married 
-| P | Polygamous 
-| S | Never Married 
-| T | Domestic partner 
-| W | Widowed 
+| A | Annulled | 0
+| D | Divorced | 1
+| I | Interlocutory | 2
+| L | Legally Separated | 3 
+| M | Married | 4
+| P | Polygamous | 5
+| S | Never Married | 6
+| T | Domestic partner | 7
+| W | Widowed | 8
 
 ## Result Code 
 Identifies the context in which a result was sent.
