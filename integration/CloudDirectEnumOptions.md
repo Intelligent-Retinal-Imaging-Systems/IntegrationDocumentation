@@ -68,7 +68,7 @@ You may use any of the HL7 Language codes listed on <a href="https://www.hl7.org
 ## Gender  
 
 | Value | Description | Numeric value
-| -- | --
+| -- | -- | --
 | U | Unspecified | 0
 | M | Male | 1
 | F | Female | 2
@@ -86,7 +86,7 @@ You may use any of the HL7 Language codes listed on <a href="https://www.hl7.org
 Items in this list are based on the HL7 standard here: http://terminology.hl7.org/CodeSystem/v3-MaritalStatus 
 
 | Value | Description | Numeric value
-| -- | --
+| -- | -- | --
 | A | Annulled | 0
 | D | Divorced | 1
 | I | Interlocutory | 2
@@ -101,9 +101,20 @@ Items in this list are based on the HL7 standard here: http://terminology.hl7.or
 Identifies the context in which a result was sent.
 
 | Value | Description
-| -- | --
+| -- | -- 
 | A | Addendum 
 | C | Correction 
 | F | Final 
 | P | Preliminary 
 | R | Resend 
+
+## Evaluation Types
+Enumeration of IRIS Evaluation types
+
+| Value | Description | Numeric Value
+| -- | -- | --
+| DR | Diabetic Retinopathy Exam | 1
+| Glaucoma | Glaucoma Exam | 2
+| HIV | HIV Exam | 3
+| AMD | AMD Exam | 7 
+| DR_AMD | DR and AMD combined exam | 8
