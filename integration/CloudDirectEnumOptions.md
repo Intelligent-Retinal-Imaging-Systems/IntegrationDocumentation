@@ -6,10 +6,12 @@ nav_order: 1
 
 {: .no_toc }
 
-# Option Enumerations 
+# Option Enumerations
+
 The following tables provide acceptable values for option properties.
 
 ## GenderContext
+
 Specifies the context in which the Gender specification applies. 
 
 | Value | Description | Numeric value
@@ -97,7 +99,8 @@ Items in this list are based on the HL7 standard here: http://terminology.hl7.or
 | T | Domestic partner | 7
 | W | Widowed | 8
 
-## Result Code 
+## Result Code
+
 Identifies the context in which a result was sent.
 
 | Value | Description
@@ -109,6 +112,7 @@ Identifies the context in which a result was sent.
 | R | Resend 
 
 ## Evaluation Types
+
 Enumeration of IRIS Evaluation types
 
 | Value | Description | Numeric Value
