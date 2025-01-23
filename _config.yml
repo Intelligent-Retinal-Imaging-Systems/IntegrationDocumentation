@@ -44,7 +44,7 @@ search:
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: 'Copyright &copy; Intelligent Retinal Imaging Systems. All rights reserved.'
+footer_content: 'Copyright &copy; Intelligent Retinal Imaging Systems. All rights reserved. Legal Entity Global Location Number (GLN): 0860001130508'
 
 # For copy button on code
 enable_copy_code_button: true
