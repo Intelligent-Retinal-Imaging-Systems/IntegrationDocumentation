@@ -12,7 +12,7 @@ IRIS provides a variety of tools to allow basic integration services that may su
 - Receiving PDF reports as orders are completed
      - To your local file system
      - To an SFTP site
-     - To a Fax machine
+     - To a fax machine
 - Adding a batch of orders from a CSV file
 
 
