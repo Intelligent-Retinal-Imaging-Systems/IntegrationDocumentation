@@ -337,6 +337,42 @@ Events with the ResultObjectType of GradingReceipt contain details of a grading 
 | OrderLocalId | string | Id of order as specified by you on submission
 | PatientLocalId | string | Id of the patient as specified by you on submission
 
+### ResultsDeliveryReceipt
+
+Events with the ResultObjectType of ResultsDeliveryReceipt contain details of results delivered to any endpoint other than the standard Cloud Direct result (e.g.: You won't get a message to tell you the message you just received was received).  This message is provided for customers who have configured multiple destinations for results such as fax results to PCP.  
+
+
+#### ResultsDeliveryReceipt Additional Properties
+
+| Property | Data type | Description
+| -- | -- | --
+| IrisOrderId | int | Id of order as created and known by IRIS
+| OrderLocalId | string | Id of order as specified by you on submission
+| TimeDelivered | DateTimeOffset | date/time when delivery was executed
+| DeliveryType | string/options | type of delivery from list below
+| Endpoint | string | Endpoint relative to the delivery type 
+
+#### Result Delivery Type Options
+
+| Option Name | Description
+| -- | -- 
+| clientfax | Fax sent to a number configured for all results for an individual site
+| icproxy | Results sent to site proxy
+| icOrgProxy | Results sent to organization proxy
+| azureblob | Results dropped to Azure Blob Storage account
+| OrderManager | Results pulled from Order Manager application
+| awsblob | Results dropped on AWS blob account
+| dicomweb | Results delivered to DICOMWeb endpoint
+| sftp | Results dropped on SFTP site
+| pcp-fax | Fax sent to associated PCP
+| dxferorgemrproxy | Results sent to shared organization proxy
+| clouldemrproxy | Results to the EMR/EHR Cloud system
+| pcp-direct-messaging | Results sent to associated PCP with direct secure messaging
+| azure-blob-zip-v2 | Results added to daily Zip combined results
+
+*Custom/Client specific result delivery types are not listed above*
+
+
 
 ## Order Results
 
