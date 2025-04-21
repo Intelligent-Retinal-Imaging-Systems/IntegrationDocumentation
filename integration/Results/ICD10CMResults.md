@@ -29,7 +29,7 @@ A returned diagnosis of **E10**3592 (Type 1 diabetes mellitus with proliferative
 
 ## What if I do not provide Diagnosis codes with the order?
 
-For Diabetic Retinopathy, IRIS will generate all codes with the class of E08.  Other pathology types may not require  the starting classification.
+For Diabetic Retinopathy, IRIS will generate all codes with the class of E11.  Other pathology types may not require  the starting classification.
 
 ## What about suspected conditions?
 
