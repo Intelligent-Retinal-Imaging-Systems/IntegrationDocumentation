@@ -122,6 +122,7 @@ The following is an example of a JSON encoded representation of an Order Result.
             }
         ],
         "GradedTime": "2022-01-03T12:42:18.6929481+00:00",  // Timestamp of grading
+        "QueuedTime": "2022-01-02T12:42:18+00:00",          // Timestamp when the order was queued to grading
         "CarePlanName":"Return in 6 months",            
         "CarePlanDescription": "Have patient return in 6 months for a followup exam.",
         "Pathology": true,          // If true, pathology was found
