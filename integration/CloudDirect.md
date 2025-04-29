@@ -590,6 +590,7 @@ Contains raw details of grading
 | -- | -- | -- | --
 | Notes | array of [Note](#note-structure) | Notes added by the Grader 
 | GradedTime | datetimeoffset | When grading was completed 
+| QueuedTime | datetimeoffset | When order was queued to grading 
 | CarePlanName | string | Name of Care Plan determined from findings 
 | CarePlanDescription | string | Description/Instruction text related to care plan
 | Pathology | bool | If true Pathology was found on one or more eyes | true/false
