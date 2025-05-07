@@ -99,7 +99,7 @@ The following is an example of a JSON encoded representation of an Order Result.
         "First": "John",
         "Last": "Doe"
       },
-"Dob": "1/1/2000",
+      "Dob": "1/1/2000",
       "Gender": "U" 
     },
     "OrderingProvider": {               
@@ -174,6 +174,10 @@ The following is an example of a JSON encoded representation of an Order Result.
       "LocalId": "1234",                  // Id of plan as specified by submitting organization
       "Name": "ProviderA",                // Name of the healthplan 
       "MemberId": "1234"                  // Id of Member as specified by the Healthplan
+    },
+    "Cpt" : {
+      "Code" : "92250",
+      "Description" : "Fundus photography with interpretation and report"
     }
   }
  

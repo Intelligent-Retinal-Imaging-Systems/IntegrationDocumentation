@@ -263,6 +263,16 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | IndividualId | string | Id for the Individual person associated with the Member for the HealthPlan 
 | PrimaryCareProvider | [PCP](#primary-care-provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
+### CPT structure
+
+A procedure code can be submitted in the order and echoed back in results
+
+| Property | Type | Description
+| -- | -- | -- 
+| Code | string | Procedure Code as defined by CMS
+| Description | string | Description as defined by CMS
+
+
 ### Primary Care Provider structure
 
 You may associate a patient with their primary care provider in cases when you want to deliver a copy of the report to them.  PCP Results is a delivery option that must be configured by IRIS before this data is utilized.  Contact your IRIS sales representative to have this feature activated.
@@ -480,6 +490,7 @@ To configure results to be pushed to an AWS, Azure (In your subscription) or Goo
 | Gradings | [Grading Results](#gradings-structure) structure | Details of grading operation on order 
 | CameraOperator [Capturing User](#cameraoperator-structure) structure | Details of the user that captured images 
 | HealthPlan | [HealthPlan association](#healthplan-structure) structure | Details of the Health Plan associated with the order
+| Cpt | [CPT Code](#cpt-structure) structure | Procedure Code and Description
 
 ### ResultsDocument structure 
 
