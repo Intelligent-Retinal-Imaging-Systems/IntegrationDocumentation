@@ -129,6 +129,7 @@ The following is an example of a JSON encoded representation of an Order Result.
         "Urgent": false,            // If true, grader found urgent pathology to act on immediately
         "OD" : {
             "Gradable": true,       // If true the grader was able to make an assessment based on one or more of the provided images
+            "MissingEyeReason": null,   // If the order was submitted with a specified reason for no images on an eye, this is that reason
             "UngradableReasons" : [ // If ungradable, contains a list of reasons provided by the grader.  These are not specific to any image
             ],
             "Findings" : [{

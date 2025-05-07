@@ -649,6 +649,7 @@ Structure containing grading details for one eye side
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | Gradable | bool | If false the eye side was not able to be graded with the images provided | true/false
+| MissingEyeReason | If the order was submitted specifying a reason for not having images for an eye, this is that reason. 
 | UngradableReasons | array of string | Grader specified reason that eye could not be graded 
 | Findings | Array of [Finding](#finding-structure) | Zero or more findings for the eye
 
