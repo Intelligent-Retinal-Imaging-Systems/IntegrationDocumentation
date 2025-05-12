@@ -104,7 +104,7 @@ The OrderRequest object model provides all the properties necessary to create an
 | OrderingProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who ordered the exam
 | ReferringProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who referred the patient for the exam
 | CameraOperator | [Request Provider](#requestprovider-structure) structure | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
-| CameraOperatorUserName | string | UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI 
+| CameraOperatorUserName | string | *** DEPRECATED - Use CameraOperator Instead *** UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI 
 | HealthPlan | [HealthPlan](#healthplan-structure) structure | If order is associated with a Health Plan
 
 ### OrderControlCode 

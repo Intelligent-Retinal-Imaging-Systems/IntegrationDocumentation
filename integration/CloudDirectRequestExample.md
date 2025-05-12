@@ -109,7 +109,14 @@ It is not necessary to hydrate properties with *null*.  It is done so below for 
     "Degrees": null,
     "Associations": null
   },
-  "CameraOperatorUserName": "john.doe@primarycare.com",         
+  "CameraOperator" : {
+    "NPI":"1234567890",
+    "Name":{
+      "First":"John",
+      "Last":"Doe"
+    },
+    "Email":"john.doe@primarycare.com"    
+  },  
   "HealthPlan":   {                     
     "LocalId": "1234",                  
     "Name": "ProviderA",                 
