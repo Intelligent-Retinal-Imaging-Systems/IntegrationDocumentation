@@ -364,6 +364,7 @@ Events with the ResultObjectType of ResultsDeliveryReceipt contain details of re
 | TimeDelivered | DateTimeOffset | date/time when delivery was executed
 | DeliveryType | string/options | type of delivery from list below
 | Endpoint | string | Endpoint relative to the delivery type 
+| TransmissionStatus | Transmission Status [Values](#transmission-status-values)| Status on delivery types that occur asynchronously (i.e.: Fax)
 
 #### Result Delivery Type Options
 
@@ -385,7 +386,14 @@ Events with the ResultObjectType of ResultsDeliveryReceipt contain details of re
 
 *Custom/Client specific result delivery types are not listed above*
 
+#### Transmission Status Values
 
+| Value | Description
+| -- | --
+| Unknown | Errant conditions
+| Complete | The result has been delivered
+| Pending | The transmission is actively processing
+| Failed | Transmission failed
 
 ## Order Results
 
