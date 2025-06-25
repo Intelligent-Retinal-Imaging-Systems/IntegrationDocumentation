@@ -94,7 +94,7 @@ It is not necessary to hydrate properties with *null*.  It is done so below for 
       "Street2": null,
       "City":null,
       "State":null,
-      "PostalCode":null
+      "Zip":null
     },
     "DxCode": "E119"                      
   },
