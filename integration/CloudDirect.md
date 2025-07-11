@@ -235,7 +235,7 @@ The IRIS system allows only one open order per patient/evaluation type combinati
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the IRIS system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD
+| <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the IRIS system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD, SP
 | ScheduledTime | datetime | When orders are scheduled for a specific time, this should be that time local to the exam location. This is typically used for workflows where orders are pushed to Cameras as this determines which items show in a Camera worklist
 | <span style='color:rgb(188, 13, 16);'>LocalId</span> | string | The Id of the order as specified by the submitting organization. This id is required for subsequent Change and Cancel operations as well as event notifications. 
 | DepartmentId | string | Optional identifier for the submitting department. Some EMR integrations will require this. 
