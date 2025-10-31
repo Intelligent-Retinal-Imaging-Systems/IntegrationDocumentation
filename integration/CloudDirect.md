@@ -336,13 +336,44 @@ Events with the ResultObjectType of ImageReceipt contain details of an image sub
 | ImageLocalId | string | Id of the image as specified by you on submission
 | IrisImageId | int | Id of image as created and known by IRIS 
 
+### ReadyForGradingEvent
+
+Events with the ResultObjectType of ReadyForGradingEvent contain details of an order moving into the grading queue
+
+This event fires when order image requirements have been satisfied for an order.
+
+#### ReadyForGradingEvent Additional Properties
+
+| Property | Data type | Description
+| -- | -- | --
+| IrisOrderId | int | Id of order as created and known by IRIS
+| OrderLocalId | string | Id of order as specified by you on submission
+| PatientLocalId | string | Id of the patient as specified by you on submission
+
+
 ### GradingReceipt
 
-Events with the ResultObjectType of GradingReceipt contain details of a grading operation.
+Events with the ResultObjectType of GradingReceipt contain details of a grading submission.  
+
+This event fires when a grading has been submitted for an order
 
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
 
 #### GradingReceipt Additional Properties
+
+| Property | Data type | Description
+| -- | -- | --
+| IrisOrderId | int | Id of order as created and known by IRIS
+| OrderLocalId | string | Id of order as specified by you on submission
+| PatientLocalId | string | Id of the patient as specified by you on submission
+
+### OrderGradedEvent
+
+Events with the ResultObjectType of OrderGradedEvent contain details of an order that has been graded
+
+This event will post when an order is graded.  This differs from the GradingReceipt in that the grading has been applied establishing the order as graded.
+
+#### OrderGradedEvent Additional Properties
 
 | Property | Data type | Description
 | -- | -- | --
