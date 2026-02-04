@@ -8,8 +8,9 @@ nav_order: 2
 The following is an example of a JSON encoded representation of an Order Request.
 It is not necessary to hydrate properties with *null*.  It is done so below for display reasons only. 
 
-```javascript
+```json
 {
+  "$schema": "https://cdn.retinalscreenings.com/hosts/iris/schemas/order-submission.schema.2.3.1.json",
   "Version": "2.3.1", 	
   "UserNameSubmitting": "john.doe@primarycare.com", 
   "OrderControlCode": "NW",             
@@ -38,12 +39,10 @@ It is not necessary to hydrate properties with *null*.  It is done so below for 
       {
         "LocalId": "1234-1-1", 
         "Taken": "2022-01-01T17:42:18.6936779+00:00",       
-        "AzureBlobStorage": {           
-          "Container": "PC1234",
-          "FileName": "04211055-DFF7-41EF-9EF3-43FE61D10D43.dcm"
-        },
+        "Container": "PC1234",
+        "FileName": "04211055-DFF7-41EF-9EF3-43FE61D10D43.dcm",
         "Laterality": "OD",             
-        "ImageContext": "Primary",      
+        "ImageContext": null,      
         "ParentLocalId": null,          
         "GroupId": null,                
         "GroupOrdinal": null            
@@ -83,8 +82,8 @@ It is not necessary to hydrate properties with *null*.  It is done so below for 
         }
     ],
     "Race": "2131-1",                       
-    "Ethnicity": "2131-1",                  
-    "PrimaryLanguage": "en",            
+    "Ethnicity": null, 
+    "PrimaryLanguage": "en-US",            
     "MaritalStatus": null,              
     "Email": null,                      
     "AdditionalInfo": null,             
