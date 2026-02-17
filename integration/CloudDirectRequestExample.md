@@ -39,8 +39,10 @@ It is not necessary to hydrate properties with *null*.  It is done so below for 
       {
         "LocalId": "1234-1-1", 
         "Taken": "2022-01-01T17:42:18.6936779+00:00",       
-        "Container": "PC1234",
-        "FileName": "04211055-DFF7-41EF-9EF3-43FE61D10D43.dcm",
+        "AzureBlobStorage": {
+          "Container": "PC1234",
+          "FileName": "04211055-DFF7-41EF-9EF3-43FE61D10D43.dcm",
+        },
         "Laterality": "OD",             
         "ImageContext": null,      
         "ParentLocalId": null,          
