@@ -5,11 +5,9 @@ nav_order: 3
 ---
 
 # Sample OrderResults Message
-The following is an example of a JSON encoded representation of an Order Result.  
-*Values set in this example are intended to display data types only and may contradict actual values found in other parts of the document (e.g.: Date Time values).*
-  
+The following example is a JSON encoded Order Result.
  
-```javascript
+```json
 {
     "Version": "2.3.1",                  // Version of this structure
     "Timestamp" : "",

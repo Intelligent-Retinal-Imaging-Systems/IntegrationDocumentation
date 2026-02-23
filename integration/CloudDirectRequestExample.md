@@ -5,7 +5,7 @@ nav_order: 2
 ---
 
 # Sample OrderRequest Message
-The following is an example of a JSON encoded representation of an Order Request.
+The following example is a JSON encoded Order Request.
 
 
 > <small>By including the schema reference (as shown in the example below) you can leverage tools such as Visual Studio Code to expose issues in your submission object.  The schema also provides detailed descriptions for each field including available options for enumerations.</small>
