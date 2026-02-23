@@ -6,7 +6,12 @@ nav_order: 2
 
 # Sample OrderRequest Message
 The following is an example of a JSON encoded representation of an Order Request.
-It is not necessary to hydrate properties with *null*.  It is done so below for display reasons only. 
+
+
+> <small>By including the schema reference (as shown in the example below) you can leverage tools such as Visual Studio Code to expose issues in your submission object.  The schema also provides detailed descriptions for each field including available options for enumerations.</small>
+
+> <small>*Unused properties may be omitted from your object. Items hydrated with <span style="color:red;">null</span> below are for contextual display purposes only.</small>* 
+
 
 ```json
 {
