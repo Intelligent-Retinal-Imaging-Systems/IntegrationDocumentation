@@ -5,9 +5,9 @@ nav_order: 3
 ---
 
 # Sample OrderResults Message
-The following example is a JSON encoded Order Result.
+##### JSON encoded Order Result
 
-> <small>To view details of fields in this example, copy this page into any editor capable of parsing the schema.  Visual Studio Code was used for building the example. </small>
+ > ✨ <small> To view details of fields in this example, copy this page into any editor capable of parsing the schema. Visual Studio Code was used for building the example. </small>
  
 ```json
 {
