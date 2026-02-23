@@ -126,7 +126,8 @@ The following is an example of a JSON encoded representation of an Order Result.
         "CarePlanName":"Return in 6 months",            
         "CarePlanDescription": "Have patient return in 6 months for a followup exam.",
         "Pathology": true,          // If true, pathology was found
-        "Urgent": false,            // If true, grader found urgent pathology to act on immediately
+        "Urgent": false,            // If true, grader noted urgent pathology to act on immediately
+        "Emergent": false,          // If true, the grader noted life threatening pathology that requires immediate ER care.  
         "OD" : {
             "Gradable": true,       // If true the grader was able to make an assessment based on one or more of the provided images
             "MissingEyeReason": null,   // If the order was submitted with a specified reason for no images on an eye, this is that reason
