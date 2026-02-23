@@ -247,7 +247,7 @@ The IRIS system allows only one open order per patient/evaluation type combinati
 | State | string | US State where exam is to be performed. Required for mobile exams that will not be performed at the address specified in the Site. This takes either the State abbreviation or Full name | <a href="https://www.faa.gov/air_traffic/publications/atpubs/cnt_html/appendix_a.html">US State Abbreviations</a> 
 | SingleEyeOnly | bool | Specifies that you expect the order to only have images on only one eye. Used in combination with MissingEyeReason. Impacts gradeability scoring.  Null=Follow configuration for gradeability with missing eyes, False=Expected but still considered in gradeability, True=Expected and ignore for gradeability  | null/true/false 
 | MissingEyeReason | string | Specifies the reason the eye was missing.  If set, reason is provided in final results
-| Urgent | bool |  If true the order is prioritized in the grading queue | true/false (default: false)
+
 
 ### HealthPlan structure 
 
@@ -561,7 +561,7 @@ Contains raw order detail from submission
 | State | string | US State where exam was performed.
 | SingleEyeOnly | bool | value set on submission
 | MissingEyeReason | string | value set on submission
-| Urgent | bool |  value set on submission
+
 
 
 ### ImageDetails structure 
@@ -643,8 +643,9 @@ Contains raw details of grading
 | QueuedTime | datetimeoffset | When order was queued to grading 
 | CarePlanName | string | Name of Care Plan determined from findings 
 | CarePlanDescription | string | Description/Instruction text related to care plan
-| Pathology | bool | If true Pathology was found on one or more eyes | true/false
-| Urgent | bool | If true, the grader has found pathology that requires urgent action | true/false
+| Pathology | bool | If true Pathology was noted on one or more eyes | true/false
+| Urgent | bool | If true, the grader has noted pathology that requires urgent action | true/false
+| Emergent | bool | If true, the grader has noted life threatening pathology that requires immediate ER care | true/false
 | OD | [EyeSideGrading](#eyesidegrading-structure) structure | Details of grading for right eye 
 | OS | [EyeSideGrading](#eyesidegrading-structure) structure | Details of grading for left eye 
 | DxCodes | array of string | ICD-10 Codes matched to findings 
