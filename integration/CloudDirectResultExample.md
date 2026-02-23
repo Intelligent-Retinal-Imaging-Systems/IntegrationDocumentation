@@ -7,7 +7,7 @@ nav_order: 3
 # Sample OrderResults Message
 The following example is a JSON encoded Order Result.
  
-```json
+```jsonc
 {
     "Version": "2.3.1",                  // Version of this structure
     "Timestamp" : "",
