@@ -288,7 +288,7 @@ You may associate a patient with their primary care provider in cases when you w
 
 Because Service Bus based integrations are asynchronous, IRIS posts events on an events queue to keep you apprised of important operations as they occur.  
 
-See [Sample Events](/integration/CloudDirectEventSample/) for examples of event messages.
+See [Sample Events](/integration/clouddirect/EventExamples/) for examples of event messages.
 
 All messages contain a common set of base properties 
 
