@@ -6,7 +6,7 @@ nav_order: 2
 
 ## OrderResults Object Model
 
-### Root Properties 
+##### ![alt text](/assets/properties.ico) Root properties 
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -45,6 +45,8 @@ The Site structure is primarily used to identify the site the order is to be ass
 
 Depending on your workflow the IRIS system will provide a Report of the examination. The report is available in various formats.
 
+##### ![alt text](/assets/properties.ico) Embedded result document properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | Type | options | Identifier of the result format | PDF, HTML, ORU 
@@ -53,6 +55,8 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 
 <a id="order"></a>
 ### ![alt text](/assets/structure.ico) Results Order structure 
+
+##### ![alt text](/assets/properties.ico) Order properties
 
 | Property | Type | Description
 | -- | -- | -- 
@@ -77,6 +81,8 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 
 This structure contains a summary of the images collected for the exam.
 
+##### ![alt text](/assets/properties.ico) Image details properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | TotalCount |int | Total count of all images attached to the order 
@@ -93,7 +99,9 @@ This structure contains a summary of the images collected for the exam.
 <a id="patient"></a>
 ### ![alt text](/assets/structure.ico) Results Patient structure
 
-Raw patient details for exam
+Returns the details of the patient as they were submitted on the order. 
+
+##### ![alt text](/assets/properties.ico) Patient properties
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -115,6 +123,8 @@ Array of Result Image structures that provides details of each image attached to
 
 Contains details of an individual image attached to the order.
 
+##### ![alt text](/assets/properties.ico) Image properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | LocalId | string | Id as specified by the submitting organization 
@@ -133,6 +143,8 @@ Contains details of an individual image attached to the order.
 
 Details of the camera that took the image. 
 
+##### ![alt text](/assets/properties.ico) Camera properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | LocalId | string | Typically this is the serial number of the Camera. Because IRIS supports a wide variety of cameras, some of which do not identify within image metadata, you may have to consult with IRIS to find the proper value to supply here. 
@@ -149,9 +161,11 @@ Details of the camera that took the image.
 
 Contains raw details of grading
 
+##### ![alt text](/assets/properties.ico) Gradings properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| Notes | array of [Note](#note-structure) | Notes added by the Grader 
+| Notes | array of [Note](#note) | Notes added by the Grader 
 | GradedTime | datetimeoffset | When grading was completed 
 | QueuedTime | datetimeoffset | When order was queued to grading 
 | CarePlanName | string | Name of Care Plan determined from findings 
@@ -159,10 +173,10 @@ Contains raw details of grading
 | Pathology | bool | If true Pathology was noted on one or more eyes | true/false
 | Urgent | bool | If true, the grader has noted pathology that requires urgent action | true/false
 | Emergent | bool | If true, the grader has noted life threatening pathology that requires immediate ER care | true/false
-| OD | [EyeSideGrading](#eyesidegrading-structure) structure | Details of grading for right eye 
-| OS | [EyeSideGrading](#eyesidegrading-structure) structure | Details of grading for left eye 
+| OD | [EyeSideGrading](#eyegrading) structure | Details of grading for right eye 
+| OS | [EyeSideGrading](#eyegrading) structure | Details of grading for left eye 
 | DxCodes | array of string | ICD-10 Codes matched to findings 
-| Provider | [Provider](#provider-structure) (structure) – Details of the Provider who performed the grading 
+| Provider | [Provider](/objectmodel/CommonObjects#requestprovider) – Details of the Provider who performed the grading 
 
 
 <a id="cameraoperator"></a>
@@ -170,14 +184,18 @@ Contains raw details of grading
 
 Details of the technician who captured the images for the order.
 
+##### ![alt text](/assets/properties.ico) CameraOperator properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | UserName | string | UserName as known by IRIS system
-| Name | [Name](#name-structure) structure | Name of performing operator
-| Notes | Array of [Note](#note-structure) | notes added by the performing operator
+| Name | [Name](/objectmodel/CommonObjects#name-structure) structure | Name of performing operator
+| Notes | Array of [Note](#note) | notes added by the performing operator
 
 <a id="healthplan"></a>
 ### ![alt text](/assets/structure.ico) HealthPlan structure 
+
+##### ![alt text](/assets/properties.ico) Healthplan properties
 
 | Property | Type | Description 
 | -- | -- | -- 
@@ -194,6 +212,8 @@ Array containing zero or more notes added by the related user
 
 Structure containing metadata and content of a free form note
 
+##### ![alt text](/assets/properties.ico) Note properties
+
 | Property | Type | Description 
 | -- | -- | -- 
 | Date | datetime | When the note was entered
@@ -209,7 +229,7 @@ Structure containing grading details for one eye side
 | Gradable | bool | If false the eye side was not able to be graded with the images provided | true/false
 | MissingEyeReason | If the order was submitted specifying a reason for not having images for an eye, this is that reason. 
 | UngradableReasons | array of string | Grader specified reason that eye could not be graded 
-| Findings | Array of [Finding](#finding-structure) | Zero or more findings for the eye
+| Findings | Array of [Finding](#finding) | Zero or more findings for the eye
 
 ### Findings array 
 
@@ -219,6 +239,8 @@ Array of the Finding structure containing findings from the grader for the speci
 #### ![alt text](/assets/structure.ico) Finding structure 
 
 Structure containing details of finding
+
+##### ![alt text](/assets/properties.ico) Finding properties
 
 | Property | Type | Description 
 | -- | -- | -- 
