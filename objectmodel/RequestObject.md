@@ -17,7 +17,7 @@ The OrderRequest object model provides all the properties necessary to perform o
 | UserNameSubmitting | string | Optionally specify the username of a user that should be associated with the order creation. If your organization has been provided a service account for API direct operations, this is acceptable, otherwise it is not required. 
 | <span style='color: rgb(188, 13, 16);'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel) | [OrderControlCode](/objectmodel/OptionEnums#-ordercontrolcode) options
 | <span style='color: rgb(188, 13, 16);'>Site</span> | [Site](#site) | Location order is associated with
-| Camera | [Camera](#camera) structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
+| Camera | [Camera](#camera) | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
 | <span style='color: rgb(188, 13, 16);'>Order</span> | [Order](#order) | Details of order
 | <span style='color: rgb(188, 13, 16);'>Patient</span> | [Patient](#patient) | Patient details
 | OrderingProvider | [Request Provider](#requestprovider) | Medical provider who ordered the exam
@@ -167,7 +167,7 @@ The IRIS system allows only one open order per patient/evaluation type combinati
 | MissingEyeReason | string | Specifies the reason the eye was missing.  If set, reason is provided in final results
 
 <a id="healthplan"></a>
-### ![alt text](/assets/structure.png) HealthPlan 
+### ![alt text](/assets/structure.ico) HealthPlan 
 
 If your workflow is based on a Health Plan, this structure may be included in the submission. This information is returned in results. 
 
@@ -184,7 +184,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | PrimaryCareProvider | [PCP](#alt-text-primary-care-provider-structure) | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
 <a id="cpt"></a>
-### ![alt text](/assets/structure.png) CPT
+### ![alt text](/assets/structure.ico) CPT
 
 A procedure code can be submitted in the order and echoed back in results
 
@@ -196,7 +196,7 @@ A procedure code can be submitted in the order and echoed back in results
 | Description | string | Description as defined by CMS
 
 <a id="pcp"></a>
-### ![alt text](/assets/structure.png) Primary Care Provider
+### ![alt text](/assets/structure.ico) Primary Care Provider
 
 You may associate a patient with their primary care provider in cases when you want to deliver a copy of the report to them.  PCP Results is a delivery option that must be configured by IRIS before this data is utilized.  Contact your IRIS sales representative to have this feature activated.
 
