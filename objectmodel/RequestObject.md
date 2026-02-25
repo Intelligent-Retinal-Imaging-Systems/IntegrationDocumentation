@@ -7,14 +7,14 @@ nav_order: 1
 
 ## OrderRequest Object Model 
 
-The OrderRequest object model provides all the properties necessary to create an order in the IRIS system regardless of your workflow. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: rgb(188, 13, 16);'>red</span> are required. 
+The OrderRequest object model provides all the properties necessary to perform order actions such as create, change or cancel. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: rgb(188, 13, 16);'>red</span> are required. 
 
-
+##### ![alt text](/assets/properties.ico) OrderRequest root properties
 | Property  | type  |  Description  | Options
 | -- | -- | -- | -- |
 | <span style='color:rgb(188, 13, 16);'>Version</span> | string |  Should be set to 2.3.1 unless otherwise directed.
 | UserNameSubmitting | string | Optionally specify the username of a user that should be associated with the order creation. If your organization has been provided a service account for API direct operations, this is acceptable, otherwise it is not required. 
-| <span style='color: rgb(188, 13, 16);'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel) | [OrderControlCode](#-ordercontrolcode) options
+| <span style='color: rgb(188, 13, 16);'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel) | [OrderControlCode](/objectmodel/OptionEnums#-ordercontrolcode) options
 | <span style='color: rgb(188, 13, 16);'>Site</span> | [Site](#site) structure | Location order is associated with
 | Camera | [Camera](#camera) structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
 | <span style='color: rgb(188, 13, 16);'>Order</span> | [Order](#order) structure | Details of order
@@ -25,24 +25,8 @@ The OrderRequest object model provides all the properties necessary to create an
 | CameraOperatorUserName | string | *** DEPRECATED - Use CameraOperator Instead *** UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI 
 | HealthPlan | [HealthPlan](#healthplan) structure | If order is associated with a Health Plan
 
-### 📊 OrderControlCode 
 
-The OrderControlCode specifies which action to take
-
-| Value | Description
-| -- | -- 
-| **NW** | Create New Order
-| **XO** | Change Order 
-| **CA** | Cancel Order 
-| **ResendResult** | Resend Results
-
-Regardless of the control code, the same OrderRequest structure is used, however when using the CA code to cancel an order or the ResendResult code, you only need to populate the ClientGuid, Site LocalId and Order LocalId. 
-
-Changing or Cancelling an order will not work if the target order is closed. 
-
-Resending Results both regenerates the results and sends to all configured delivery endpoints (with the exception of the DFT (HL7) message)
-
-### ![alt text](/assets/structure.ico) OrderRequest child structures
+## ![alt text](/assets/structure.ico) OrderRequest child structures
 
 <a id="site"></a>
 ### ![alt text](/assets/structure.ico) Site
@@ -61,6 +45,7 @@ The Site structure is primarily used to identify the site the order is to be ass
 
 When an order is to be assigned to a camera or Image directives are included with the order, populate this structure. If the camera already exists and you are not providing image directives, you only need to supply the LocalId. Other than the Images structure, the remaining properties are provided in the event your organization allows automatic Camera additions.
 
+##### ![alt text](/assets/properties.ico) Camera properties
 
 | Property | Type | Description
 | -- | -- | --
@@ -74,7 +59,7 @@ When an order is to be assigned to a camera or Image directives are included wit
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
 | Images | Array of [Image](#image) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images.
 
-### Images array
+## Images
 
 The Images array is an array of Image structures that provides details including the storage location of one or more images associated with the order. 
 
@@ -174,7 +159,7 @@ The IRIS system allows only one open order per patient/evaluation type combinati
 | MissingEyeReason | string | Specifies the reason the eye was missing.  If set, reason is provided in final results
 
 <a id="healthplan"></a>
-### ![alt text](/assets/structure.png) HealthPlan structure 
+### ![alt text](/assets/structure.png) HealthPlan 
 
 If your workflow is based on a Health Plan, this structure may be included in the submission. This information is returned in results. 
 
@@ -189,7 +174,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | PrimaryCareProvider | [PCP](#alt-text-primary-care-provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
 <a id="cpt"></a>
-### ![alt text](/assets/structure.png) CPT structure
+### ![alt text](/assets/structure.png) CPT
 
 A procedure code can be submitted in the order and echoed back in results
 
@@ -199,7 +184,7 @@ A procedure code can be submitted in the order and echoed back in results
 | Description | string | Description as defined by CMS
 
 <a id="pcp"></a>
-### ![alt text](/assets/structure.png) Primary Care Provider structure
+### ![alt text](/assets/structure.png) Primary Care Provider
 
 You may associate a patient with their primary care provider in cases when you want to deliver a copy of the report to them.  PCP Results is a delivery option that must be configured by IRIS before this data is utilized.  Contact your IRIS sales representative to have this feature activated.
 
