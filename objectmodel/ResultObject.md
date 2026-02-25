@@ -36,9 +36,7 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 | Encoding | options | specifies the encoding format for the report content | Base64, ASCII or any specific encoding scheme 
 | Content | string | Content relative to the Encoding and Type. For example, if PDF, this will most likely be a Base64 encoded string 
 
-### Results Order structure 
-
-Contains raw order detail from submission
+### ![alt text](/assets/structure.png) Results Order structure 
 
 | Property | Type | Description
 | -- | -- | -- 
@@ -59,7 +57,7 @@ Contains raw order detail from submission
 
 
 
-### ImageDetails structure 
+### ![alt text](/assets/structure.png) ImageDetails structure 
 
 This structure contains a summary of the images collected for the exam.
 
@@ -76,7 +74,7 @@ This structure contains a summary of the images collected for the exam.
 | SingleEyeOnly | bool | Returns single eye indicator based on configuration and submission values | true/false
 
 
-### Results Patient structure
+### ![alt text](/assets/structure.png) Results Patient structure
 
 Raw patient details for exam
 
@@ -95,7 +93,7 @@ Raw patient details for exam
 
 Array of Result Image structures that provides details of each image attached to the order. 
 
-#### Result Image structure 
+#### ![alt text](/assets/structure.png) Result Image structure 
 
 Contains details of an individual image attached to the order.
 
@@ -112,7 +110,7 @@ Contains details of an individual image attached to the order.
 | GroupOrdinal | Numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. 
 | Camera | [Result Camera](#result-camera-structure) structure | Contains details of the Camera that took the image 
 
-### Result Camera structure
+### ![alt text](/assets/structure.png) Result Camera structure
 
 Details of the camera that took the image. 
 
@@ -127,7 +125,7 @@ Details of the camera that took the image.
 | Model | string | Model name of camera. Consult with IRIS for exact values you should use.
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
 
-### Gradings structure
+### ![alt text](/assets/structure.png) Gradings structure
 
 Contains raw details of grading
 
@@ -146,7 +144,7 @@ Contains raw details of grading
 | DxCodes | array of string | ICD-10 Codes matched to findings 
 | Provider | [Provider](#provider-structure) (structure) – Details of the Provider who performed the grading 
 
-### CameraOperator structure
+### ![alt text](/assets/structure.png) CameraOperator structure
 
 Details of the technician who captured the images for the order.
 
@@ -156,7 +154,7 @@ Details of the technician who captured the images for the order.
 | Name | [Name](#name-structure) structure | Name of performing operator
 | Notes | Array of [Note](#note-structure) | notes added by the performing operator
 
-### HealthPlan structure 
+### ![alt text](/assets/structure.png) HealthPlan structure 
 
 | Property | Type | Description 
 | -- | -- | -- 
@@ -168,7 +166,7 @@ Details of the technician who captured the images for the order.
 
 Array containing zero or more notes added by the related user 
 
-#### Note structure 
+#### ![alt text](/assets/structure.png) Note structure 
 
 Structure containing metadata and content of a free form note
 
@@ -177,7 +175,7 @@ Structure containing metadata and content of a free form note
 | Date | datetime | When the note was entered
 | Text | string | Content 
 
-### EyeSideGrading structure 
+### ![alt text](/assets/structure.png) EyeSideGrading structure 
 
 Structure containing grading details for one eye side
 
@@ -192,7 +190,7 @@ Structure containing grading details for one eye side
 
 Array of the Finding structure containing findings from the grader for the specified eye. If the array is not present, it indicates, there was no pathology found for the eye. 
 
-#### Finding structure 
+#### ![alt text](/assets/structure.png) Finding structure 
 
 Structure containing details of finding
 
