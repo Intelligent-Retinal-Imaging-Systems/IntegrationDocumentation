@@ -5,9 +5,9 @@ nav_order: 3
 ---
 
 
-## Common Shared Structures
+## Common Shared Components
 
-### Name structure
+### Name
 
 Common structure used for storing names
 
@@ -16,7 +16,7 @@ Common structure used for storing names
 | First | string | Persons first (given) name
 | Last | string | Persons last (family) name
 
-### Address structure 
+### Address 
 
 Common structure used for storing addresses
 

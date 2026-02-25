@@ -38,7 +38,7 @@ The Site structure is primarily used to identify the site the order is to be ass
 | -- | -- | -- 
 | LocalId | string | Id of site as specified by you, the submitting organization
 | Name | string | Name of the site (Only required for automatic site additions)
-| Address | [Address](/objectmodel/CommonObjects#address-structure) | Address of site (Only required for automatic site additions)
+| Address | [Address](/objectmodel/CommonObjects#address) | Address of site (Only required for automatic site additions)
 
 <a id="resultsdoc"></a>
 ### ![alt text](/assets/structure.ico) ResultsDocument 
@@ -109,11 +109,11 @@ Returns the details of the patient as they were submitted on the order.
 | -- | -- | -- | --
 | PatientId | int | Id as set by IRIS on patient creation
 | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
-| Name | [Name](#name-structure) structure | Patient first and last name
+| Name | [Name](/objectmodel/CommonObjects#name) structure | Patient first and last name
 | Dob | Date | Patient date of birth 
-| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/integration/CloudDirectEnumOptions/) options
-| Genders | Array of [PersonGender](/integration/CloudDirectEnumOptions) | One or more gender specifications 
-| Phone | [Address](#address-structure) structure | Raw patient address data
+| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/objectmodel/OptionEnums#-gender) options
+| Genders | Array of [PersonGender](/objectmodel/CommonObjects#persongender) | One or more gender specifications 
+| Phone | string | Patients phone number
 
 <a id="images"></a>
 ### Result Images array 
@@ -190,7 +190,7 @@ Details of the technician who captured the images for the order.
 | Property | Type | Description 
 | -- | -- | -- 
 | UserName | string | UserName as known by IRIS system
-| Name | [Name](/objectmodel/CommonObjects#name-structure) structure | Name of performing operator
+| Name | [Name](/objectmodel/CommonObjects#name) | Name of performing operator
 | Notes | Array of [Note](#note) | notes added by the performing operator
 
 <a id="healthplan"></a>

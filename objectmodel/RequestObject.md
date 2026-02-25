@@ -40,7 +40,7 @@ The Site structure is primarily used to identify the site the order is to be ass
 | -- | -- | -- 
 | LocalId | string | Id of site as specified by you, the submitting organization
 | Name | string | Name of the site (Only required for automatic site additions)
-| Address | [Address](/objectmodel/CommonObjects#address-structure) | Address of site (Only required for automatic site additions)
+| Address | [Address](/objectmodel/CommonObjects#address) | Address of site (Only required for automatic site additions)
 
 <a id="camera"></a>
 ### ![alt text](/assets/structure.ico) Camera 
@@ -108,10 +108,10 @@ Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for re
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | <span style='color:rgb(188, 13, 16);'>LocalId</span> | string | Id of patient as specified by the submitting organization. (e.g.: Patient MRN). 
-| <span style='color:rgb(188, 13, 16);'>Name</span> | [Name](/objectmodel/CommonObjects.md#name-structure) | Patient first and last name
+| <span style='color:rgb(188, 13, 16);'>Name</span> | [Name](/objectmodel/CommonObjects.md#name) | Patient first and last name
 | <span style='color:rgb(188, 13, 16);'>Dob</span> | Date | Patient date of birth 
 | Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/objectmodel/OptionEnums#-gender) options
-| <span style='color:rgb(188, 13, 16);'>Genders</span> | Array of [PersonGender](/objectmodel/CommonObjects#persongender-structure) | Patient Gender assignment(s) 
+| <span style='color:rgb(188, 13, 16);'>Genders</span> | Array of [PersonGender](/objectmodel/CommonObjects#persongender) | Patient Gender assignment(s) 
 | Race | options | Optional race identifier | [Race](/objectmodel/OptionEnums#-race) options
 | Ethnicity | options | Optional ethnicity identifier | [Ethnicity](/objectmodel/OptionEnums#-ethnicity) options
 | PrimaryLanguage | options | Optional language identifier | [Language](/objectmodel/OptionEnums#-language) options
@@ -119,7 +119,7 @@ Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for re
 | Email | string | Optional email address for patient 
 | Phone | string | Optional single phone number for patient
 | AdditionalInfo | string | Optional free form data association with patient
-| Address | [Address](/objectmodel/CommonObjects#address-structure) | Optional patient address details 
+| Address | [Address](/objectmodel/CommonObjects#address) | Optional patient address details 
 | DxCode | string | ICD-10 code starting diagnosis (default: E08) as defined by CMS
 
 *Genders replaces Gender: While the system will still accept a single unspecified gender assignment, it will eventually be phased out in favor of Genders* 
@@ -166,7 +166,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | Name | string | Name of the Health Plan 
 | MemberId | string | Id for the HealthPlan member, typically as specified by the Health Plan itself 
 | IndividualId | string | Id for the Individual person associated with the Member for the HealthPlan 
-| PrimaryCareProvider | [PCP](#alt-text-primary-care-provider-structure) | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
+| PrimaryCareProvider | [PCP](#pcp) | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
 <a id="pcp"></a>
 ### ![alt text](/assets/structure.ico) Primary Care Provider
