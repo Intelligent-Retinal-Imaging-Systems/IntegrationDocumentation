@@ -7,11 +7,6 @@ nav_order: 1
 {: .no_toc }
 
 
-<style>
-   table tr { text-align: left }
-   table tr:nth-child(even) { background-color: #fafafa; }
-   table tr:nth-child(odd)  { background-color: #ffffff; }
-</style>
 
 # Option Enumerations
 
@@ -21,7 +16,7 @@ The following tables provide acceptable values for option properties.
 
 | Id | Value | Description 
 | -- | -- | --
-| 0 | Unknown |  Not set | 0
+| 0 | Unknown |  Not set  
 | 1 | IdentityGender | Gender individual identifies as 
 | 2 | BirthGender | Gender individual was designated at birth 
 

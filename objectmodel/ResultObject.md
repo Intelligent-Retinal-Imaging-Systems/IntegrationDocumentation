@@ -225,8 +225,8 @@ Common structure used for storing gender designations
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| Context | options | Gender association | [GenderContext](/integration/CloudDirectEnumOptions/) options 
-| Gender | options | The gender for specified context | [Gender](/integration/CloudDirectEnumOptions/) options
+| Context | options | Gender association | [GenderContext](/integration/objectmodel/OptionEnums) options 
+| Gender | options | The gender for specified context | [Gender](/integration/objectmodel/OptionEnums) options
   
 
 

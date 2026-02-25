@@ -1,7 +1,7 @@
 ---
-title: Order Request Example
-parent: Cloud Direct
-nav_order: 2
+title: Request 
+parent: Examples
+nav_order: 1
 ---
 
 # Sample OrderRequest Message
