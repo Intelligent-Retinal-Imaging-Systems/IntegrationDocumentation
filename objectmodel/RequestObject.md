@@ -15,15 +15,15 @@ The OrderRequest object model provides all the properties necessary to create an
 | <span style='color:rgb(188, 13, 16);'>Version</span> | string |  Should be set to 2.3.1 unless otherwise directed.
 | UserNameSubmitting | string | Optionally specify the username of a user that should be associated with the order creation. If your organization has been provided a service account for API direct operations, this is acceptable, otherwise it is not required. 
 | <span style='color: rgb(188, 13, 16);'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel) | [OrderControlCode](#-ordercontrolcode) options
-| <span style='color: rgb(188, 13, 16);'>Site</span> | [Site](#alt-text-site-structure) structure | Location order is associated with
-| Camera | [Camera](#alt-text-camera-structure) structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
-| <span style='color: rgb(188, 13, 16);'>Order</span> | [Order](#order-model-structures) structure | Details of order
-| <span style='color: rgb(188, 13, 16);'>Patient</span> | [Patient](#alt-text-patient-structure) structure | Patient details
-| OrderingProvider | [Request Provider](#alt-text-requestprovider-structure) structure | Medical provider who ordered the exam
-| ReferringProvider | [Request Provider](#alt-text-requestprovider-structure) structure | Medical provider who referred the patient for the exam
-| CameraOperator | [Request Provider](#alt-text-requestprovider-structure) structure | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
+| <span style='color: rgb(188, 13, 16);'>Site</span> | [Site](#site) structure | Location order is associated with
+| Camera | [Camera](#camera) structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
+| <span style='color: rgb(188, 13, 16);'>Order</span> | [Order](#order) structure | Details of order
+| <span style='color: rgb(188, 13, 16);'>Patient</span> | [Patient](#patient) structure | Patient details
+| OrderingProvider | [Request Provider](#requestprovider) structure | Medical provider who ordered the exam
+| ReferringProvider | [Request Provider](#requestprovider) structure | Medical provider who referred the patient for the exam
+| CameraOperator | [Request Provider](#requestprovider) structure | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
 | CameraOperatorUserName | string | *** DEPRECATED - Use CameraOperator Instead *** UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI 
-| HealthPlan | [HealthPlan](#alt-text-healthplan-structure) structure | If order is associated with a Health Plan
+| HealthPlan | [HealthPlan](#healthplan) structure | If order is associated with a Health Plan
 
 ### 📊 OrderControlCode 
 
@@ -42,11 +42,10 @@ Changing or Cancelling an order will not work if the target order is closed.
 
 Resending Results both regenerates the results and sends to all configured delivery endpoints (with the exception of the DFT (HL7) message)
 
-### Order Model structures
+### ![alt text](/assets/structure.ico) OrderRequest child structures
 
-The OrderRequest models contains the following properties
-
-### ![alt text](/assets/structure.png) Site structure
+<a id="site"></a>
+### ![alt text](/assets/structure.ico) Site
 
 The Site structure is primarily used to identify the site the order is to be associated with. If your organization is configured as such, sites can be dynamically added, therefore additional properties are provided to supply the required information. If you don’t require automatic site additions, simply provide the LocalId. 
 
@@ -55,9 +54,10 @@ The Site structure is primarily used to identify the site the order is to be ass
 | -- | -- | -- 
 | LocalId | string | Id of site as specified by you, the submitting organization
 | Name | string | Name of the site (Only required for automatic site additions)
-| Address | [Address](#address-structure) structure | Address of site (Only required for automatic site additions)
+| Address | [Address](/objectmodel/CommonObjects#address-structure) structure | Address of site (Only required for automatic site additions)
 
-### ![alt text](/assets/structure.png) Camera structure
+<a id="camera"></a>
+### ![alt text](/assets/structure.ico) Camera 
 
 When an order is to be assigned to a camera or Image directives are included with the order, populate this structure. If the camera already exists and you are not providing image directives, you only need to supply the LocalId. Other than the Images structure, the remaining properties are provided in the event your organization allows automatic Camera additions.
 
@@ -72,13 +72,14 @@ When an order is to be assigned to a camera or Image directives are included wit
 | Manufacturer | string | Name of camera manufacturer. Consult with IRIS for exact values you should use.
 | Model | string | Model name of camera. Consult with IRIS for exact values you should use.
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
-| Images | Array of [Image](#image-structure) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images.
+| Images | Array of [Image](#image) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images.
 
 ### Images array
 
 The Images array is an array of Image structures that provides details including the storage location of one or more images associated with the order. 
 
-### ![alt text](/assets/structure.png) Image structure
+<a id="image"></a>
+### ![alt text](/assets/structure.ico) Image
 
 The Image structure allows you to specify details including the storage location where an image file can be retrieved. At this time, image retrieval is only supported in Azure Blob Storage. 
 
@@ -86,14 +87,15 @@ The Image structure allows you to specify details including the storage location
 | -- | -- | -- | --
 | LocalId | string | Id as specified by the submitting organization
 | Taken | DateTimeOffset | When the image was taken
-| AzureBlobStorage | structure | blob storage location information 
-| Laterality | options | Left or right eye  | OD, OS 
+| AzureBlobStorage | [structure](#blobstorage) | blob storage location information 
+| Laterality | [options](/objectmodel/OptionEnums#-laterality) | Left or right eye  | OD, OS 
 | ImageContext | options | Unless otherwise directed, Primary should be used. Non-primary images are not prominently displayed throughout the workflow. | Primary, Secondary, Component, Aggregate, Enhancement   
 | ParentLocalId | string | If the image is a child of another image in the set, this is the LocalId value for that parent image 
 | GroupId | numeric | If this image is part of an overall group of images, specify the group id here 
 | GroupOrdinal | numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. 
 
-### ![alt text](/assets/structure.png) AzureBlobStorage structure 
+<a id="blobstorage"></a>
+### ![alt text](/assets/structure.ico) AzureBlobStorage  
 
 Files in Azure Blob storage are specified by a container and filename. The Blob Storage Location in Azure is specific to an Azure Blob Storage account.  The account can either be a resource in your own Azure subscription or may be provided to you by IRIS within the IRIS Azure subscription.  Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a> for more details on connection access. 
 
@@ -103,7 +105,8 @@ Files in Azure Blob storage are specified by a container and filename. The Blob 
 | Container | string | Name of the container 
 | FileName | string | name of file as found in the container 
 
-### ![alt text](/assets/structure.png) RequestProvider structure
+<a id="requestprovider"></a>
+### ![alt text](/assets/structure.ico) RequestProvider
 
 The RequestProvider structure allows you to specify various Providers associated with the exam. If the provider has previously been submitted and was done so with NPI, you only need to include the NPI value in the submission
 
@@ -117,7 +120,8 @@ The RequestProvider structure allows you to specify various Providers associated
 | Degrees | string | Optionally supply degrees 
 | Associations | string | Optionally supply associations 
 
-### ![alt text](/assets/structure.png) Patient structure
+<a id="patient"></a>
+### ![alt text](/assets/structure.ico) Patient
 
 IRIS allows submitting detailed information on a patient, however, in most workflows the only requirement is LocalId, Name, DOB and Gender. 
 
@@ -142,7 +146,8 @@ Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for re
 
 *Genders replaces Gender: While the system will still accept a single unspecified gender assignment, it will eventually be phased out in favor of Genders* 
 
-### ![alt text](/assets/structure.png) Request structure 
+<a id="order"></a>
+### ![alt text](/assets/structure.ico) Order 
 
 What you provide in the Order structure is highly dependent on your workflow. While the only required field is the Evaluation Type to perform, other properties may be required in your workflow. For example, the State field is required for mobile type exams where the location of the exam (where the images are taken) is in a different state than the Site the exam is tied to. See the description of each field for more details. 
 
@@ -150,23 +155,25 @@ What you provide in the Order structure is highly dependent on your workflow. Wh
 
 The IRIS system allows only one open order per patient/evaluation type combination. When using the LocalId, previous (open) orders could automatically be cancelled in favor of the newer order. For this reason, it is recommended that you supply the LocalId field so the system can more clearly identify when cancellations are the desired outcome. 
 
-##### ![alt text](/assets/properties.png) Root properties 
+
+##### ![alt text](/assets/properties.ico) **Order** root properties 
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the IRIS system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD, SP
+| <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | array of [Evaluation Type](/objectmodel/OptionEnums#-evaluation-types) | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the IRIS system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD, SP
 | ScheduledTime | datetime | When orders are scheduled for a specific time, this should be that time local to the exam location. This is typically used for workflows where orders are pushed to Cameras as this determines which items show in a Camera worklist
 | <span style='color:rgb(188, 13, 16);'>LocalId</span> | string | The Id of the order as specified by the submitting organization. This id is required for subsequent Change and Cancel operations as well as event notifications. 
 | DepartmentId | string | Optional identifier for the submitting department. Some EMR integrations will require this. 
 | EncounterNumber | string | Optional identifier for the encounter that generated the order. Some EMR integrations will require this field. 
 | StudyInstanceUniqueId | DICOM unique id | Optional Identifier, typically used with DICOM integrated cameras 
 | OrderableIdentifier | string | Optional identifier used by some EMR platforms
-| CPTCode | options | Procedure code | <a href="https://www.cms.gov/medicare/regulations-guidance/physician-self-referral/list-cpt-hcpcs-codes">See CMS for options</a>
+| CPTCode | [CPT Code structure](#cpt) | Procedure code | <a href="https://www.cms.gov/medicare/regulations-guidance/physician-self-referral/list-cpt-hcpcs-codes">See CMS for options</a>
 | AdditionalInfo | string |  Free form field for edge cases 
 | State | string | US State where exam is to be performed. Required for mobile exams that will not be performed at the address specified in the Site. This takes either the State abbreviation or Full name | <a href="https://www.faa.gov/air_traffic/publications/atpubs/cnt_html/appendix_a.html">US State Abbreviations</a> 
 | SingleEyeOnly | bool | Specifies that you expect the order to only have images on only one eye. Used in combination with MissingEyeReason. Impacts gradeability scoring.  Null=Follow configuration for gradeability with missing eyes, False=Expected but still considered in gradeability, True=Expected and ignore for gradeability  | null/true/false 
 | MissingEyeReason | string | Specifies the reason the eye was missing.  If set, reason is provided in final results
 
-
+<a id="healthplan"></a>
 ### ![alt text](/assets/structure.png) HealthPlan structure 
 
 If your workflow is based on a Health Plan, this structure may be included in the submission. This information is returned in results. 
@@ -181,6 +188,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | IndividualId | string | Id for the Individual person associated with the Member for the HealthPlan 
 | PrimaryCareProvider | [PCP](#alt-text-primary-care-provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
+<a id="cpt"></a>
 ### ![alt text](/assets/structure.png) CPT structure
 
 A procedure code can be submitted in the order and echoed back in results
@@ -190,7 +198,7 @@ A procedure code can be submitted in the order and echoed back in results
 | Code | string | Procedure Code as defined by CMS
 | Description | string | Description as defined by CMS
 
-
+<a id="pcp"></a>
 ### ![alt text](/assets/structure.png) Primary Care Provider structure
 
 You may associate a patient with their primary care provider in cases when you want to deliver a copy of the report to them.  PCP Results is a delivery option that must be configured by IRIS before this data is utilized.  Contact your IRIS sales representative to have this feature activated.

@@ -118,3 +118,12 @@ The following tables provide acceptable values for option properties.
 | 9 | SP | Suspected Pathology | Human
 | 12 | DR_AREDS_GLAUC | DR, AMD (AREDS) Glaucoma | AI
 | 13 | AI_Eyenuk_O1 | DR, AMD Glaucoma - Eyenuk | AI
+
+
+### 📊 Laterality
+
+| Value | Description
+| -- | --  
+| OD | Right eye
+| OS | Left eye
+| OU | Both eyes
