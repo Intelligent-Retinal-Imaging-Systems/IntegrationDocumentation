@@ -14,19 +14,34 @@ nav_order: 2
 | Timestamp | datetimeoffset | Timestamp when item was posted to the Results Queue 
 | TransactionId | Guid | unique identifier of the communication 
 | ResultCode | options | type of result payload contains | [ResultCode](/objectmodel/OptionEnums#-result-code)
-| Site | [Site](#site-structure) structure| Contains site information order was assigned to  
-| ResultsDocument | [ResultsDocument](#resultsdocument-structure) structure
-| ImageDetails | [ImageDetails](#imagedetails-structure) structure | Details of images submitted to the order
-| Images | Array of [Result Image](#result-image-structure) | Metadata for each image submitted 
-| Order | [Order](#results-order-structure) structure | Details of order most of which is echoed from submission
-| Patient | [Patient](#results-patient-structure) structure | Details of patient echoed from submission 
-| OrderingProvider | [Provider](#requestprovider-structure) structure | Details of provider who ordered the exam which is echoed from the Submission 
-| Gradings | [Grading Results](#gradings-structure) structure | Details of grading operation on order 
-| CameraOperator [Capturing User](#cameraoperator-structure) structure | Details of the user that captured images 
-| HealthPlan | [HealthPlan association](#healthplan-structure) structure | Details of the Health Plan associated with the order
-| Cpt | [CPT Code](#cpt-structure) structure | Procedure Code and Description
+| Site | [Site](#site) | Contains site information order was assigned to  
+| ResultsDocument | [ResultsDocument](#resultsdoc) 
+| ImageDetails | [ImageDetails](#imagedetails)  | Details of images submitted to the order
+| Images | Array of [Result Image](#images) | Metadata for each image submitted 
+| Order | [Order](#order)  | Details of order most of which is echoed from submission
+| Patient | [Patient](#patient)  | Details of patient echoed from submission 
+| OrderingProvider | [Provider](/objectmodel/CommonObjects#requestprovider) | Details of provider who ordered the exam which is echoed from the Submission 
+| Gradings | [Grading Results](#gradings)  | Details of grading operation on order 
+| CameraOperator [Capturing User](#cameraoperator)  | Details of the user that captured images 
+| HealthPlan | [HealthPlan association](#healthplan)  | Details of the Health Plan associated with the order
+| Cpt | [CPT Code](/objectmodel/CommonObjects#cpt)  | Procedure Code and Description
 
-### ResultsDocument structure 
+
+<a id="site"></a>
+### ![alt text](/assets/structure.ico) Site
+
+The Site structure is primarily used to identify the site the order is to be associated with. If your organization is configured as such, sites can be dynamically added, therefore additional properties are provided to supply the required information. If you don’t require automatic site additions, simply provide the LocalId. 
+
+##### ![alt text](/assets/properties.ico) Site properties
+
+| Property | Type | Description 
+| -- | -- | -- 
+| LocalId | string | Id of site as specified by you, the submitting organization
+| Name | string | Name of the site (Only required for automatic site additions)
+| Address | [Address](/objectmodel/CommonObjects#address-structure) | Address of site (Only required for automatic site additions)
+
+<a id="resultsdoc"></a>
+### ![alt text](/assets/structure.ico) ResultsDocument 
 
 Depending on your workflow the IRIS system will provide a Report of the examination. The report is available in various formats.
 
@@ -36,7 +51,8 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 | Encoding | options | specifies the encoding format for the report content | Base64, ASCII or any specific encoding scheme 
 | Content | string | Content relative to the Encoding and Type. For example, if PDF, this will most likely be a Base64 encoded string 
 
-### ![alt text](/assets/structure.png) Results Order structure 
+<a id="order"></a>
+### ![alt text](/assets/structure.ico) Results Order structure 
 
 | Property | Type | Description
 | -- | -- | -- 
@@ -56,8 +72,8 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 | MissingEyeReason | string | value set on submission
 
 
-
-### ![alt text](/assets/structure.png) ImageDetails structure 
+<a id="imagedetails"></a>
+### ![alt text](/assets/structure.ico) ImageDetails structure 
 
 This structure contains a summary of the images collected for the exam.
 
@@ -74,7 +90,8 @@ This structure contains a summary of the images collected for the exam.
 | SingleEyeOnly | bool | Returns single eye indicator based on configuration and submission values | true/false
 
 
-### ![alt text](/assets/structure.png) Results Patient structure
+<a id="patient"></a>
+### ![alt text](/assets/structure.ico) Results Patient structure
 
 Raw patient details for exam
 
@@ -88,12 +105,13 @@ Raw patient details for exam
 | Genders | Array of [PersonGender](/integration/CloudDirectEnumOptions) | One or more gender specifications 
 | Phone | [Address](#address-structure) structure | Raw patient address data
 
-
+<a id="images"></a>
 ### Result Images array 
 
 Array of Result Image structures that provides details of each image attached to the order. 
 
-#### ![alt text](/assets/structure.png) Result Image structure 
+
+#### ![alt text](/assets/structure.ico) Result Image structure 
 
 Contains details of an individual image attached to the order.
 
@@ -110,7 +128,8 @@ Contains details of an individual image attached to the order.
 | GroupOrdinal | Numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. 
 | Camera | [Result Camera](#result-camera-structure) structure | Contains details of the Camera that took the image 
 
-### ![alt text](/assets/structure.png) Result Camera structure
+<a id="camera"></a>
+### ![alt text](/assets/structure.ico) Result Camera structure
 
 Details of the camera that took the image. 
 
@@ -125,7 +144,8 @@ Details of the camera that took the image.
 | Model | string | Model name of camera. Consult with IRIS for exact values you should use.
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
 
-### ![alt text](/assets/structure.png) Gradings structure
+<a id="gradings"></a>
+### ![alt text](/assets/structure.ico) Gradings structure
 
 Contains raw details of grading
 
@@ -144,7 +164,9 @@ Contains raw details of grading
 | DxCodes | array of string | ICD-10 Codes matched to findings 
 | Provider | [Provider](#provider-structure) (structure) – Details of the Provider who performed the grading 
 
-### ![alt text](/assets/structure.png) CameraOperator structure
+
+<a id="cameraoperator"></a>
+### ![alt text](/assets/structure.ico) CameraOperator structure
 
 Details of the technician who captured the images for the order.
 
@@ -154,7 +176,8 @@ Details of the technician who captured the images for the order.
 | Name | [Name](#name-structure) structure | Name of performing operator
 | Notes | Array of [Note](#note-structure) | notes added by the performing operator
 
-### ![alt text](/assets/structure.png) HealthPlan structure 
+<a id="healthplan"></a>
+### ![alt text](/assets/structure.ico) HealthPlan structure 
 
 | Property | Type | Description 
 | -- | -- | -- 
@@ -166,7 +189,8 @@ Details of the technician who captured the images for the order.
 
 Array containing zero or more notes added by the related user 
 
-#### ![alt text](/assets/structure.png) Note structure 
+<a id="note"></a>
+#### ![alt text](/assets/structure.ico) Note structure 
 
 Structure containing metadata and content of a free form note
 
@@ -175,7 +199,8 @@ Structure containing metadata and content of a free form note
 | Date | datetime | When the note was entered
 | Text | string | Content 
 
-### ![alt text](/assets/structure.png) EyeSideGrading structure 
+<a id="eyegrading"></a>
+### ![alt text](/assets/structure.ico) EyeSideGrading structure 
 
 Structure containing grading details for one eye side
 
@@ -190,7 +215,8 @@ Structure containing grading details for one eye side
 
 Array of the Finding structure containing findings from the grader for the specified eye. If the array is not present, it indicates, there was no pathology found for the eye. 
 
-#### ![alt text](/assets/structure.png) Finding structure 
+<a id="finding"></a>
+#### ![alt text](/assets/structure.ico) Finding structure 
 
 Structure containing details of finding
 

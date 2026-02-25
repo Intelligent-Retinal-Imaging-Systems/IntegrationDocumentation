@@ -28,7 +28,7 @@ Common structure used for storing addresses
 | State | string (2) | State abbreviation of address
 | PostalCode | string | Zip / Postal code
 
-### PersonGender structure 
+### PersonGender 
 
 Common structure used for storing gender designations
 
@@ -39,5 +39,26 @@ Common structure used for storing gender designations
   
 
 
+### RequestProvider
 
+The RequestProvider structure allows you to specify various Providers associated with the exam. If the provider has previously been submitted and was done so with NPI, you only need to include the NPI value in the submission
+
+| Property | Type | Description
+| -- | -- | --
+| NPI | string (10) | Providers National Identifier 
+| Taxonomy | string | Optionally specify Taxonomy relevant to the action 
+| Name | string | First, Last name
+| Email | string | Optionally specify an email address 
+| Degrees | string | Optionally supply degrees 
+| Associations | string | Optionally supply associations 
+
+
+### CPT
+
+A procedure code can be submitted in the order and echoed back in results
+
+| Property | Type | Description
+| -- | -- | -- 
+| Code | string | Procedure Code as defined by CMS
+| Description | string | Description as defined by CMS
 

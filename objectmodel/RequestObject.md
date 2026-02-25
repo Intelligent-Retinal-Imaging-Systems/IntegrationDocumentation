@@ -20,9 +20,9 @@ The OrderRequest object model provides all the properties necessary to perform o
 | Camera | [Camera](#camera) | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
 | <span style='color: rgb(188, 13, 16);'>Order</span> | [Order](#order) | Details of order
 | <span style='color: rgb(188, 13, 16);'>Patient</span> | [Patient](#patient) | Patient details
-| OrderingProvider | [Request Provider](#requestprovider) | Medical provider who ordered the exam
-| ReferringProvider | [Request Provider](#requestprovider) | Medical provider who referred the patient for the exam
-| CameraOperator | [Request Provider](#requestprovider)  | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
+| OrderingProvider | [Request Provider](/objectmodel/CommonObjects#requestprovider) | Medical provider who ordered the exam
+| ReferringProvider | [Request Provider](/objectmodel/CommonObjects#requestprovider) | Medical provider who referred the patient for the exam
+| CameraOperator | [Request Provider](/objectmodel/CommonObjects#requestprovider)  | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
 | CameraOperatorUserName | string | *** DEPRECATED - Use CameraOperator Instead *** UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI 
 | HealthPlan | [HealthPlan](#healthplan) | If order is associated with a Health Plan
 
@@ -95,21 +95,6 @@ Files in Azure Blob storage are specified by a container and filename. The Blob 
 | Container | string | Name of the container 
 | FileName | string | name of file as found in the container 
 
-<a id="requestprovider"></a>
-### ![alt text](/assets/structure.ico) RequestProvider
-
-The RequestProvider structure allows you to specify various Providers associated with the exam. If the provider has previously been submitted and was done so with NPI, you only need to include the NPI value in the submission
-
-##### ![alt text](/assets/properties.ico) RequestProvider properties
-
-| Property | Type | Description
-| -- | -- | --
-| NPI | string (10) | Providers National Identifier 
-| Taxonomy | string | Optionally specify Taxonomy relevant to the action 
-| Name | string | First, Last name
-| Email | string | Optionally specify an email address 
-| Degrees | string | Optionally supply degrees 
-| Associations | string | Optionally supply associations 
 
 <a id="patient"></a>
 ### ![alt text](/assets/structure.ico) Patient
@@ -160,7 +145,7 @@ The IRIS system allows only one open order per patient/evaluation type combinati
 | EncounterNumber | string | Optional identifier for the encounter that generated the order. Some EMR integrations will require this field. 
 | StudyInstanceUniqueId | DICOM unique id | Optional Identifier, typically used with DICOM integrated cameras 
 | OrderableIdentifier | string | Optional identifier used by some EMR platforms
-| CPTCode | [CPT](#cpt) | Procedure code | <a href="https://www.cms.gov/medicare/regulations-guidance/physician-self-referral/list-cpt-hcpcs-codes">See CMS for options</a>
+| CPTCode | [CPT](/objectmodel/CommonObjects#cpt) | Procedure code | <a href="https://www.cms.gov/medicare/regulations-guidance/physician-self-referral/list-cpt-hcpcs-codes">See CMS for options</a>
 | AdditionalInfo | string |  Free form field for edge cases 
 | State | string | US State where exam is to be performed. Required for mobile exams that will not be performed at the address specified in the Site. This takes either the State abbreviation or Full name | <a href="https://www.faa.gov/air_traffic/publications/atpubs/cnt_html/appendix_a.html">US State Abbreviations</a> 
 | SingleEyeOnly | bool | Specifies that you expect the order to only have images on only one eye. Used in combination with MissingEyeReason. Impacts gradeability scoring.  Null=Follow configuration for gradeability with missing eyes, False=Expected but still considered in gradeability, True=Expected and ignore for gradeability  | null/true/false 
@@ -182,18 +167,6 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | MemberId | string | Id for the HealthPlan member, typically as specified by the Health Plan itself 
 | IndividualId | string | Id for the Individual person associated with the Member for the HealthPlan 
 | PrimaryCareProvider | [PCP](#alt-text-primary-care-provider-structure) | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
-
-<a id="cpt"></a>
-### ![alt text](/assets/structure.ico) CPT
-
-A procedure code can be submitted in the order and echoed back in results
-
-##### ![alt text](/assets/properties.ico) CPT properties
-
-| Property | Type | Description
-| -- | -- | -- 
-| Code | string | Procedure Code as defined by CMS
-| Description | string | Description as defined by CMS
 
 <a id="pcp"></a>
 ### ![alt text](/assets/structure.ico) Primary Care Provider
