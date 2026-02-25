@@ -56,6 +56,8 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 <a id="order"></a>
 ### ![alt text](/assets/structure.ico) Order
 
+Contains details of the order.  Most of this content is echoed back from the submission.
+
 ##### ![alt text](/assets/properties.ico) Order properties
 
 | Property | Type | Description
@@ -118,7 +120,6 @@ Returns the details of the patient as they were submitted on the order.
 
 Array of Result Image structures that provides details of each image attached to the order. 
 
-
 ### ![alt text](/assets/structure.ico) Image 
 
 Contains details of an individual image attached to the order.
@@ -141,7 +142,7 @@ Contains details of an individual image attached to the order.
 <a id="camera"></a>
 ### ![alt text](/assets/structure.ico) Camera
 
-Details of the camera that took the image. 
+Details of the camera that captured the images submitted to the order. 
 
 ##### ![alt text](/assets/properties.ico) Camera properties
 
@@ -159,7 +160,7 @@ Details of the camera that took the image.
 <a id="gradings"></a>
 ### ![alt text](/assets/structure.ico) Gradings
 
-Contains raw details of grading
+Contains raw details of grading.  Findings are found as the Laterality code for the eye side grading. 
 
 ##### ![alt text](/assets/properties.ico) Gradings properties
 
@@ -173,8 +174,8 @@ Contains raw details of grading
 | Pathology | bool | If true Pathology was noted on one or more eyes | true/false
 | Urgent | bool | If true, the grader has noted pathology that requires urgent action | true/false
 | Emergent | bool | If true, the grader has noted life threatening pathology that requires immediate ER care | true/false
-| OD | [EyeSideGrading](#eyegrading) structure | Details of grading for right eye 
-| OS | [EyeSideGrading](#eyegrading) structure | Details of grading for left eye 
+| OD | [EyeSideGrading](#eyegrading) | Details of grading for right eye 
+| OS | [EyeSideGrading](#eyegrading) | Details of grading for left eye 
 | DxCodes | array of string | ICD-10 Codes matched to findings 
 | Provider | [Provider](/objectmodel/CommonObjects#requestprovider) – Details of the Provider who performed the grading 
 
@@ -208,7 +209,7 @@ Details of the technician who captured the images for the order.
 Array containing zero or more notes added by the related user 
 
 <a id="note"></a>
-#### ![alt text](/assets/structure.ico) Note 
+### ![alt text](/assets/structure.ico) Note 
 
 Structure containing metadata and content of a free form note
 
@@ -236,7 +237,7 @@ Structure containing grading details for one eye side
 Array of the Finding structure containing findings from the grader for the specified eye. If the array is not present, it indicates, there was no pathology found for the eye. 
 
 <a id="finding"></a>
-#### ![alt text](/assets/structure.ico) Finding 
+### ![alt text](/assets/structure.ico) Finding 
 
 Structure containing details of finding
 
