@@ -119,7 +119,7 @@ Returns the details of the patient as they were submitted on the order.
 Array of Result Image structures that provides details of each image attached to the order. 
 
 
-#### ![alt text](/assets/structure.ico) Image 
+### ![alt text](/assets/structure.ico) Image 
 
 Contains details of an individual image attached to the order.
 
@@ -136,10 +136,10 @@ Contains details of an individual image attached to the order.
 | ParentLocalId | string | If the image is a child of another image in the set, this is the LocalId value for that parent image 
 | GroupId | Numeric | If this image is part of an overall group of images, specify the group id here 
 | GroupOrdinal | Numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. 
-| Camera | [Result Camera](#result-camera-structure) structure | Contains details of the Camera that took the image 
+| Camera | [Camera](#camera) structure | Contains details of the Camera that took the image 
 
 <a id="camera"></a>
-### ![alt text](/assets/structure.ico) Result Camera
+### ![alt text](/assets/structure.ico) Camera
 
 Details of the camera that took the image. 
 
