@@ -10,6 +10,7 @@ nav_order: 1
 The OrderRequest object model provides all the properties necessary to perform order actions such as create, change or cancel. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: rgb(188, 13, 16);'>red</span> are required. 
 
 ##### ![alt text](/assets/properties.ico) OrderRequest root properties
+
 | Property  | type  |  Description  | Options
 | -- | -- | -- | -- |
 | <span style='color:rgb(188, 13, 16);'>Version</span> | string |  Should be set to 2.3.1 unless otherwise directed.
@@ -26,7 +27,7 @@ The OrderRequest object model provides all the properties necessary to perform o
 | HealthPlan | [HealthPlan](#healthplan) structure | If order is associated with a Health Plan
 
 
-## ![alt text](/assets/structure.ico) OrderRequest child structures
+## OrderRequest children
 
 <a id="site"></a>
 ### ![alt text](/assets/structure.ico) Site
