@@ -46,7 +46,7 @@ Resending Results both regenerates the results and sends to all configured deliv
 
 The OrderRequest models contains the following properties
 
-### ![alt text](structure.png) Site structure
+### ![alt text](/assets/structure.png) Site structure
 
 The Site structure is primarily used to identify the site the order is to be associated with. If your organization is configured as such, sites can be dynamically added, therefore additional properties are provided to supply the required information. If you don’t require automatic site additions, simply provide the LocalId. 
 
@@ -57,7 +57,7 @@ The Site structure is primarily used to identify the site the order is to be ass
 | Name | string | Name of the site (Only required for automatic site additions)
 | Address | [Address](#address-structure) structure | Address of site (Only required for automatic site additions)
 
-### ![alt text](structure.png) Camera structure
+### ![alt text](/assets/structure.png) Camera structure
 
 When an order is to be assigned to a camera or Image directives are included with the order, populate this structure. If the camera already exists and you are not providing image directives, you only need to supply the LocalId. Other than the Images structure, the remaining properties are provided in the event your organization allows automatic Camera additions.
 
@@ -78,7 +78,7 @@ When an order is to be assigned to a camera or Image directives are included wit
 
 The Images array is an array of Image structures that provides details including the storage location of one or more images associated with the order. 
 
-### ![alt text](structure.png) Image structure
+### ![alt text](/assets/structure.png) Image structure
 
 The Image structure allows you to specify details including the storage location where an image file can be retrieved. At this time, image retrieval is only supported in Azure Blob Storage. 
 
@@ -93,7 +93,7 @@ The Image structure allows you to specify details including the storage location
 | GroupId | numeric | If this image is part of an overall group of images, specify the group id here 
 | GroupOrdinal | numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. 
 
-### ![alt text](structure.png) AzureBlobStorage structure 
+### ![alt text](/assets/structure.png) AzureBlobStorage structure 
 
 Files in Azure Blob storage are specified by a container and filename. The Blob Storage Location in Azure is specific to an Azure Blob Storage account.  The account can either be a resource in your own Azure subscription or may be provided to you by IRIS within the IRIS Azure subscription.  Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a> for more details on connection access. 
 
@@ -103,7 +103,7 @@ Files in Azure Blob storage are specified by a container and filename. The Blob 
 | Container | string | Name of the container 
 | FileName | string | name of file as found in the container 
 
-### ![alt text](structure.png) RequestProvider structure
+### ![alt text](/assets/structure.png) RequestProvider structure
 
 The RequestProvider structure allows you to specify various Providers associated with the exam. If the provider has previously been submitted and was done so with NPI, you only need to include the NPI value in the submission
 
@@ -117,7 +117,7 @@ The RequestProvider structure allows you to specify various Providers associated
 | Degrees | string | Optionally supply degrees 
 | Associations | string | Optionally supply associations 
 
-### ![alt text](structure.png) Patient structure
+### ![alt text](/assets/structure.png) Patient structure
 
 IRIS allows submitting detailed information on a patient, however, in most workflows the only requirement is LocalId, Name, DOB and Gender. 
 
@@ -142,7 +142,7 @@ Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for re
 
 *Genders replaces Gender: While the system will still accept a single unspecified gender assignment, it will eventually be phased out in favor of Genders* 
 
-### ![alt text](structure.png) Request structure 
+### ![alt text](/assets/structure.png) Request structure 
 
 What you provide in the Order structure is highly dependent on your workflow. While the only required field is the Evaluation Type to perform, other properties may be required in your workflow. For example, the State field is required for mobile type exams where the location of the exam (where the images are taken) is in a different state than the Site the exam is tied to. See the description of each field for more details. 
 
@@ -150,7 +150,7 @@ What you provide in the Order structure is highly dependent on your workflow. Wh
 
 The IRIS system allows only one open order per patient/evaluation type combination. When using the LocalId, previous (open) orders could automatically be cancelled in favor of the newer order. For this reason, it is recommended that you supply the LocalId field so the system can more clearly identify when cancellations are the desired outcome. 
 
-##### ![alt text](properties.png) Root properties 
+##### ![alt text](/assets/properties.png) Root properties 
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | array of option | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the IRIS system can support multiple thus usage of an array for this field. | DR, Glaucoma, HIV, AMD, DR_AMD, SP
@@ -167,7 +167,7 @@ The IRIS system allows only one open order per patient/evaluation type combinati
 | MissingEyeReason | string | Specifies the reason the eye was missing.  If set, reason is provided in final results
 
 
-### ![alt text](structure.png) HealthPlan structure 
+### ![alt text](/assets/structure.png) HealthPlan structure 
 
 If your workflow is based on a Health Plan, this structure may be included in the submission. This information is returned in results. 
 
@@ -181,7 +181,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | IndividualId | string | Id for the Individual person associated with the Member for the HealthPlan 
 | PrimaryCareProvider | [PCP](#primary-care-provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
-### ![alt text](structure.png) CPT structure
+### ![alt text](/assets/structure.png) CPT structure
 
 A procedure code can be submitted in the order and echoed back in results
 
@@ -191,7 +191,7 @@ A procedure code can be submitted in the order and echoed back in results
 | Description | string | Description as defined by CMS
 
 
-### ![alt text](structure.png) Primary Care Provider structure
+### ![alt text](/assets/structure.png) Primary Care Provider structure
 
 You may associate a patient with their primary care provider in cases when you want to deliver a copy of the report to them.  PCP Results is a delivery option that must be configured by IRIS before this data is utilized.  Contact your IRIS sales representative to have this feature activated.
 
