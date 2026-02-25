@@ -45,7 +45,7 @@ The Site structure is primarily used to identify the site the order is to be ass
 
 Depending on your workflow the IRIS system will provide a Report of the examination. The report is available in various formats.
 
-##### ![alt text](/assets/properties.ico) Embedded result document properties
+##### ![alt text](/assets/properties.ico) ResultsDocument properties
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -54,7 +54,7 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 | Content | string | Content relative to the Encoding and Type. For example, if PDF, this will most likely be a Base64 encoded string 
 
 <a id="order"></a>
-### ![alt text](/assets/structure.ico) Results Order structure 
+### ![alt text](/assets/structure.ico) Order
 
 ##### ![alt text](/assets/properties.ico) Order properties
 
@@ -77,11 +77,11 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 
 
 <a id="imagedetails"></a>
-### ![alt text](/assets/structure.ico) ImageDetails structure 
+### ![alt text](/assets/structure.ico) ImageDetails 
 
 This structure contains a summary of the images collected for the exam.
 
-##### ![alt text](/assets/properties.ico) Image details properties
+##### ![alt text](/assets/properties.ico) ImageDetails properties
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -97,7 +97,7 @@ This structure contains a summary of the images collected for the exam.
 
 
 <a id="patient"></a>
-### ![alt text](/assets/structure.ico) Results Patient structure
+### ![alt text](/assets/structure.ico) Patient
 
 Returns the details of the patient as they were submitted on the order. 
 
@@ -119,7 +119,7 @@ Returns the details of the patient as they were submitted on the order.
 Array of Result Image structures that provides details of each image attached to the order. 
 
 
-#### ![alt text](/assets/structure.ico) Result Image structure 
+#### ![alt text](/assets/structure.ico) Image 
 
 Contains details of an individual image attached to the order.
 
@@ -139,7 +139,7 @@ Contains details of an individual image attached to the order.
 | Camera | [Result Camera](#result-camera-structure) structure | Contains details of the Camera that took the image 
 
 <a id="camera"></a>
-### ![alt text](/assets/structure.ico) Result Camera structure
+### ![alt text](/assets/structure.ico) Result Camera
 
 Details of the camera that took the image. 
 
@@ -157,7 +157,7 @@ Details of the camera that took the image.
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
 
 <a id="gradings"></a>
-### ![alt text](/assets/structure.ico) Gradings structure
+### ![alt text](/assets/structure.ico) Gradings
 
 Contains raw details of grading
 
@@ -180,7 +180,7 @@ Contains raw details of grading
 
 
 <a id="cameraoperator"></a>
-### ![alt text](/assets/structure.ico) CameraOperator structure
+### ![alt text](/assets/structure.ico) CameraOperator
 
 Details of the technician who captured the images for the order.
 
@@ -193,7 +193,7 @@ Details of the technician who captured the images for the order.
 | Notes | Array of [Note](#note) | notes added by the performing operator
 
 <a id="healthplan"></a>
-### ![alt text](/assets/structure.ico) HealthPlan structure 
+### ![alt text](/assets/structure.ico) HealthPlan 
 
 ##### ![alt text](/assets/properties.ico) Healthplan properties
 
@@ -208,7 +208,7 @@ Details of the technician who captured the images for the order.
 Array containing zero or more notes added by the related user 
 
 <a id="note"></a>
-#### ![alt text](/assets/structure.ico) Note structure 
+#### ![alt text](/assets/structure.ico) Note 
 
 Structure containing metadata and content of a free form note
 
@@ -220,7 +220,7 @@ Structure containing metadata and content of a free form note
 | Text | string | Content 
 
 <a id="eyegrading"></a>
-### ![alt text](/assets/structure.ico) EyeSideGrading structure 
+### ![alt text](/assets/structure.ico) EyeSideGrading 
 
 Structure containing grading details for one eye side
 
@@ -236,7 +236,7 @@ Structure containing grading details for one eye side
 Array of the Finding structure containing findings from the grader for the specified eye. If the array is not present, it indicates, there was no pathology found for the eye. 
 
 <a id="finding"></a>
-#### ![alt text](/assets/structure.ico) Finding structure 
+#### ![alt text](/assets/structure.ico) Finding 
 
 Structure containing details of finding
 
