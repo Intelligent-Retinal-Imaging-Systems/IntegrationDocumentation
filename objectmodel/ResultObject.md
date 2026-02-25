@@ -13,7 +13,7 @@ nav_order: 2
 | Version | string | Version of the object model | 2.3.1
 | Timestamp | datetimeoffset | Timestamp when item was posted to the Results Queue 
 | TransactionId | Guid | unique identifier of the communication 
-| ResultCode | options | type of result payload contains | [ResultCode](/objectmodel/optionenums)
+| ResultCode | options | type of result payload contains | [ResultCode](/objectmodel/OptionEnums#-result-code)
 | Site | [Site](#site-structure) structure| Contains site information order was assigned to  
 | ResultsDocument | [ResultsDocument](#resultsdocument-structure) structure
 | ImageDetails | [ImageDetails](#imagedetails-structure) structure | Details of images submitted to the order
