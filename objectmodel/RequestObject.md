@@ -14,16 +14,16 @@ The OrderRequest object model provides all the properties necessary to create an
 | -- | -- | -- | -- |
 | <span style='color:rgb(188, 13, 16);'>Version</span> | string |  Should be set to 2.3.1 unless otherwise directed.
 | UserNameSubmitting | string | Optionally specify the username of a user that should be associated with the order creation. If your organization has been provided a service account for API direct operations, this is acceptable, otherwise it is not required. 
-| <span style='color: rgb(188, 13, 16);'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel) | [OrderControlCode](#ordercontrolcode) options
-| <span style='color: rgb(188, 13, 16);'>Site</span> | [Site](#site-structure) structure | Location order is associated with
-| Camera | [Camera](#camera-structure) structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
-| <span style='color: rgb(188, 13, 16);'>Order</span> | [Order](#order-structure) structure | Details of order
-| <span style='color: rgb(188, 13, 16);'>Patient</span> | [Patient](#patient-structure) structure | Patient details
-| OrderingProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who ordered the exam
-| ReferringProvider | [Request Provider](#requestprovider-structure) structure | Medical provider who referred the patient for the exam
-| CameraOperator | [Request Provider](#requestprovider-structure) structure | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
+| <span style='color: rgb(188, 13, 16);'>OrderControlCode</span> | options | Specifies the operation that should be performed with the order data (add/change/cancel) | [OrderControlCode](#-ordercontrolcode) options
+| <span style='color: rgb(188, 13, 16);'>Site</span> | [Site](#alt-text-site-structure) structure | Location order is associated with
+| Camera | [Camera](#alt-text-camera-structure) structure | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
+| <span style='color: rgb(188, 13, 16);'>Order</span> | [Order](#order-model-structures) structure | Details of order
+| <span style='color: rgb(188, 13, 16);'>Patient</span> | [Patient](#alt-text-patient-structure) structure | Patient details
+| OrderingProvider | [Request Provider](#alt-text-requestprovider-structure) structure | Medical provider who ordered the exam
+| ReferringProvider | [Request Provider](#alt-text-requestprovider-structure) structure | Medical provider who referred the patient for the exam
+| CameraOperator | [Request Provider](#alt-text-requestprovider-structure) structure | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
 | CameraOperatorUserName | string | *** DEPRECATED - Use CameraOperator Instead *** UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI 
-| HealthPlan | [HealthPlan](#healthplan-structure) structure | If order is associated with a Health Plan
+| HealthPlan | [HealthPlan](#alt-text-healthplan-structure) structure | If order is associated with a Health Plan
 
 ### 📊 OrderControlCode 
 
@@ -126,18 +126,18 @@ Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for re
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | <span style='color:rgb(188, 13, 16);'>LocalId</span> | string | Id of patient as specified by the submitting organization. (e.g.: Patient MRN). 
-| <span style='color:rgb(188, 13, 16);'>Name</span> | [Name](#name-structure) structure | Patient first and last name
+| <span style='color:rgb(188, 13, 16);'>Name</span> | [Name](/objectmodel/CommonObjects.md#name-structure) structure | Patient first and last name
 | <span style='color:rgb(188, 13, 16);'>Dob</span> | Date | Patient date of birth 
-| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/integration/CloudDirectEnumOptions) options
-| <span style='color:rgb(188, 13, 16);'>Genders</span> | Array of [PersonGender](#persongender-structure) | Patient Gender assignment(s) 
-| Race | options | Optional race identifier | [Race](/integration/CloudDirectEnumOptions) options
-| Ethnicity | options | Optional ethnicity identifier | [Ethnicity](/integration/CloudDirectEnumOptions) options
-| PrimaryLanguage | options | Optional language identifier | [Language](/integration/CloudDirectEnumOptions) options
-| MaritalStatus | options | Optional marital status identifier | [Marital Status](/integration/CloudDirectEnumOptions) options
+| Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/objectmodel/OptionEnums#-gender) options
+| <span style='color:rgb(188, 13, 16);'>Genders</span> | Array of [PersonGender](/objectmodel/CommonObjects#persongender-structure) | Patient Gender assignment(s) 
+| Race | options | Optional race identifier | [Race](/objectmodel/OptionEnums#-race) options
+| Ethnicity | options | Optional ethnicity identifier | [Ethnicity](/objectmodel/OptionEnums#-ethnicity) options
+| PrimaryLanguage | options | Optional language identifier | [Language](/objectmodel/OptionEnums#-language) options
+| MaritalStatus | options | Optional marital status identifier | [Marital Status](/objectmodel/OptionEnums#-marital-status) options
 | Email | string | Optional email address for patient 
 | Phone | string | Optional single phone number for patient
 | AdditionalInfo | string | Optional free form data association with patient
-| Address | [Address](#address-structure) structure | Optional patient address details 
+| Address | [Address](/objectmodel/CommonObjects#address-structure) structure | Optional patient address details 
 | DxCode | string | ICD-10 code starting diagnosis (default: E08) as defined by CMS
 
 *Genders replaces Gender: While the system will still accept a single unspecified gender assignment, it will eventually be phased out in favor of Genders* 
@@ -179,7 +179,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | Name | string | Name of the Health Plan 
 | MemberId | string | Id for the HealthPlan member, typically as specified by the Health Plan itself 
 | IndividualId | string | Id for the Individual person associated with the Member for the HealthPlan 
-| PrimaryCareProvider | [PCP](#primary-care-provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
+| PrimaryCareProvider | [PCP](#alt-text-primary-care-provider-structure) structure | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
 ### ![alt text](/assets/structure.png) CPT structure
 
@@ -199,6 +199,6 @@ You may associate a patient with their primary care provider in cases when you w
 | -- | -- | --
 | NPI | string(10) | National Id for Provider
 | EmailAddress | string | Email (or [Direct Messaging](/integration/DirectMessaging.md)) address for the provider
-| Name | [Name](#name-structure) structure | Providers name
+| Name | [Name](/objectmodel/CommonObjects#name-structure) structure | Providers name
 | FaxNumber | phone | Fax number that may be used in results delivery
 
