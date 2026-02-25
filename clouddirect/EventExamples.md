@@ -1,5 +1,5 @@
 ---
-title: Event 
+title: Events
 parent: Examples
 nav_order: 3
 ---
