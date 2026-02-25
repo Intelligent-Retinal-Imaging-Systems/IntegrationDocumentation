@@ -1,5 +1,5 @@
 ---
-title: Events
+title: Order Processing Events
 parent: Examples
 nav_order: 3
 ---

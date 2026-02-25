@@ -1,3 +1,10 @@
+---
+title: Shared Models
+parent: Object Models
+nav_order: 3
+---
+
+
 ## Common Shared Structures
 
 ### Name structure
@@ -27,8 +34,8 @@ Common structure used for storing gender designations
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| Context | options | Gender association | [GenderContext](/integration/CloudDirectEnumOptions/) options 
-| Gender | options | The gender for specified context | [Gender](/integration/CloudDirectEnumOptions/) options
+| Context | options | Gender association | [GenderContext](./OptionEnums#-gendercontext) options 
+| Gender | options | The gender for specified context | [Gender](./OptionEnums#-gender) options
   
 
 

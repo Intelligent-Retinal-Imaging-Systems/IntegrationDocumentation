@@ -1,7 +1,7 @@
 ---
 title: Option Enumerations
-parent: Cloud Direct
-nav_order: 1
+parent: Object Models
+nav_order: 5
 ---
 
 {: .no_toc }

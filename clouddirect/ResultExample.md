@@ -1,5 +1,5 @@
 ---
-title: Result 
+title: Graded Order Result 
 parent: Examples
 nav_order: 2
 ---

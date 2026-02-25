@@ -1,3 +1,9 @@
+---
+title: Order Request
+parent: Object Models
+nav_order: 1
+---
+
 
 ## OrderRequest Object Model 
 
@@ -196,119 +202,3 @@ You may associate a patient with their primary care provider in cases when you w
 | Name | [Name](#name-structure) structure | Providers name
 | FaxNumber | phone | Fax number that may be used in results delivery
 
-
-
-
-
-
-#### 📊 Result Delivery Type Options
-
-| Option Name | Description
-| -- | -- 
-| clientfax | Fax sent to a number configured for all results for an individual site
-| icproxy | Results sent to site proxy
-| icOrgProxy | Results sent to organization proxy
-| azureblob | Results dropped to Azure Blob Storage account
-| OrderManager | Results pulled from Order Manager application
-| awsblob | Results dropped on AWS blob account
-| dicomweb | Results delivered to DICOMWeb endpoint
-| sftp | Results dropped on SFTP site
-| pcp-fax | Fax sent to associated PCP
-| dxferorgemrproxy | Results sent to shared organization proxy
-| clouldemrproxy | Results to the EMR/EHR Cloud system
-| pcp-direct-messaging | Results sent to associated PCP with direct secure messaging
-| azure-blob-zip-v2 | Results added to daily Zip combined results
-
-*Custom/Client specific result delivery types are not listed above*
-
-#### 📊 Transmission Status Values
-
-| Value | Description
-| -- | --
-| Unknown | Errant conditions
-| Complete | The result has been delivered
-| Pending | The transmission is actively processing
-| Failed | Transmission failed
-
-## Order Results
-
-Cloud direct results may be received in a variety of ways: 
-
-### Queue Based Results 
-
-- IRIS Cloud Service Bus – Receive complete results on a service bus queue maintained by IRIS
-- Azure Service Bus – Receive complete results on a service bus queue in your own subscription 
-- AWS Queue – Receive complete results on an AWS Queue in your own subscription
-- Google Queue – Receive complete results on a Google Queue in your own subscription 
-- Queue based notifications 
-    - Receive a notification of ready results in which a subsequent call to the IRIS results API is required 
-    - For IRIS Cloud Service Bus, this option Is required if message sizes exceed 256K bytes. Results do not typically exceed this size, except when high resolution cameras are used for images that are embedded in the report. 
-
-### Azure Service Bus Results 
-
-To receive an order using an Azure Service Bus Queue, you simply attach a notification handler to the Results queue. 
-
-
-C# Example  
-
-```csharp
-async Task Test()
-{
-    string connectionString = "Endpoint=sb://iris-organization…"; // abbreviated connection string string queueName = "Results"; 
-
-    await using ServiceBusProcessor processor = client.CreateProcessor(queueName, new ServiceBussProcessorOptions()); 
-
-    processor.ProcessMessageAsync += MessageHandler;
-
-    await processor.StartProcessingAsync();
-}
-
-async Task MessageHandler(ProcessMessageEventArgs args)
-{
-    string resultsJson = args.Message.Body.ToString();
-    await args.CompleteMessageAsync(args.Message);
-}
-```
-
-### AWS and Google Queues
-
-It is assumed that the choice to use AWS or Google Queue indicates a preexisting knowledge of how those resources work, therefore no coding examples are provided here. Regardless of the transport mechanism, the payload (OrderResults Object) is the same. 
-
-### Queue Authentication
-
-Regardless of the cloud platform, some form of connection credentials are required for access to the resource. When using IRIS Azure Cloud resources, you must obtain the connection string from IRIS support or the Administrator application as a user with the Integration Administrator role. Otherwise you must supply the credentials in the Administrator application. 
-
-### Obtaining IRIS Azure Service Bus Connection String
-
-Contact IRIS support
-
-### Configuring AWS, Azure and Google Service Bus/Queue Connection
-
-To configure results to be pushed to an AWS, Azure (In your subscription) or Google Queue, the Integration Administrator must perform the following actions: 
-
-- Login to the IRIS Administrator application 
-- Navigate to the EMR Integration page 
-- Select the “Result Delivery” tab 
-- Select “Cloud Queue” under primary delivery methods 
-- Select AWS, AZURE or Google from the cloud service provider options
-
-#### AWS Queue Settings
-
-- Queue Name 
-- Queue ARN 
-- Queue URL
-- Region Name 
-- AWS Access Key Id 
-- AWS Secret Access Key 
-
-#### Azure Queue Settings
-
-- Queue Name 
-- Connection String 
-
-#### GCP (Google) Queue Settings
-
-- Queue Name 
-- Connection JSON 
-
----
