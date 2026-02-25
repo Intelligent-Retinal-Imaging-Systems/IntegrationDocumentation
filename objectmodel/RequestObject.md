@@ -27,13 +27,14 @@ The OrderRequest object model provides all the properties necessary to perform o
 | HealthPlan | [HealthPlan](#healthplan) structure | If order is associated with a Health Plan
 
 
-## OrderRequest children
+## OrderRequest Members
 
 <a id="site"></a>
 ### ![alt text](/assets/structure.ico) Site
 
 The Site structure is primarily used to identify the site the order is to be associated with. If your organization is configured as such, sites can be dynamically added, therefore additional properties are provided to supply the required information. If you don’t require automatic site additions, simply provide the LocalId. 
 
+##### ![alt text](/assets/properties.ico) Site properties
 
 | Property | Type | Description 
 | -- | -- | -- 
@@ -69,6 +70,8 @@ The Images array is an array of Image structures that provides details including
 
 The Image structure allows you to specify details including the storage location where an image file can be retrieved. At this time, image retrieval is only supported in Azure Blob Storage. 
 
+##### ![alt text](/assets/properties.ico) Image properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | LocalId | string | Id as specified by the submitting organization
@@ -85,6 +88,7 @@ The Image structure allows you to specify details including the storage location
 
 Files in Azure Blob storage are specified by a container and filename. The Blob Storage Location in Azure is specific to an Azure Blob Storage account.  The account can either be a resource in your own Azure subscription or may be provided to you by IRIS within the IRIS Azure subscription.  Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a> for more details on connection access. 
 
+##### ![alt text](/assets/properties.ico) AzureBlobStorage properties
 
 | Property | Type | Description
 | -- | -- | --
@@ -96,6 +100,7 @@ Files in Azure Blob storage are specified by a container and filename. The Blob 
 
 The RequestProvider structure allows you to specify various Providers associated with the exam. If the provider has previously been submitted and was done so with NPI, you only need to include the NPI value in the submission
 
+##### ![alt text](/assets/properties.ico) RequestProvider properties
 
 | Property | Type | Description
 | -- | -- | --
@@ -112,6 +117,8 @@ The RequestProvider structure allows you to specify various Providers associated
 IRIS allows submitting detailed information on a patient, however, in most workflows the only requirement is LocalId, Name, DOB and Gender. 
 
 Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for returned codes when pathology is found. See [ICD-10 Results](/integration/Results/ICD10CMResults) for details.
+
+##### ![alt text](/assets/properties.ico) Patient properties
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -142,7 +149,7 @@ What you provide in the Order structure is highly dependent on your workflow. Wh
 The IRIS system allows only one open order per patient/evaluation type combination. When using the LocalId, previous (open) orders could automatically be cancelled in favor of the newer order. For this reason, it is recommended that you supply the LocalId field so the system can more clearly identify when cancellations are the desired outcome. 
 
 
-##### ![alt text](/assets/properties.ico) **Order** root properties 
+##### ![alt text](/assets/properties.ico) Order properties 
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
@@ -166,6 +173,8 @@ If your workflow is based on a Health Plan, this structure may be included in th
 
 If your workflow includes PCP results delivery, you may specify that Provider here.
 
+##### ![alt text](/assets/properties.ico) Healthplan properties
+
 | Property | Type | Description
 | -- | -- | -- 
 | LocalId | string | Id of Plan as specified by the submitting organization 
@@ -179,6 +188,8 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 
 A procedure code can be submitted in the order and echoed back in results
 
+##### ![alt text](/assets/properties.ico) CPT properties
+
 | Property | Type | Description
 | -- | -- | -- 
 | Code | string | Procedure Code as defined by CMS
@@ -188,6 +199,8 @@ A procedure code can be submitted in the order and echoed back in results
 ### ![alt text](/assets/structure.png) Primary Care Provider
 
 You may associate a patient with their primary care provider in cases when you want to deliver a copy of the report to them.  PCP Results is a delivery option that must be configured by IRIS before this data is utilized.  Contact your IRIS sales representative to have this feature activated.
+
+##### ![alt text](/assets/properties.ico) PCP properties
 
 | Property | Type | Description
 | -- | -- | --
