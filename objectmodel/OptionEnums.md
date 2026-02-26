@@ -80,7 +80,7 @@ The following tables provide acceptable values for option properties.
 
 ### 📊 Marital Status  
 
-<small>Items in this list are based on the HL7 standard here: http://terminology.hl7.org/CodeSystem/v3-MaritalStatus </small>
+<small>Items in this list are based on the HL7 standard here: <a href=http://terminology.hl7.org/CodeSystem/v3-MaritalStatus>HL7 Coding: Marital Status</a></small>
 
 | Id | Value | Description 
 | -- | -- | --
