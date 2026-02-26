@@ -120,6 +120,18 @@ The following tables provide acceptable values for option properties.
 | 13 | AI_Eyenuk_O1 | DR, AMD Glaucoma - Eyenuk | AI
 
 
+### 📊 ImageContext
+
+| Id | Value | Description 
+| -- | -- | --
+| 0 | Primary |  (Default) Primary image for eye for performing diagnosis
+| 1 | SecondaryViewField | Alternate views of eye
+| 2 | Unknown | Context could not be derived from submission
+| 3 | Component | Part of a primary image
+| 4 | Aggregate | Combination of two or more components
+| 5 | Enhancement | Enhanced image
+| 6 | AddedLate | Image was added after the order was graded
+
 ### 📊 Laterality
 
 | Value | Description
@@ -135,10 +147,10 @@ The following tables provide acceptable values for option properties.
 
 | Value | Description
 | -- | -- 
-| **NW** | Create New Order
-| **XO** | Change Order 
-| **CA** | Cancel Order 
-| **ResendResult** | Resend Results
+| NW | Create New Order
+| XO | Change Order 
+| CA | Cancel Order 
+| ResendResult | Resend Results
 
 Regardless of the control code, the same OrderRequest structure is used, however when using the CA code to cancel an order or the ResendResult code, you only need to populate the ClientGuid, Site LocalId and Order LocalId. 
 

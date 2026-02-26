@@ -132,8 +132,8 @@ Contains details of an individual image attached to the order.
 | Taken | DateTimeOffset | When the image was taken 
 | Received | DateTimeOffset | When the image was received to the IRIS system
 | FileName | string | Name of file as stored 
-| Laterality | options | which eye | OD, OS 
-| ImageContext | options | Unless otherwise directed, Primary should be used. Non-primary images are not prominently displayed throughout the workflow |  Primary, Secondary, Component, Aggregate, Enhancement  
+| Laterality | [Laterality](/objectmodel/OptionEnums#-laterality) | which eye | OD, OS 
+| ImageContext | [Image Context](/objectmodel/OptionEnums#-imagecontext) | Unless otherwise directed, Primary should be used. Non-primary images are not prominently displayed throughout the workflow |  Primary, Secondary, Component, Aggregate, Enhancement  
 | ParentLocalId | string | If the image is a child of another image in the set, this is the LocalId value for that parent image 
 | GroupId | Numeric | If this image is part of an overall group of images, specify the group id here 
 | GroupOrdinal | Numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. 
