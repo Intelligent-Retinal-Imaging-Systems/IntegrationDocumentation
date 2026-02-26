@@ -7,78 +7,98 @@ has_toc: false
 
 # IRIS Cloud Direct Integrations
 
- 
-This document provides details for integrations to the IRIS Platform using cloud provider resources directly accessing the IRIS 3.x platform.
+This document describes how to integrate with the IRIS 3.x Platform by interacting directly with cloud provider resources.
 
-----
+---
 
 ## Introduction
 
-As an integration option, IRIS provides the ability to interface directly through the cloud provider of your preference (Azure, AWS or Google Cloud). 
+As an integration option, IRIS supports direct interaction through the cloud provider of your choice (Azure, AWS, or Google Cloud).
 
-*If you do not wish to use your own cloud service subscription, IRIS can also provide this functionality in the IRIS Azure subscription, referred to in this document as **IRIS Azure Cloud**.* 
+*If you do not wish to use your own cloud subscription, IRIS can host all required resources within the **IRIS Azure Cloud**.*
 
-In all cases, communication is accommodated using the cloud vendors APIs, SDKs or libraries. For many languages, IRIS provides native libraries,referred to as the IRIS Public libraries, to provide interface to Cloud operations and serialization services to the IRIS Object Model. 
+All communication occurs using each cloud vendor’s APIs, SDKs, or libraries. For many languages, IRIS provides native **IRIS Public Libraries**, which offer Cloud operations as well as serialization utilities for IRIS JSON request/response objects.
 
-##### Cloud Resources
+---
 
-While naming conventions differ between cloud providers, the primary resources supported by IRIS are storage and message brokers.  IRIS is hosted in Azure where these are referred to as Storage Accounts and Service Buses.
+## Cloud Resources
 
-Message brokers are used for messages, whereas storage is used for files (e.g.: images). 
+While terminology differs between cloud providers, IRIS uses two primary resource types:
 
-##### Resource Provisioning
+- **Message brokers** – for submitting and receiving messages  
+- **Storage services** – for handling files such as images
 
-Provisioning resources within the Cloud provider follows this pattern:
-* A unique resource is created within the respective subscription
-* The owner of that resource provides write-only access to resources that are read from by the owner
-* The owner provides read-only access to resources that are written to by the owner
+IRIS is hosted in Azure, where these correspond to **Service Bus** (message broker) and **Storage Accounts**.
 
-For example, if the resources are all provided by IRIS in the IRIS Azure subscription, IRIS will provide write-only credentials to the client for order submission endpoints and read-only credentials to the client for event and results delivery endpoints. 
+Message brokers handle **JSON message objects**, while storage handles **file assets** (e.g., images).
 
-*The most common use-case for order submission is an Azure Service Bus provided by IRIS from the IRIS Azure subscription.*
+---
 
+## Resource Provisioning
 
-##### Keys / Connection Strings
+Cloud resource provisioning generally follows this pattern:
 
-The participant that does not own the Cloud resource is provided access to the resource through credentials as established by the Cloud Provider.  For Azure, this is referred to as connection strings.  
+1. A unique cloud resource is created within the respective subscription.
+2. The resource owner provides **write-only** credentials for endpoints the integrator sends to.
+3. The resource owner provides **read-only** credentials for endpoints the integrator consumes from.
 
-#### Integration Administrator
+Example:  
+If all cloud resources are provisioned by IRIS in the IRIS Azure subscription, IRIS will supply:
+- **Write-only** access to order submission queues  
+- **Read-only** access to event and result delivery queues  
 
-IRIS provides access to certain integration tools and configurations though the Integration Administrator role. The role is assigned to you either by IRIS support or an existing Organization Administrator for your organization. The term Integration Administrator will be referred to throughout this document thus mentioned here for clarity. 
-Individuals with this role are provided access to the resources required to integrate using Cloud Direct services.
+*The most common pattern is IRIS providing an Azure Service Bus queue for order submission.*
 
+---
 
+## Keys / Connection Strings
 
-##### Developers
+The party that does **not** own the cloud resource is provided credentials defined by the cloud vendor.  
+In Azure, these are delivered as **connection strings**.
 
-IRIS provides libraries for most of the popular programming languages on our [Developer Resources](/integration/DeveloperResources/) page.
+---
 
-#### General Workflow
+## Integration Administrator
 
-1. Orders are submitted with details including the patient
-2. Images are submitted to the order
-3. The order is queued to grading
-4. The order completes the grading process
-5. Result artifacts are generated
-6. Artifacts are delivered to all configured recipients 
+IRIS grants access to integration tools and configuration through the **Integration Administrator** role.  
+This role is assigned by IRIS Support or by your organization’s Administrator. Anyone holding this role gains access to Cloud Direct configuration and credential management.
 
-###### This translates to the following interactions:
-* An order is generated by hydrating the OrderRequest object and submitted to the cloud resource
-* An event is posted for the new order
-* Images are assigned to the order and events are posted for each
-* The order is queued to grading and an event is posted
-* The order is graded and an event is posted
-* Results are generated and posted to the Cloud resource of choice
+---
 
+## Developers
 
-#### Order Submission
+IRIS provides language‑specific client libraries on the  
+**/integration/DeveloperResources/** page.  
+These libraries simplify Cloud operations as well as JSON serialization of IRIS request objects.
 
-To submit an order you must hydrate an OrderRequest object and submit it the Cloud resource of choice.  
-Typically this is done using the Azure Message broker (Service Bus Queue).
+---
 
-The process involves hydrating and sending a JSON encoded OrderRequest object to the orders queue
+## General Workflow
 
-*If you are planning to use an IRIS Public library, the act of serializing and sending the data is reduced to a single step within the library.*
+1. An order is submitted, including patient data.
+2. Images are uploaded and associated to the order.
+3. The order enters the grading queue.
+4. The grading process completes.
+5. Result artifacts are generated.
+6. All configured recipients receive their artifacts.
+
+### Corresponding Cloud Interactions
+- An order is created by populating an **OrderRequest JSON object** and sending it to the message broker.
+- A series of **event messages** are published as the order moves through each processing stage.
+- Images are uploaded and event messages are published for each image.
+- When grading completes, result objects and artifacts are posted to the configured cloud endpoints.
+
+---
+
+## Order Submission
+
+To submit an order, you must construct an **OrderRequest JSON object** and send it to your configured cloud endpoint—typically an **Azure Service Bus Queue**.
+
+This involves:
+- Creating a JSON-encoded **OrderRequest object**
+- Sending it as the message body to the *orders* queue
+
+*If you are using an IRIS Public Library, serialization and message sending are abstracted into a single method call.*
 
 ##### <small>C# Example</small>
 
@@ -108,15 +128,11 @@ async Task Test()
 > ##### Site Identifiers
 > Depending on your specific needs you will have one to many sites within the IRIS system assigned to your organization.  Orders have a direct relationship to the site therefore an identifier for the site must be included in your submission.
 >
-> If you operate within a brick and mortar type model, you typically will want to have one site in the IRIS system per physical location your cameras reside.  If > you operate more in a mobile workflow, you typically have a single site.  In the multisite mode, the state where the exam is performed is assumed to be the state > configured on the site record within IRIS.   If you operate in a single site mode, you must provide the state where the exam occurs in the order object.  
+> If you operate within one or more medical facilities, you will want to configure one site in the IRIS system per physical location your cameras reside.  If you operate in a mobile workflow, such as home health care, you typically configure a single site.  In the multisite mode, the state where the exam is performed is assumed to be the state configured on the site record within IRIS.   If you operate in a single site mode, you must provide the state where the exam occurs in the OrderRequest object.  
 >
 > For single site workflows, IRIS will provide you with the identifier to supply for the Site.  This because it's not an identifier you established yourself.
 >
-> For multisite workflows, you will provide IRIS with your identifiers for each site as they are added.  This can be done programmatically through this interface or 
-> through the Administrator application. If added from this interface you must include all the required properties for adding a new site in the Site structure.  
-> This is described in full detail in the [site](/objectmodel/RequestObject#site) section.
-> 
-
+> For multisite workflows, you will provide IRIS with your identifiers for each site as they are added.  This can be done programmatically through this interface or through the Administrator application. If added from this interface you must include all the required properties for adding a new site in the [site](/objectmodel/RequestObject#site) structure.  
 
 ##### Next -> [IRIS Object Models](/objectmodel/Objectmodels)
  

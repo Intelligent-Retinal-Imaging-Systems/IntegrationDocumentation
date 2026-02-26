@@ -5,11 +5,11 @@ nav_order: 1
 ---
 
 
-## OrderRequest Object Model 
+## OrderRequest Model 
 
 The OrderRequest object model provides all the properties necessary to perform order actions such as create, change or cancel. Most workflows require using only a small subset of the available properties. Properties colored <span style='color: rgb(188, 13, 16);'>red</span> are required. 
 
-##### ![alt text](/assets/properties.ico) OrderRequest root properties
+##### ![alt text](/assets/properties.ico) Root properties
 
 | Property  | type  |  Description  | Options
 | -- | -- | -- | -- |
@@ -30,9 +30,12 @@ The OrderRequest object model provides all the properties necessary to perform o
 ## OrderRequest Members
 
 <a id="site"></a>
-### ![alt text](/assets/structure.ico) Site
+### ![alt text](/assets/structure.ico) Site (Object)
 
-The Site structure is primarily used to identify the site the order is to be associated with. If your organization is configured as such, sites can be dynamically added, therefore additional properties are provided to supply the required information. If you don’t require automatic site additions, simply provide the LocalId. 
+The **Site object** identifies the site to which the order is associated.  
+If your system supports **automatic site creation**, additional site details must be provided.  
+Otherwise, only `LocalId` is required.
+
 
 ##### ![alt text](/assets/properties.ico) Site properties
 
@@ -43,7 +46,7 @@ The Site structure is primarily used to identify the site the order is to be ass
 | Address | [Address](/objectmodel/CommonObjects#address) | Address of site (Only required for automatic site additions)
 
 <a id="camera"></a>
-### ![alt text](/assets/structure.ico) Camera 
+### ![alt text](/assets/structure.ico) Camera (Object)
 
 When an order is to be assigned to a camera or Image directives are included with the order, populate this structure. If the camera already exists and you are not providing image directives, you only need to supply the LocalId. Other than the Images structure, the remaining properties are provided in the event your organization allows automatic Camera additions.
 
@@ -66,7 +69,7 @@ When an order is to be assigned to a camera or Image directives are included wit
 The Images array is an array of Image structures that provides details including the storage location of one or more images associated with the order. 
 
 <a id="image"></a>
-### ![alt text](/assets/structure.ico) Image
+### ![alt text](/assets/structure.ico) Image (Object)
 
 The Image structure allows you to specify details including the storage location where an image file can be retrieved. At this time, image retrieval is only supported in Azure Blob Storage. 
 
@@ -84,7 +87,7 @@ The Image structure allows you to specify details including the storage location
 | GroupOrdinal | numeric | If this image is part of a group (specified by GroupId) this is the relative position in that group. 
 
 <a id="blobstorage"></a>
-### ![alt text](/assets/structure.ico) AzureBlobStorage  
+### ![alt text](/assets/structure.ico) AzureBlobStorage (Object)  
 
 Files in Azure Blob storage are specified by a container and filename. The Blob Storage Location in Azure is specific to an Azure Blob Storage account.  The account can either be a resource in your own Azure subscription or may be provided to you by IRIS within the IRIS Azure subscription.  Contact <a href="mailto:support@irishelp.zendesk.com">IRIS Support</a> for more details on connection access. 
 
@@ -97,7 +100,7 @@ Files in Azure Blob storage are specified by a container and filename. The Blob 
 
 
 <a id="patient"></a>
-### ![alt text](/assets/structure.ico) Patient
+### ![alt text](/assets/structure.ico) Patient (Object)
 
 IRIS allows submitting detailed information on a patient, however, in most workflows the only requirement is LocalId, Name, DOB and Gender. 
 
@@ -125,7 +128,7 @@ Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for re
 *Genders replaces Gender: While the system will still accept a single unspecified gender assignment, it will eventually be phased out in favor of Genders* 
 
 <a id="order"></a>
-### ![alt text](/assets/structure.ico) Order 
+### ![alt text](/assets/structure.ico) Order (Object)
 
 What you provide in the Order structure is highly dependent on your workflow. While the only required field is the Evaluation Type to perform, other properties may be required in your workflow. For example, the State field is required for mobile type exams where the location of the exam (where the images are taken) is in a different state than the Site the exam is tied to. See the description of each field for more details. 
 
@@ -152,7 +155,7 @@ The IRIS system allows only one open order per patient/evaluation type combinati
 | MissingEyeReason | string | Specifies the reason the eye was missing.  If set, reason is provided in final results
 
 <a id="healthplan"></a>
-### ![alt text](/assets/structure.ico) HealthPlan 
+### ![alt text](/assets/structure.ico) HealthPlan (Object) 
 
 If your workflow is based on a Health Plan, this structure may be included in the submission. This information is returned in results. 
 
@@ -169,7 +172,7 @@ If your workflow includes PCP results delivery, you may specify that Provider he
 | PrimaryCareProvider | [PCP](#pcp) | Contains Provider information for the PCP of the Member.This information can be used for results submission directly to that provider. 
 
 <a id="pcp"></a>
-### ![alt text](/assets/structure.ico) Primary Care Provider
+### ![alt text](/assets/structure.ico) PrimaryCareProvider (Object)
 
 You may associate a patient with their primary care provider in cases when you want to deliver a copy of the report to them.  PCP Results is a delivery option that must be configured by IRIS before this data is utilized.  Contact your IRIS sales representative to have this feature activated.
 
@@ -178,7 +181,7 @@ You may associate a patient with their primary care provider in cases when you w
 | Property | Type | Description
 | -- | -- | --
 | NPI | string(10) | National Id for Provider
-| EmailAddress | string | Email (or [Direct Messaging](/integration/DirectMessaging.md)) address for the provider
-| Name | [Name](/objectmodel/CommonObjects#name-structure) | Providers name
+| EmailAddress | string | Email (or [Direct Messaging](/integration/DirectMessaging)) address for the provider
+| Name | [Name](/objectmodel/CommonObjects#name) | Providers name
 | FaxNumber | phone | Fax number that may be used in results delivery
 

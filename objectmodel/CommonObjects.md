@@ -44,8 +44,6 @@ Common structure used for storing gender designations
 | -- | -- | -- | --
 | Context | options | Gender association | [GenderContext](./OptionEnums#-gendercontext) options 
 | Gender | options | The gender for specified context | [Gender](./OptionEnums#-gender) options
-  
-
 
 ### RequestProvider
 
