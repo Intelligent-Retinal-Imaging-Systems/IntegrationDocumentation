@@ -6,19 +6,9 @@ nav_order: 3
 
 
 ## Common Shared Components
-
-### Name
-
-Common structure used for storing names
-
-| Property | Type | Description
-| -- | -- | --
-| First | string | Persons first (given) name
-| Last | string | Persons last (family) name
+The following components are shared within the IRIS Object Model.
 
 ### Address 
-
-Common structure used for storing addresses
 
 | Property | Type | Description
 | -- | -- | --
@@ -27,6 +17,24 @@ Common structure used for storing addresses
 | City | string | City portion of address
 | State | string (2) | State abbreviation of address
 | PostalCode | string | Zip / Postal code
+
+
+### CPT
+
+A procedure code can be submitted in the order and echoed back in results
+
+| Property | Type | Description
+| -- | -- | -- 
+| Code | string | Procedure Code as defined by CMS
+| Description | string | Description as defined by CMS
+
+
+### Name
+
+| Property | Type | Description
+| -- | -- | --
+| First | string | Persons first (given) name
+| Last | string | Persons last (family) name
 
 ### PersonGender 
 
@@ -51,14 +59,4 @@ The RequestProvider structure allows you to specify various Providers associated
 | Email | string | Optionally specify an email address 
 | Degrees | string | Optionally supply degrees 
 | Associations | string | Optionally supply associations 
-
-
-### CPT
-
-A procedure code can be submitted in the order and echoed back in results
-
-| Property | Type | Description
-| -- | -- | -- 
-| Code | string | Procedure Code as defined by CMS
-| Description | string | Description as defined by CMS
 

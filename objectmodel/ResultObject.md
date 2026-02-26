@@ -225,6 +225,8 @@ Structure containing metadata and content of a free form note
 
 Structure containing grading details for one eye side.  The object is named by the Laterality code.  In most cases, you will have an OD and an OS node. In the event that no images were capture for an eye, the respective object is omitted from the results (e.g. If no left eye images you will not have an OS node). 
 
+##### ![alt text](/assets/properties.ico) Eye side (OD/OS/OU) properties
+
 | Property | Type | Description | Options
 | -- | -- | -- | --
 | Gradable | bool | If false the eye side was not able to be graded with the images provided | true/false
