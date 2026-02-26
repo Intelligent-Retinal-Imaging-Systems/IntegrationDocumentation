@@ -113,6 +113,7 @@ async Task Test()
     await sender.SendMessageAsync(message); // Fire and forget
 }
 ```
+---
 
 > ## Getting started
 >
@@ -133,6 +134,9 @@ async Task Test()
 >
 > For multisite workflows, you will provide IRIS with your identifiers for each site as they are added.  This can be done programmatically through this interface or through the Administrator application. If added from this interface you must include all the required properties for adding a new site in the [site](/objectmodel/RequestObject#site) structure.  
 
+---
+
 ##### Next -> [IRIS Object Models](/objectmodel/Objectmodels)
  
+---
 
