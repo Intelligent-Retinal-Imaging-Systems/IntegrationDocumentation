@@ -40,7 +40,7 @@ A procedure code can be submitted in the order and echoed back in results
 | Last | string | Persons last (family) name
 
 <a id="persongender"></a>
-### ![alt text](/assets/structure.ico) PersonGender 
+### ![alt text](/assets/structure.ico) PersonGender (Object) 
 
 Common structure used for storing gender designations
 
