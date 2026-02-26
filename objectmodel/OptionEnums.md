@@ -1,5 +1,5 @@
 ---
-title: Option Enumerations
+title: Enumerations
 parent: Object Models
 nav_order: 5
 ---

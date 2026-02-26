@@ -1,7 +1,7 @@
 ---
-title: Events
+title: Order Event Object
 parent: Object Models
-nav_order: 4
+nav_order: 3
 ---
 
 
@@ -9,9 +9,9 @@ nav_order: 4
 
 Because Service Bus based integrations are asynchronous, IRIS posts events on an events queue to keep you apprised of important operations as they occur.  
 
-✨ See [Sample Events](/integration/CloudDirectEventSample/) for examples of event messages.
+✨ See [Sample Events](/clouddirect/EventExamples) for examples of event messages.
 
-##### ![alt text](properties.png) Base properties
+##### ![alt text](properties.ico) Base properties
 <small>All events contain this common set of base properties</small>
 
 | Property | Data type | Description
@@ -33,7 +33,7 @@ Events with the ResultObjectType of OrderCreationReceipt contain details of an  
 
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
 
-##### ![alt text](properties.png) Additional Properties
+##### ![alt text](properties.ico) Additional Properties
 
 | Property | Data type | Description
 | -- | -- | --
@@ -42,13 +42,13 @@ Events with the ResultObjectType of OrderCreationReceipt contain details of an  
 | PatientLocalId | string | Id of the patient as specified by you on submission
 
 
-### ![alt text](structure.png) ImageReceipt
+### ![alt text](structure.ico) ImageReceipt
 
 Events with the ResultObjectType of ImageReceipt contain details of an image submission operation.  
 
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
 
-##### ![alt text](properties.png) Additional Properties
+##### ![alt text](properties.ico) Additional Properties
 
 | Property | Data type | Description
 | -- | -- | --
@@ -58,13 +58,13 @@ Events with the ResultObjectType of ImageReceipt contain details of an image sub
 | ImageLocalId | string | Id of the image as specified by you on submission
 | IrisImageId | int | Id of image as created and known by IRIS 
 
-### ![alt text](structure.png) ReadyForGradingEvent
+### ![alt text](structure.ico) ReadyForGradingEvent
 
 Events with the ResultObjectType of ReadyForGradingEvent contain details of an order moving into the grading queue
 
 This event fires when order image requirements have been satisfied for an order.
 
-##### ![alt text](properties.png) Additional Properties
+##### ![alt text](properties.ico) Additional Properties
 
 | Property | Data type | Description
 | -- | -- | --
@@ -73,7 +73,7 @@ This event fires when order image requirements have been satisfied for an order.
 | PatientLocalId | string | Id of the patient as specified by you on submission
 
 
-### ![alt text](structure.png) GradingReceipt
+### ![alt text](structure.ico) GradingReceipt
 
 Events with the ResultObjectType of GradingReceipt contain details of a grading submission.  
 
@@ -81,7 +81,7 @@ This event fires when a grading has been submitted for an order
 
 *As with all ResultObjectTypes check the Success and ErrorMessage properties for the status of the operation*
 
-##### ![alt text](properties.png) Additional Properties
+##### ![alt text](properties.ico) Additional Properties
 
 | Property | Data type | Description
 | -- | -- | --
@@ -89,13 +89,13 @@ This event fires when a grading has been submitted for an order
 | OrderLocalId | string | Id of order as specified by you on submission
 | PatientLocalId | string | Id of the patient as specified by you on submission
 
-### ![alt text](structure.png) OrderGradedEvent
+### ![alt text](structure.ico) OrderGradedEvent
 
 Events with the ResultObjectType of OrderGradedEvent contain details of an order that has been graded
 
 This event will post when an order is graded.  This differs from the GradingReceipt in that the grading has been applied establishing the order as graded.
 
-##### ![alt text](properties.png) Additional Properties
+##### ![alt text](properties.ico) Additional Properties
 
 | Property | Data type | Description
 | -- | -- | --
@@ -103,12 +103,12 @@ This event will post when an order is graded.  This differs from the GradingRece
 | OrderLocalId | string | Id of order as specified by you on submission
 | PatientLocalId | string | Id of the patient as specified by you on submission
 
-### ![alt text](structure.png) ResultsDeliveryReceipt
+### ![alt text](structure.ico) ResultsDeliveryReceipt
 
 Events with the ResultObjectType of ResultsDeliveryReceipt contain details of results delivered to any endpoint other than the standard Cloud Direct result (e.g.: You won't get a message to tell you the message you just received was received).  This message is provided for customers who have configured multiple destinations for results such as fax results to PCP.  
 
 
-##### ![alt text](properties.png) Additional Properties
+##### ![alt text](properties.ico) Additional Properties
 
 | Property | Data type | Description
 | -- | -- | --

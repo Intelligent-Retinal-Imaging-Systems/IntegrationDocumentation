@@ -1,5 +1,5 @@
 ---
-title: Order Results
+title: Order Result Object
 parent: Object Models
 nav_order: 2
 ---
