@@ -1,5 +1,5 @@
 ---
-title: Order Event Object
+title: Order Event Model
 parent: Object Models
 nav_order: 3
 ---

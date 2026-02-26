@@ -1,5 +1,5 @@
 ---
-title: Order Request Object
+title: Order Request Model
 parent: Object Models
 nav_order: 1
 ---
