@@ -20,9 +20,9 @@ The OrderRequest object model provides all the properties necessary to perform o
 | Camera | [Camera](#camera) | Camera the order should be assigned to as well as optionally specifying the images associated with the order and camera
 | <span style='color: rgb(188, 13, 16);'>Order</span> | [Order](#order) | Details of order
 | <span style='color: rgb(188, 13, 16);'>Patient</span> | [Patient](#patient) | Patient details
-| OrderingProvider | [Request Provider](/objectmodel/CommonObjects#requestprovider) | Medical provider who ordered the exam
-| ReferringProvider | [Request Provider](/objectmodel/CommonObjects#requestprovider) | Medical provider who referred the patient for the exam
-| CameraOperator | [Request Provider](/objectmodel/CommonObjects#requestprovider)  | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
+| OrderingProvider | [Provider](/objectmodel/CommonObjects#requestprovider) | Medical provider who ordered the exam
+| ReferringProvider | [Provider](/objectmodel/CommonObjects#requestprovider) | Medical provider who referred the patient for the exam
+| CameraOperator | [Provider](/objectmodel/CommonObjects#requestprovider)  | Medical provider assigned to perform the exam. This option is used when the Operator is a medical provider with a valid NPI 
 | CameraOperatorUserName | string | *** DEPRECATED - Use CameraOperator Instead *** UserName of the technician who should be assigned to the order. This option is used when the operator does not have an NPI 
 | HealthPlan | [HealthPlan](#healthplan) | If order is associated with a Health Plan
 
