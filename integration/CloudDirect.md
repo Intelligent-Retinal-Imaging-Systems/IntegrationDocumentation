@@ -17,7 +17,7 @@ As an integration option, IRIS supports direct interaction through the cloud pro
 
 *If you do not wish to use your own cloud subscription, IRIS can host all required resources within the **IRIS Azure Cloud**.*
 
-All communication occurs using each cloud vendor’s APIs, SDKs, or libraries. For many languages, IRIS provides native **IRIS Public Libraries**, which offer Cloud operations as well as serialization utilities for IRIS JSON request/response objects.
+All communication occurs using each cloud vendor’s APIs, SDKs, or libraries. For many languages, IRIS provides native **IRIS Public Libraries**, which offer Cloud operations as well as serialization utilities for IRIS request/response objects.
 
 ---
 
@@ -91,13 +91,13 @@ These libraries provide a strongly typed version of the IRIS Object model as wel
 
 ## Order Submission
 
-To submit an order, you must construct an **OrderRequest JSON object** and send it to your configured cloud endpoint—typically an **Azure Service Bus Queue**.
+To submit an order, you must construct an **OrderRequest object** and send it to your configured cloud endpoint—typically an **Azure Service Bus Queue**.
 
 This involves:
-- Creating a JSON-encoded **OrderRequest object**
+- Constructing an **OrderRequest object**
 - Sending it as the message body to the *orders* queue
 
-*If you are using an IRIS Public Library, serialization and message sending are abstracted into a single method call.*
+*Using the IRIS Public Library, serialization and sending are combined into a single operation.*
 
 ##### <small>C# Example</small>
 
