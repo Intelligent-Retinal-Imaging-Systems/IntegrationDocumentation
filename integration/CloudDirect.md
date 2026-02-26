@@ -67,9 +67,8 @@ This role is assigned by IRIS Support or by your organization’s Administrator.
 
 ## Developers
 
-IRIS provides language‑specific client libraries on the  
-**/integration/DeveloperResources/** page.  
-These libraries simplify Cloud operations as well as JSON serialization of IRIS request objects.
+IRIS provides language‑specific client libraries on the [Developers](/integration/DeveloperResources/) page.  
+These libraries provide a strongly typed version of the IRIS Object model as well as simplifying Cloud operations.
 
 ---
 
