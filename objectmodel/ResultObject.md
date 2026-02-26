@@ -4,7 +4,7 @@ parent: Object Models
 nav_order: 2
 ---
 
-## OrderResults Object Model
+## OrderResults Model
 
 ##### ![alt text](/assets/properties.ico) Root properties 
 
