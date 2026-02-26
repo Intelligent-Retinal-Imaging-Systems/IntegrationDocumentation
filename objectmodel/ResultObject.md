@@ -28,7 +28,7 @@ nav_order: 2
 
 
 <a id="site"></a>
-### ![alt text](/assets/structure.ico) Site
+### ![alt text](/assets/structure.ico) Site (Object)
 
 The Site structure is primarily used to identify the site the order is to be associated with. If your organization is configured as such, sites can be dynamically added, therefore additional properties are provided to supply the required information. If you don’t require automatic site additions, simply provide the LocalId. 
 
@@ -54,7 +54,7 @@ Depending on your workflow the IRIS system will provide a Report of the examinat
 | Content | string | Content relative to the Encoding and Type. For example, if PDF, this will most likely be a Base64 encoded string 
 
 <a id="order"></a>
-### ![alt text](/assets/structure.ico) Order
+### ![alt text](/assets/structure.ico) Order (Object)
 
 Contains details of the order.  Most of this content is echoed back from the submission.
 
@@ -79,7 +79,7 @@ Contains details of the order.  Most of this content is echoed back from the sub
 
 
 <a id="imagedetails"></a>
-### ![alt text](/assets/structure.ico) ImageDetails 
+### ![alt text](/assets/structure.ico) ImageDetails (Object)
 
 This structure contains a summary of the images collected for the exam.
 
@@ -99,7 +99,7 @@ This structure contains a summary of the images collected for the exam.
 
 
 <a id="patient"></a>
-### ![alt text](/assets/structure.ico) Patient
+### ![alt text](/assets/structure.ico) Patient (Object)
 
 Returns the details of the patient as they were submitted on the order. 
 
@@ -116,11 +116,11 @@ Returns the details of the patient as they were submitted on the order.
 | Phone | string | Patients phone number
 
 <a id="images"></a>
-### Result Images array 
+### ![alt text](/assets/array.png) Images (Array) 
 
-Array of Result Image structures that provides details of each image attached to the order. 
+Array of Image objects that provides details of each image attached to the order. 
 
-### ![alt text](/assets/structure.ico) Image 
+### ![alt text](/assets/structure.ico) Image (Object)
 
 Contains details of an individual image attached to the order.
 
@@ -140,7 +140,7 @@ Contains details of an individual image attached to the order.
 | Camera | [Camera](#camera) structure | Contains details of the Camera that took the image 
 
 <a id="camera"></a>
-### ![alt text](/assets/structure.ico) Camera
+### ![alt text](/assets/structure.ico) Camera (Object)
 
 Details of the camera that captured the images submitted to the order. 
 
@@ -158,7 +158,7 @@ Details of the camera that captured the images submitted to the order.
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
 
 <a id="gradings"></a>
-### ![alt text](/assets/structure.ico) Gradings
+### ![alt text](/assets/structure.ico) Gradings (Object)
 
 Contains raw details of grading.  Findings are found as the Laterality code for the eye side grading. 
 
@@ -181,7 +181,7 @@ Contains raw details of grading.  Findings are found as the Laterality code for 
 
 
 <a id="cameraoperator"></a>
-### ![alt text](/assets/structure.ico) CameraOperator
+### ![alt text](/assets/structure.ico) CameraOperator (Object)
 
 Details of the technician who captured the images for the order.
 
@@ -204,12 +204,12 @@ Details of the technician who captured the images for the order.
 | Name | string | Name of HealthPlan 
 | MemberId | string | Id of Member as specified by the HealthPlan
 
-### Notes array 
+### ![alt text](/assets/array.png) Notes (Array)
 
 Array containing zero or more notes added by the related user 
 
 <a id="note"></a>
-### ![alt text](/assets/structure.ico) Note 
+### ![alt text](/assets/structure.ico) Note (Object)
 
 Structure containing metadata and content of a free form note
 
@@ -234,12 +234,12 @@ Structure containing grading details for one eye side.  The object is named by t
 | UngradableReasons | array of string | Grader specified reason that eye could not be graded 
 | Findings | Array of [Finding](#finding) | Zero or more findings for the eye
 
-### Findings array 
+### ![alt text](/assets/array.png) Findings (Array)
 
 Array of the Finding structure containing findings from the grader for the specified eye. If the array is not present, it indicates, there was no pathology found for the eye. 
 
 <a id="finding"></a>
-### ![alt text](/assets/structure.ico) Finding 
+### ![alt text](/assets/structure.ico) Finding (Object)
 
 Structure containing details of finding
 

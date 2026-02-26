@@ -64,7 +64,7 @@ When an order is to be assigned to a camera or Image directives are included wit
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
 | Images | Array of [Image](#image) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images.
 
-## Images
+## ![alt text](/assets/array.png) Images (Array)
 
 The Images array is an array of Image structures that provides details including the storage location of one or more images associated with the order. 
 
