@@ -46,8 +46,8 @@ Common structure used for storing gender designations
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| Context | options | Gender association | [GenderContext](./OptionEnums#-gendercontext) options 
-| Gender | options | The gender for specified context | [Gender](./OptionEnums#-gender) options
+| Context | options | Gender association | [GenderContext](/objectmodel/OptionEnums#-gendercontext) options 
+| Gender | options | The gender for specified context | [Gender](/objectmodel/OptionEnums#-gender) options
 
 <a id="requestprovider"></a>
 ### ![alt text](/assets/structure.ico) Provider (Object)
