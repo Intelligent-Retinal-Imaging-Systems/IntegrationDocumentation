@@ -98,7 +98,7 @@ The following tables provide acceptable values for option properties.  Always us
 
 ### 📊 Result Code
 
-| Value | Description
+| Code | Description
 | -- | -- 
 | A | Addendum 
 | C | Correction 
