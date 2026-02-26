@@ -115,3 +115,11 @@ $media-queries: (
         lg: $content-width + $nav-width,
         xl: 87.5rem,
 );
+
+th {
+  text-align: left;
+}
+ 
+tr:nth-child(odd) td {
+  background-color: #f2f2f2;
+}
