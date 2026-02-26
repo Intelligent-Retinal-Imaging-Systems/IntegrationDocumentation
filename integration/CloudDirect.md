@@ -82,10 +82,10 @@ These libraries provide a strongly typed version of the IRIS Object model as wel
 6. All configured recipients receive their artifacts.
 
 ### Corresponding Cloud Interactions
-- An order is created by populating an **OrderRequest JSON object** and sending it to the message broker.
+- An order is created by constructing an **OrderRequest object** and sending it to the message broker.
 - A series of **event messages** are published as the order moves through each processing stage.
 - Images are uploaded and event messages are published for each image.
-- When grading completes, artifacts are posted to the configured endpoints.
+- When grading completes, artifacts are delivered to the configured endpoints.
 
 ---
 
