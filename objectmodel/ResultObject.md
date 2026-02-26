@@ -41,7 +41,7 @@ The Site structure is primarily used to identify the site the order is to be ass
 | Address | [Address](/objectmodel/CommonObjects#address) | Address of site (Only required for automatic site additions)
 
 <a id="resultsdoc"></a>
-### ![alt text](/assets/structure.ico) ResultsDocument 
+### ![alt text](/assets/structure.ico) ResultsDocument (Object)
 
 Depending on your workflow the IRIS system will provide a Report of the examination. The report is available in various formats.
 
@@ -194,7 +194,7 @@ Details of the technician who captured the images for the order.
 | Notes | Array of [Note](#note) | notes added by the performing operator
 
 <a id="healthplan"></a>
-### ![alt text](/assets/structure.ico) HealthPlan 
+### ![alt text](/assets/structure.ico) HealthPlan (Object)
 
 ##### ![alt text](/assets/properties.ico) Healthplan properties
 
@@ -221,7 +221,7 @@ Structure containing metadata and content of a free form note
 | Text | string | Content 
 
 <a id="eyegrading"></a>
-### ![alt text](/assets/structure.ico) EyeSideGrading 
+### ![alt text](/assets/structure.ico) EyeSideGrading (Object)
 
 Structure containing grading details for one eye side.  The object is named by the Laterality code.  In most cases, you will have an OD and an OS node. In the event that no images were capture for an eye, the respective object is omitted from the results (e.g. If no left eye images you will not have an OS node). 
 
