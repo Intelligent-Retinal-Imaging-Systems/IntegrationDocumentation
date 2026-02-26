@@ -8,7 +8,8 @@ nav_order: 4
 ## Common Shared Components
 The following components are shared within the IRIS Object Model.
 
-### Address 
+<a id="address"></a>
+### ![alt text](/assets/structure.ico) Address (Object) 
 
 | Property | Type | Description
 | -- | -- | --
@@ -19,7 +20,8 @@ The following components are shared within the IRIS Object Model.
 | PostalCode | string | Zip / Postal code
 
 
-### CPT
+<a id="cpt"></a>
+### ![alt text](/assets/structure.ico) CPT (Object)
 
 A procedure code can be submitted in the order and echoed back in results
 
@@ -29,14 +31,16 @@ A procedure code can be submitted in the order and echoed back in results
 | Description | string | Description as defined by CMS
 
 
-### Name
+<a id="name"></a>
+### ![alt text](/assets/structure.ico) Name (Object)
 
 | Property | Type | Description
 | -- | -- | --
 | First | string | Persons first (given) name
 | Last | string | Persons last (family) name
 
-### PersonGender 
+<a id="persongender"></a>
+### ![alt text](/assets/structure.ico) PersonGender 
 
 Common structure used for storing gender designations
 
@@ -45,7 +49,8 @@ Common structure used for storing gender designations
 | Context | options | Gender association | [GenderContext](./OptionEnums#-gendercontext) options 
 | Gender | options | The gender for specified context | [Gender](./OptionEnums#-gender) options
 
-### RequestProvider
+<a id="requestprovider"></a>
+### ![alt text](/assets/structure.ico) Provider (Object)
 
 The RequestProvider structure allows you to specify various Providers associated with the exam. If the provider has previously been submitted and was done so with NPI, you only need to include the NPI value in the submission
 
