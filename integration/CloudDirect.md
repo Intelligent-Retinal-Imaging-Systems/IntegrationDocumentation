@@ -85,7 +85,7 @@ These libraries provide a strongly typed version of the IRIS Object model as wel
 - An order is created by populating an **OrderRequest JSON object** and sending it to the message broker.
 - A series of **event messages** are published as the order moves through each processing stage.
 - Images are uploaded and event messages are published for each image.
-- When grading completes, result objects and artifacts are posted to the configured cloud endpoints.
+- When grading completes, artifacts are posted to the configured endpoints.
 
 ---
 
@@ -114,7 +114,7 @@ async Task Test()
 }
 ```
 
-> #### Getting started
+> ## Getting started
 >
 > Before you can submit an order using Cloud Direct services, the are several pieces of data you will need from IRIS:
 > 1. Service Bus Connection String
