@@ -156,6 +156,6 @@ The following tables provide acceptable values for option properties.  Always us
 | CA | Cancel Order 
 | ResendResult | Resend Results
 
-* Regardless of the control code, the same OrderRequest structure is used, however when using the CA code to cancel an order or the **ResendResult** code, you only need to populate the **ClientGuid**, Site **LocalId** and Order **LocalId**. 
+* Regardless of the control code, the same OrderRequest structure is used, however when using the CA code to cancel an order or the **ResendResult** code, you only need to populate the **ClientGuid**, Site.**LocalId** and Order.**LocalId**. 
 * Changing or Cancelling an order will not work if the target order is closed. 
 * Resending Results both regenerates the results and sends to all configured delivery endpoints (with the exception of the DFT (HL7) message)
