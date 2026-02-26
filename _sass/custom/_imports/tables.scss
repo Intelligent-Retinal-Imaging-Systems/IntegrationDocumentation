@@ -1,0 +1,19 @@
+@use 'sass:color';
+
+th,
+td {
+  min-width: 1rem;
+  background-color: unset;
+  text-align: left;
+}
+
+tbody {
+  tr {
+    &:nth-child(even) {
+      background-color: $table-background-color;
+    }
+    &:nth-child(odd) {
+      background-color: color.adjust($table-background-color, $lightness: -3%)
+    }
+  }
+}
