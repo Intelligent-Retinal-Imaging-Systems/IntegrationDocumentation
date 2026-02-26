@@ -6,15 +6,15 @@ nav_order: 5
 
 {: .no_toc }
 
+# Enumerations (Option Lists)
 
-
-# Option Enumerations
-
-The following tables provide acceptable values for option properties.
+The following tables provide acceptable values for option properties.  Always use the values found in the Code column when building your objects. 
 
 ### 📊 GenderContext
 
-| Id | Value | Description 
+<small>Establishes whether the Gender specified is the patients **Birth** or **Identity** Gender</small>
+
+| Id | Code | Description 
 | -- | -- | --
 | 0 | Unknown |  Not set  
 | 1 | IdentityGender | Gender individual identifies as 
@@ -25,7 +25,7 @@ The following tables provide acceptable values for option properties.
 
 <small>You may use any of the HL7 Ethnicity codes listed on <a href="https://terminology.hl7.org/6.1.0/CodeSystem-v3-Race.html">Hl7 Coding: Race</a></small>
 
-| Value | Description
+| Code | Race
 | -- | --
 | 1002-5 | American Indian or Alaska Native 
 | 2028-9 | Asian 
@@ -39,7 +39,7 @@ The following tables provide acceptable values for option properties.
 
 <small>You may use any of the HL7 Ethnicity codes listed on <a href="http://terminology.hl7.org/CodeSystem/v3-Ethnicity">Hl7 Coding: Ethnicity</a></small>
 
-| Value | Description
+| Code | Ethnicity
 | -- | --
 | 2137-8 | Spaniard 
 | 2148-5 | Mexican
@@ -52,7 +52,7 @@ The following tables provide acceptable values for option properties.
 
 <small>You may use any of the HL7 Language codes listed on <a href="https://www.hl7.org/fhir/valueset-languages.html">Hl7 Coding: Languages</a></small>
 
-| Value | Description
+| Code | Language
 | -- | --
 | en | English 
 | en-US | US English 
@@ -64,7 +64,9 @@ The following tables provide acceptable values for option properties.
 
 ### 📊 Gender  
 
-| Id | Value | Description  
+<small>Listing of accepted options for Gender.</small>
+
+| Id | Code | Gender
 | -- | -- | --
 | 0 | U | Unspecified 
 | 1 | M | Male
@@ -82,7 +84,7 @@ The following tables provide acceptable values for option properties.
 
 <small>Items in this list are based on the HL7 standard here: <a href=http://terminology.hl7.org/CodeSystem/v3-MaritalStatus>HL7 Coding: Marital Status</a></small>
 
-| Id | Value | Description 
+| Id | Code | Marital Status
 | -- | -- | --
 | 0 | A | Annulled 
 | 1 | D | Divorced 
@@ -106,7 +108,9 @@ The following tables provide acceptable values for option properties.
 
 ### 📊 Evaluation Types
 
-| Id | Value | Exam Description | Reader
+<small>Types of evaluations (exams) IRIS performs. You can only use evaluation types that you have subscribed to.</small>
+
+| Id | Code | Exam Description | Reader
 | -- | -- | -- | --
 | 1 | DR | Diabetic Retinopathy | Human
 | 2 | Glaucoma | Glaucoma | Human
@@ -122,7 +126,7 @@ The following tables provide acceptable values for option properties.
 
 ### 📊 ImageContext
 
-| Id | Value | Description 
+| Id | Code | Description 
 | -- | -- | --
 | 0 | Primary |  (Default) Primary image for eye for performing diagnosis
 | 1 | SecondaryViewField | Alternate views of eye
@@ -134,7 +138,7 @@ The following tables provide acceptable values for option properties.
 
 ### 📊 Laterality
 
-| Value | Description
+| Code | Description
 | -- | --  
 | OD | Right eye
 | OS | Left eye
@@ -145,7 +149,7 @@ The following tables provide acceptable values for option properties.
 
 <small>Specifies action to take for an OrderRequest submission</small>
 
-| Value | Description
+| Code | Description
 | -- | -- 
 | NW | Create New Order
 | XO | Change Order 
