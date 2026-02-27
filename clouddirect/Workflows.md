@@ -38,8 +38,6 @@ The Image object allows you to specify both the blob storage container and filen
 
 ##### <small>Example OrderRequest fragment</small>
 
-<small>
-
 ```json
  "Camera": {           
     "LocalId": "1234",    
@@ -58,7 +56,6 @@ The Image object allows you to specify both the blob storage container and filen
   },
 ```
 
-</small>
 
 *Including the LocalId (your image identifier) allows you to track Image events as they are posted.*
 
