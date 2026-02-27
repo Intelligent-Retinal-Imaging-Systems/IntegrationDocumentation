@@ -63,6 +63,8 @@ In Azure, these are delivered as **connection strings**.
 IRIS grants access to integration tools and configuration through the **Integration Administrator** role.  
 This role is assigned by IRIS Support or by your organization’s Administrator. Anyone holding this role gains access to Cloud Direct configuration and credential management.
 
+See [Administrator Integration Page](/clouddirect/AdministratorIntegration) for details.
+
 ---
 
 ## Developers

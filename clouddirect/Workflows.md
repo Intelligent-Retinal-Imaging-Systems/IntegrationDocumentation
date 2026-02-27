@@ -34,6 +34,8 @@ When building the OrderRequest object, you include the Image array node which un
 
 The Image object allows you to specify both the blob storage container and filename.  In most cases, a single container is sufficient however you may use multiple containers if you gain convenience from that.  The primary concern is that the filenames are always unique within the container itself.
 
+![alt text](/assets/important.png) Images that are identified in the OrderRequest object **must** be present in the specified location before the order is submitted.
+
 ##### <small>Example OrderRequest fragment</small>
 
 <small>
