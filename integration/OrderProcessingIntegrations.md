@@ -49,12 +49,12 @@ Before moving on to the different integration options, it is helpful to understa
   - See [Cloud EMR Providers](/integration/IRISEMRCloudProviders) if you are using a Cloud EMR/EHR service.
   - See [Basic Integrations](/integration/BasicIntegrations) page
 - Primary Care (large), IDN, FQHC see [EMR Integrations](/integration/EMRIntegrations) page
-- Home Health Care see [Cloud Direct Integrations](/integration/CloudDirect) page
+- Home Health Care see [Cloud Direct Integrations](/clouddirect/CloudDirect) page
 - Retail / Kiosk 
-  - See [Cloud Direct Integrations](/integration/CloudDirect) for transactional submissions and results
+  - See [Cloud Direct Integrations](/clouddirect/CloudDirect) for transactional submissions and results
   - See [Direct Messaging](/integration/DirectMessaging) for PCP notifications
 - Payers 
-  - See [Cloud Direct Integrations](/integration/CloudDirect) for options submitting patients/orders
+  - See [Cloud Direct Integrations](/clouddirect/CloudDirect) for options submitting patients/orders
   - See [Basic Integrations](/integration/BasicIntegrations) for batch results
   - See [Direct Messaging](/integration/DirectMessaging) for PCP notifications
 
@@ -63,8 +63,8 @@ Before moving on to the different integration options, it is helpful to understa
 - For basic integrations revolving around file drops, SFTP or options that supplement manual workflows, navigate to the [Basic Integrations](/integration/BasicIntegrations) page
 - If you are using a mainstream EMR/EHR (HL7 integrations) navigate to the [EMR Integrations](/integration/EMRIntegrations) page
 - If you are using a Cloud based EMR/EHR Provider (Athena, OCHIN,etc...) navigate to the [SAAS (Cloud) EMR Integrations](/integration/IRISEMRCloudProviders) page
-- If you are considering developing software, using batch oriented operations from your platform, using tools from a cloud based platform such as Salesforce, or any other custom type integration navigate to the [Cloud Direct Integrations](/integration/CloudDirect) page
+- If you are considering developing software, using batch oriented operations from your platform, using tools from a cloud based platform such as Salesforce, or any other custom type integration navigate to the [Cloud Direct Integrations](/clouddirect/CloudDirect) page
 
 ### Is there a public API for IRIS?
 
-In short, No.  IRIS does however, provide other publicly accessible integration options found on the [Cloud Direct Integrations](/integration/CloudDirect) page that provide a more robust experience to conventional Rest APIs. Rest APIs combine the functions of transport, authentication, authorization and execution into a single step.  While this is convenient in a world where everything works perfectly, it exposes the caller to vulnerabilities across that entire spectrum.  By isolating the delivery of requests (transport, authentication and authorization) to the Cloud Provider, the experience from the callers perspective is consistent and reliable.
+In short, No.  IRIS does however, provide other publicly accessible integration options found on the [Cloud Direct Integrations](/clouddirect/CloudDirect) page that provide a more robust experience to conventional Rest APIs. Rest APIs combine the functions of transport, authentication, authorization and execution into a single step.  While this is convenient in a world where everything works perfectly, it exposes the caller to vulnerabilities across that entire spectrum.  By isolating the delivery of requests (transport, authentication and authorization) to the Cloud Provider, the experience from the callers perspective is consistent and reliable.
