@@ -21,6 +21,20 @@ All communication occurs using each cloud vendor’s APIs, SDKs, or libraries. F
 
 ---
 
+## Cloud direct services
+
+The following services are available with cloud direct integrations:
+1. Orders
+    a. Submissions
+    b. Updates
+    c. Cancellations
+2. Order event notifications
+3. Grading Submissions (test environment only)
+4. Report/Results receipt
+5. Raw Image repository
+
+---
+
 ## Cloud Resources
 
 While terminology differs between cloud providers, IRIS uses two primary resource types:
