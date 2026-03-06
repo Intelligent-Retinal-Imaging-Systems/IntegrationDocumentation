@@ -1,7 +1,7 @@
 ---
 title: Grading Submission
 parent: Examples
-nav_order: 4
+nav_order: 6
 ---
 
 ## Submitting test gradings via Service Bus Examples

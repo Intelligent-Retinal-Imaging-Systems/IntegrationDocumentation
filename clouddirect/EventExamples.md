@@ -1,7 +1,7 @@
 ---
 title: Order Processing Events
 parent: Examples
-nav_order: 3
+nav_order: 5
 ---
 
 # Service Bus Event Examples

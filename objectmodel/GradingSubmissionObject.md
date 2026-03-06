@@ -54,13 +54,13 @@ Use this array to add findings for the eye.
 
 Add one or more Findings (condition/result combination) to be set for the eye.  
 
-> For in depth details, see the [Findings](/Results/Findings) page within the Results section of this guide.
+> For in depth details, see the [Findings](integration/Results/Findings) page within the Results section of this guide.
 
 <a id="finding"></a>
 ##### ![alt text](/assets/structure.ico) Finding (Object)
 Use this structure to submit an individual finding for an eye within the grading submission.  
 
-As described in the [Findings](/Results/Findings) page, some finding types are qualified and other are not.  Allowable combinations are specific to the evaluation type the order is submitted with.  
+As described in the [Findings](/integration/Results/Findings) page, some finding types are qualified and other are not.  Allowable combinations are specific to the evaluation type the order is submitted with.  
 The grading submission schema (see :[Grading Submission Example](/clouddirect/GradingSubmissionExample)) can be used to provide guidance on allowable pairing.
 
 Use the Admin applications Care Plan editor to see which evaluation types are available for your orders and the findings allowed on each. 
