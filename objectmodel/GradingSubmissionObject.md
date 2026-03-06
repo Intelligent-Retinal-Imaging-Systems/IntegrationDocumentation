@@ -10,6 +10,8 @@ nav_order: 7
 
 The GradingSubmission object model provides all the properties necessary to post a grading to an order in your test environment. 
 
+> Grading submissions will be ignored in certain cases such as when an order is closed or when there are no images yet linked to it. Because this feature is only available for test environments, there are currently no events posted on grading failures.  Use the Order Manager application for debugging individual order issues.
+
 ##### ![alt text](/assets/properties.ico) Root properties
 
 | Property  | type  |  Description  | Options
