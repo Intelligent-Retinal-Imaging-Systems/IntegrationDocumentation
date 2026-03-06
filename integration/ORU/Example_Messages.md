@@ -6,8 +6,8 @@ parent: ORU (ORU-R01)
 ## Example ORU Messages
 
 ### Example A
-```sql
 
+```autoit
 MSH|^\~\&|IRIS|IRIS|Vendor|Vendor|20191220174508||ORU^R01|191220174508|T|2.3 
 PID||Test2106462|Test2106462||TestLN^TestFN||19630130|M||||||||||293907374|
 PV1|1|O|WRSIM||||FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI|FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI|||||||||FakeNPInum^DocLastName^ROBERT^^^MD^MD^^^^^^NPI||293907374|||||||||||||||||||||||||20191220054252|20191220054252 
@@ -87,7 +87,7 @@ OBX|34|RP|LINK^^PDFLINK|34|https://api.retinalscreenings.com/api/PatientOrders/G
 
 ### Example C
 
-```hl7
+```sql
 MSH|^\~\&|IRIS|IRIS|Vendor|Vendor|20200103185623||ORU^R01|200103185623|T|2.3 
 PID||15852|15852||Tester^Patient1||19990312|M|||||||||||
 PV1|1|O|Iris Test Client||||aalderman@retinalscreenings.com^Alderman^Allan^^^PhD^PhD^^^^^^NPI|aalderman@reti nalscreenings.com^Alderman^Allan^^^PhD^PhD^^^^^^NPI|||||||||aalderman@retinalscreenings.co m^Alderman^Allan^^^PhD^PhD^^^^^^NPI||Encounter|||||||||||||||||||||||||20191218044543|20191218044543 
