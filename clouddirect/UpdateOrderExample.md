@@ -5,7 +5,7 @@ nav_order: 2
 ---
 
 
-#### ![alt text](../assets/example.ico) Update Order Example
+#### ![alt text](/assets/example.ico) Update Order Example
 <small>JSON encoded **OrderRequest** Object</small>
 
 > Updating an order uses the same OrderRequest object used on submission with a differing OrderControlCode (XO). 

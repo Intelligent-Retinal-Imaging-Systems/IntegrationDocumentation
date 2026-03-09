@@ -4,7 +4,7 @@ parent: Examples
 nav_order: 3
 ---
 
-#### ![alt text](../assets/example.ico) Cancel Order Example
+#### ![alt text](/assets/example.ico) Cancel Order Example
 <small>JSON encoded **OrderRequest** Object</small>
 
 > Cancelling an order uses the same OrderRequest object used on submission with a different OrderControlCode (CA). 
