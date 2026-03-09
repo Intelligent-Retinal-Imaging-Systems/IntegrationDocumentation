@@ -6,9 +6,11 @@ nav_order: 5
 
 # Service Bus Event Examples
 
-The following is a JSON encoded event confirming creation of an order resulting from a recent submission
+#### ![alt text](../assets/example.ico) Example 1
 
-```javascript
+Order Created 
+
+```json
 {
     "TransactionId": "CCB9F08D-29AA-446F-96F0-3018B20803E8",
     "Timestamp": "2022-01-02T17:42:18.6936779+00:00",
@@ -21,10 +23,14 @@ The following is a JSON encoded event confirming creation of an order resulting 
     "Version": "2.3.1"
 }
 ```
- 
-This example shows the receipt and application of an image to an order
 
-```javascript 
+---
+
+#### ![alt text](../assets/example.ico) Example 2
+
+Image Added
+
+```json 
 {
     "TransactionId": "DB816B37-07EC-43D0-9848-70BEC36F4024",
     "Timestamp": "2022-01-02T17:42:18.6936779+00:00",

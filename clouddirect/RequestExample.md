@@ -4,8 +4,8 @@ parent: Examples
 nav_order: 1
 ---
 
-# Sample New Order OrderRequest Message
-##### JSON encoded OrderRequest.
+#### ![alt text](../assets/example.ico) New Order Example
+<small>JSON encoded **OrderRequest** Object</small>
 
 
 > ✨ <small>By including the schema reference (as shown in the example below) you can leverage tools such as Visual Studio Code to expose issues in your submission object.  The schema also provides detailed descriptions for each field including available options for enumerations.</small>

@@ -4,8 +4,9 @@ parent: Examples
 nav_order: 2
 ---
 
-# Sample Update OrderRequest Message
-##### JSON encoded OrderRequest.
+
+#### ![alt text](../assets/example.ico) Update Order Example
+<small>JSON encoded **OrderRequest** Object</small>
 
 > Updating an order uses the same OrderRequest object used on submission with a differing OrderControlCode (XO). 
 

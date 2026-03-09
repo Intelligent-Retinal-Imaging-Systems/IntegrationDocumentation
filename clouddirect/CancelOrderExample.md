@@ -4,8 +4,8 @@ parent: Examples
 nav_order: 3
 ---
 
-# Sample Cancel OrderRequest Message
-##### JSON encoded OrderRequest.
+#### ![alt text](../assets/example.ico) Cancel Order Example
+<small>JSON encoded **OrderRequest** Object</small>
 
 > Cancelling an order uses the same OrderRequest object used on submission with a different OrderControlCode (CA). 
 
