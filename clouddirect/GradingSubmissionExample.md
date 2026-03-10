@@ -9,7 +9,7 @@ nav_order: 6
 > ✨ <small>By including the schema reference (as shown in the example below) you can leverage tools such as Visual Studio Code to expose issues in your submission object.  The schema also provides detailed descriptions for each field including available options for enumerations and exposes invalid finding/result combinations.</small>
 
 
-#### ![alt text](/assets/example.ico) Example 1
+### ![alt text](/assets/example.ico) Example 1
 
 
 * Evaluation: **DR+AMD**
@@ -73,7 +73,7 @@ nav_order: 6
 ```
 ---
 
-#### ![alt text](/assets/example.ico) Example 2
+### ![alt text](/assets/example.ico) Example 2
   
 * Evaluation: **DR**
 * Findings:  **Normal** Left, **Mild DR**, **Suspected Glaucoma** Right
@@ -122,7 +122,7 @@ nav_order: 6
 ```
 ---
 
-#### ![alt text](/assets/example.ico) Example 3
+### ![alt text](/assets/example.ico) Example 3
 
 * Evaluation: **DR**
 * Findings:  Ungradable Left, **Normal** Right
@@ -157,7 +157,7 @@ nav_order: 6
 ```
 ---
 
-#### ![alt text](/assets/example.ico) Example 4
+### ![alt text](/assets/example.ico) Example 4
   
 * Evaluation: **DR** (Single Eye)
 * Findings: **Normal**

@@ -4,7 +4,7 @@ parent: Examples
 nav_order: 1
 ---
 
-#### ![alt text](/assets/example.ico) New Order Example
+### ![alt text](/assets/example.ico) New Order Example
 <small>JSON encoded **OrderRequest** Object</small>
 
 

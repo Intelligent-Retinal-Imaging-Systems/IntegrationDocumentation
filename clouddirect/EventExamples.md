@@ -6,7 +6,7 @@ nav_order: 5
 
 # Service Bus Event Examples
 
-#### ![alt text](/assets/example.ico) Example 1
+### ![alt text](/assets/example.ico) Example 1
 
 Order Created 
 
@@ -26,7 +26,7 @@ Order Created
 
 ---
 
-#### ![alt text](/assets/example.ico) Example 2
+### ![alt text](/assets/example.ico) Example 2
 
 Image Added
 
