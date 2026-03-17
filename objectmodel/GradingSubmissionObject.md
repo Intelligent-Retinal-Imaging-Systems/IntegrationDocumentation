@@ -42,7 +42,7 @@ The **OS object** contains all grading selections specific to the left eye
 
 | Property | Type | Description 
 | -- | -- | -- 
-| Findings | array of [Finding](#finding) | Grader findings 
+| Findings | [Finding[]](#finding) | Grader findings 
 | Gradable | bool | If true, the eye was gradable, otherwise not.  If true, Findings array must be empty or omitted
 | UngradableReasons | array of string | Reasons why the eye was ungradable. This is an array for backward compatibility reasons and there should only ever be one item in this array and ONLY if the Gradable property is set to false
 | MissingEyeReason | string | If the eye was omitted from the study, this can be used to specify a reason that excludes the eye from the study. When not supplied the eye could be marked as ungradable due to missing images

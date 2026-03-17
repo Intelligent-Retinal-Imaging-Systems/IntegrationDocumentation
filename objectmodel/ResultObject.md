@@ -17,12 +17,12 @@ nav_order: 2
 | Site | [Site](#site) | Contains site information order was assigned to  
 | ResultsDocument | [ResultsDocument](#resultsdoc) 
 | ImageDetails | [ImageDetails](#imagedetails)  | Details of images submitted to the order
-| Images | Array of [Result Image](#images) | Metadata for each image submitted 
+| Images | [Result Image[]](#images) | Metadata for each image submitted 
 | Order | [Order](#order)  | Details of order most of which is echoed from submission
 | Patient | [Patient](#patient)  | Details of patient echoed from submission 
 | OrderingProvider | [Provider](/objectmodel/CommonObjects#requestprovider) | Details of provider who ordered the exam which is echoed from the Submission 
 | Gradings | [Grading Results](#gradings)  | Details of grading operation on order 
-| CameraOperator [Capturing User](#cameraoperator)  | Details of the user that captured images 
+| CameraOperator | [Capturing User](#cameraoperator)  | Details of the user that captured images 
 | HealthPlan | [HealthPlan association](#healthplan)  | Details of the Health Plan associated with the order
 | Cpt | [CPT Code](/objectmodel/CommonObjects#cpt)  | Procedure Code and Description
 
@@ -109,10 +109,10 @@ Returns the details of the patient as they were submitted on the order.
 | -- | -- | -- | --
 | PatientId | int | Id as set by IRIS on patient creation
 | LocalId | string | Id of patient as specified by the submitting organization. Typically this will the the Patient MRN. 
-| Name | [Name](/objectmodel/CommonObjects#name) structure | Patient first and last name
+| Name | [Name](/objectmodel/CommonObjects#name) | Patient first and last name
 | Dob | Date | Patient date of birth 
 | Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/objectmodel/OptionEnums#-gender) options
-| Genders | Array of [PersonGender](/objectmodel/CommonObjects#persongender) | One or more gender specifications 
+| Genders | [PersonGender[]](/objectmodel/CommonObjects#persongender) | One or more gender specifications 
 | Phone | string | Patients phone number
 
 <a id="images"></a>
@@ -166,7 +166,7 @@ Contains raw details of grading.  Findings are found as the Laterality code for 
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| Notes | array of [Note](#note) | Notes added by the Grader 
+| Notes | [Note[]](#note) | Notes added by the Grader 
 | GradedTime | datetimeoffset | When grading was completed 
 | QueuedTime | datetimeoffset | When order was queued to grading 
 | CarePlanName | string | Name of Care Plan determined from findings 
@@ -176,7 +176,7 @@ Contains raw details of grading.  Findings are found as the Laterality code for 
 | Emergent | bool | If true, the grader has noted life threatening pathology that requires immediate ER care | true/false
 | OD | [EyeSideGrading](#eyegrading) | Details of grading for right eye 
 | OS | [EyeSideGrading](#eyegrading) | Details of grading for left eye 
-| DxCodes | array of string | ICD-10 Codes matched to findings 
+| DxCodes | string[] | ICD-10 Codes matched to findings 
 | Provider | [Provider](/objectmodel/CommonObjects#requestprovider) – Details of the Provider who performed the grading 
 
 
@@ -191,7 +191,7 @@ Details of the technician who captured the images for the order.
 | -- | -- | -- 
 | UserName | string | UserName as known by IRIS system
 | Name | [Name](/objectmodel/CommonObjects#name) | Name of performing operator
-| Notes | Array of [Note](#note) | notes added by the performing operator
+| Notes | [Note[]](#note) | notes added by the performing operator
 
 <a id="healthplan"></a>
 ### ![alt text](/assets/structure.ico) HealthPlan (Object)
@@ -231,8 +231,8 @@ Structure containing grading details for one eye side.  The object is named by t
 | -- | -- | -- | --
 | Gradable | bool | If false the eye side was not able to be graded with the images provided | true/false
 | MissingEyeReason | If the order was submitted specifying a reason for not having images for an eye, this is that reason. 
-| UngradableReasons | array of string | Grader specified reason that eye could not be graded 
-| Findings | Array of [Finding](#finding) | Zero or more findings for the eye
+| UngradableReasons | string[] | Grader specified reason that eye could not be graded 
+| Findings | [Finding[]](#finding) | Zero or more findings for the eye
 
 ### ![alt text](/assets/array.png) Findings (Array)
 

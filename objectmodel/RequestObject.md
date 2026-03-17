@@ -62,7 +62,7 @@ When an order is to be assigned to a camera or Image directives are included wit
 | Manufacturer | string | Name of camera manufacturer. Consult with IRIS for exact values you should use.
 | Model | string | Model name of camera. Consult with IRIS for exact values you should use.
 | SoftwareVersion | string | Version of camera software. Consult with IRIS for exact values you should use.
-| Images | Array of [Image](#image) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images.
+| Images | [Image[]](#image) | Provide image directives. This field is used when the workflow is started with the simultaneous receipt of order and images.
 
 ## ![alt text](/assets/array.png) Images (Array)
 
@@ -114,7 +114,7 @@ Providing the starting ICD-10 diagnosis establishes the ICD-10 code class for re
 | <span style='color:rgb(188, 13, 16);'>Name</span> | [Name](/objectmodel/CommonObjects.md#name) | Patient first and last name
 | <span style='color:rgb(188, 13, 16);'>Dob</span> | Date | Patient date of birth 
 | Gender | options | (Obsolete: Use Genders) Patient Gender abbreviation | [Gender](/objectmodel/OptionEnums#-gender) options
-| <span style='color:rgb(188, 13, 16);'>Genders</span> | Array of [PersonGender](/objectmodel/CommonObjects#persongender) | Patient Gender assignment(s) 
+| <span style='color:rgb(188, 13, 16);'>Genders</span> | [PersonGender[]](/objectmodel/CommonObjects#persongender) | Patient Gender assignment(s) 
 | Race | options | Optional race identifier | [Race](/objectmodel/OptionEnums#-race) options
 | Ethnicity | options | Optional ethnicity identifier | [Ethnicity](/objectmodel/OptionEnums#-ethnicity) options
 | PrimaryLanguage | options | Optional language identifier | [Language](/objectmodel/OptionEnums#-language) options
@@ -141,7 +141,7 @@ The IRIS system allows only one open order per patient/evaluation type combinati
 
 | Property | Type | Description | Options
 | -- | -- | -- | --
-| <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | array of [Evaluation Type](/objectmodel/OptionEnums#-evaluation-types) | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the IRIS system can support multiple thus usage of an array for this field. | [Evaluation Types List](/objectmodel/OptionEnums#-evaluation-types)
+| <span style='color:rgb(188, 13, 16);'>EvaluationTypes</span> | [Evaluation[]](/objectmodel/OptionEnums#-evaluation-types) | Specifies which evaluations to perform. Typically, only one evaluation is performed in an order but the IRIS system can support multiple thus usage of an array for this field. | [Evaluation Types List](/objectmodel/OptionEnums#-evaluation-types)
 | ScheduledTime | datetime | When orders are scheduled for a specific time, this should be that time local to the exam location. This is typically used for workflows where orders are pushed to Cameras as this determines which items show in a Camera worklist
 | <span style='color:rgb(188, 13, 16);'>LocalId</span> | string | The Id of the order as specified by the submitting organization. This id is required for subsequent Change and Cancel operations as well as event notifications. 
 | DepartmentId | string | Optional identifier for the submitting department. Some EMR integrations will require this. 
