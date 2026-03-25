@@ -1,6 +1,7 @@
 ---
 title: Example Messages 
 parent: ORU (ORU-R01)
+nav_order: 2
 ---
 
 ## Example ORU Messages
