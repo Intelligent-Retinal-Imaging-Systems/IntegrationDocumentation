@@ -165,19 +165,22 @@ The IRIS system is designed with the flexibility to explicitly define observatio
 * Customize observation identifiers and values for gradeability scenarios
 * Override coding system
 
-Building a custom observation set is a complex and tedious task as it requires you to map every possibility you wish to accommodate.  Software is currently in development to support building your own custom observation set.  To use the functionality today you must create a spreadsheet that includes the entire matrix of Observation identifier, values, and coding flags based on the exam types you will be performing.  
+Building a custom observation set is a complex and tedious task as it requires you to map every possibility you wish to accommodate.  Software is currently in development to support building your own custom observation set.  To use the functionality today you must provide IRIS Support with a spreadsheet that includes the entire matrix of Observation identifier, values, and coding flags based on the exam types you will be performing.  
+
+This customization is combined with new mapping functionality for the entire ORU message.  The message is broken into two sections: Contextual and Observation results. This allows HL7 message of any version.  
 
 ##### ![alt text](/assets/hl7sample.png) Custom Discrete Results OBX Series Example
 
-The follow example takes advantage of custom observation identifiers, individual suspected findings by severity, coding system and alternate coding flags
+The follow example takes advantage of custom observation identifiers, individual suspected findings by severity, coding system and alternate coding flags from higher HL7 versions.
 
 ```
 OBX|1|ST|EXAMSUMMARY^^IRIS31|1|Emergent Findings|||AA|||F 
 OBX|2|ST|DIABETICRETINOPATHY_OD^^IRIS31|2|None||||||F 
-OBX|3|ST|SUSPECTEDCONDITION_REFERRABLE_OD^^IRIS31|3|Suspected Glaucoma|||A|||F 
-OBX|4|ST|SUSPECTEDCONDITION_REFERRABLE_OD^^IRIS31|4|Suspected Cataract|||A|||F 
-OBX|5|ST|SUSPECTEDCONDITION_EMERGENT_OD^^IRIS31|5|Suspected Bilateral Papilledema|||AA|||F 
-OBX|6|ST|FUNDUSIMAGEQUALITY_OD^^IRIS31|6|Sufficient|||N|||F 
-OBX|11|ST|FUNDUSIMAGEQUALITY_OS^^IRIS31|11|Insufficient|||L|||F  
+OBX|3|ST|AMD_OD^^IRIS31|4|No Observable|||ND|||F 
+OBX|4|ST|SUSPECTEDCONDITION_REFERRABLE_OD^^IRIS31|4|Suspected Glaucoma|||A|||F 
+OBX|5|ST|SUSPECTEDCONDITION_REFERRABLE_OD^^IRIS31|5|Suspected Cataract|||A|||F 
+OBX|6|ST|SUSPECTEDCONDITION_EMERGENT_OD^^IRIS31|6|Suspected Bilateral Papilledema|||AA|||F 
+OBX|7|ST|FUNDUSIMAGEQUALITY_OD^^IRIS31|7|Sufficient|||N|||F 
+OBX|8|ST|FUNDUSIMAGEQUALITY_OS^^IRIS31|8|Insufficient|||L|||F  
 ```
 

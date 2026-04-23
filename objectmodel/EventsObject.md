@@ -42,6 +42,21 @@ Events with the ResultObjectType of OrderCreationReceipt contain details of an  
 | PatientLocalId | string | Id of the patient as specified by you on submission
 
 
+### OrderCancelled
+
+Events with the ResultObjectType of OrderCancelled contain details of an order that was cancelled. 
+
+*Ignore standard properties: Success and ErrorMessage*
+
+##### ![alt text](/assets/properties.ico) Additional Properties
+
+| Property | Data type | Description
+| -- | -- | --
+| IrisOrderId | int | Id of order as created and known by IRIS
+| OrderLocalId | string | Id of order as specified by you on submission
+| PatientLocalId | string | Id of the patient as specified by you on submission
+
+
 ### ![alt text](/assets/structure.ico) ImageReceipt
 
 Events with the ResultObjectType of ImageReceipt contain details of an image submission operation.  
