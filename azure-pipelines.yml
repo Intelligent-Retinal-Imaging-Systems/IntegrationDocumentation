@@ -3,23 +3,6 @@
 # Copies every file from an Azure Blob Storage container into _data/ in this
 # GitHub repo, validates any JSON, and pushes a commit to the target branch
 # only if something changed.
-#
-# One-time setup:
-#   1. Azure DevOps > Pipelines > New pipeline > GitHub > pick this repo >
-#      "Existing Azure Pipelines YAML file" > select this file.
-#   2. Project settings > Service connections > New > Azure Resource Manager
-#      (workload identity federation). Grant its identity the
-#      "Storage Blob Data Reader" role on the storage account or container.
-#   3. Create an SSH key pair (ssh-keygen -t ed25519 -f azure_pipeline_secret_key -N "").
-#      - Private key: Pipelines > Library > Secure files > upload it with the
-#        name azure_pipeline_secret_key. Open it and enable "Authorize for use
-#        in all pipelines" (or approve it on the first run).
-#      - Public key (.pub): GitHub repo > Settings > Deploy keys > Add deploy
-#        key > tick "Allow write access".
-#   4. Fill in the values under `variables:` below.
-#
-# Note: if you also defined a schedule in the pipeline's settings UI, the UI
-# schedule overrides the YAML schedule below. Delete the UI one.
 
 trigger: none   # don't run on pushes (the pipeline pushes its own commits)
 pr: none
