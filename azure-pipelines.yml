@@ -1,19 +1,92 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# azure-pipelines.yml
+#
+# Copies every file from an Azure Blob Storage container into _data/ in this
+# GitHub repo, validates any JSON, and pushes a commit to the target branch
+# only if something changed.
+#
+# One-time setup:
+#   1. Azure DevOps > Pipelines > New pipeline > GitHub > pick this repo >
+#      "Existing Azure Pipelines YAML file" > select this file.
+#   2. Project settings > Service connections > New > Azure Resource Manager
+#      (workload identity federation). Grant its identity the
+#      "Storage Blob Data Reader" role on the storage account or container.
+#   3. Create an SSH key pair (ssh-keygen -t ed25519 -f azure_pipeline_secret_key -N "").
+#      - Private key: Pipelines > Library > Secure files > upload it with the
+#        name azure_pipeline_secret_key. Open it and enable "Authorize for use
+#        in all pipelines" (or approve it on the first run).
+#      - Public key (.pub): GitHub repo > Settings > Deploy keys > Add deploy
+#        key > tick "Allow write access".
+#   4. Fill in the values under `variables:` below.
+#
+# Note: if you also defined a schedule in the pipeline's settings UI, the UI
+# schedule overrides the YAML schedule below. Delete the UI one.
 
-trigger:
-- main
+trigger: none   # don't run on pushes (the pipeline pushes its own commits)
+pr: none
+
+schedules:
+  - cron: '17 11 * * 1-5'   # UTC. Weekdays 11:17 UTC. Pick an off-the-hour minute.
+    displayName: Weekday refresh
+    branches:
+      include:
+        - main
+    always: true            # run even if the repo has no new commits
+
+variables:
+  azureServiceConnection: 'MCA-IRIS Production Services (c9044ba8-c0c8-4d8a-838e-83ddcc1a86a3)'
+  storageAccount: 'irispublicdata'
+  container: 'docs'
+  targetFolder: '_data'
+  targetBranch: 'main'
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - checkout: self
+    clean: true
+    persistCredentials: false
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - task: AzureCLI@2
+    displayName: Download blobs into $(targetFolder)
+    inputs:
+      azureSubscription: ${{ variables.azureServiceConnection }}
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        set -euo pipefail
+        mkdir -p "$(targetFolder)"
+        az storage blob download-batch \
+          --account-name "$(storageAccount)" \
+          --source "$(container)" \
+          --destination "$(targetFolder)" \
+          --auth-mode login
+
+  - bash: |
+      set -euo pipefail
+      shopt -s nullglob globstar
+      for f in $(targetFolder)/**/*.json; do
+        python3 -m json.tool "$f" > /dev/null || { echo "Invalid JSON: $f"; exit 1; }
+        echo "OK: $f"
+      done
+    displayName: Validate JSON files
+
+  - task: InstallSSHKey@0
+    inputs:
+      sshPublicKey: ''
+      sshKeySecureFile: 'azure_pipeline_secret_key'
+      knownHostsEntry: |
+        github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+
+  - bash: |
+      set -euo pipefail
+      git config user.name "Azure Pipelines"
+      git config user.email "ci@retinalscreenings.com"
+      git add -A "$(targetFolder)"
+      if git diff --cached --quiet; then
+        echo "No changes to commit."
+        exit 0
+      fi
+      git commit -m "Update table docs from blob storage"
+      git push "git@github.com:$(Build.Repository.Name).git" "HEAD:refs/heads/$(targetBranch)"
+    displayName: Commit and push if changed
