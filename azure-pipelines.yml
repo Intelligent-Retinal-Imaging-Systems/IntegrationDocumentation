@@ -7,6 +7,14 @@
 trigger: none   # don't run on pushes (the pipeline pushes its own commits)
 pr: none
 
+schedules:
+  - cron: '17 11 * * 1'   # UTC. Weekdays 11:17 UTC. Pick an off-the-hour minute.
+    displayName: Weekly refresh
+    branches:
+      include:
+        - main
+    always: true            # run even if the repo has no new commits
+
 variables:
   azureServiceConnection: 'MCA-IRIS Production Services (c9044ba8-c0c8-4d8a-838e-83ddcc1a86a3)'
   storageAccount: 'irispublicdata'
