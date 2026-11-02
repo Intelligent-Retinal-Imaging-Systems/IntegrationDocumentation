@@ -1,0 +1,14 @@
+[{"Id":1,"Name":"DR","Description":"Evaluate for Diabetic Retinopathy","AppDisplayName":"Diabetic Retinopathy"}
+,{"Id":2,"Name":"Glaucoma","Description":"Evaluate for glaucoma","AppDisplayName":"Glaucoma"}
+,{"Id":3,"Name":"HIV","Description":"Evaluate for HIV Retinopathy","AppDisplayName":"HIV Retinopathy"}
+,{"Id":4,"Name":"DRME","Description":"Evaluate for Diabetic Retinopathy combined with Macular Edema","AppDisplayName":"DR w/ ME"}
+,{"Id":5,"Name":"VRX","Description":"Zeiss VRX Order","AppDisplayName":"Zeiss VRX Order"}
+,{"Id":6,"Name":"DR_REFNOREF","Description":"Evaluate for Diabetic Retinopathy with simple refer-no refer results","AppDisplayName":"DR_REFNOREF"}
+,{"Id":7,"Name":"AMD","Description":"AMD Only","AppDisplayName":"AMD Only"}
+,{"Id":8,"Name":"DR_AMD","Description":"DR with AMD Diagnosis","AppDisplayName":"DR w/ AMD"}
+,{"Id":9,"Name":"SP","Description":"Evaluate for suspected pathology","AppDisplayName":"Suspected Pathology"}
+,{"Id":12,"Name":"DR_AREDS_GLAUC","Description":"DR, AMD on the AREDS scale and suspected Glaucoma","AppDisplayName":"DR w/ AREDS"}
+,{"Id":13,"Name":"AI_Eyenuk_O1","Description":"Evaluation type covering findings in Eyenuk AI Model for operating model 1","AppDisplayName":"AI_Eyenuk: DR + Glaucoma + AMD Macula Centered"}
+,{"Id":14,"Name":"BioAge","Description":"BioAge","AppDisplayName":"BioAge"}
+,{"Id":33,"Name":"SCR","Description":"Evaluate for Sickle Cell Retinopathy","AppDisplayName":"Sickle Cell Retinopathy"}
+]
