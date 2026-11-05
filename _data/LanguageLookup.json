@@ -1,0 +1,57 @@
+[{"Id":1,"Language":"Arabic","LanguageCode":"ar"}
+,{"Id":2,"Language":"Bengali","LanguageCode":"bn"}
+,{"Id":3,"Language":"Czech","LanguageCode":"cs"}
+,{"Id":4,"Language":"Danish","LanguageCode":"da"}
+,{"Id":5,"Language":"German","LanguageCode":"de"}
+,{"Id":6,"Language":"German (Austria)","LanguageCode":"de-AT"}
+,{"Id":7,"Language":"German (Switzerland)","LanguageCode":"de-CH"}
+,{"Id":8,"Language":"German (Germany)","LanguageCode":"de-DE"}
+,{"Id":9,"Language":"Greek","LanguageCode":"el"}
+,{"Id":10,"Language":"English","LanguageCode":"en"}
+,{"Id":11,"Language":"English (Australia)","LanguageCode":"en-AU"}
+,{"Id":12,"Language":"English (Canada)","LanguageCode":"en-CA"}
+,{"Id":13,"Language":"English (Great Britain)","LanguageCode":"en-GB"}
+,{"Id":14,"Language":"English (India)","LanguageCode":"en-IN"}
+,{"Id":15,"Language":"English (New Zeland)","LanguageCode":"en-NZ"}
+,{"Id":16,"Language":"English (Singapore)","LanguageCode":"en-SG"}
+,{"Id":17,"Language":"English (United States)","LanguageCode":"en-US"}
+,{"Id":18,"Language":"Spanish","LanguageCode":"es"}
+,{"Id":19,"Language":"Spanish (Argentina)","LanguageCode":"es-AR"}
+,{"Id":20,"Language":"Spanish (Spain)","LanguageCode":"es-ES"}
+,{"Id":21,"Language":"Spanish (Uruguay)","LanguageCode":"es-UY"}
+,{"Id":22,"Language":"Finnish","LanguageCode":"fi"}
+,{"Id":23,"Language":"French","LanguageCode":"fr"}
+,{"Id":24,"Language":"French (Belgium)","LanguageCode":"fr-BE"}
+,{"Id":25,"Language":"French (Switzerland)","LanguageCode":"fr-CH"}
+,{"Id":26,"Language":"French (France)","LanguageCode":"fr-FR"}
+,{"Id":27,"Language":"Frysian","LanguageCode":"fy"}
+,{"Id":28,"Language":"Frysian (Netherlands)","LanguageCode":"fy-NL"}
+,{"Id":29,"Language":"Hindi","LanguageCode":"hi"}
+,{"Id":30,"Language":"Croatian","LanguageCode":"hr"}
+,{"Id":31,"Language":"Italian","LanguageCode":"it"}
+,{"Id":32,"Language":"Italian (Switzerland)","LanguageCode":"it-CH"}
+,{"Id":33,"Language":"Italian (Italy)","LanguageCode":"it-IT"}
+,{"Id":34,"Language":"Japanese","LanguageCode":"ja"}
+,{"Id":35,"Language":"Korean","LanguageCode":"ko"}
+,{"Id":36,"Language":"Dutch","LanguageCode":"nl"}
+,{"Id":37,"Language":"Dutch (Belgium)","LanguageCode":"nl-BE"}
+,{"Id":38,"Language":"Dutch (Netherlands)","LanguageCode":"nl-NL"}
+,{"Id":39,"Language":"Norwegian","LanguageCode":"no"}
+,{"Id":40,"Language":"Norwegian (Norway)","LanguageCode":"no-NO"}
+,{"Id":41,"Language":"Punjabi","LanguageCode":"pa"}
+,{"Id":42,"Language":"Polish","LanguageCode":"pl"}
+,{"Id":43,"Language":"Portuguese","LanguageCode":"pt"}
+,{"Id":44,"Language":"Portuguese (Brazil)","LanguageCode":"pt-BR"}
+,{"Id":45,"Language":"Russian","LanguageCode":"ru"}
+,{"Id":46,"Language":"Russian (Russia)","LanguageCode":"ru-RU"}
+,{"Id":47,"Language":"Serbian","LanguageCode":"sr"}
+,{"Id":48,"Language":"Serbian (Serbia)","LanguageCode":"sr-RS"}
+,{"Id":49,"Language":"Swedish","LanguageCode":"sv"}
+,{"Id":50,"Language":"Swedish (Sweden)","LanguageCode":"sv-SE"}
+,{"Id":51,"Language":"Telegu","LanguageCode":"te"}
+,{"Id":52,"Language":"Chinese","LanguageCode":"zh"}
+,{"Id":53,"Language":"Chinese (China)","LanguageCode":"zh-CN"}
+,{"Id":54,"Language":"Chinese (Hong Kong)","LanguageCode":"zh-HK"}
+,{"Id":55,"Language":"Chinese (Singapore)","LanguageCode":"zh-SG"}
+,{"Id":56,"Language":"Chinese (Taiwan)","LanguageCode":"zh-TW"}
+]

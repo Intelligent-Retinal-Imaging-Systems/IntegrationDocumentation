@@ -1,0 +1,42 @@
+[{"Id":1,"Ethnicity":"Spaniard","HL7Code":"2137-8"}
+,{"Id":2,"Ethnicity":"Mexican","HL7Code":"2148-5"}
+,{"Id":3,"Ethnicity":"Central American","HL7Code":"2155-0"}
+,{"Id":4,"Ethnicity":"South American","HL7Code":"2165-9"}
+,{"Id":5,"Ethnicity":"Latin American","HL7Code":"2178-2"}
+,{"Id":6,"Ethnicity":"Puerto Rican","HL7Code":"2180-8"}
+,{"Id":7,"Ethnicity":"Cuban","HL7Code":"2182-4"}
+,{"Id":8,"Ethnicity":"Dominican","HL7Code":"2184-0"}
+,{"Id":9,"Ethnicity":"Andalusian","HL7Code":"2138-6"}
+,{"Id":10,"Ethnicity":"Asturian","HL7Code":"2139-4"}
+,{"Id":11,"Ethnicity":"Castillian","HL7Code":"2140-2"}
+,{"Id":12,"Ethnicity":"Catalonian","HL7Code":"2141-0"}
+,{"Id":13,"Ethnicity":"Belearic Islander","HL7Code":"2142-8"}
+,{"Id":14,"Ethnicity":"Gallego","HL7Code":"2143-6"}
+,{"Id":15,"Ethnicity":"Valencian","HL7Code":"2144-4"}
+,{"Id":16,"Ethnicity":"Canarian","HL7Code":"2145-1"}
+,{"Id":17,"Ethnicity":"Spanish Basque","HL7Code":"2146-9"}
+,{"Id":18,"Ethnicity":"Mexican American","HL7Code":"2149-3"}
+,{"Id":19,"Ethnicity":"Mexicano","HL7Code":"2150-1"}
+,{"Id":20,"Ethnicity":"Chicano","HL7Code":"2151-9"}
+,{"Id":21,"Ethnicity":"La Raza","HL7Code":"2152-7"}
+,{"Id":22,"Ethnicity":"Mexican American Indian","HL7Code":"2153-5"}
+,{"Id":23,"Ethnicity":"Costa Rican","HL7Code":"2156-8"}
+,{"Id":24,"Ethnicity":"Guatemalan","HL7Code":"2157-6"}
+,{"Id":25,"Ethnicity":"Honduran","HL7Code":"2158-4"}
+,{"Id":26,"Ethnicity":"Nicaraguan","HL7Code":"2159-2"}
+,{"Id":27,"Ethnicity":"Panamanian","HL7Code":"2160-0"}
+,{"Id":28,"Ethnicity":"Salvadoran","HL7Code":"2161-8"}
+,{"Id":29,"Ethnicity":"Central American Indian","HL7Code":"2162-6"}
+,{"Id":30,"Ethnicity":"Canal Zone","HL7Code":"2163-4"}
+,{"Id":31,"Ethnicity":"Argentinean","HL7Code":"2166-7"}
+,{"Id":32,"Ethnicity":"Bolivian","HL7Code":"2167-5"}
+,{"Id":33,"Ethnicity":"Chilean","HL7Code":"2168-3"}
+,{"Id":34,"Ethnicity":"Colombian","HL7Code":"2169-1"}
+,{"Id":35,"Ethnicity":"Ecuadorian","HL7Code":"2170-9"}
+,{"Id":36,"Ethnicity":"Paraguayan","HL7Code":"2171-7"}
+,{"Id":37,"Ethnicity":"Peruvian","HL7Code":"2172-5"}
+,{"Id":38,"Ethnicity":"Uruguayan","HL7Code":"2173-3"}
+,{"Id":39,"Ethnicity":"Venezuelan","HL7Code":"2174-1"}
+,{"Id":40,"Ethnicity":"South American Indian","HL7Code":"2175-8"}
+,{"Id":41,"Ethnicity":"Criollo","HL7Code":"2176-6"}
+]

@@ -1,0 +1,8 @@
+[{"Id":1,"Name":"SecondaryViewField","Description":"When assigned on an image, indicates that the image should be deemphasized to the secondary display group"}
+,{"Id":2,"Name":"Unknown","Description":"Context to be determined"}
+,{"Id":3,"Name":"Component","Description":"Image that is a component of an aggregated image"}
+,{"Id":4,"Name":"Aggregate","Description":"Sum of component images"}
+,{"Id":5,"Name":"Enhancement","Description":"Enhanced copy of image"}
+,{"Id":6,"Name":"AddedLate","Description":"Image is added after the order has been graded or delieverd"}
+,{"Id":7,"Name":"Mirror","Description":"Mirror image created so a grading can still happen for a single eye order."}
+]

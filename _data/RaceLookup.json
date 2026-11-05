@@ -1,0 +1,7 @@
+[{"Id":1,"Race":"American Indian or Alaska Native","HL7Code":"1002-5"}
+,{"Id":2,"Race":"Asian","HL7Code":"2028-9"}
+,{"Id":3,"Race":"Black or African American","HL7Code":"2054-5"}
+,{"Id":4,"Race":"Native Hawaiian or Other Pacific Islander","HL7Code":"2076-8"}
+,{"Id":5,"Race":"Other Race","HL7Code":"2131-1"}
+,{"Id":6,"Race":"White","HL7Code":"2106-3"}
+]

@@ -1,0 +1,11 @@
+[{"Id":1,"GenderName":"Female","HL7GenderCode":"F"}
+,{"Id":2,"GenderName":"Male","HL7GenderCode":"M"}
+,{"Id":3,"GenderName":"Nonbinary","HL7GenderCode":"N"}
+,{"Id":4,"GenderName":"Exploring or Questioning","HL7GenderCode":"EQ"}
+,{"Id":5,"GenderName":"Not Listed","HL7GenderCode":"NL"}
+,{"Id":6,"GenderName":"Choose not to disclose","HL7GenderCode":"ND"}
+,{"Id":7,"GenderName":"Unknown","HL7GenderCode":"U"}
+,{"Id":8,"GenderName":"X","HL7GenderCode":"X"}
+,{"Id":9,"GenderName":"Transgender male","HL7GenderCode":"TM"}
+,{"Id":10,"GenderName":"Transgender female","HL7GenderCode":"TF"}
+]

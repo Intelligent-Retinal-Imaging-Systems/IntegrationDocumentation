@@ -1,0 +1,10 @@
+[{"Id":1,"MaritalStatus":"Annulled","HL7Code":"A","Description":"Marriage contract has been declared null and to not have existed"}
+,{"Id":2,"MaritalStatus":"Divorced","HL7Code":"D","Description":"Marriage contract has been declared dissolved and inactive"}
+,{"Id":3,"MaritalStatus":"Interlocutory","HL7Code":"I","Description":"Subject to an Interlocutory Decree."}
+,{"Id":4,"MaritalStatus":"Legally Separated","HL7Code":"L","Description":"Legally Separated"}
+,{"Id":5,"MaritalStatus":"Married","HL7Code":"M","Description":"A current marriage contract is active"}
+,{"Id":6,"MaritalStatus":"Polygamous","HL7Code":"P","Description":"More than 1 current spouse"}
+,{"Id":7,"MaritalStatus":"Never Married","HL7Code":"S","Description":"No marriage contract has ever been entered"}
+,{"Id":8,"MaritalStatus":"Domestic partner","HL7Code":"T","Description":"Person declares that a domestic partner relationship exists."}
+,{"Id":9,"MaritalStatus":"Widowed","HL7Code":"W","Description":"The spouse has died"}
+]
