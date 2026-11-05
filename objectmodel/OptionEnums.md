@@ -14,87 +14,75 @@ The following tables provide acceptable values for option properties.  Always us
 
 <small>Establishes whether the Gender specified is the patients **Birth** or **Identity** Gender</small>
 
-| Id | Code | Description 
-| -- | -- | --
-| 0 | Unknown |  Not set  
-| 1 | IdentityGender | Gender individual identifies as 
-| 2 | BirthGender | Gender individual was designated at birth 
+{% assign rows = site.data.GenderContextLookup | sort: "Id" %}
+
+| Id | Gender Context |
+|---|---|---|
+{% for r in rows -%}
+| {{ r.Id }} | {{ r.GenderContext }} |
+{% endfor %}
 
  
 ### 📊 Race 
 
 <small>You may use any of the HL7 Ethnicity codes listed on <a href="https://terminology.hl7.org/6.1.0/CodeSystem-v3-Race.html">Hl7 Coding: Race</a></small>
 
-| Code | Race
-| -- | --
-| 1002-5 | American Indian or Alaska Native 
-| 2028-9 | Asian 
-| 2054-5 | Black or African American 
-| 2076-8 | Native Hawaiian or Other Pacific Islander 
-| 2131-1 | Other Race 
-| 2106-3 | White 
+{% assign rows = site.data.RaceLookup | sort: "Id" %}
+
+| Id | Race | HL7 Code |
+|---|---|---|
+{% for r in rows -%}
+| {{ r.Id }} | {{ r.Race }} | {{ r.HL7Code | escape }} |
+{% endfor %}
 
 
 ### 📊 Ethnicity 
 
 <small>You may use any of the HL7 Ethnicity codes listed on <a href="http://terminology.hl7.org/CodeSystem/v3-Ethnicity">Hl7 Coding: Ethnicity</a></small>
 
-| Code | Ethnicity
-| -- | --
-| 2137-8 | Spaniard 
-| 2148-5 | Mexican
-| 2155-0 | Central American 
-| 2180-8 | Puerto Rican 
-| 2182-4 | Cuban 
-| 2149-3 | Mexican American 
+{% assign rows = site.data.EthnicityLookup | sort: "Id" %}
+
+| Id | Ethnicity | HL7 Code |
+|---|---|---|---|
+{% for r in rows -%}
+| {{ r.Id }} | {{ r.Ethnicity }} | {{ r.HL7Code | escape }} |
+{% endfor %}
 
 ### 📊 Language 
 
 <small>You may use any of the HL7 Language codes listed on <a href="https://www.hl7.org/fhir/valueset-languages.html">Hl7 Coding: Languages</a></small>
 
-| Code | Language
-| -- | --
-| en | English 
-| en-US | US English 
-| fr | French 
-| es | Spanish
-| it | Italian 
-| pt | Portuguese 
-| zh | Chinese 
+{% assign rows = site.data.LanguageLookup | sort: "Id" %}
+
+| Id | Language | Language Code |
+|---|---|---|
+{% for r in rows -%}
+| {{ r.Id }} | {{ r.Language }} | {{ r.LanguageCode | escape }} |
+{% endfor %}
 
 ### 📊 Gender  
 
 <small>Listing of accepted options for Gender.</small>
 
-| Id | Code | Gender
-| -- | -- | --
-| 0 | U | Unspecified 
-| 1 | M | Male
-| 2 | F | Female 
-| 3 | N | Non binary 
-| 4 | O | Other 
-| 5 | TM | Transgender Male 
-| 6 | TF | Transgender Female 
-| 7 | ND | Non disclosed 
-| 8 | EQ | Exploring or Questioning 
-| 9 | NL | Not listed 
-| 10| X | Not exclusively Male or Female 
+{% assign rows = site.data.GenderLookup | sort: "Id" %}
+
+| Id | Gender Name | HL7 Code |
+|---|---|---|
+{% for r in rows -%}
+| {{ r.Id }} | {{ r.GenderName }} | {{ r.HL7GenderCode | escape }} |
+{% endfor %}
 
 ### 📊 Marital Status  
 
 <small>Items in this list are based on the HL7 standard here: <a href=http://terminology.hl7.org/CodeSystem/v3-MaritalStatus>HL7 Coding: Marital Status</a></small>
 
-| Id | Code | Marital Status
-| -- | -- | --
-| 0 | A | Annulled 
-| 1 | D | Divorced 
-| 2 | I | Interlocutory 
-| 3 | L | Legally Separated 
-| 4 | M | Married 
-| 5 | P | Polygamous 
-| 6 | S | Never Married 
-| 7 | T | Domestic partner 
-| 8 | W | Widowed 
+{% assign rows = site.data.MaritalStatusLookup | sort: "Id" %}
+
+| Id | Marital Status | Description | HL7 Code |
+|---|---|---|---|
+{% for r in rows -%}
+| {{ r.Id }} | {{ r.MaritalStatus }} | {{ r.Description | escape }} | {{ r.HL7Code | escape }} |
+{% endfor %}
 
 ### 📊 Result Code
 
@@ -110,31 +98,23 @@ The following tables provide acceptable values for option properties.  Always us
 
 <small>Types of evaluations (exams) IRIS performs. You can only use evaluation types that you have subscribed to.</small>
 
-| Id | Code | Exam Description | Reader
-| -- | -- | -- | --
-| 1 | DR | Diabetic Retinopathy | Human
-| 2 | Glaucoma | Glaucoma | Human
-| 3 | HIV | HIV  | Human
-| 4 | DRME | DR & ME with extended care plan support | Human
-| 6 | DR_REFNOREF | DR only with refer/no refer | AI
-| 7 | AMD | AMD Exam | Human 
-| 8 | DR_AMD | DR and AMD combined | Human
-| 9 | SP | Suspected Pathology | Human
-| 12 | DR_AREDS_GLAUC | DR, AMD (AREDS) Glaucoma | AI
-| 13 | AI_Eyenuk_O1 | DR, AMD Glaucoma - Eyenuk | AI
+{% assign rows = site.data.EvaluationLookup | sort: "Id" %}
 
+| Id | Name | Display name | Description |
+|---|---|---|---|
+{% for r in rows -%}
+| {{ r.Id }} | {{ r.Name }} | {{ r.AppDisplayName | escape }} | {{ r.Description | escape }} |
+{% endfor %}
 
 ### 📊 ImageContext
 
-| Id | Code | Description 
-| -- | -- | --
-| 0 | Primary |  (Default) Primary image for eye for performing diagnosis
-| 1 | SecondaryViewField | Alternate views of eye
-| 2 | Unknown | Context could not be derived from submission
-| 3 | Component | Part of a primary image
-| 4 | Aggregate | Combination of two or more components
-| 5 | Enhancement | Enhanced image
-| 6 | AddedLate | Image was added after the order was graded
+{% assign rows = site.data.ImageContextTypeLookup | sort: "Id" %}
+
+| Id | Name | Description |
+|---|---|---|
+{% for r in rows -%}
+| {{ r.Id }} | {{ r.Name }} | {{ r.Description | escape }} |
+{% endfor %}
 
 ### 📊 Laterality
 
