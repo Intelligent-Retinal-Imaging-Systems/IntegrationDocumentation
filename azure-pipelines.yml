@@ -39,6 +39,7 @@ steps:
       inlineScript: |
         set -euo pipefail
         mkdir -p "$(targetFolder)"
+        find "$(targetFolder)" -mindepth 1 -delete
         az storage blob download-batch \
           --account-name "$(storageAccount)" \
           --source "$(container)" \
