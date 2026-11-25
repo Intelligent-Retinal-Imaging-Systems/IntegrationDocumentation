@@ -74,7 +74,7 @@ The following tables provide acceptable values for option properties.  Always us
 
 ### 📊 Marital Status  
 
-<small>Items in this list are based on the HL7 standard here: <a href=http://terminology.hl7.org/CodeSystem/v3-MaritalStatus>HL7 Coding: Marital Status</a></small>
+<small>Items in this list are based on the HL7 standard here: <a href="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus">HL7 Coding: Marital Status</a></small>
 
 {% assign rows = site.data.MaritalStatusLookup | sort: "Id" %}
 
